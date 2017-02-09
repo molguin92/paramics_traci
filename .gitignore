@@ -327,4 +327,4 @@ Mkfile.old
 dkms.conf
 
 #POCO library
-./poco-1.7.7
+poco-1.7.7/
