@@ -127,7 +127,7 @@
     </ResourceCompile>
     <Link>
       <AdditionalDependencies>simcore.lib;modeller.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>base.dll</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\lib;../../bin/win32/opt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>.\Release/modeller/bin/base.pdb</ProgramDatabaseFile>
