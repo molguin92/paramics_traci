@@ -24,7 +24,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v140</PlatformToolset>
-    <UseOfMfc>false</UseOfMfc>
+    <UseOfMfc>Static</UseOfMfc>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -63,7 +63,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\Public\paramics\programmer\plugins\pveins\poco-1.7.7\XML\include;C:\Users\Public\paramics\programmer\plugins\pveins\poco-1.7.7\Util\include;C:\Users\Public\paramics\programmer\plugins\pveins\poco-1.7.7\JSON\include;C:\Users\Public\paramics\programmer\plugins\pveins\poco-1.7.7\Foundation\include;C:\Users\Public\paramics\programmer\plugins\pveins\poco-1.7.7\CppUnit\include;C:\Users\Public\paramics\programmer\plugins\pveins\poco-1.7.7\Net\include;.;..\..\include;..\..\include\user;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Public\paramics\programmer\plugins\pveins\shawn;.;..\..\include;..\..\include\user;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;PLUGIN_EXPORTS;__i386__;MODELLER_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -82,10 +82,10 @@
       <Culture>0x0809</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>simcore.lib;modeller.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>simcore.lib;modeller.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>..\..\lib;../../bin/win32/opt;C:\Users\Public\paramics\programmer\plugins\pveins\poco-1.7.7\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\lib;../../bin/win32/opt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>.\Debug/modeller/bin/base.pdb</ProgramDatabaseFile>
       <ImportLibrary>.\Debug/modeller/bin/base.lib</ImportLibrary>
@@ -95,6 +95,10 @@
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <OutputFile>.\Debug/modeller/bin/modeller.bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Midl>
@@ -146,6 +150,14 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release/modeller/obj/</ObjectFileName>
       <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release/modeller/obj/</ProgramDataBaseFileName>
     </ClCompile>
+    <ClCompile Include="shawn\socket.cpp" />
+    <ClCompile Include="shawn\storage.cpp" />
+    <ClCompile Include="TraCIServer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="shawn\socket.h" />
+    <ClInclude Include="shawn\storage.h" />
+    <ClInclude Include="TraCIServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,5 +10,25 @@
     <ClCompile Include="plugin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TraCIServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shawn\socket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shawn\storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TraCIServer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shawn\socket.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shawn\storage.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

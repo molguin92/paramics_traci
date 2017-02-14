@@ -6,22 +6,23 @@
  * ----------------------------------------------------------------------- */
 
 #include "programmer.h"
+#include "TraCIServer.h"
 #include <thread>
+
 
 using namespace std;
 
 thread *runner;
 BOOL running;
+TraCIServer *server;
 
 
 void runner_fn()
 {
-	while(running)
-	{
-		this_thread::sleep_for(100ms);
-		qps_GUI_printf("pajaro ctm");
-		qps_GUI_runSimulation();
-	}
+	server = new TraCIServer();
+	server->run();
+	server->close();
+	delete(server);
 }
 
 
