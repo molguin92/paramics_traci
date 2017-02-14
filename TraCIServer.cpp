@@ -8,7 +8,8 @@ using namespace std;
 
 TraCIServer::TraCIServer()
 {
-	ssocket = new tcpip::Socket(5000);
+	port = DEFAULT_PORT; //TODO: dynamically assign port.
+	ssocket = new tcpip::Socket(port);
 	outgoing = new tcpip::Storage();
 }
 
@@ -17,24 +18,41 @@ TraCIServer::~TraCIServer()
 {
 	delete(ssocket);
 	delete(outgoing);
+
+	if (DEBUG)
+		this->p_printf("Server succesfully shut down");
 }
 
+/**
+ * \brief Starts this instance, binding it to a port and awaiting connections. This method is blocking, and as such should be run in a separate thread.
+ */
 void TraCIServer::run()
 {
+	running = true;
 	std::string version_str = "Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion());
 	this->p_printf(version_str);
-	this->p_printf("Awaiting connections on port 5000");
+	this->p_printf("Simulation start time: " + std::to_string(qpg_CFG_simulationTime()));
+	this->p_printf("Awaiting connections on port " + std::to_string(port));
 	ssocket->accept();
 	this->p_printf("Accepted connection");
 	this->waitForCommands();
 
 }
 
+/**
+ * \brief Closes the socket, severing all connections.
+ */
 void TraCIServer::close()
 {
+	if (DEBUG)
+		this->p_printf("Closing connections");
 	ssocket->close();
 }
 
+
+/**
+ * \brief Waits for incomming commands on the TCP socket.
+ */
 void TraCIServer::waitForCommands()
 {
 	tcpip::Storage * incoming = new tcpip::Storage();
@@ -42,7 +60,7 @@ void TraCIServer::waitForCommands()
 	if (DEBUG)
 		this->p_printf("Waiting for incoming commands from TraCI client...");
 
-	while (ssocket->receiveExact(*incoming))
+	while (running && ssocket->receiveExact(*incoming))
 	{
 
 		auto msize = incoming->size();
@@ -67,6 +85,8 @@ void TraCIServer::waitForCommands()
 		incoming->reset();
 		outgoing->reset();
 	}
+
+	delete(incoming);
 }
 
 void TraCIServer::parseCommand(tcpip::Storage& storage)
@@ -94,7 +114,14 @@ void TraCIServer::parseCommand(tcpip::Storage& storage)
 	case CMD_SIMSTEP:
 		if (DEBUG)
 			this->p_printf("Got CMD_SIMSTEP");
-		this->cmdSimulationStep();
+
+		this->cmdSimulationStep(storage.readInt());
+		break;
+
+	case CMD_SHUTDOWN:
+		if (DEBUG)
+			this->p_printf("Got CMD_SHUTDOWN");
+		this->cmdShutDown();
 		break;
 
 	default:
@@ -149,15 +176,57 @@ void TraCIServer::p_printf(std::string text)
 	qps_GUI_printf(&text[0u]);
 }
 
-void TraCIServer::cmdSimulationStep()
+void TraCIServer::cmdSimulationStep(uint32_t ms)
 {
-	if(DEBUG)
-		this->p_printf("Running one simulation step...");
+	auto current_simtime = qpg_CFG_simulationTime();
+	auto target_simtime = ms / 1000.0;
 
-	qps_GUI_runSimulation();
+	if(ms == 0)
+	{
+		if (DEBUG)
+			this->p_printf("Running one simulation step...");
+
+		qps_GUI_runSimulation();
+	}
+	else if (target_simtime > current_simtime)
+	{
+		if (DEBUG)
+		{
+			this->p_printf("Running simulation up to target time: " + std::to_string(target_simtime));
+			this->p_printf("Current time: " + std::to_string(current_simtime));
+		}
+
+		while (target_simtime > current_simtime)
+		{
+			qps_GUI_runSimulation();
+			current_simtime = qpg_CFG_simulationTime();
+
+			if (DEBUG)
+				this->p_printf("Current time: " + std::to_string(current_simtime));
+		}
+	}
+	else
+	{
+		if (DEBUG)
+		{
+			this->p_printf("Invalid target simulation time: " + std::to_string(ms));
+			this->p_printf("Current simulation time: " + std::to_string(current_simtime));
+			this->p_printf("Doing nothing");
+		}
+	}
+
 	this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
 
 	// write subscription responses...
 	outgoing->writeInt(0);
+}
+
+void TraCIServer::cmdShutDown()
+{
+	if (DEBUG)
+		this->p_printf("Got shutdown command, acknowledging and shutting down");
+
+	this->writeStatusResponse(CMD_SHUTDOWN, STATUS_OK, "");
+	running = false;
 }
 

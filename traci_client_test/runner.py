@@ -25,7 +25,8 @@ PORT = 5000
 def run():
     """execute the TraCI control loop"""
     traci.init(PORT)
-    while(True):
-        time.sleep(1)
-        traci.simulationStep()
+    #for i in range(0, 10):
+    #    traci.simulationStep()
+    traci.simulationStep(28910000)
+    traci.close()
 

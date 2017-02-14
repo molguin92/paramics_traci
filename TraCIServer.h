@@ -11,8 +11,13 @@
 #include "shawn/storage.h"
 
 //Command definitions:
+//Simulation control:
 #define CMD_GETVERSION 0x00
 #define CMD_SIMSTEP 0x02
+#define CMD_SHUTDOWN 0x7f
+//------------------
+//Value retrieval:
+#define CMD_GETSIMVAR 
 
 //Status response defintions:
 #define STATUS_OK 0x00
@@ -22,6 +27,7 @@
 //Server definitions
 #define API_VERSION 10
 #define PLUGIN_VERSION "0.1alpha"
+#define DEFAULT_PORT 5000
 
 class TraCIServer
 {
@@ -29,6 +35,9 @@ public:
 
 	tcpip::Socket* ssocket;
 	tcpip::Storage* outgoing;
+
+	int port;
+	bool running;
 
 	TraCIServer();
 	~TraCIServer();
@@ -44,6 +53,6 @@ private:
 	void p_printf(std::string text);
 
 	//commands
-	void cmdSimulationStep();
-
+	void cmdSimulationStep(uint32_t ms);
+	void cmdShutDown();
 };
