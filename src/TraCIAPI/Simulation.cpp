@@ -16,5 +16,5 @@ float traci_api::Simulation::getCurrentTimeSeconds()
 
 long traci_api::Simulation::getCurrentTimeMilliseconds()
 {
-	return this->getCurrentTimeSeconds() * 1000;
+	return static_cast<long>(this->getCurrentTimeSeconds() * 1000);
 }

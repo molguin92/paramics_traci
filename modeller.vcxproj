@@ -43,8 +43,8 @@
     <_ProjectFileVersion>14.0.25431.1</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\modeller\bin</OutDir>
-    <IntDir>$(SolutionDir)$(Configuration)\modeller\obj</IntDir>
+    <OutDir>$(SolutionDir)$(Configuration)\modeller\bin\</OutDir>
+    <IntDir>$(SolutionDir)$(Configuration)\modeller\obj\</IntDir>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -156,6 +156,7 @@
     <ClCompile Include="src\TraCIServer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LICENSE" />
     <ClInclude Include="src\shawn\socket.h" />
     <ClInclude Include="src\shawn\storage.h" />
     <ClInclude Include="src\TraCIAPI\Simulation.h" />
