@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "modeller", "modeller.vcxproj", "{CB3BB269-2D40-4293-927F-AF85BE33184C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_sockets", "test_sockets\test_sockets.vcxproj", "{DF02CB85-F542-4BE8-95BD-151D74035755}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,14 +19,6 @@ Global
 		{CB3BB269-2D40-4293-927F-AF85BE33184C}.Release|Win32.ActiveCfg = Release|Win32
 		{CB3BB269-2D40-4293-927F-AF85BE33184C}.Release|Win32.Build.0 = Release|Win32
 		{CB3BB269-2D40-4293-927F-AF85BE33184C}.Release|x64.ActiveCfg = Release|Win32
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Debug|Win32.ActiveCfg = Debug|Win32
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Debug|Win32.Build.0 = Debug|Win32
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Debug|x64.ActiveCfg = Debug|x64
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Debug|x64.Build.0 = Debug|x64
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Release|Win32.ActiveCfg = Release|Win32
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Release|Win32.Build.0 = Release|Win32
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Release|x64.ActiveCfg = Release|x64
-		{DF02CB85-F542-4BE8-95BD-151D74035755}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

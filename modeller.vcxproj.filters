@@ -7,27 +7,33 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="plugin.c">
+    <ClCompile Include="src\plugin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TraCIServer.cpp">
+    <ClCompile Include="src\TraCIServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shawn\socket.cpp">
+    <ClCompile Include="src\shawn\socket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shawn\storage.cpp">
+    <ClCompile Include="src\shawn\storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TraCIAPI\Simulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TraCIServer.h">
+    <ClInclude Include="src\TraCIServer.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="shawn\socket.h">
+    <ClInclude Include="src\shawn\socket.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="shawn\storage.h">
+    <ClInclude Include="src\shawn\storage.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TraCIAPI\Simulation.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

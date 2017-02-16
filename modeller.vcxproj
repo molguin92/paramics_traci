@@ -63,7 +63,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Users\Public\paramics\programmer\plugins\pveins\shawn;.;..\..\include;..\..\include\user;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Public\paramics\programmer\plugins\pveins\src\shawn;.;..\..\include;..\..\include\user;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;_USRDLL;PLUGIN_EXPORTS;__i386__;MODELLER_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -82,7 +82,7 @@
       <Culture>0x0809</Culture>
     </ResourceCompile>
     <Link>
-      <AdditionalDependencies>simcore.lib;modeller.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>simcore.lib;modeller.lib;Ws2_32.lib;Shell32.lib;Kernel32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <AdditionalLibraryDirectories>..\..\lib;../../bin/win32/opt;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -144,20 +144,22 @@
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="plugin.c">
+    <ClCompile Include="src\plugin.c">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug/modeller/obj/</ObjectFileName>
       <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Debug/modeller/obj/</ProgramDataBaseFileName>
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release/modeller/obj/</ObjectFileName>
       <ProgramDataBaseFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Release/modeller/obj/</ProgramDataBaseFileName>
     </ClCompile>
-    <ClCompile Include="shawn\socket.cpp" />
-    <ClCompile Include="shawn\storage.cpp" />
-    <ClCompile Include="TraCIServer.cpp" />
+    <ClCompile Include="src\shawn\socket.cpp" />
+    <ClCompile Include="src\shawn\storage.cpp" />
+    <ClCompile Include="src\TraCIAPI\Simulation.cpp" />
+    <ClCompile Include="src\TraCIServer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="shawn\socket.h" />
-    <ClInclude Include="shawn\storage.h" />
-    <ClInclude Include="TraCIServer.h" />
+    <ClInclude Include="src\shawn\socket.h" />
+    <ClInclude Include="src\shawn\storage.h" />
+    <ClInclude Include="src\TraCIAPI\Simulation.h" />
+    <ClInclude Include="src\TraCIServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
