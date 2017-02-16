@@ -32,7 +32,15 @@ TraCIServer::TraCIServer()
 		if (starts_with(str, prefix))
 		{
 			std::string s_port = str.substr(prefix.length(), str.npos);
-			port = std::stoi(s_port);
+			try
+			{
+				port = std::stoi(s_port);
+			} catch(...)
+			{
+				this->p_printf("Invalid port identifier - Falling back to default port");
+				port = DEFAULT_PORT;
+			}
+			
 		}
 	}
 
