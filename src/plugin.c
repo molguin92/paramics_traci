@@ -27,6 +27,6 @@ void runner_fn()
 void qpx_NET_postOpen(void)
 {
 	qps_GUI_singleStep(PTRUE);
-
+	TraCIServer::p_printf("TraCI support enabled");
 	runner = new std::thread(runner_fn);
 }

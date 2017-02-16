@@ -9,6 +9,7 @@
 
 #include "shawn/socket.h"
 #include "shawn/storage.h"
+#include "TraCIAPI/Simulation.h"
 
 #define CMDARG_PORT "--traci_port="
 
@@ -35,26 +36,29 @@ class TraCIServer
 {
 public:
 
-	tcpip::Socket* ssocket;
-	tcpip::Storage* outgoing;
-
-	int port;
-	bool running;
-
 	TraCIServer();
 	~TraCIServer();
 	void run();
 	void close();
+	static void p_printf(std::string text);
 
 private:
+
+	tcpip::Socket* ssocket;
+	tcpip::Storage* outgoing;
+
+	traci_api::Simulation* simulation;
+
+	int port;
+	bool running;
+
 	void waitForCommands();
+	void cmdSimStep(int target_time) const;
 	void parseCommand(tcpip::Storage& storage);
-	void writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description);
-	void writeVersion();
-	void sendResponse();
-	void p_printf(std::string text);
+	void writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description) const;
+	void writeVersion() const;
+	void sendResponse() const;
 
 	//commands
-	void cmdSimulationStep(uint32_t ms);
 	void cmdShutDown();
 };

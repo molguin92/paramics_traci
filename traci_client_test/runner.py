@@ -19,14 +19,15 @@ except ImportError:
         "please declare environment variable 'SUMO_HOME' as the root directory of your sumo installation (it should contain folders 'bin', 'tools' and 'docs')")
 
 import traci
-PORT = 5000
+PORT = 8245
 
 
 def run():
     """execute the TraCI control loop"""
     traci.init(PORT)
-    #for i in range(0, 10):
-    #    traci.simulationStep()
-    traci.simulationStep(28910000)
+    for i in range(0, 1000):
+        traci.simulationStep()
+        time.sleep(0.2)
+    #traci.simulationStep(28910000)
     traci.close()
 
