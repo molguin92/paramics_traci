@@ -28,6 +28,7 @@ def run():
     for i in range(0, 1000):
         traci.simulationStep()
         print(traci.simulation.getCurrentTime())
+        print(traci.simulation.getDepartedNumber())
         time.sleep(0.2)
     #traci.simulationStep(28910000)
     traci.close()

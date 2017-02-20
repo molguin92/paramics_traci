@@ -26,8 +26,11 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 {
 	auto current_simtime = this->getCurrentTimeSeconds();
 	auto target_simtime = target_timems / 1000.0;
-
 	int steps_performed = 0;
+
+	lock->lock();
+	released_vehicles.clear();
+	lock->unlock();
 
 	if (target_timems == 0)
 	{
@@ -67,7 +70,6 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 
 	// write subscription responses...
 	result_store.writeInt(0);
-
 	stepcnt += steps_performed;
 	return steps_performed;
 }
@@ -77,18 +79,29 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 	result_store.writeUnsignedByte(RES_GETSIMVAR);
 	result_store.writeUnsignedByte(varID);
 	result_store.writeString("");
-	int time;
 
 	switch (varID)
 	{
 	case GET_SIMTIME:
-		time = this->getCurrentTimeMilliseconds();
 		result_store.writeUnsignedByte(VTYPE_INT);
-		result_store.writeInt(time);
+		result_store.writeInt(this->getCurrentTimeMilliseconds());
+		break;
+	case GET_RELEASEDVHC_CNT:
+		lock->lock();
+		result_store.writeUnsignedByte(VTYPE_INT);
+		result_store.writeInt(released_vehicles.size());
+		lock->unlock();
 		break;
 	default:
 		return false;
 	}
 
 	return true;
+}
+
+void traci_api::Simulation::releaseVehicle(VEHICLE* vehicle)
+{
+	lock->lock();
+	released_vehicles.push_back(vehicle);
+	lock->unlock();
 }

@@ -83,6 +83,7 @@ void traci_api::TraCIServer::close()
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Closing connections");
+	running = false;
 	ssocket->close();
 }
 
@@ -146,10 +147,16 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
 	tcpip::Storage* subs_store = new tcpip::Storage();
 
 	if (simulation->getVariable(simvar, *subs_store))
+	{
 		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
+		outgoing->writeUnsignedByte(1 + subs_store->size());
+		outgoing->writeStorage(*subs_store);
+	} 
+	else
+	{
+		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_NIMPL, ""); // TODO: Cover errors as well!
+	}
 
-	outgoing->writeUnsignedByte(1 + subs_store->size());
-	outgoing->writeStorage(*subs_store);
 	delete(subs_store);
 }
 

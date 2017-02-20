@@ -10,6 +10,8 @@ namespace traci_api
 	{
 	public:
 
+		traci_api::Simulation* simulation;
+
 		TraCIServer();
 		~TraCIServer();
 		void run();
@@ -20,8 +22,6 @@ namespace traci_api
 
 		tcpip::Socket* ssocket;
 		tcpip::Storage* outgoing;
-
-		traci_api::Simulation* simulation;
 
 		int port;
 		bool running;

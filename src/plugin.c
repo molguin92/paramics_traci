@@ -30,3 +30,15 @@ void qpx_NET_postOpen(void)
 	traci_api::TraCIServer::p_printf("TraCI support enabled");
 	runner = new std::thread(runner_fn);
 }
+
+void qpx_NET_reload()
+{
+	server->close();
+	runner->join();
+	qpx_NET_postOpen();
+}
+
+void qpx_VHC_release(VEHICLE* vehicle)
+{
+	server->simulation->releaseVehicle(vehicle);
+}
