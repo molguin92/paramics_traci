@@ -1,6 +1,7 @@
 ﻿#include "Simulation.h"
 #include <programmer.h>
-#include "../TraCIServer.h"
+#include "TraCIServer.h"
+#include "Constants.h"
 
 traci_api::Simulation::Simulation()
 {
@@ -16,9 +17,9 @@ float traci_api::Simulation::getCurrentTimeSeconds()
 	return qpg_CFG_simulationTime();
 }
 
-long traci_api::Simulation::getCurrentTimeMilliseconds()
+int traci_api::Simulation::getCurrentTimeMilliseconds()
 {
-	return static_cast<long>(this->getCurrentTimeSeconds() * 1000);
+	return static_cast<int>(this->getCurrentTimeSeconds() * 1000);
 }
 
 int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage& result_store)
@@ -69,4 +70,25 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 
 	stepcnt += steps_performed;
 	return steps_performed;
+}
+
+bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_store)
+{
+	result_store.writeUnsignedByte(RES_GETSIMVAR);
+	result_store.writeUnsignedByte(varID);
+	result_store.writeString("");
+	int time;
+
+	switch (varID)
+	{
+	case GET_SIMTIME:
+		time = this->getCurrentTimeMilliseconds();
+		result_store.writeUnsignedByte(VTYPE_INT);
+		result_store.writeInt(time);
+		break;
+	default:
+		return false;
+	}
+
+	return true;
 }

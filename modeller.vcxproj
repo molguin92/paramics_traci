@@ -153,14 +153,15 @@
     <ClCompile Include="src\shawn\socket.cpp" />
     <ClCompile Include="src\shawn\storage.cpp" />
     <ClCompile Include="src\TraCIAPI\Simulation.cpp" />
-    <ClCompile Include="src\TraCIServer.cpp" />
+    <ClCompile Include="src\TraCIAPI\TraCIServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LICENSE" />
     <ClInclude Include="src\shawn\socket.h" />
     <ClInclude Include="src\shawn\storage.h" />
+    <ClInclude Include="src\TraCIAPI\Constants.h" />
     <ClInclude Include="src\TraCIAPI\Simulation.h" />
-    <ClInclude Include="src\TraCIServer.h" />
+    <ClInclude Include="src\TraCIAPI\TraCIServer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

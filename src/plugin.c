@@ -6,17 +6,17 @@
  * ----------------------------------------------------------------------- */
 
 #include "programmer.h"
-#include "TraCIServer.h"
 #include <thread>
+#include "TraCIAPI/TraCIServer.h"
 
 
 std::thread *runner;
-TraCIServer *server;
+traci_api::TraCIServer *server;
 
 
 void runner_fn()
 {
-	server = new TraCIServer();
+	server = new traci_api::TraCIServer();
 	server->run();
 	server->close();
 	delete(server);
@@ -27,6 +27,6 @@ void runner_fn()
 void qpx_NET_postOpen(void)
 {
 	qps_GUI_singleStep(PTRUE);
-	TraCIServer::p_printf("TraCI support enabled");
+	traci_api::TraCIServer::p_printf("TraCI support enabled");
 	runner = new std::thread(runner_fn);
 }

@@ -1,8 +1,9 @@
 ﻿#include "TraCIServer.h"
 #include "programmer.h"
 #include <thread>
-#include "shawn/storage.h"
+#include "storage.h"
 #include <shellapi.h>
+#include "Constants.h"
 
 bool starts_with(std::string const& in_string,
 				 std::string const& prefix)
@@ -12,7 +13,7 @@ bool starts_with(std::string const& in_string,
 }
 
 
-TraCIServer::TraCIServer()
+traci_api::TraCIServer::TraCIServer()
 {
 	running = false;
 
@@ -50,7 +51,7 @@ TraCIServer::TraCIServer()
 }
 
 
-TraCIServer::~TraCIServer()
+traci_api::TraCIServer::~TraCIServer()
 {
 	delete(ssocket);
 	delete(outgoing);
@@ -63,7 +64,7 @@ TraCIServer::~TraCIServer()
 /**
  * \brief Starts this instance, binding it to a port and awaiting connections. This method is blocking, and as such should be run in a separate thread.
  */
-void TraCIServer::run()
+void traci_api::TraCIServer::run()
 {
 	running = true;
 	std::string version_str = "Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion());
@@ -78,7 +79,7 @@ void TraCIServer::run()
 /**
  * \brief Closes the socket, severing all connections.
  */
-void TraCIServer::close()
+void traci_api::TraCIServer::close()
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Closing connections");
@@ -89,7 +90,7 @@ void TraCIServer::close()
 /**
  * \brief Waits for incomming commands on the TCP socket.
  */
-void TraCIServer::waitForCommands()
+void traci_api::TraCIServer::waitForCommands()
 {
 	tcpip::Storage* incoming = new tcpip::Storage(); // the whole incoming message
 	tcpip::Storage* cmdStore = new tcpip::Storage(); // individual commands in the message
@@ -129,22 +130,35 @@ void TraCIServer::waitForCommands()
 	delete(incoming);
 }
 
-void TraCIServer::cmdSimStep(int target_time) const
+void traci_api::TraCIServer::cmdSimStep(int target_time) const
 {
 	tcpip::Storage* subs_store = new tcpip::Storage();
 		
 	if (simulation->runSimulation(target_time, *subs_store) >= 0)
 		this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
 
+	outgoing->writeStorage(*subs_store); // TODO: FIX, add length
+	delete(subs_store);
+}
+
+void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
+{
+	tcpip::Storage* subs_store = new tcpip::Storage();
+
+	if (simulation->getVariable(simvar, *subs_store))
+		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
+
+	outgoing->writeUnsignedByte(1 + subs_store->size());
 	outgoing->writeStorage(*subs_store);
 	delete(subs_store);
 }
+
 
 /**
  * \brief Parses an incoming command according to the TraCI protocol specifications.
  * \param storage A tcpip::Storage object which contains a single TraCI command.
  */
-void TraCIServer::parseCommand(tcpip::Storage& storage)
+void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Parsing command");
@@ -170,13 +184,19 @@ void TraCIServer::parseCommand(tcpip::Storage& storage)
 		if (DEBUG)
 			TraCIServer::p_printf("Got CMD_SIMSTEP");
 
-		cmdSimStep(storage.readInt());
+		this->cmdSimStep(storage.readInt());
 		break;
 
 	case CMD_SHUTDOWN:
 		if (DEBUG)
 			TraCIServer::p_printf("Got CMD_SHUTDOWN");
 		this->cmdShutDown();
+		break;
+
+	case CMD_GETSIMVAR:
+		if (DEBUG)
+			TraCIServer::p_printf("Got CMD_GETSIMVAR");
+		this->cmdGetSimVar(storage.readUnsignedByte());
 		break;
 
 	default:
@@ -193,7 +213,7 @@ void TraCIServer::parseCommand(tcpip::Storage& storage)
  * \param cmdStatus The status response.
  * \param description A std::string describing the result.
  */
-void TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description) const
+void traci_api::TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description) const
 {
 	outgoing->writeUnsignedByte(1 + 1 + 1 + 4 + static_cast<int>(description.length())); // command length
 	outgoing->writeUnsignedByte(cmdId); // command type
@@ -204,7 +224,7 @@ void TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::str
 /**
  * \brief Writes a server version information message response on the outgoing tcpip::Storage.
  */
-void TraCIServer::writeVersion() const
+void traci_api::TraCIServer::writeVersion() const
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Writing version information");
@@ -224,7 +244,7 @@ void TraCIServer::writeVersion() const
  * \brief Sends the internally stored outgoing TraCI message to the client. 
  * Should only be called by the server itself on waitForCommands()
  */
-void TraCIServer::sendResponse() const
+void traci_api::TraCIServer::sendResponse() const
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Sending response to TraCI client");
@@ -237,7 +257,7 @@ void TraCIServer::sendResponse() const
  * \brief Convenience function, prints an std::string on Paramics' output window.
  * \param text 
  */
-void TraCIServer::p_printf(std::string text)
+void traci_api::TraCIServer::p_printf(std::string text)
 {
 	text = "TraCI: " + text;
 	qps_GUI_printf(&text[0u]);
@@ -246,7 +266,7 @@ void TraCIServer::p_printf(std::string text)
 /**
  * \brief Executes a shutdown command, destroying the current connections and closing the socket.
  */
-void TraCIServer::cmdShutDown()
+void traci_api::TraCIServer::cmdShutDown()
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Got shutdown command, acknowledging and shutting down");

@@ -10,9 +10,6 @@
     <ClCompile Include="src\plugin.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TraCIServer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\shawn\socket.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -22,11 +19,11 @@
     <ClCompile Include="src\TraCIAPI\Simulation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\TraCIAPI\TraCIServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\TraCIServer.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\shawn\socket.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -37,5 +34,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="LICENSE" />
+    <ClInclude Include="src\TraCIAPI\TraCIServer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TraCIAPI\Constants.h" />
   </ItemGroup>
 </Project>

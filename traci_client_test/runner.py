@@ -27,6 +27,7 @@ def run():
     traci.init(PORT)
     for i in range(0, 1000):
         traci.simulationStep()
+        print(traci.simulation.getCurrentTime())
         time.sleep(0.2)
     #traci.simulationStep(28910000)
     traci.close()
