@@ -40,5 +40,10 @@ void qpx_NET_reload()
 
 void qpx_VHC_release(VEHICLE* vehicle)
 {
-	server->simulation->releaseVehicle(vehicle);
+	server->simulation->vehicleDepart(vehicle);
+}
+
+void qpx_VHC_arrive(VEHICLE* vehicle)
+{
+	server->simulation->vehicleArrive(vehicle);
 }

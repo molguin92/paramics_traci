@@ -13,6 +13,9 @@ bool starts_with(std::string const& in_string,
 }
 
 
+/**
+ * \brief Standard constructor
+ */
 traci_api::TraCIServer::TraCIServer()
 {
 	running = false;

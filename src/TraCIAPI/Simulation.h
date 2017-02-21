@@ -15,9 +15,17 @@ namespace traci_api
 		// simulation time
 		static const uint8_t GET_SIMTIME = 0x70;
 
+		// loaded vehicles
+		static const uint8_t GET_LOADEDVHC_CNT = 0x71;
+		static const uint8_t GET_LOADEDVHC_LST = 0x72;
+
 		// departed vehicles
-		static const uint8_t GET_RELEASEDVHC_CNT = 0x73;
-		static const uint8_t GET_RELEASEDVHC_LST = 0x74;
+		static const uint8_t GET_DEPARTEDVHC_CNT = 0x73;
+		static const uint8_t GET_DEPARTEDVHC_LST = 0x74;
+
+		// arrived vehicles
+		static const uint8_t GET_ARRIVEDVHC_CNT = 0x79;
+		static const uint8_t GET_ARRIVEDVHC_LST = 0x7a;
 
 		Simulation();
 		~Simulation();
@@ -25,14 +33,19 @@ namespace traci_api
 		int runSimulation(uint32_t target_time, tcpip::Storage& result_store);
 		bool getVariable(uint8_t varID, tcpip::Storage& result_store);
 
-		void releaseVehicle(VEHICLE* vehicle);
+		void vehicleDepart(VEHICLE* vehicle);
+		void vehicleArrive(VEHICLE* vehicle);
 
 	private:
 
-		std::mutex *lock = new std::mutex();
-		std::vector<VEHICLE*> released_vehicles;
+		std::mutex *lock_departed;
+		std::mutex *lock_arrived;
+		std::vector<VEHICLE*> departed_vehicles;
+		std::vector<VEHICLE*> arrived_vehicles;
 		float getCurrentTimeSeconds();
 		int getCurrentTimeMilliseconds();
+		std::vector<std::string> getDepartedVehicles();
+		std::vector<std::string> getArrivedVehicles();
 		int stepcnt;
 	};
 }
