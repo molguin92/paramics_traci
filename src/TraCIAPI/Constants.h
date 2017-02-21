@@ -8,8 +8,7 @@
 //Server definitions
 #define API_VERSION 10
 #define PLUGIN_VERSION "0.11alpha"
-#define DEFAULT_PORT 5000
-#define CMDARG_PORT "--traci_port="
+
 
 namespace traci_api
 {

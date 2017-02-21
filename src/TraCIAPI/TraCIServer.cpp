@@ -5,52 +5,23 @@
 #include <shellapi.h>
 #include "Constants.h"
 
-bool starts_with(std::string const& in_string,
-				 std::string const& prefix)
-{
-	return prefix.length() <= in_string.length() &&
-		std::equal(prefix.begin(), prefix.end(), in_string.begin());
-}
+/*
+ * This class abstracts a server for the TraCI protocol.
+ * It binds to and listens on a port for incoming TraCI commands, and replies with the appropiate data.
+ */
 
 
 /**
- * \brief Standard constructor
+ * \brief Standard constructor.
+ * \param port The port on which the server should listen for incoming requests.
  */
-traci_api::TraCIServer::TraCIServer()
+traci_api::TraCIServer::TraCIServer(int port)
 {
-	running = false;
-
-	//try to get port from command line arguments
-	int argc;
-	LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc);
-	std::string prefix(CMDARG_PORT);
-
-	port = DEFAULT_PORT; // if it fails, use the default port
-	for (int i = 0; i < argc; i++)
-	{
-		// convert from widestring to normal string
-		std::wstring temp(argv[i]);
-		std::string str(temp.begin(), temp.end());
-
-		// check if argument prefix matches
-		if (starts_with(str, prefix))
-		{
-			std::string s_port = str.substr(prefix.length(), str.npos);
-			try
-			{
-				port = std::stoi(s_port);
-			} catch(...)
-			{
-				TraCIServer::p_printf("Invalid port identifier - Falling back to default port");
-				port = DEFAULT_PORT;
-			}
-			
-		}
-	}
-
-	ssocket = new tcpip::Socket(port);
-	outgoing = new tcpip::Storage();
-	simulation = new traci_api::Simulation();
+	this->running = false;
+	this->port = port;
+	this->ssocket = new tcpip::Socket(port);
+	this->outgoing = new tcpip::Storage();
+	this->simulation = new traci_api::Simulation();
 }
 
 
@@ -133,36 +104,6 @@ void traci_api::TraCIServer::waitForCommands()
 	delete(cmdStore);
 	delete(incoming);
 }
-
-void traci_api::TraCIServer::cmdSimStep(int target_time) const
-{
-	tcpip::Storage* subs_store = new tcpip::Storage();
-		
-	if (simulation->runSimulation(target_time, *subs_store) >= 0)
-		this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
-
-	outgoing->writeStorage(*subs_store); // TODO: FIX, add length
-	delete(subs_store);
-}
-
-void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
-{
-	tcpip::Storage* subs_store = new tcpip::Storage();
-
-	if (simulation->getVariable(simvar, *subs_store))
-	{
-		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
-		outgoing->writeUnsignedByte(1 + subs_store->size());
-		outgoing->writeStorage(*subs_store);
-	} 
-	else
-	{
-		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_NIMPL, ""); // TODO: Cover errors as well!
-	}
-
-	delete(subs_store);
-}
-
 
 /**
  * \brief Parses an incoming command according to the TraCI protocol specifications.
@@ -273,6 +214,7 @@ void traci_api::TraCIServer::p_printf(std::string text)
 	qps_GUI_printf(&text[0u]);
 }
 
+
 /**
  * \brief Executes a shutdown command, destroying the current connections and closing the socket.
  */
@@ -283,4 +225,42 @@ void traci_api::TraCIServer::cmdShutDown()
 
 	this->writeStatusResponse(CMD_SHUTDOWN, STATUS_OK, "");
 	running = false;
+}
+
+
+/**
+ * \brief Runs the simulation.
+ * \param target_time The target simulation time. If 0, executes exactly one timestep; if less than the current time, does nothing.
+ */
+void traci_api::TraCIServer::cmdSimStep(int target_time) const
+{
+	tcpip::Storage* subs_store = new tcpip::Storage();
+
+	if (simulation->runSimulation(target_time, *subs_store) >= 0)
+		this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
+
+	outgoing->writeStorage(*subs_store); // TODO: FIX, add length
+	delete(subs_store);
+}
+
+/**
+ * \brief Gets a variable from the simulation.
+ * \param simvar ID of the interal simulation variable to fetch.
+ */
+void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
+{
+	tcpip::Storage* subs_store = new tcpip::Storage();
+
+	if (simulation->getVariable(simvar, *subs_store))
+	{
+		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
+		outgoing->writeUnsignedByte(1 + subs_store->size());
+		outgoing->writeStorage(*subs_store);
+	}
+	else
+	{
+		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_NIMPL, ""); // TODO: Cover errors as well!
+	}
+
+	delete(subs_store);
 }

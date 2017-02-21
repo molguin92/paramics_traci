@@ -12,7 +12,7 @@ namespace traci_api
 
 		traci_api::Simulation* simulation;
 
-		TraCIServer();
+		TraCIServer(int port);
 		~TraCIServer();
 		void run();
 		void close();
@@ -22,9 +22,8 @@ namespace traci_api
 
 		tcpip::Socket* ssocket;
 		tcpip::Storage* outgoing;
-
-		int port;
 		bool running;
+		int port;
 
 		void waitForCommands();
 		void cmdSimStep(int target_time) const;
