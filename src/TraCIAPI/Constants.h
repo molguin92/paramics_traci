@@ -37,6 +37,8 @@ namespace traci_api
 	//Value retrieval:
 	static const uint8_t CMD_GETSIMVAR = 0xab;
 	static const uint8_t RES_GETSIMVAR = 0xbb;
+	//Change State:
+	static const uint8_t CMD_SETVHCSTATE = 0xc4;
 
 
 }

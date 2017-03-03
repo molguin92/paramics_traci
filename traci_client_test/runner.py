@@ -29,8 +29,14 @@ def run():
         traci.simulationStep()
         print(traci.simulation.getCurrentTime())
         print(traci.simulation.getDepartedNumber())
-        print(traci.simulation.getDepartedIDList())
+        dep = traci.simulation.getDepartedIDList() 
+        print(dep)
+        for v in dep:
+            traci.vehicle.setSpeed(v, 200)
+            
         time.sleep(0.2)
     #traci.simulationStep(28910000)
     traci.close()
 
+if __name__ == '__main__':
+    run()

@@ -116,6 +116,7 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 
 	uint8_t cmdLen = storage.readUnsignedByte();
 	uint8_t cmdId = storage.readUnsignedByte();
+	tcpip::Storage state;
 
 	if (DEBUG)
 	{
@@ -148,6 +149,14 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 		if (DEBUG)
 			TraCIServer::p_printf("Got CMD_GETSIMVAR");
 		this->cmdGetSimVar(storage.readUnsignedByte());
+		break;
+
+	case CMD_SETVHCSTATE:
+		if (DEBUG)
+			TraCIServer::p_printf("Got CMD_SETVHCSTATE");
+		for (int i = 0; i < cmdLen - 2; i++)
+			state.writeUnsignedByte(storage.readUnsignedByte());
+		this->cmdSetVhcState(state);
 		break;
 
 	default:
@@ -263,4 +272,13 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
 	}
 
 	delete(subs_store);
+}
+
+
+void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& state)
+{
+	if(simulation->setVhcState(state))
+		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
+	else
+		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_NIMPL, ""); // TODO: Cover errors as well!
 }

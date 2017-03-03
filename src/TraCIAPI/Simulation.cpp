@@ -41,6 +41,10 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 	departed_vehicles.clear();
 	lock_departed->unlock();
 
+	lock_arrived->lock();
+	arrived_vehicles.clear();
+	lock_arrived->unlock();
+
 	if (target_timems == 0)
 	{
 		if (DEBUG)
@@ -76,6 +80,20 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 			TraCIServer::p_printf("Doing nothing");
 		}
 	}
+
+	// update internal vehicle count
+	lock_arrived->lock();
+	lock_departed->lock();
+
+	for (VEHICLE* v : departed_vehicles)
+		vehicles_in_sim[qpg_VHC_uniqueID(v)] = v;
+
+	for (VEHICLE* v : arrived_vehicles)
+		vehicles_in_sim.erase(qpg_VHC_uniqueID(v));
+
+	lock_arrived->unlock();
+	lock_departed->unlock();
+
 
 	// write subscription responses...
 	result_store.writeInt(0);
@@ -122,6 +140,25 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 	return true;
 }
 
+bool traci_api::Simulation::setVhcState(tcpip::Storage& state)
+{
+	uint8_t varID = state.readUnsignedByte();
+	int vID = std::stoi(state.readString());
+	uint8_t vType = state.readUnsignedByte();
+
+	switch(varID)
+	{
+	case SET_VHCSPEED:
+		if (vType != VTYPE_DOUBLE) return false;
+		else
+			return this->setVehicleSpeed(vID, state.readDouble());
+		break;
+
+	default:
+		return false;
+	}
+}
+
 void traci_api::Simulation::vehicleDepart(VEHICLE* vehicle)
 {
 	lock_departed->lock();
@@ -154,4 +191,21 @@ std::vector<std::string> traci_api::Simulation::getArrivedVehicles()
 		vhcs.push_back(std::to_string(qpg_VHC_uniqueID(v)));
 	lock_arrived->unlock();
 	return vhcs;
+}
+
+/**
+* \brief Sets the speed of a vehicle to the desired value.
+* TODO: Move to a Vehicle class?
+* \param id The id of the vehicle.
+* \param speed The new speed.
+*/
+bool traci_api::Simulation::setVehicleSpeed(int id, float speed)
+{
+	auto iterator = vehicles_in_sim.find(id);
+	if (iterator == vehicles_in_sim.end())
+		return false;
+
+	TraCIServer::p_printf("Setting vehicle " + std::to_string(id) + "'s speed to " + std::to_string(speed));
+	qps_VHC_speed(iterator->second, speed);
+	return true;
 }
