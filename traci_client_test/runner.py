@@ -25,18 +25,22 @@ PORT = 8245
 def run():
     """execute the TraCI control loop"""
     traci.init(PORT)
+    print("Server version: " + str(traci.getVersion()))
+    print("Server timestep: " + str(traci.simulation.getDeltaT()))
     for i in range(0, 1000):
         traci.simulationStep()
-        print(traci.simulation.getCurrentTime())
-        print(traci.simulation.getDepartedNumber())
-        dep = traci.simulation.getDepartedIDList() 
-        print(dep)
+        print("Current SIM time: " + str(traci.simulation.getCurrentTime()))
+        print("N Departed vehicles: " + str(traci.simulation.getDepartedNumber()))
+        print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))
+        dep = traci.simulation.getDepartedIDList()
+        arr = traci.simulation.getArrivedIDList()
+        print("Departed: " + str(dep))
+        print("Arrived: " + str(arr))
         for v in dep:
             traci.vehicle.setSpeed(v, 200)
             
-        time.sleep(0.2)
-    #traci.simulationStep(28910000)
+        time.sleep(0.5)
     traci.close()
 
-if __name__ == '__main__':
-    run()
+#if __name__ == '__main__':
+#    run()

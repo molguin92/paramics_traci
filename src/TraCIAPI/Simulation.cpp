@@ -133,6 +133,10 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 		result_store.writeUnsignedByte(VTYPE_STRLST);
 		result_store.writeStringList(getArrivedVehicles());
 		break;
+	case GET_TIMESTEPSZ:
+		result_store.writeUnsignedByte(VTYPE_INT);
+		result_store.writeInt(static_cast<int>(qpg_CFG_timeStep() * 1000.0f));
+		break;
 	default:
 		return false;
 	}
@@ -151,7 +155,8 @@ bool traci_api::Simulation::setVhcState(tcpip::Storage& state)
 	case SET_VHCSPEED:
 		if (vType != VTYPE_DOUBLE) return false;
 		else
-			return this->setVehicleSpeed(vID, state.readDouble());
+			return this->setVehicleSpeed(vID, static_cast<float>(state.readDouble()));
+
 		break;
 
 	default:

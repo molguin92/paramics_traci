@@ -28,6 +28,9 @@ namespace traci_api
 		static const uint8_t GET_ARRIVEDVHC_CNT = 0x79;
 		static const uint8_t GET_ARRIVEDVHC_LST = 0x7a;
 
+		// simulation timestep size
+		static const uint8_t GET_TIMESTEPSZ = 0x7b;
+
 		// set vehicle speed
 		static const uint8_t SET_VHCSPEED = 0x40;
 
