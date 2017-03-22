@@ -2,14 +2,15 @@
 #include "programmer.h"
 #include <mutex>
 #include <unordered_map>
+#include "Utils.h"
 
 namespace traci_api
 {
 	class VehicleManager
 	{
 	public:
-		VehicleManager();
-		~VehicleManager();
+	    VehicleManager(){}
+		~VehicleManager(){}
 		void reset();
 
 		void vehicleDepart(VEHICLE* vehicle);
@@ -21,6 +22,9 @@ namespace traci_api
 		float getSpeed(int vid);
 		void setSpeed(int vid, float speed);
 
+		Vector3D getPosition(int vid);
+		Vector3D getPosition3D(int vid);
+
 
 	private:
 		std::mutex lock_vhc_lists;
@@ -28,6 +32,8 @@ namespace traci_api
 		std::unordered_map<int, VEHICLE*> vehicles_in_sim;
 		std::vector<VEHICLE*> departed_vehicles;
 		std::vector<VEHICLE*> arrived_vehicles;
+
+		VEHICLE* findVehicle(int vid);
 	};
 
 	class NoSuchVHCError: public std::runtime_error
