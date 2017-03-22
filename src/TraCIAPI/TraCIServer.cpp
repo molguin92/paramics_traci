@@ -277,8 +277,14 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
 
 void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& state)
 {
-	if(simulation->setVhcState(state))
+
+	try
+	{
+		simulation->setVhcState(state);
 		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
-	else
+	}
+	catch ( ... )
+	{
 		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_NIMPL, ""); // TODO: Cover errors as well!
+	}
 }

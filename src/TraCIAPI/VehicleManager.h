@@ -18,6 +18,8 @@ namespace traci_api
 
 		std::vector<std::string> getDepartedVehicles();
 		std::vector<std::string> getArrivedVehicles();
+		int getDepartedVehicleCount();
+		int getArrivedVehicleCount();
 		
 		int currentVehicleCount();
 		std::vector<std::string> getVehiclesInSim();

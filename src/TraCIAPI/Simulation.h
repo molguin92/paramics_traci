@@ -3,6 +3,7 @@
 #include "programmer.h"
 #include <mutex>
 #include <unordered_map>
+#include "VehicleManager.h"
 
 namespace traci_api
 {
@@ -34,29 +35,19 @@ namespace traci_api
 		// set vehicle speed
 		static const uint8_t SET_VHCSPEED = 0x40;
 
+		VehicleManager vhcman;
+
 		Simulation();
 		~Simulation();
 
 		int runSimulation(uint32_t target_time, tcpip::Storage& result_store);
 		bool getVariable(uint8_t varID, tcpip::Storage& result_store);
-		bool setVhcState(tcpip::Storage& state);
-
-		void vehicleDepart(VEHICLE* vehicle);
-		void vehicleArrive(VEHICLE* vehicle);
+		void setVhcState(tcpip::Storage& state);
 
 	private:
 
-		std::mutex *lock_departed;
-		std::mutex *lock_arrived;
-
-		std::unordered_map<int, VEHICLE*> vehicles_in_sim;
-		std::vector<VEHICLE*> departed_vehicles;
-		std::vector<VEHICLE*> arrived_vehicles;
 		float getCurrentTimeSeconds();
 		int getCurrentTimeMilliseconds();
-		std::vector<std::string> getDepartedVehicles();
-		std::vector<std::string> getArrivedVehicles();
-		bool setVehicleSpeed(int id, float speed);
 		int stepcnt;
 	};
 }

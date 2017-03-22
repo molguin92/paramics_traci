@@ -11,14 +11,10 @@
 traci_api::Simulation::Simulation()
 {
 	stepcnt = 0;
-	lock_departed = new std::mutex;
-	lock_arrived = new std::mutex;
 }
 
 traci_api::Simulation::~Simulation()
 {
-	delete(lock_arrived);
-	delete(lock_departed);
 }
 
 float traci_api::Simulation::getCurrentTimeSeconds()
@@ -37,13 +33,7 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 	auto target_simtime = target_timems / 1000.0;
 	int steps_performed = 0;
 
-	lock_departed->lock();
-	departed_vehicles.clear();
-	lock_departed->unlock();
-
-	lock_arrived->lock();
-	arrived_vehicles.clear();
-	lock_arrived->unlock();
+	vhcman.reset();
 
 	if (target_timems == 0)
 	{
@@ -81,18 +71,6 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 		}
 	}
 
-	// update internal vehicle count
-	lock_arrived->lock();
-	lock_departed->lock();
-
-	for (VEHICLE* v : departed_vehicles)
-		vehicles_in_sim[qpg_VHC_uniqueID(v)] = v;
-
-	for (VEHICLE* v : arrived_vehicles)
-		vehicles_in_sim.erase(qpg_VHC_uniqueID(v));
-
-	lock_arrived->unlock();
-	lock_departed->unlock();
 
 
 	// write subscription responses...
@@ -115,23 +93,19 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 		break;
 	case GET_DEPARTEDVHC_CNT:
 		result_store.writeUnsignedByte(VTYPE_INT);
-		lock_departed->lock();
-		result_store.writeInt(departed_vehicles.size());
-		lock_departed->unlock();
+		result_store.writeInt(vhcman.getDepartedVehicleCount());
 		break;
 	case GET_DEPARTEDVHC_LST:
 		result_store.writeUnsignedByte(VTYPE_STRLST);
-		result_store.writeStringList(getDepartedVehicles());
+		result_store.writeStringList(vhcman.getDepartedVehicles());
 		break;
 	case GET_ARRIVEDVHC_CNT:
 		result_store.writeUnsignedByte(VTYPE_INT);
-		lock_arrived->lock();
-		result_store.writeInt(arrived_vehicles.size());
-		lock_arrived->unlock();
+		result_store.writeInt(vhcman.getArrivedVehicleCount());
 		break;
 	case GET_ARRIVEDVHC_LST:
 		result_store.writeUnsignedByte(VTYPE_STRLST);
-		result_store.writeStringList(getArrivedVehicles());
+		result_store.writeStringList(vhcman.getArrivedVehicles());
 		break;
 	case GET_TIMESTEPSZ:
 		result_store.writeUnsignedByte(VTYPE_INT);
@@ -144,7 +118,7 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 	return true;
 }
 
-bool traci_api::Simulation::setVhcState(tcpip::Storage& state)
+void traci_api::Simulation::setVhcState(tcpip::Storage& state)
 {
 	uint8_t varID = state.readUnsignedByte();
 	int vID = std::stoi(state.readString());
@@ -153,64 +127,13 @@ bool traci_api::Simulation::setVhcState(tcpip::Storage& state)
 	switch(varID)
 	{
 	case SET_VHCSPEED:
-		if (vType != VTYPE_DOUBLE) return false;
+		if (vType != VTYPE_DOUBLE) throw std::runtime_error("Wrong VARTYPE for VHCSPEED.");
 		else
-			return this->setVehicleSpeed(vID, static_cast<float>(state.readDouble()));
+			vhcman.setSpeed(vID, static_cast<float>(state.readDouble()));
 
 		break;
 
 	default:
-		return false;
+		throw std::runtime_error("No such Vehicle State Variable: " + std::to_string(varID));
 	}
-}
-
-void traci_api::Simulation::vehicleDepart(VEHICLE* vehicle)
-{
-	lock_departed->lock();
-	departed_vehicles.push_back(vehicle);
-	lock_departed->unlock();
-}
-
-void traci_api::Simulation::vehicleArrive(VEHICLE* vehicle)
-{
-	lock_arrived->lock();
-	arrived_vehicles.push_back(vehicle);
-	lock_arrived->unlock();
-}
-
-std::vector<std::string> traci_api::Simulation::getDepartedVehicles()
-{
-	std::vector<std::string> vhcs;
-	lock_departed->lock();
-	for (VEHICLE* v : departed_vehicles)
-		vhcs.push_back(std::to_string(qpg_VHC_uniqueID(v)));
-	lock_departed->unlock();
-	return vhcs;
-}
-
-std::vector<std::string> traci_api::Simulation::getArrivedVehicles()
-{
-	std::vector<std::string> vhcs;
-	lock_arrived->lock();
-	for (VEHICLE* v : arrived_vehicles)
-		vhcs.push_back(std::to_string(qpg_VHC_uniqueID(v)));
-	lock_arrived->unlock();
-	return vhcs;
-}
-
-/**
-* \brief Sets the speed of a vehicle to the desired value.
-* TODO: Move to a Vehicle class?
-* \param id The id of the vehicle.
-* \param speed The new speed.
-*/
-bool traci_api::Simulation::setVehicleSpeed(int id, float speed)
-{
-	auto iterator = vehicles_in_sim.find(id);
-	if (iterator == vehicles_in_sim.end())
-		return false;
-
-	TraCIServer::p_printf("Setting vehicle " + std::to_string(id) + "'s speed to " + std::to_string(speed));
-	qps_VHC_speed(iterator->second, speed);
-	return true;
 }

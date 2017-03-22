@@ -77,6 +77,18 @@ std::vector<std::string> traci_api::VehicleManager::getArrivedVehicles()
 	return ids;
 }
 
+int traci_api::VehicleManager::getDepartedVehicleCount()
+{
+	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	return departed_vehicles.size();
+}
+
+int traci_api::VehicleManager::getArrivedVehicleCount()
+{
+	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	return arrived_vehicles.size();
+}
+
 int traci_api::VehicleManager::currentVehicleCount()
 {
 	std::lock_guard<std::mutex> lock(lock_vhc_lists);
