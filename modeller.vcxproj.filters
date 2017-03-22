@@ -22,7 +22,7 @@
     <ClCompile Include="src\TraCIAPI\TraCIServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TraCIAPI\Vehicle.cpp">
+    <ClCompile Include="src\TraCIAPI\VehicleManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,6 +41,7 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TraCIAPI\Constants.h" />
-    <ClInclude Include="src\TraCIAPI\Vehicle.h" />
+    <ClInclude Include="src\TraCIAPI\VehicleManager.h" />
+    <ClInclude Include="src\TraCIAPI\Utils.h" />
   </ItemGroup>
 </Project>

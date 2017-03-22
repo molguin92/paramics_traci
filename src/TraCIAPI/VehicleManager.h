@@ -18,12 +18,21 @@ namespace traci_api
 
 		std::vector<std::string> getDepartedVehicles();
 		std::vector<std::string> getArrivedVehicles();
+		
+		int currentVehicleCount();
+		std::vector<std::string> getVehiclesInSim();
 
 		float getSpeed(int vid);
 		void setSpeed(int vid, float speed);
 
-		Vector3D getPosition(int vid);
-		Vector3D getPosition3D(int vid);
+		PositionalData getPosition(int vid);
+		DimensionalData getDimensions(int vid);
+
+		std::string getRoadID(int vid);
+		std::string getLaneID(int vid);
+		int getLaneIndex(int vid);
+
+		std::string getVehicleType(int vid);
 
 
 	private:

@@ -77,6 +77,22 @@ std::vector<std::string> traci_api::VehicleManager::getArrivedVehicles()
 	return ids;
 }
 
+int traci_api::VehicleManager::currentVehicleCount()
+{
+	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	return vehicles_in_sim.size();
+}
+
+std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
+{
+	std::vector<std::string> ids;
+	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	for (auto iterator : vehicles_in_sim)
+		ids.push_back(std::to_string(iterator.first));
+
+	return ids;
+}
+
 /**
  * \brief Requests the speed of a specific vehicle.
  * \param vid The ID of the vehicle.
@@ -102,13 +118,11 @@ void traci_api::VehicleManager::setSpeed(int vid, float speed)
  * \param vid The ID of the vehicle.
  * \return A Vector3D object representing the position of the vehicle.
  */
-Vector3D traci_api::VehicleManager::getPosition(int vid)
+PositionalData traci_api::VehicleManager::getPosition(int vid)
 {
 	float x;
 	float y;
 	float z;
-
-	/* not used, but needed for the paramics function call*/
 	float b;
 	float g; 
 
@@ -117,7 +131,40 @@ Vector3D traci_api::VehicleManager::getPosition(int vid)
 
 	qpg_POS_vehicle(vhc, lnk, &x, &y, &z, &b, &g);
 
-	return Vector3D(x, y, z);
+	return PositionalData(x, y, z, b, g);
 }
+
+DimensionalData traci_api::VehicleManager::getDimensions(int vid)
+{
+	VEHICLE* vhc = this->findVehicle(vid);
+	return DimensionalData(qpg_VHC_height(vhc), qpg_VHC_length(vhc), qpg_VHC_width(vhc));
+}
+
+std::string traci_api::VehicleManager::getRoadID(int vid)
+{
+	VEHICLE* vhc = this->findVehicle(vid);
+	LINK* lnk = qpg_VHC_link(vhc);
+
+	return qpg_LNK_name(lnk);
+}
+
+std::string traci_api::VehicleManager::getLaneID(int vid)
+{
+	VEHICLE* vhc = this->findVehicle(vid);
+	LINK* lnk = qpg_VHC_link(vhc);
+
+	return std::string(qpg_LNK_name(lnk)) + "." + std::to_string(qpg_VHC_lane(vhc));
+}
+
+int traci_api::VehicleManager::getLaneIndex(int vid)
+{
+	return qpg_VHC_lane(this->findVehicle(vid));
+}
+
+std::string traci_api::VehicleManager::getVehicleType(int vid)
+{
+	return std::to_string(qpg_VHC_type(this->findVehicle(vid)));
+}
+
 
 

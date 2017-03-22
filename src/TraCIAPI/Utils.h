@@ -20,3 +20,26 @@ public:
 	{
 	}
 };
+
+class PositionalData: Vector3D
+{
+public:
+	double gradient;
+	double bearing;
+
+	PositionalData(double x, double y, double z, double b, double g): Vector3D(x, y, z), gradient(g), bearing(b)
+	{
+	}
+};
+
+class DimensionalData
+{
+public:
+	double height;
+	double length;
+	double width;
+
+	DimensionalData(double h, double l, double w): height(h), length(l), width(w)
+	{
+	}
+};
