@@ -43,3 +43,17 @@ public:
 	{
 	}
 };
+
+class NotImplementedError: std::runtime_error
+{
+public:
+	explicit NotImplementedError(const std::string& _Message)
+		: runtime_error(_Message)
+	{
+	}
+
+	explicit NotImplementedError(const char* _Message)
+		: runtime_error(_Message)
+	{
+	}
+};
