@@ -154,6 +154,7 @@
     <ClCompile Include="src\shawn\storage.cpp" />
     <ClCompile Include="src\TraCIAPI\Simulation.cpp" />
     <ClCompile Include="src\TraCIAPI\TraCIServer.cpp" />
+    <ClCompile Include="src\TraCIAPI\Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LICENSE" />
@@ -162,6 +163,7 @@
     <ClInclude Include="src\TraCIAPI\Constants.h" />
     <ClInclude Include="src\TraCIAPI\Simulation.h" />
     <ClInclude Include="src\TraCIAPI\TraCIServer.h" />
+    <ClInclude Include="src\TraCIAPI\Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

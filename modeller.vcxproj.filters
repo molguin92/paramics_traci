@@ -22,6 +22,9 @@
     <ClCompile Include="src\TraCIAPI\TraCIServer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\TraCIAPI\Vehicle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\shawn\socket.h">
@@ -38,5 +41,6 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="src\TraCIAPI\Constants.h" />
+    <ClInclude Include="src\TraCIAPI\Vehicle.h" />
   </ItemGroup>
 </Project>
