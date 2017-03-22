@@ -15,7 +15,6 @@ void traci_api::VehicleManager::reset()
 
 tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std::string s_vid)
 {
-
 	/* vhc list and count are special cases, discard vehicle id */
 	VEHICLE* vhc;
 
@@ -48,7 +47,68 @@ tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std:
 		break;
 
 	case VAR_VHC_POS:
-		
+		output.writeUnsignedByte(VTYPE_POSITION);
+		{
+			PositionalData pos = getPosition(vid);
+			output.writeDouble(pos.x);
+			output.writeDouble(pos.y);
+		}
+		break;
+
+	case VAR_VHC_POS3D:
+		output.writeUnsignedByte(VTYPE_POSITION3D);
+		{
+			PositionalData pos = getPosition(vid);
+			output.writeDouble(pos.x);
+			output.writeDouble(pos.y);
+			output.writeDouble(pos.z);
+		}
+		break;
+
+	case VAR_VHC_ANGLE:
+		output.writeUnsignedByte(VTYPE_DOUBLE);
+		output.writeDouble(getPosition(vid).bearing);
+		break;
+
+	case VAR_VHC_ROAD:
+		output.writeUnsignedByte(VTYPE_STR);
+		output.writeString(getRoadID(vid));
+		break;
+
+	case VAR_VHC_LANE:
+		output.writeUnsignedByte(VTYPE_STR);
+		output.writeString(getLaneID(vid));
+		break;
+
+	case VAR_VHC_LANEIDX:
+		output.writeUnsignedByte(VTYPE_INT);
+		output.writeInt(getLaneIndex(vid));
+		break;
+
+	case VAR_VHC_TYPE:
+		output.writeUnsignedByte(VTYPE_STR);
+		output.writeString(getVehicleType(vid));
+		break;
+
+	case VAR_VHC_LENGTH:
+		output.writeUnsignedByte(VTYPE_DOUBLE);
+		output.writeDouble(getDimensions(vid).length);
+		break;
+
+	case VAR_VHC_WIDTH:
+		output.writeUnsignedByte(VTYPE_DOUBLE);
+		output.writeDouble(getDimensions(vid).width);
+		break;
+
+	case VAR_VHC_HEIGHT:
+		output.writeUnsignedByte(VTYPE_DOUBLE);
+		output.writeDouble(getDimensions(vid).height);
+		break;
+
+	case VAR_VHC_SLOPE:
+		output.writeUnsignedByte(VTYPE_DOUBLE);
+		output.writeDouble(getPosition(vid).gradient);
+		break;
 
 		/* not implemented yet*/
 	case VAR_VHC_ROUTE:

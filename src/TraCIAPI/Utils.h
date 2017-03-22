@@ -11,7 +11,7 @@ public:
 	}
 };
 
-class Vector3D: Vector2D
+class Vector3D: public Vector2D
 {
 public:
 	double z;
@@ -21,7 +21,7 @@ public:
 	}
 };
 
-class PositionalData: Vector3D
+class PositionalData: public Vector3D
 {
 public:
 	double gradient;
@@ -44,7 +44,7 @@ public:
 	}
 };
 
-class NotImplementedError: std::runtime_error
+class NotImplementedError: public std::runtime_error
 {
 public:
 	explicit NotImplementedError(const std::string& _Message)
