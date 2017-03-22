@@ -1,4 +1,5 @@
 ﻿#include "VehicleManager.h"
+#include "Constants.h"
 #include <string>
 
 /**
@@ -14,54 +15,83 @@ void traci_api::VehicleManager::reset()
 
 tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std::string s_vid)
 {
-	VEHICLE* vhc = findVehicle(std::stoi(s_vid));
+
+	/* vhc list and count are special cases, discard vehicle id */
+	VEHICLE* vhc;
+
+	if (varID == VAR_VHC_LIST || varID == VAR_VHC_COUNT)
+		vhc = nullptr;
+	else
+		vhc = findVehicle(std::stoi(s_vid));
+
+	tcpip::Storage output;
+	output.writeUnsignedByte(varID);
+	output.writeString(s_vid);
+
+	int vid = std::stoi(s_vid);
 
 	switch (varID)
 	{
+	case VAR_VHC_LIST:
+		output.writeUnsignedByte(VTYPE_STRLST);
+		output.writeStringList(getVehiclesInSim());
+		break;
+
+	case VAR_VHC_COUNT:
+		output.writeUnsignedByte(VTYPE_INT);
+		output.writeInt(currentVehicleCount());
+		break;
+
+	case VAR_VHC_SPEED:
+		output.writeUnsignedByte(VTYPE_DOUBLE);
+		output.writeDouble(getSpeed(vid));
+		break;
+
+	case VAR_VHC_POS:
+		
+
 		/* not implemented yet*/
-		case VAR_VHC_ROUTE:
-		case VAR_VHC_ROUTEIDX:
-		case VAR_VHC_EDGES:
-		case VAR_VHC_COLOR:
-		case VAR_VHC_LANEPOS:
-		case VAR_VHC_DIST:
-		case VAR_VHC_SIGNALST:
-		case VAR_VHC_CO2:
-		case VAR_VHC_CO:
-		case VAR_VHC_HC:
-		case VAR_VHC_PMX:
-		case VAR_VHC_NOX:
-		case VAR_VHC_FUELCONS:
-		case VAR_VHC_NOISE:
-		case VAR_VHC_ELECCONS:
-		case VAR_VHC_BESTLANES:
-		case VAR_VHC_STOPSTATE:
-		case VAR_VHC_VMAX:
-		case VAR_VHC_ACCEL:
-		case VAR_VHC_DECEL:
-		case VAR_VHC_TAU:
-		case VAR_VHC_SIGMA:
-		case VAR_VHC_SPDFACTOR:
-		case VAR_VHC_SPEEDDEV:
-		case VAR_VHC_VCLASS:
-		case VAR_VHC_EMSCLASS:
-		case VAR_VHC_SHAPE:
-		case VAR_VHC_MINGAP:
-		case VAR_VHC_WAITTIME:
-		case VAR_VHC_NEXTTLS:
-		case VAR_VHC_SPEEDMODE:
-		case VAR_VHC_ALLOWEDSPD:
-		case VAR_VHC_LINE:
-		case VAR_VHC_PNUMBER:
-		case VAR_VHC_VIAEDGES:
-		case VAR_VHC_NONTRACISPD:
-		case VAR_VHC_VALIDROUTE:
-			throw NotImplementedError("Vehicle Variable not implemented: " + std::to_string(varID));
-		default:
-			throw std::runtime_error("No such variable: " + std::to_string(varID));
-
+	case VAR_VHC_ROUTE:
+	case VAR_VHC_ROUTEIDX:
+	case VAR_VHC_EDGES:
+	case VAR_VHC_COLOR:
+	case VAR_VHC_LANEPOS:
+	case VAR_VHC_DIST:
+	case VAR_VHC_SIGNALST:
+	case VAR_VHC_CO2:
+	case VAR_VHC_CO:
+	case VAR_VHC_HC:
+	case VAR_VHC_PMX:
+	case VAR_VHC_NOX:
+	case VAR_VHC_FUELCONS:
+	case VAR_VHC_NOISE:
+	case VAR_VHC_ELECCONS:
+	case VAR_VHC_BESTLANES:
+	case VAR_VHC_STOPSTATE:
+	case VAR_VHC_VMAX:
+	case VAR_VHC_ACCEL:
+	case VAR_VHC_DECEL:
+	case VAR_VHC_TAU:
+	case VAR_VHC_SIGMA:
+	case VAR_VHC_SPDFACTOR:
+	case VAR_VHC_SPEEDDEV:
+	case VAR_VHC_VCLASS:
+	case VAR_VHC_EMSCLASS:
+	case VAR_VHC_SHAPE:
+	case VAR_VHC_MINGAP:
+	case VAR_VHC_WAITTIME:
+	case VAR_VHC_NEXTTLS:
+	case VAR_VHC_SPEEDMODE:
+	case VAR_VHC_ALLOWEDSPD:
+	case VAR_VHC_LINE:
+	case VAR_VHC_PNUMBER:
+	case VAR_VHC_VIAEDGES:
+	case VAR_VHC_NONTRACISPD:
+	case VAR_VHC_VALIDROUTE:
+		throw NotImplementedError("Vehicle Variable not implemented: " + std::to_string(varID));
+	default:
+		throw std::runtime_error("No such variable: " + std::to_string(varID));
 	}
-
 }
 
 /**
@@ -188,7 +218,7 @@ PositionalData traci_api::VehicleManager::getPosition(int vid)
 	float y;
 	float z;
 	float b;
-	float g; 
+	float g;
 
 	VEHICLE* vhc = this->findVehicle(vid);
 	LINK* lnk = qpg_VHC_link(vhc);
@@ -229,6 +259,3 @@ std::string traci_api::VehicleManager::getVehicleType(int vid)
 {
 	return std::to_string(qpg_VHC_type(this->findVehicle(vid)));
 }
-
-
-
