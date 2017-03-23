@@ -2,6 +2,23 @@
 #include "Constants.h"
 #include <string>
 
+/* null singleton */
+traci_api::VehicleManager* traci_api::VehicleManager::instance = nullptr;
+
+traci_api::VehicleManager* traci_api::VehicleManager::getInstance()
+{
+	if (traci_api::VehicleManager::instance == nullptr)
+		traci_api::VehicleManager::instance = new VehicleManager();
+
+	return traci_api::VehicleManager::instance;
+}
+
+void traci_api::VehicleManager::deleteInstance()
+{
+	if (traci_api::VehicleManager::instance != nullptr)
+		delete(traci_api::VehicleManager::instance);
+}
+
 /**
  * \brief Resets the internal temporary vectors for a new simulation timestep
  */
@@ -15,14 +32,6 @@ void traci_api::VehicleManager::reset()
 
 tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std::string s_vid)
 {
-	/* vhc list and count are special cases, discard vehicle id */
-	VEHICLE* vhc;
-
-	if (varID == VAR_VHC_LIST || varID == VAR_VHC_COUNT)
-		vhc = nullptr;
-	else
-		vhc = findVehicle(std::stoi(s_vid));
-
 	tcpip::Storage output;
 	output.writeUnsignedByte(varID);
 	output.writeString(s_vid);
@@ -152,6 +161,8 @@ tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std:
 	default:
 		throw std::runtime_error("No such variable: " + std::to_string(varID));
 	}
+
+	return output;
 }
 
 /**

@@ -81,10 +81,10 @@ void qpx_NET_reload()
 
 void qpx_VHC_release(VEHICLE* vehicle)
 {
-	server->simulation->vhcman.vehicleDepart(vehicle);
+	traci_api::VehicleManager::getInstance()->vehicleDepart(vehicle);
 }
 
 void qpx_VHC_arrive(VEHICLE* vehicle)
 {
-	server->simulation->vhcman.vehicleArrive(vehicle);
+	traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
 }

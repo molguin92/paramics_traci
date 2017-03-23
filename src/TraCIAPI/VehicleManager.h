@@ -66,9 +66,9 @@ namespace traci_api
 		static const uint8_t VAR_VHC_NONTRACISPD = 0xb1;
 		static const uint8_t VAR_VHC_VALIDROUTE = 0x92;
 
+		static VehicleManager* getInstance();
+		static void deleteInstance();
 
-	    VehicleManager(){}
-		~VehicleManager(){}
 		void reset();
 
 		tcpip::Storage getVehicleVariable(uint8_t varID, std::string s_vid);
@@ -80,7 +80,7 @@ namespace traci_api
 		std::vector<std::string> getArrivedVehicles();
 		int getDepartedVehicleCount();
 		int getArrivedVehicleCount();
-		
+
 		int currentVehicleCount();
 		std::vector<std::string> getVehiclesInSim();
 
@@ -96,8 +96,17 @@ namespace traci_api
 
 		std::string getVehicleType(int vid);
 
+		/* prevent alternative instantiation */
+		VehicleManager(VehicleManager const&) = delete;
+		void operator=(VehicleManager const&) = delete;
 
 	private:
+
+		static VehicleManager* instance;
+
+		VehicleManager() {}
+		~VehicleManager() {}
+
 		std::mutex lock_vhc_lists;
 
 		std::unordered_map<int, VEHICLE*> vehicles_in_sim;

@@ -1,9 +1,6 @@
 ﻿#pragma once
 #include "storage.h"
-#include "programmer.h"
 #include <mutex>
-#include <unordered_map>
-#include "VehicleManager.h"
 
 namespace traci_api
 {
@@ -34,8 +31,6 @@ namespace traci_api
 
 		// set vehicle speed
 		static const uint8_t SET_VHCSPEED = 0x40;
-
-		VehicleManager vhcman;
 
 		Simulation();
 		~Simulation();

@@ -8,9 +8,8 @@
  * interacting with the simulator itself.
  */
 
-traci_api::Simulation::Simulation()
+traci_api::Simulation::Simulation(): stepcnt(0)
 {
-	stepcnt = 0;
 }
 
 traci_api::Simulation::~Simulation()
@@ -33,7 +32,7 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 	auto target_simtime = target_timems / 1000.0;
 	int steps_performed = 0;
 
-	vhcman.reset();
+	traci_api::VehicleManager::getInstance()->reset();
 
 	if (target_timems == 0)
 	{
@@ -85,6 +84,8 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 	result_store.writeUnsignedByte(varID);
 	result_store.writeString("");
 
+	VehicleManager* vhcman = traci_api::VehicleManager::getInstance();
+
 	switch (varID)
 	{
 	case GET_SIMTIME:
@@ -93,19 +94,19 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 		break;
 	case GET_DEPARTEDVHC_CNT:
 		result_store.writeUnsignedByte(VTYPE_INT);
-		result_store.writeInt(vhcman.getDepartedVehicleCount());
+		result_store.writeInt(vhcman->getDepartedVehicleCount());
 		break;
 	case GET_DEPARTEDVHC_LST:
 		result_store.writeUnsignedByte(VTYPE_STRLST);
-		result_store.writeStringList(vhcman.getDepartedVehicles());
+		result_store.writeStringList(vhcman->getDepartedVehicles());
 		break;
 	case GET_ARRIVEDVHC_CNT:
 		result_store.writeUnsignedByte(VTYPE_INT);
-		result_store.writeInt(vhcman.getArrivedVehicleCount());
+		result_store.writeInt(vhcman->getArrivedVehicleCount());
 		break;
 	case GET_ARRIVEDVHC_LST:
 		result_store.writeUnsignedByte(VTYPE_STRLST);
-		result_store.writeStringList(vhcman.getArrivedVehicles());
+		result_store.writeStringList(vhcman->getArrivedVehicles());
 		break;
 	case GET_TIMESTEPSZ:
 		result_store.writeUnsignedByte(VTYPE_INT);
@@ -129,7 +130,7 @@ void traci_api::Simulation::setVhcState(tcpip::Storage& state)
 	case SET_VHCSPEED:
 		if (vType != VTYPE_DOUBLE) throw std::runtime_error("Wrong VARTYPE for VHCSPEED.");
 		else
-			vhcman.setSpeed(vID, static_cast<float>(state.readDouble()));
+			traci_api::VehicleManager::getInstance()->setSpeed(vID, static_cast<float>(state.readDouble()));
 
 		break;
 
