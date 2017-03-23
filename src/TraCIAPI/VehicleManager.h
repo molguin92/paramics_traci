@@ -7,6 +7,8 @@
 
 namespace traci_api
 {
+	class NoSuchVHCError;
+
 	class VehicleManager
 	{
 	public:
@@ -71,7 +73,7 @@ namespace traci_api
 
 		void reset();
 
-		tcpip::Storage getVehicleVariable(uint8_t varID, std::string s_vid);
+		void getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
 
 		void vehicleDepart(VEHICLE* vehicle);
 		void vehicleArrive(VEHICLE* vehicle);
@@ -84,17 +86,17 @@ namespace traci_api
 		int currentVehicleCount();
 		std::vector<std::string> getVehiclesInSim();
 
-		float getSpeed(int vid);
-		void setSpeed(int vid, float speed);
+		float getSpeed(int vid) throw(NoSuchVHCError);
+		void setSpeed(int vid, float speed) throw(NoSuchVHCError);
 
-		PositionalData getPosition(int vid);
-		DimensionalData getDimensions(int vid);
+		PositionalData getPosition(int vid) throw(NoSuchVHCError);
+		DimensionalData getDimensions(int vid) throw(NoSuchVHCError);
 
-		std::string getRoadID(int vid);
-		std::string getLaneID(int vid);
-		int getLaneIndex(int vid);
+		std::string getRoadID(int vid) throw(NoSuchVHCError);
+		std::string getLaneID(int vid) throw(NoSuchVHCError);
+		int getLaneIndex(int vid) throw(NoSuchVHCError);
 
-		std::string getVehicleType(int vid);
+		std::string getVehicleType(int vid) throw(NoSuchVHCError);
 
 		/* prevent alternative instantiation */
 		VehicleManager(VehicleManager const&) = delete;
@@ -113,7 +115,7 @@ namespace traci_api
 		std::vector<VEHICLE*> departed_vehicles;
 		std::vector<VEHICLE*> arrived_vehicles;
 
-		VEHICLE* findVehicle(int vid);
+		VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
 	};
 
 	class NoSuchVHCError: public std::runtime_error

@@ -17,6 +17,8 @@ void traci_api::VehicleManager::deleteInstance()
 {
 	if (traci_api::VehicleManager::instance != nullptr)
 		delete(traci_api::VehicleManager::instance);
+
+	traci_api::VehicleManager::instance = nullptr;
 }
 
 /**
@@ -30,13 +32,28 @@ void traci_api::VehicleManager::reset()
 	arrived_vehicles.clear();
 }
 
-tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std::string s_vid)
+void traci_api::VehicleManager::getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError)
 {
-	tcpip::Storage output;
+
+	uint8_t varID = input.readUnsignedByte();
+	int vid;
+	std::string s_vid;
+
+	if (varID != VAR_VHC_LIST && varID != VAR_VHC_COUNT)
+	{
+		s_vid = input.readString();
+		vid = std::stoi(s_vid);
+	}
+	else
+	{
+		s_vid = "";
+		vid = 0;
+	}
+
+	//tcpip::Storage output;
+	output.writeUnsignedByte(RES_GETVHCVAR);
 	output.writeUnsignedByte(varID);
 	output.writeString(s_vid);
-
-	int vid = std::stoi(s_vid);
 
 	switch (varID)
 	{
@@ -162,7 +179,7 @@ tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std:
 		throw std::runtime_error("No such variable: " + std::to_string(varID));
 	}
 
-	return output;
+	//return output;
 }
 
 /**
@@ -170,7 +187,7 @@ tcpip::Storage traci_api::VehicleManager::getVehicleVariable(uint8_t varID, std:
  * \param vid The vehicle ID to find.
  * \return A pointer to the corresponding Paramics Vehicle.
  */
-VEHICLE* traci_api::VehicleManager::findVehicle(int vid)
+VEHICLE* traci_api::VehicleManager::findVehicle(int vid) throw(NoSuchVHCError)
 {
 	std::lock_guard<std::mutex> lock(lock_vhc_lists);
 	auto iterator = vehicles_in_sim.find(vid);
@@ -263,7 +280,7 @@ std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
  * \param vid The ID of the vehicle.
  * \return The current speed.
  */
-float traci_api::VehicleManager::getSpeed(int vid)
+float traci_api::VehicleManager::getSpeed(int vid) throw(NoSuchVHCError)
 {
 	return qpg_VHC_speed(this->findVehicle(vid));
 }
@@ -273,7 +290,7 @@ float traci_api::VehicleManager::getSpeed(int vid)
  * \param vid The ID of the vehicle
  * \param speed The new value for the speed.
  */
-void traci_api::VehicleManager::setSpeed(int vid, float speed)
+void traci_api::VehicleManager::setSpeed(int vid, float speed) throw(NoSuchVHCError)
 {
 	qps_VHC_speed(this->findVehicle(vid), speed);
 }
@@ -283,7 +300,7 @@ void traci_api::VehicleManager::setSpeed(int vid, float speed)
  * \param vid The ID of the vehicle.
  * \return A Vector3D object representing the position of the vehicle.
  */
-PositionalData traci_api::VehicleManager::getPosition(int vid)
+PositionalData traci_api::VehicleManager::getPosition(int vid) throw(NoSuchVHCError)
 {
 	float x;
 	float y;
@@ -299,13 +316,13 @@ PositionalData traci_api::VehicleManager::getPosition(int vid)
 	return PositionalData(x, y, z, b, g);
 }
 
-DimensionalData traci_api::VehicleManager::getDimensions(int vid)
+DimensionalData traci_api::VehicleManager::getDimensions(int vid) throw(NoSuchVHCError)
 {
 	VEHICLE* vhc = this->findVehicle(vid);
 	return DimensionalData(qpg_VHC_height(vhc), qpg_VHC_length(vhc), qpg_VHC_width(vhc));
 }
 
-std::string traci_api::VehicleManager::getRoadID(int vid)
+std::string traci_api::VehicleManager::getRoadID(int vid) throw(NoSuchVHCError)
 {
 	VEHICLE* vhc = this->findVehicle(vid);
 	LINK* lnk = qpg_VHC_link(vhc);
@@ -313,7 +330,7 @@ std::string traci_api::VehicleManager::getRoadID(int vid)
 	return qpg_LNK_name(lnk);
 }
 
-std::string traci_api::VehicleManager::getLaneID(int vid)
+std::string traci_api::VehicleManager::getLaneID(int vid) throw(NoSuchVHCError)
 {
 	VEHICLE* vhc = this->findVehicle(vid);
 	LINK* lnk = qpg_VHC_link(vhc);
@@ -321,12 +338,12 @@ std::string traci_api::VehicleManager::getLaneID(int vid)
 	return std::string(qpg_LNK_name(lnk)) + "." + std::to_string(qpg_VHC_lane(vhc));
 }
 
-int traci_api::VehicleManager::getLaneIndex(int vid)
+int traci_api::VehicleManager::getLaneIndex(int vid) throw(NoSuchVHCError)
 {
 	return qpg_VHC_lane(this->findVehicle(vid));
 }
 
-std::string traci_api::VehicleManager::getVehicleType(int vid)
+std::string traci_api::VehicleManager::getVehicleType(int vid) throw(NoSuchVHCError)
 {
 	return std::to_string(qpg_VHC_type(this->findVehicle(vid)));
 }

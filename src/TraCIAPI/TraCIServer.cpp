@@ -4,6 +4,7 @@
 #include "storage.h"
 #include <shellapi.h>
 #include "Constants.h"
+#include "VehicleManager.h"
 
 /*
  * This class abstracts a server for the TraCI protocol.
@@ -84,8 +85,6 @@ void traci_api::TraCIServer::waitForCommands()
 		 * divide them into multiple storages for easy handling */
 		while (incoming->size() > 0 && incoming->valid_pos())
 		{
-			
-
 			uint8_t cmdlen = incoming->readUnsignedByte();
 			cmdStore->writeUnsignedByte(cmdlen);
 
@@ -93,7 +92,7 @@ void traci_api::TraCIServer::waitForCommands()
 				cmdStore->writeUnsignedByte(incoming->readUnsignedByte());
 
 			this->parseCommand(*cmdStore);
-			cmdStore->reset();			
+			cmdStore->reset();
 		}
 
 		this->sendResponse();
@@ -159,6 +158,16 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 		this->cmdSetVhcState(state);
 		break;
 
+	case CMD_GETVHCVAR:
+		if (DEBUG)
+			TraCIServer::p_printf("Got CMD_GETVHCVAR");
+		{
+			tcpip::Storage input;
+			while (storage.valid_pos())
+				input.writeUnsignedByte(storage.readUnsignedByte());
+			this->cmdGetVhcVar(input);
+		}
+		break;
 	default:
 		if (DEBUG)
 			TraCIServer::p_printf("Command not implemented!");
@@ -210,6 +219,20 @@ void traci_api::TraCIServer::sendResponse() const
 		TraCIServer::p_printf("Sending response to TraCI client");
 
 	ssocket->sendExact(*outgoing);
+}
+
+void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage) const
+{
+	auto size = 1 + storage.size();
+	if (size > 255)
+	{
+		outgoing->writeUnsignedByte(0);
+		outgoing->writeInt(size);
+	}
+	else
+		outgoing->writeUnsignedByte(size);
+
+	outgoing->writeStorage(storage);
 }
 
 
@@ -274,16 +297,68 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
 	delete(subs_store);
 }
 
+void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input) const
+{
+	tcpip::Storage result;
+	try
+	{
+		
+		VehicleManager::getInstance()->getVehicleVariable(input, result);
+	}
+	catch (NotImplementedError& e)
+	{
+		if(DEBUG)
+		{
+			TraCIServer::p_printf("Variable not implemented");
+			TraCIServer::p_printf(e.what());
+		}
+			
+		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
+	}
+	catch (std::runtime_error& e)
+	{
+		if (DEBUG)
+		{
+			TraCIServer::p_printf("Runtime error");
+			TraCIServer::p_printf(e.what());
+		}
+
+		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
+	}
+	catch (traci_api::NoSuchVHCError& e)
+	{
+		if (DEBUG)
+		{
+			TraCIServer::p_printf("No such vehicle");
+			TraCIServer::p_printf(e.what());
+		}
+
+		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
+	}
+	catch (std::exception& e)
+	{
+		if (DEBUG)
+		{
+			TraCIServer::p_printf("Fatal error???");
+			TraCIServer::p_printf(e.what());
+		}
+		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
+		throw e;
+	}
+
+	this->writeStatusResponse(CMD_GETVHCVAR, STATUS_OK, "");
+	this->writeToOutputWithSize(result);
+}
+
 
 void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& state)
 {
-
 	try
 	{
 		simulation->setVhcState(state);
 		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
 	}
-	catch ( ... )
+	catch (...)
 	{
 		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_NIMPL, ""); // TODO: Cover errors as well!
 	}

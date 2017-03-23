@@ -34,12 +34,17 @@ def run():
         print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))
         dep = traci.simulation.getDepartedIDList()
         arr = traci.simulation.getArrivedIDList()
+        total_c = traci.vehicle.getIDCount()
+        total_l = traci.vehicle.getIDList()
+        
         print("Departed: " + str(dep))
         print("Arrived: " + str(arr))
+        print("N Total: " + str(total_c))
+        print("Total: " + str(total_l))
         for v in dep:
             traci.vehicle.setSpeed(v, 200)
             
-        time.sleep(0.5)
+        time.sleep(0.1)
     traci.close()
 
 #if __name__ == '__main__':

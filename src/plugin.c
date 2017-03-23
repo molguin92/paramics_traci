@@ -9,6 +9,7 @@
 #include <thread>
 #include "TraCIAPI/TraCIServer.h"
 #include <shellapi.h>
+#include "TraCIAPI/VehicleManager.h"
 
 #define DEFAULT_PORT 5000
 #define CMDARG_PORT "--traci_port="

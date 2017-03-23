@@ -2,6 +2,7 @@
 #include <programmer.h>
 #include "TraCIServer.h"
 #include "Constants.h"
+#include "VehicleManager.h"
 
 /*
  * This class abstracts a Paramics traffic simulation, providing helper methods for
