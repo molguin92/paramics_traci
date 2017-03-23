@@ -135,6 +135,9 @@ namespace traci_api
 
 		std::string getVehicleType(int vid) throw(NoSuchVHCError);
 
+
+		void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
+
 		/* prevent alternative instantiation */
 		VehicleManager(VehicleManager const&) = delete;
 		void operator=(VehicleManager const&) = delete;

@@ -20,14 +20,14 @@ namespace traci_api
 	static const uint8_t VTYPE_DOUBLE = 0x0b;
 	static const uint8_t VTYPE_STR = 0x0c;
 	static const uint8_t VTYPE_STRLST = 0x0e;
-	static const uint8_t VTYPE_COBJ = 0x0f;
+	static const uint8_t VTYPE_COMPOUND = 0x0f;
 
 	static const uint8_t VTYPE_POSITION = 0x01;
 	static const uint8_t VTYPE_POSITION3D = 0x03;
 	static const uint8_t VTYPE_ROADMAPPOS = 0x04;
 	static const uint8_t VTYPE_LONLAT = 0x00;
 	static const uint8_t VTYPE_LONLATALT = 0x02;
-	static const uint8_t BOUNDBOX = 0x05;
+	static const uint8_t VTYPE_BOUNDBOX = 0x05;
 	static const uint8_t VTYPE_POLYGON = 0x06;
 	static const uint8_t VTYPE_TLIGHTPHASELST = 0x0d;
 	static const uint8_t VTYPE_COLOR = 0x11;

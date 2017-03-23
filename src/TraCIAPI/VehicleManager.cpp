@@ -189,6 +189,9 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 	switch (varID)
 	{
 	case STA_VHC_STOP:
+
+
+		break;
 	case STA_VHC_CHANGELANE:
 	case STA_VHC_SLOWDWN:
 	case STA_VHC_RESUME:
@@ -392,4 +395,16 @@ int traci_api::VehicleManager::getLaneIndex(int vid) throw(NoSuchVHCError)
 std::string traci_api::VehicleManager::getVehicleType(int vid) throw(NoSuchVHCError)
 {
 	return std::to_string(qpg_VHC_type(this->findVehicle(vid)));
+}
+
+void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
+{
+	/* extract message information and check types */
+
+	if (input.readUnsignedByte() != VTYPE_COMPOUND)
+		throw std::runtime_error("Malformed TraCI Message");
+
+	int count = input.readInt();
+	if (count != 4 && count != 5)
+		throw std::runtime_error("Malformed TraCI Message");
 }
