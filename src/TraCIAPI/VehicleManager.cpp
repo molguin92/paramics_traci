@@ -34,7 +34,6 @@ void traci_api::VehicleManager::reset()
 
 void traci_api::VehicleManager::getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError)
 {
-
 	uint8_t varID = input.readUnsignedByte();
 	int vid;
 	std::string s_vid;
@@ -180,6 +179,53 @@ void traci_api::VehicleManager::getVehicleVariable(tcpip::Storage& input, tcpip:
 	}
 
 	//return output;
+}
+
+void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
+{
+	uint8_t varID = input.readUnsignedByte();
+	uint8_t varType = input.readUnsignedByte();
+
+	switch (varID)
+	{
+	case STA_VHC_STOP:
+	case STA_VHC_CHANGELANE:
+	case STA_VHC_SLOWDWN:
+	case STA_VHC_RESUME:
+	case STA_VHC_CHANGETARGET:
+	case STA_VHC_SPEED:
+	case STA_VHC_COLOR:
+	case STA_VHC_CHANGEROUTEID:
+	case STA_VHC_CHANGEROUTE:
+	case STA_VHC_CHANGEEDGETTIME:
+	case STA_VHC_SIGNALSTATES:
+	case STA_VHC_MOVETO:
+	case STA_VHC_MOVETOXY:
+	case STA_VHC_REROUTE:
+	case STA_VHC_SPEEDMODE:
+	case STA_VHC_SPEEDFACTOR:
+	case STA_VHC_MAXSPEED:
+	case STA_VHC_CHANGELANEMODE:
+	case STA_VHC_ADD:
+	case STA_VHC_ADDFULL:
+	case STA_VHC_REMOVE:
+	case STA_VHC_LENGTH:
+	case STA_VHC_VHCCLASS:
+	case STA_VHC_EMSCLASS:
+	case STA_VHC_WIDTH:
+	case STA_VHC_HEIGHT:
+	case STA_VHC_MINGAP:
+	case STA_VHC_SHAPECLASS:
+	case STA_VHC_ACC:
+	case STA_VHC_DEC:
+	case STA_VHC_IMPERFECTION:
+	case STA_VHC_TAU:
+	case STA_VHC_TYPE:
+	case STA_VHC_VIA:
+		throw NotImplementedError("Vehicle State change not implemented: " + std::to_string(varID));
+	default:
+		throw std::runtime_error("No such State change: " + std::to_string(varID));
+	}
 }
 
 /**
