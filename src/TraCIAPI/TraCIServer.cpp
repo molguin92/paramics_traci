@@ -300,7 +300,7 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
 			
 		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
 	}
-	catch (std::runtime_error& e)
+	/*catch (std::runtime_error& e)
 	{
 		if (DEBUG)
 		{
@@ -319,7 +319,7 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
 		}
 
 		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
-	}
+	}*/
 	catch (std::exception& e)
 	{
 		if (DEBUG)

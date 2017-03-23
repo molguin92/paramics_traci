@@ -41,9 +41,13 @@ def run():
         print("Arrived: " + str(arr))
         print("N Total: " + str(total_c))
         print("Total: " + str(total_l))
-        for v in dep:
-            traci.vehicle.setSpeed(v, 200)
-            
+
+        if len(total_l) > 0:
+            vhc = random.choice(total_l)
+            speed = traci.vehicle.getSpeed(vhc)
+
+            print("Vehicle " + vhc + "'s speed: " + str(speed))
+        
         time.sleep(0.1)
     traci.close()
 
