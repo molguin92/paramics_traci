@@ -68,12 +68,49 @@ namespace traci_api
 		static const uint8_t VAR_VHC_NONTRACISPD = 0xb1;
 		static const uint8_t VAR_VHC_VALIDROUTE = 0x92;
 
+		/* vehicle states */
+		static const uint8_t STA_VHC_STOP = 0x12;
+		static const uint8_t STA_VHC_CHANGELANE = 0x13;
+		static const uint8_t STA_VHC_SLOWDWN = 0x14;
+		static const uint8_t STA_VHC_RESUME = 0x19;
+		static const uint8_t STA_VHC_CHANGETARGET = 0x31;
+		static const uint8_t STA_VHC_SPEED = 0x40;
+		static const uint8_t STA_VHC_COLOR = 0x45;
+		static const uint8_t STA_VHC_CHANGEROUTEID = 0x53;
+		static const uint8_t STA_VHC_CHANGEROUTE = 0x57;
+		static const uint8_t STA_VHC_CHANGEEDGETTIME = 0x58;
+		static const uint8_t STA_VHC_SIGNALSTATES = 0x5b;
+		static const uint8_t STA_VHC_MOVETO = 0x5c;
+		static const uint8_t STA_VHC_MOVETOXY = 0xb4;
+		static const uint8_t STA_VHC_REROUTE = 0x90;
+		static const uint8_t STA_VHC_SPEEDMODE = 0xb3;
+		static const uint8_t STA_VHC_SPEEDFACTOR = 0x5e;
+		static const uint8_t STA_VHC_MAXSPEED = 0x41;
+		static const uint8_t STA_VHC_CHANGELANEMODE = 0xb6;
+		static const uint8_t STA_VHC_ADD = 0x80;
+		static const uint8_t STA_VHC_ADDFULL = 0x85;
+		static const uint8_t STA_VHC_REMOVE = 0x81;
+		static const uint8_t STA_VHC_LENGTH = 0x44;
+		static const uint8_t STA_VHC_VHCCLASS = 0x49;
+		static const uint8_t STA_VHC_EMSCLASS = 0x4a;
+		static const uint8_t STA_VHC_WIDTH = 0x4d;
+		static const uint8_t STA_VHC_HEIGHT = 0xbc;
+		static const uint8_t STA_VHC_MINGAP = 0x4c;
+		static const uint8_t STA_VHC_SHAPECLASS = 0x4b;
+		static const uint8_t STA_VHC_ACC = 0x46;
+		static const uint8_t STA_VHC_DEC = 0x47;
+		static const uint8_t STA_VHC_IMPERFECTION = 0x5d;
+		static const uint8_t STA_VHC_TAU = 0x48;
+		static const uint8_t STA_VHC_TYPE = 0x4f;
+		static const uint8_t STA_VHC_VIA = 0xbe;
+
 		static VehicleManager* getInstance();
 		static void deleteInstance();
 
 		void reset();
 
 		void getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
+		void setVehicleState(tcpip::Storage& input);
 
 		void vehicleDepart(VEHICLE* vehicle);
 		void vehicleArrive(VEHICLE* vehicle);
