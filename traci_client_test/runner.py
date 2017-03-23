@@ -45,8 +45,10 @@ def run():
         if len(total_l) > 0:
             vhc = random.choice(total_l)
             speed = traci.vehicle.getSpeed(vhc)
+            position = traci.vehicle.getPosition(vhc)
 
             print("Vehicle " + vhc + "'s speed: " + str(speed))
+            print("Vehicle " + vhc + "'s speed: " + str(position))
         
         time.sleep(0.1)
     traci.close()

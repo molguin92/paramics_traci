@@ -9,6 +9,8 @@
  * interacting with the simulator itself.
  */
 
+traci_api::Simulation* traci_api::Simulation::instance = nullptr;
+
 traci_api::Simulation::Simulation(): stepcnt(0)
 {
 }
@@ -25,6 +27,22 @@ float traci_api::Simulation::getCurrentTimeSeconds()
 int traci_api::Simulation::getCurrentTimeMilliseconds()
 {
 	return static_cast<int>(this->getCurrentTimeSeconds() * 1000);
+}
+
+traci_api::Simulation* traci_api::Simulation::getInstance()
+{
+	if (instance == nullptr)
+		instance = new Simulation();
+
+	return instance;
+}
+
+void traci_api::Simulation::deleteInstance()
+{
+	if (instance != nullptr)
+		delete(instance);
+
+	instance = nullptr;
 }
 
 int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage& result_store)

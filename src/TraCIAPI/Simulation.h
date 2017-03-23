@@ -32,14 +32,23 @@ namespace traci_api
 		// set vehicle speed
 		static const uint8_t SET_VHCSPEED = 0x40;
 
-		Simulation();
+		//Simulation();
 		~Simulation();
+		// prevent alternative instantiation
+		Simulation(Simulation const&) = delete;
+		void operator =(Simulation const&) = delete;
+
+		static Simulation* getInstance();
+		static void deleteInstance();
 
 		int runSimulation(uint32_t target_time, tcpip::Storage& result_store);
 		bool getVariable(uint8_t varID, tcpip::Storage& result_store);
 		void setVhcState(tcpip::Storage& state);
 
 	private:
+
+		static Simulation* instance;
+		Simulation();
 
 		float getCurrentTimeSeconds();
 		int getCurrentTimeMilliseconds();

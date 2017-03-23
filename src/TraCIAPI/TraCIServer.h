@@ -10,8 +10,6 @@ namespace traci_api
 	{
 	public:
 
-		traci_api::Simulation simulation;
-
 		TraCIServer(int port);
 		~TraCIServer();
 		void run();

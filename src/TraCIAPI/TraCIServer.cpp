@@ -2,7 +2,6 @@
 #include "programmer.h"
 #include <thread>
 #include "storage.h"
-#include <shellapi.h>
 #include "Constants.h"
 #include "VehicleManager.h"
 
@@ -257,7 +256,7 @@ void traci_api::TraCIServer::cmdSimStep(int target_time)
 {
 	tcpip::Storage subs_store;
 
-	if (simulation.runSimulation(target_time, subs_store) >= 0)
+	if (Simulation::getInstance()->runSimulation(target_time, subs_store) >= 0)
 		this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
 
 	outgoing.writeStorage(subs_store); // TODO: FIX, add length
@@ -271,7 +270,7 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar)
 {
 	tcpip::Storage subs_store;
 
-	if (simulation.getVariable(simvar, subs_store))
+	if (Simulation::getInstance()->getVariable(simvar, subs_store))
 	{
 		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
 		this->writeToOutputWithSize(subs_store);
@@ -328,7 +327,7 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
 			TraCIServer::p_printf(e.what());
 		}
 		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
-		throw e;
+		throw;
 	}
 
 	this->writeStatusResponse(CMD_GETVHCVAR, STATUS_OK, "");
@@ -340,7 +339,7 @@ void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& state)
 {
 	try
 	{
-		simulation.setVhcState(state);
+		Simulation::getInstance()->setVhcState(state);
 		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
 	}
 	catch (...)
