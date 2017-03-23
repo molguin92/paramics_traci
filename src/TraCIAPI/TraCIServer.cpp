@@ -16,22 +16,14 @@
  * \brief Standard constructor.
  * \param port The port on which the server should listen for incoming requests.
  */
-traci_api::TraCIServer::TraCIServer(int port)
+traci_api::TraCIServer::TraCIServer(int port): ssocket(port), running(false), port(port)
 {
-	this->running = false;
-	this->port = port;
-	this->ssocket = new tcpip::Socket(port);
-	this->outgoing = new tcpip::Storage();
-	this->simulation = new traci_api::Simulation();
 }
 
 
 traci_api::TraCIServer::~TraCIServer()
 {
-	delete(ssocket);
-	delete(outgoing);
-	delete(simulation);
-
+	VehicleManager::deleteInstance();
 	if (DEBUG)
 		TraCIServer::p_printf("Server succesfully shut down");
 }
@@ -46,7 +38,7 @@ void traci_api::TraCIServer::run()
 	TraCIServer::p_printf(version_str);
 	TraCIServer::p_printf("Simulation start time: " + std::to_string(qpg_CFG_simulationTime()));
 	TraCIServer::p_printf("Awaiting connections on port " + std::to_string(port));
-	ssocket->accept();
+	ssocket.accept();
 	TraCIServer::p_printf("Accepted connection");
 	this->waitForCommands();
 }
@@ -59,7 +51,7 @@ void traci_api::TraCIServer::close()
 	if (DEBUG)
 		TraCIServer::p_printf("Closing connections");
 	running = false;
-	ssocket->close();
+	ssocket.close();
 }
 
 
@@ -68,40 +60,37 @@ void traci_api::TraCIServer::close()
  */
 void traci_api::TraCIServer::waitForCommands()
 {
-	tcpip::Storage* incoming = new tcpip::Storage(); // the whole incoming message
-	tcpip::Storage* cmdStore = new tcpip::Storage(); // individual commands in the message
+	tcpip::Storage incoming; // the whole incoming message
+	tcpip::Storage cmdStore; // individual commands in the message
 
 	if (DEBUG)
 		TraCIServer::p_printf("Waiting for incoming commands from TraCI client...");
 
 	/* While the connection is open, receive commands from the client */
-	while (running && ssocket->receiveExact(*incoming))
+	while (running && ssocket.receiveExact(incoming))
 	{
-		auto msize = incoming->size();
+		auto msize = incoming.size();
 		if (DEBUG)
 			TraCIServer::p_printf("Got message of length " + std::to_string(msize));
 
 		/* Multiple commands may arrive at once in one message, 
 		 * divide them into multiple storages for easy handling */
-		while (incoming->size() > 0 && incoming->valid_pos())
+		while (incoming.size() > 0 && incoming.valid_pos())
 		{
-			uint8_t cmdlen = incoming->readUnsignedByte();
-			cmdStore->writeUnsignedByte(cmdlen);
+			uint8_t cmdlen = incoming.readUnsignedByte();
+			cmdStore.writeUnsignedByte(cmdlen);
 
 			for (uint8_t i = 0; i < cmdlen - 1; i++)
-				cmdStore->writeUnsignedByte(incoming->readUnsignedByte());
+				cmdStore.writeUnsignedByte(incoming.readUnsignedByte());
 
-			this->parseCommand(*cmdStore);
-			cmdStore->reset();
+			this->parseCommand(cmdStore);
+			cmdStore.reset();
 		}
 
 		this->sendResponse();
-		incoming->reset();
-		outgoing->reset();
+		incoming.reset();
+		outgoing.reset();
 	}
-
-	delete(cmdStore);
-	delete(incoming);
 }
 
 /**
@@ -182,18 +171,18 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
  * \param cmdStatus The status response.
  * \param description A std::string describing the result.
  */
-void traci_api::TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description) const
+void traci_api::TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description)
 {
-	outgoing->writeUnsignedByte(1 + 1 + 1 + 4 + static_cast<int>(description.length())); // command length
-	outgoing->writeUnsignedByte(cmdId); // command type
-	outgoing->writeUnsignedByte(cmdStatus); // status
-	outgoing->writeString(description); // description
+	outgoing.writeUnsignedByte(1 + 1 + 1 + 4 + static_cast<int>(description.length())); // command length
+	outgoing.writeUnsignedByte(cmdId); // command type
+	outgoing.writeUnsignedByte(cmdStatus); // status
+	outgoing.writeString(description); // description
 }
 
 /**
  * \brief Writes a server version information message response on the outgoing tcpip::Storage.
  */
-void traci_api::TraCIServer::writeVersion() const
+void traci_api::TraCIServer::writeVersion()
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Writing version information");
@@ -204,35 +193,35 @@ void traci_api::TraCIServer::writeVersion() const
 	answerTmp.writeInt(API_VERSION);
 	answerTmp.writeString("Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion()));
 
-	outgoing->writeUnsignedByte(1 + 1 + static_cast<int>(answerTmp.size()));
-	outgoing->writeUnsignedByte(CMD_GETVERSION);
-	outgoing->writeStorage(answerTmp);
+	outgoing.writeUnsignedByte(1 + 1 + static_cast<int>(answerTmp.size()));
+	outgoing.writeUnsignedByte(CMD_GETVERSION);
+	outgoing.writeStorage(answerTmp);
 }
 
 /**
  * \brief Sends the internally stored outgoing TraCI message to the client. 
  * Should only be called by the server itself on waitForCommands()
  */
-void traci_api::TraCIServer::sendResponse() const
+void traci_api::TraCIServer::sendResponse()
 {
 	if (DEBUG)
 		TraCIServer::p_printf("Sending response to TraCI client");
 
-	ssocket->sendExact(*outgoing);
+	ssocket.sendExact(outgoing);
 }
 
-void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage) const
+void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage)
 {
 	auto size = 1 + storage.size();
 	if (size > 255)
 	{
-		outgoing->writeUnsignedByte(0);
-		outgoing->writeInt(size);
+		outgoing.writeUnsignedByte(0);
+		outgoing.writeInt(size);
 	}
 	else
-		outgoing->writeUnsignedByte(size);
+		outgoing.writeUnsignedByte(size);
 
-	outgoing->writeStorage(storage);
+	outgoing.writeStorage(storage);
 }
 
 
@@ -264,40 +253,36 @@ void traci_api::TraCIServer::cmdShutDown()
  * \brief Runs the simulation.
  * \param target_time The target simulation time. If 0, executes exactly one timestep; if less than the current time, does nothing.
  */
-void traci_api::TraCIServer::cmdSimStep(int target_time) const
+void traci_api::TraCIServer::cmdSimStep(int target_time)
 {
-	tcpip::Storage* subs_store = new tcpip::Storage();
+	tcpip::Storage subs_store;
 
-	if (simulation->runSimulation(target_time, *subs_store) >= 0)
+	if (simulation.runSimulation(target_time, subs_store) >= 0)
 		this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
 
-	outgoing->writeStorage(*subs_store); // TODO: FIX, add length
-	delete(subs_store);
+	outgoing.writeStorage(subs_store); // TODO: FIX, add length
 }
 
 /**
  * \brief Gets a variable from the simulation.
  * \param simvar ID of the interal simulation variable to fetch.
  */
-void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar) const
+void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar)
 {
-	tcpip::Storage* subs_store = new tcpip::Storage();
+	tcpip::Storage subs_store;
 
-	if (simulation->getVariable(simvar, *subs_store))
+	if (simulation.getVariable(simvar, subs_store))
 	{
 		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
-		outgoing->writeUnsignedByte(1 + subs_store->size());
-		outgoing->writeStorage(*subs_store);
+		this->writeToOutputWithSize(subs_store);
 	}
 	else
 	{
 		this->writeStatusResponse(CMD_GETSIMVAR, STATUS_NIMPL, ""); // TODO: Cover errors as well!
 	}
-
-	delete(subs_store);
 }
 
-void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input) const
+void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
 {
 	tcpip::Storage result;
 	try
@@ -355,7 +340,7 @@ void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& state)
 {
 	try
 	{
-		simulation->setVhcState(state);
+		simulation.setVhcState(state);
 		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
 	}
 	catch (...)
