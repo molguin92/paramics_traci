@@ -85,7 +85,19 @@ void qpx_VHC_release(VEHICLE* vehicle)
 	traci_api::VehicleManager::getInstance()->vehicleDepart(vehicle);
 }
 
-void qpx_VHC_arrive(VEHICLE* vehicle)
+void qpx_VHC_arrive(VEHICLE* vehicle, LINK* link, ZONE* zone)
+
 {
 	traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
+}
+
+
+/**
+ * \brief This function is called for each vehicle in the network once per simulation time step.
+ * Here we use it to update the vehicle manager.
+ * \param vehicle 
+ */
+void qpx_VHC_timeStep(VEHICLE* vehicle) 
+{
+	traci_api::VehicleManager::getInstance()->vehicleTimeStep(vehicle);
 }

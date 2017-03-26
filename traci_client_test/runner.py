@@ -20,7 +20,7 @@ except ImportError:
 
 import traci
 PORT = 8245
-
+    
 
 def run():
     """execute the TraCI control loop"""
@@ -36,6 +36,7 @@ def run():
         arr = traci.simulation.getArrivedIDList()
         total_c = traci.vehicle.getIDCount()
         total_l = traci.vehicle.getIDList()
+        total_l.sort()
         
         print("Departed: " + str(dep))
         print("Arrived: " + str(arr))

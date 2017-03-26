@@ -112,6 +112,8 @@ namespace traci_api
 		void getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
 		void setVehicleState(tcpip::Storage& input);
 
+		void vehicleTimeStep(VEHICLE* vehicle);
+
 		void vehicleDepart(VEHICLE* vehicle);
 		void vehicleArrive(VEHICLE* vehicle);
 
@@ -149,7 +151,7 @@ namespace traci_api
 		VehicleManager() {}
 		~VehicleManager() {}
 
-		std::mutex lock_vhc_lists;
+		std::mutex vhc_lists_mutex;
 
 		std::unordered_map<int, VEHICLE*> vehicles_in_sim;
 		std::vector<VEHICLE*> departed_vehicles;

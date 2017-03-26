@@ -27,7 +27,7 @@ void traci_api::VehicleManager::deleteInstance()
 void traci_api::VehicleManager::reset()
 {
 	// clear temporary lists for a new timestep
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	departed_vehicles.clear();
 	arrived_vehicles.clear();
 }
@@ -189,9 +189,6 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 	switch (varID)
 	{
 	case STA_VHC_STOP:
-
-
-		break;
 	case STA_VHC_CHANGELANE:
 	case STA_VHC_SLOWDWN:
 	case STA_VHC_RESUME:
@@ -231,6 +228,20 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 	}
 }
 
+void traci_api::VehicleManager::vehicleTimeStep(VEHICLE* vehicle)
+{
+	int vid = qpg_VHC_uniqueID(vehicle);
+	{
+		// update total internal vehicle list
+		std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+		auto iterator = vehicles_in_sim.find(vid);
+		if (iterator == vehicles_in_sim.end())
+			throw std::runtime_error("Weird. Car in timestep but not added to list?");
+	}
+
+	// TODO: Check subs status here.
+}
+
 /**
  * \brief Searchs the internal list of vehicles for a specific ID.
  * \param vid The vehicle ID to find.
@@ -238,7 +249,7 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
  */
 VEHICLE* traci_api::VehicleManager::findVehicle(int vid) throw(NoSuchVHCError)
 {
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	auto iterator = vehicles_in_sim.find(vid);
 	if (iterator == vehicles_in_sim.end())
 		throw NoSuchVHCError(std::to_string(vid));
@@ -252,7 +263,7 @@ VEHICLE* traci_api::VehicleManager::findVehicle(int vid) throw(NoSuchVHCError)
  */
 void traci_api::VehicleManager::vehicleDepart(VEHICLE* vehicle)
 {
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	departed_vehicles.push_back(vehicle);
 	vehicles_in_sim[qpg_VHC_uniqueID(vehicle)] = vehicle;
 }
@@ -263,7 +274,7 @@ void traci_api::VehicleManager::vehicleDepart(VEHICLE* vehicle)
  */
 void traci_api::VehicleManager::vehicleArrive(VEHICLE* vehicle)
 {
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	arrived_vehicles.push_back(vehicle);
 	vehicles_in_sim.erase(qpg_VHC_uniqueID(vehicle));
 }
@@ -275,7 +286,7 @@ void traci_api::VehicleManager::vehicleArrive(VEHICLE* vehicle)
 std::vector<std::string> traci_api::VehicleManager::getDepartedVehicles()
 {
 	std::vector<std::string> ids;
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	for (VEHICLE* v : departed_vehicles)
 		ids.push_back(std::to_string(qpg_VHC_uniqueID(v)));
 
@@ -289,7 +300,7 @@ std::vector<std::string> traci_api::VehicleManager::getDepartedVehicles()
 std::vector<std::string> traci_api::VehicleManager::getArrivedVehicles()
 {
 	std::vector<std::string> ids;
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	for (VEHICLE* v : arrived_vehicles)
 		ids.push_back(std::to_string(qpg_VHC_uniqueID(v)));
 
@@ -298,26 +309,26 @@ std::vector<std::string> traci_api::VehicleManager::getArrivedVehicles()
 
 int traci_api::VehicleManager::getDepartedVehicleCount()
 {
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	return departed_vehicles.size();
 }
 
 int traci_api::VehicleManager::getArrivedVehicleCount()
 {
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	return arrived_vehicles.size();
 }
 
 int traci_api::VehicleManager::currentVehicleCount()
 {
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	return vehicles_in_sim.size();
 }
 
 std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
 {
 	std::vector<std::string> ids;
-	std::lock_guard<std::mutex> lock(lock_vhc_lists);
+	std::lock_guard<std::mutex> lock(vhc_lists_mutex);
 	for (auto iterator : vehicles_in_sim)
 		ids.push_back(std::to_string(iterator.first));
 
@@ -399,12 +410,64 @@ std::string traci_api::VehicleManager::getVehicleType(int vid) throw(NoSuchVHCEr
 
 void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
 {
+	/* stop message format
+	 * 
+	 * | type: compound | byte
+	 * | items: 4 or 5	| int
+	 * ------------------
+	 * | type: string	| byte
+	 * | edge id		| string
+	 * ------------------
+	 * | type: double	| byte
+	 * | end position	| double
+	 * ------------------
+	 * | type: byte		| byte
+	 * | lane index		| byte
+	 * ------------------
+	 * | type: int		| byte
+	 * | duration(ms)	| int
+	 * -----optional-----
+	 * | type:  byte	| byte
+	 * | stopflags		| byte 
+	 * /
+
 	/* extract message information and check types */
 
 	if (input.readUnsignedByte() != VTYPE_COMPOUND)
 		throw std::runtime_error("Malformed TraCI Message");
 
 	int count = input.readInt();
-	if (count != 4 && count != 5)
+	if (count < 4 || count > 7)
 		throw std::runtime_error("Malformed TraCI Message");
+
+	if(input.readUnsignedByte() != VTYPE_STR)
+		throw std::runtime_error("Malformed TraCI Message");
+
+	std::string edge_id = input.readString();
+
+	if (input.readUnsignedByte() != VTYPE_DOUBLE)
+		throw std::runtime_error("Malformed TraCI Message");
+
+	double end_position = input.readDouble();
+
+	if (input.readUnsignedByte() != VTYPE_BYTE)
+		throw std::runtime_error("Malformed TraCI Message");
+
+	auto lane_index = input.readByte();
+
+	if (input.readUnsignedByte() != VTYPE_INT)
+		throw std::runtime_error("Malformed TraCI Message");
+
+	int duration = input.readInt();
+
+	uint8_t stopflags = 0x00;
+	if(count == 5)
+	{
+		if (input.readUnsignedByte() != VTYPE_UBYTE)
+			throw std::runtime_error("Malformed TraCI Message");
+
+		stopflags = input.readUnsignedByte();
+	}
+
+
 }
