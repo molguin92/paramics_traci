@@ -14,7 +14,6 @@ namespace traci_api
 		~TraCIServer();
 		void run();
 		void close();
-		static void p_printf(std::string text);
 
 	private:
 

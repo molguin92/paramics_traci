@@ -56,36 +56,39 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems, tcpip::Storage&
 	if (target_timems == 0)
 	{
 		if (DEBUG)
-			TraCIServer::p_printf("Running one simulation step...");
+			printToParamics("Running one simulation step...");
 
 		qps_GUI_runSimulation();
+		traci_api::VehicleManager::getInstance()->handleDelayedTriggers();
 		steps_performed = 1;
 	}
 	else if (target_simtime > current_simtime)
 	{
 		if (DEBUG)
 		{
-			TraCIServer::p_printf("Running simulation up to target time: " + std::to_string(target_simtime));
-			TraCIServer::p_printf("Current time: " + std::to_string(current_simtime));
+			printToParamics("Running simulation up to target time: " + std::to_string(target_simtime));
+			printToParamics("Current time: " + std::to_string(current_simtime));
 		}
 
 		while (target_simtime > current_simtime)
 		{
 			qps_GUI_runSimulation();
 			steps_performed++;
+			traci_api::VehicleManager::getInstance()->handleDelayedTriggers();
+
 			current_simtime = this->getCurrentTimeSeconds();
 
 			if (DEBUG)
-				TraCIServer::p_printf("Current time: " + std::to_string(current_simtime));
+				printToParamics("Current time: " + std::to_string(current_simtime));
 		}
 	}
 	else
 	{
 		if (DEBUG)
 		{
-			TraCIServer::p_printf("Invalid target simulation time: " + std::to_string(target_timems));
-			TraCIServer::p_printf("Current simulation time: " + std::to_string(current_simtime));
-			TraCIServer::p_printf("Doing nothing");
+			printToParamics("Invalid target simulation time: " + std::to_string(target_timems));
+			printToParamics("Current simulation time: " + std::to_string(current_simtime));
+			printToParamics("Doing nothing");
 		}
 	}
 

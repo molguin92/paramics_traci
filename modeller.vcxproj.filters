@@ -25,6 +25,9 @@
     <ClCompile Include="src\TraCIAPI\VehicleManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\TraCIAPI\Triggers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\shawn\socket.h">
@@ -43,5 +46,6 @@
     <ClInclude Include="src\TraCIAPI\Constants.h" />
     <ClInclude Include="src\TraCIAPI\VehicleManager.h" />
     <ClInclude Include="src\TraCIAPI\Utils.h" />
+    <ClInclude Include="src\TraCIAPI\Triggers.h" />
   </ItemGroup>
 </Project>

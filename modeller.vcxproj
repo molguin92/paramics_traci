@@ -154,6 +154,7 @@
     <ClCompile Include="src\shawn\storage.cpp" />
     <ClCompile Include="src\TraCIAPI\Simulation.cpp" />
     <ClCompile Include="src\TraCIAPI\TraCIServer.cpp" />
+    <ClCompile Include="src\TraCIAPI\Triggers.cpp" />
     <ClCompile Include="src\TraCIAPI\VehicleManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +164,7 @@
     <ClInclude Include="src\TraCIAPI\Constants.h" />
     <ClInclude Include="src\TraCIAPI\Simulation.h" />
     <ClInclude Include="src\TraCIAPI\TraCIServer.h" />
+    <ClInclude Include="src\TraCIAPI\Triggers.h" />
     <ClInclude Include="src\TraCIAPI\Utils.h" />
     <ClInclude Include="src\TraCIAPI\VehicleManager.h" />
   </ItemGroup>

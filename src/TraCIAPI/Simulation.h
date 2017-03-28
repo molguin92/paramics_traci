@@ -45,13 +45,13 @@ namespace traci_api
 		bool getVariable(uint8_t varID, tcpip::Storage& result_store);
 		void setVhcState(tcpip::Storage& state);
 
+		float getCurrentTimeSeconds();
+		int getCurrentTimeMilliseconds();
+
 	private:
 
 		static Simulation* instance;
 		Simulation();
-
-		float getCurrentTimeSeconds();
-		int getCurrentTimeMilliseconds();
 		int stepcnt;
 	};
 }

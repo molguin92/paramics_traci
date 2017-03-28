@@ -1,6 +1,7 @@
 ﻿#include "VehicleManager.h"
 #include "Constants.h"
 #include <string>
+#include "Simulation.h"
 
 /* null singleton */
 traci_api::VehicleManager* traci_api::VehicleManager::instance = nullptr;
@@ -258,6 +259,25 @@ VEHICLE* traci_api::VehicleManager::findVehicle(int vid) throw(NoSuchVHCError)
 }
 
 /**
+ * \brief Handles delayed triggers. For example, changing back to the original lane 
+ * after a set time after a lane change command.
+ */
+void traci_api::VehicleManager::handleDelayedTriggers()
+{
+	std::lock_guard<std::mutex> lock(trigger_mutex);
+	int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
+	auto itup = triggers.upper_bound(current_time); // first element with trigger time > current time
+
+	for(auto it = triggers.begin(); it != itup; ++it)
+	{
+		it->second.handleTrigger();
+	}
+	
+	triggers.erase(triggers.begin(), itup); // delete all triggers up to the current time, so they don't get executed again.
+}
+
+
+/**
  * \brief Signals the departure of a vehicle into the network.
  * \param vehicle A pointer to the Paramics Vehicle.
  */
@@ -470,4 +490,29 @@ void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchV
 	}
 
 
+}
+
+void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
+{
+	/* change lane message format
+	*
+	* | type: compound	| ubyte
+	* | items: 2		| int
+	* ------------------
+	* | type: byte		| ubyte
+	* | lane id			| ubyte
+	* ------------------
+	* | type: int		| ubyte
+	* | duration		| int
+	*/
+
+	if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2 || input.readUnsignedByte() != VTYPE_BYTE)
+		throw std::runtime_error("Malformed TraCI message");
+
+	int lane = input.readByte();
+
+	if(input.readUnsignedByte() != VTYPE_INT)
+		throw std::runtime_error("Malformed TraCI message");
+
+	int duration = input.readInt();
 }

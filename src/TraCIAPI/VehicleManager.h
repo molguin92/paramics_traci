@@ -4,6 +4,8 @@
 #include <unordered_map>
 #include "Utils.h"
 #include "storage.h"
+#include <map>
+#include "Triggers.h"
 
 namespace traci_api
 {
@@ -139,18 +141,29 @@ namespace traci_api
 
 
 		void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
+		void changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 
 		/* prevent alternative instantiation */
 		VehicleManager(VehicleManager const&) = delete;
 		void operator=(VehicleManager const&) = delete;
 
+		void handleDelayedTriggers();
+
 	private:
 
 		static VehicleManager* instance;
 
-		VehicleManager() {}
-		~VehicleManager() {}
+		VehicleManager()
+		{
+		}
 
+		~VehicleManager()
+		{
+		}
+
+		std::multimap<int, BaseTimeStepTrigger> triggers;
+
+		std::mutex trigger_mutex;
 		std::mutex vhc_lists_mutex;
 
 		std::unordered_map<int, VEHICLE*> vehicles_in_sim;
@@ -174,4 +187,3 @@ namespace traci_api
 		}
 	};
 }
-
