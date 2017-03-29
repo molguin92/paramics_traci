@@ -155,6 +155,7 @@
     <ClCompile Include="src\TraCIAPI\Simulation.cpp" />
     <ClCompile Include="src\TraCIAPI\TraCIServer.cpp" />
     <ClCompile Include="src\TraCIAPI\Triggers.cpp" />
+    <ClCompile Include="src\TraCIAPI\Utils.cpp" />
     <ClCompile Include="src\TraCIAPI\VehicleManager.cpp" />
   </ItemGroup>
   <ItemGroup>

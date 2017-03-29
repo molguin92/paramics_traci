@@ -37,6 +37,9 @@ def run():
         total_c = traci.vehicle.getIDCount()
         total_l = traci.vehicle.getIDList()
         total_l.sort()
+
+        for v in dep:
+            traci.vehicle.changeLane(v, 5, 10000)
         
         print("Departed: " + str(dep))
         print("Arrived: " + str(arr))

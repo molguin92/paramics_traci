@@ -1,6 +1,6 @@
 ﻿#include "Triggers.h"
 
-void traci_api::LaneChangeTrigger::handleTrigger()
+void traci_api::ResetLaneRangeTrigger::handleTrigger()
 {
-	qps_VHC_laneRange(this->vehicle, this->p_lane, this->p_lane);
+	qps_VHC_laneRange(this->vehicle, this->l_lane, this->h_lane);
 }

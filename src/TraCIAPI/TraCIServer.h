@@ -26,7 +26,7 @@ namespace traci_api
 		void cmdSimStep(int target_time);
 		void cmdGetSimVar(uint8_t simvar);
 		void cmdGetVhcVar(tcpip::Storage& input);
-		void cmdSetVhcState(tcpip::Storage& state);
+		void cmdSetVhcState(tcpip::Storage& input);
 
 		void parseCommand(tcpip::Storage& storage);
 		void writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description);

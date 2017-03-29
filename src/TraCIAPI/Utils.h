@@ -12,23 +12,23 @@ public:
 	}
 };
 
-class Vector3D: public Vector2D
+class Vector3D : public Vector2D
 {
 public:
 	double z;
 
-	Vector3D(double x, double y, double z): Vector2D(x, y), z(z)
+	Vector3D(double x, double y, double z) : Vector2D(x, y), z(z)
 	{
 	}
 };
 
-class PositionalData: public Vector3D
+class PositionalData : public Vector3D
 {
 public:
 	double gradient;
 	double bearing;
 
-	PositionalData(double x, double y, double z, double b, double g): Vector3D(x, y, z), gradient(g), bearing(b)
+	PositionalData(double x, double y, double z, double b, double g) : Vector3D(x, y, z), gradient(g), bearing(b)
 	{
 	}
 };
@@ -40,12 +40,12 @@ public:
 	double length;
 	double width;
 
-	DimensionalData(double h, double l, double w): height(h), length(l), width(w)
+	DimensionalData(double h, double l, double w) : height(h), length(l), width(w)
 	{
 	}
 };
 
-class NotImplementedError: public std::runtime_error
+class NotImplementedError : public std::runtime_error
 {
 public:
 	explicit NotImplementedError(const std::string& _Message)
@@ -61,7 +61,7 @@ public:
 
 namespace traci_api
 {
-	inline void printToParamics(std::string text);
+	void printToParamics(std::string text);
 
 	// the following convenience functions were obtained from SUMO.
 	// these functions simplify the obtention of variables from storage:
@@ -75,7 +75,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether an integer value was given (by data type)
 	*/
-	inline bool readTypeCheckingInt(tcpip::Storage& inputStorage, int& into);
+	bool readTypeCheckingInt(tcpip::Storage& inputStorage, int& into);
 
 
 	/** @brief Reads the value type and a double, verifying the type
@@ -84,7 +84,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a double value was given (by data type)
 	*/
-	inline bool readTypeCheckingDouble(tcpip::Storage& inputStorage, double& into);
+	bool readTypeCheckingDouble(tcpip::Storage& inputStorage, double& into);
 
 
 	/** @brief Reads the value type and a string, verifying the type
@@ -93,7 +93,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a string value was given (by data type)
 	*/
-	inline bool readTypeCheckingString(tcpip::Storage& inputStorage, std::string& into);
+	bool readTypeCheckingString(tcpip::Storage& inputStorage, std::string& into);
 
 
 	/** @brief Reads the value type and a string list, verifying the type
@@ -102,7 +102,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a double value was given (by data type)
 	*/
-	inline bool readTypeCheckingStringList(tcpip::Storage& inputStorage, std::vector<std::string>& into);
+	bool readTypeCheckingStringList(tcpip::Storage& inputStorage, std::vector<std::string>& into);
 
 
 	/** @brief Reads the value type and a color, verifying the type
@@ -111,7 +111,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a color was given (by data type)
 	*/
-	//inline bool  readTypeCheckingColor(tcpip::Storage& inputStorage, RGBColor& into);
+	//bool  readTypeCheckingColor(tcpip::Storage& inputStorage, RGBColor& into);
 
 
 	/** @brief Reads the value type and a 2D position, verifying the type
@@ -120,7 +120,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a 2D position was given (by data type)
 	*/
-	inline bool readTypeCheckingPosition2D(tcpip::Storage& inputStorage, Vector2D& into);
+	bool readTypeCheckingPosition2D(tcpip::Storage& inputStorage, Vector2D& into);
 
 
 	/** @brief Reads the value type and a 2D bounding box, verifying the type
@@ -129,7 +129,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a 2D bounding box was given (by data type)
 	*/
-	//inline bool  readTypeCheckingBoundary(tcpip::Storage& inputStorage, Boundary& into);
+	//bool  readTypeCheckingBoundary(tcpip::Storage& inputStorage, Boundary& into);
 
 
 	/** @brief Reads the value type and a byte, verifying the type
@@ -138,7 +138,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a byte was given (by data type)
 	*/
-	inline bool readTypeCheckingByte(tcpip::Storage& inputStorage, int8_t& into);
+	bool readTypeCheckingByte(tcpip::Storage& inputStorage, int8_t& into);
 
 
 	/** @brief Reads the value type and an unsigned byte, verifying the type
@@ -147,7 +147,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether an unsigned byte was given (by data type)
 	*/
-	inline bool readTypeCheckingUnsignedByte(tcpip::Storage& inputStorage, uint8_t& into);
+	bool readTypeCheckingUnsignedByte(tcpip::Storage& inputStorage, uint8_t& into);
 
 
 	/** @brief Reads the value type and a polygon, verifying the type
@@ -156,6 +156,6 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether an unsigned byte was given (by data type)
 	*/
-	//inline bool  readTypeCheckingPolygon(tcpip::Storage& inputStorage, PositionVector& into);
+	//bool  readTypeCheckingPolygon(tcpip::Storage& inputStorage, PositionVector& into);
 	/// @}
 }

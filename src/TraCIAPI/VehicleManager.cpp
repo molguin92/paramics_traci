@@ -185,12 +185,13 @@ void traci_api::VehicleManager::getVehicleVariable(tcpip::Storage& input, tcpip:
 void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 {
 	uint8_t varID = input.readUnsignedByte();
-	uint8_t varType = input.readUnsignedByte();
 
 	switch (varID)
 	{
-	case STA_VHC_STOP:
 	case STA_VHC_CHANGELANE:
+		changeLane(input);
+		break;
+	case STA_VHC_STOP:
 	case STA_VHC_SLOWDWN:
 	case STA_VHC_RESUME:
 	case STA_VHC_CHANGETARGET:
@@ -267,13 +268,18 @@ void traci_api::VehicleManager::handleDelayedTriggers()
 	std::lock_guard<std::mutex> lock(trigger_mutex);
 	int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
 	auto itup = triggers.upper_bound(current_time); // first element with trigger time > current time
+	std::vector<BaseTimeStepTrigger*> trash;
 
 	for(auto it = triggers.begin(); it != itup; ++it)
 	{
-		it->second.handleTrigger();
+		it->second->handleTrigger();
+		trash.push_back(it->second);
 	}
 	
 	triggers.erase(triggers.begin(), itup); // delete all triggers up to the current time, so they don't get executed again.
+
+	for (BaseTimeStepTrigger* trigger : trash) //deallocate memory
+		delete(trigger);
 }
 
 
@@ -452,44 +458,6 @@ void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchV
 	 * /
 
 	/* extract message information and check types */
-
-	if (input.readUnsignedByte() != VTYPE_COMPOUND)
-		throw std::runtime_error("Malformed TraCI Message");
-
-	int count = input.readInt();
-	if (count < 4 || count > 7)
-		throw std::runtime_error("Malformed TraCI Message");
-
-	if(input.readUnsignedByte() != VTYPE_STR)
-		throw std::runtime_error("Malformed TraCI Message");
-
-	std::string edge_id = input.readString();
-
-	if (input.readUnsignedByte() != VTYPE_DOUBLE)
-		throw std::runtime_error("Malformed TraCI Message");
-
-	double end_position = input.readDouble();
-
-	if (input.readUnsignedByte() != VTYPE_BYTE)
-		throw std::runtime_error("Malformed TraCI Message");
-
-	auto lane_index = input.readByte();
-
-	if (input.readUnsignedByte() != VTYPE_INT)
-		throw std::runtime_error("Malformed TraCI Message");
-
-	int duration = input.readInt();
-
-	uint8_t stopflags = 0x00;
-	if(count == 5)
-	{
-		if (input.readUnsignedByte() != VTYPE_UBYTE)
-			throw std::runtime_error("Malformed TraCI Message");
-
-		stopflags = input.readUnsignedByte();
-	}
-
-
 }
 
 void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
@@ -506,13 +474,61 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVH
 	* | duration		| int
 	*/
 
-	if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2 || input.readUnsignedByte() != VTYPE_BYTE)
+	std::string vhcid = input.readString();
+
+	if(DEBUG)
+		printToParamics("Vehicle " + vhcid + " changing lanes.");
+
+	if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2 )
 		throw std::runtime_error("Malformed TraCI message");
 
-	int lane = input.readByte();
-
-	if(input.readUnsignedByte() != VTYPE_INT)
+	int8_t new_lane = 0;
+	if (!readTypeCheckingByte(input, new_lane))
 		throw std::runtime_error("Malformed TraCI message");
 
-	int duration = input.readInt();
+	int duration = 0;
+	if (!readTypeCheckingInt(input, duration))
+		throw std::runtime_error("Malformed TraCI message");
+
+	VEHICLE* vhc = findVehicle(std::stoi(vhcid));
+	LINK* lnk = qpg_VHC_link(vhc);
+
+	int n_lanes = qpg_LNK_lanes(lnk);
+	
+	if (new_lane > n_lanes)
+		new_lane = n_lanes;
+	else if (new_lane < 1)
+		new_lane = 1;
+
+	int current_lane = qpg_VHC_lane(vhc);
+	int lane_range_h = qpg_VHC_laneHigh(vhc);
+	int lane_range_l = qpg_VHC_laneLow(vhc);
+
+	/* set new temporary lane range */
+	qps_VHC_laneRange(vhc, new_lane, new_lane);
+
+	/* force lane change */
+	int diff = new_lane - current_lane;
+	while(diff != 0)
+	{
+		if ( diff < 0)
+		{
+			qps_VHC_changeLane(vhc, -1);
+			diff++;
+		}
+		else
+		{
+			qps_VHC_changeLane(vhc, +1);
+			diff--;
+		}
+	}
+
+
+	/* set trigger for resetting lane range */
+	int trigger_time = duration + Simulation::getInstance()->getCurrentTimeMilliseconds();
+
+	{
+		std::lock_guard<std::mutex> lock(trigger_mutex);
+		triggers.insert(std::make_pair(trigger_time, new ResetLaneRangeTrigger(vhc, lane_range_l, lane_range_h)));
+	}
 }

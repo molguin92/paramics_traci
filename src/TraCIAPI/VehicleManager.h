@@ -161,7 +161,7 @@ namespace traci_api
 		{
 		}
 
-		std::multimap<int, BaseTimeStepTrigger> triggers;
+		std::multimap<int, BaseTimeStepTrigger*> triggers;
 
 		std::mutex trigger_mutex;
 		std::mutex vhc_lists_mutex;

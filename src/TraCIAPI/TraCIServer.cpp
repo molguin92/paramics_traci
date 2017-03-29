@@ -141,19 +141,14 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 	case CMD_SETVHCSTATE:
 		if (DEBUG)
 			printToParamics("Got CMD_SETVHCSTATE");
-		for (int i = 0; i < cmdLen - 2; i++)
-			state.writeUnsignedByte(storage.readUnsignedByte());
-		this->cmdSetVhcState(state);
+		this->cmdSetVhcState(storage);
 		break;
 
 	case CMD_GETVHCVAR:
 		if (DEBUG)
 			printToParamics("Got CMD_GETVHCVAR");
 		{
-			tcpip::Storage input;
-			while (storage.valid_pos())
-				input.writeUnsignedByte(storage.readUnsignedByte());
-			this->cmdGetVhcVar(input);
+			this->cmdGetVhcVar(storage);
 		}
 		break;
 	default:
@@ -275,17 +270,16 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
 	tcpip::Storage result;
 	try
 	{
-		
 		VehicleManager::getInstance()->getVehicleVariable(input, result);
 	}
 	catch (NotImplementedError& e)
 	{
-		if(DEBUG)
+		if (DEBUG)
 		{
 			printToParamics("Variable not implemented");
 			printToParamics(e.what());
 		}
-			
+
 		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
 	}
 	/*catch (std::runtime_error& e)
@@ -323,16 +317,32 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
 	this->writeToOutputWithSize(result);
 }
 
-
-void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& state)
+void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& input)
 {
 	try
 	{
-		Simulation::getInstance()->setVhcState(state);
-		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
+		VehicleManager::getInstance()->setVehicleState(input);
 	}
-	catch (...)
+	catch (NotImplementedError& e)
 	{
-		this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_NIMPL, ""); // TODO: Cover errors as well!
+		if (DEBUG)
+		{
+			printToParamics("State change not implemented");
+			printToParamics(e.what());
+		}
+
+		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
 	}
+	catch (std::exception& e)
+	{
+		if (DEBUG)
+		{
+			printToParamics("Fatal error???");
+			printToParamics(e.what());
+		}
+		this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
+		throw;
+	}
+
+	this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
 }

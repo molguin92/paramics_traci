@@ -7,26 +7,26 @@ namespace traci_api
 	{
 	public:
 		VEHICLE* vehicle;
-		int timestep_ms;
 
-		BaseTimeStepTrigger(VEHICLE* vehicle, int timestep) : vehicle(vehicle), timestep_ms(timestep)
+		BaseTimeStepTrigger(VEHICLE* vehicle) : vehicle(vehicle)
 		{
 		}
 
-		virtual ~BaseTimeStepTrigger() = 0;
+		virtual ~BaseTimeStepTrigger() {};
 		virtual void handleTrigger() = 0;
 	};
 
-	class LaneChangeTrigger : public BaseTimeStepTrigger
+	class ResetLaneRangeTrigger : public BaseTimeStepTrigger
 	{
 	public:
-		int p_lane;
+		int l_lane;
+		int h_lane;
 
-		LaneChangeTrigger(VEHICLE* vehicle, int timestep, int p_lane) : BaseTimeStepTrigger(vehicle, timestep), p_lane(p_lane)
+		ResetLaneRangeTrigger(VEHICLE* vehicle, int l_lane, int h_lane) : BaseTimeStepTrigger(vehicle), l_lane(l_lane), h_lane(h_lane)
 		{
 		}
 
-		~LaneChangeTrigger() override {};
+		~ResetLaneRangeTrigger() override {};
 
 		void handleTrigger() override;
 	};

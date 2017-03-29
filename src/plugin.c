@@ -10,6 +10,7 @@
 #include "TraCIAPI/TraCIServer.h"
 #include <shellapi.h>
 #include "TraCIAPI/VehicleManager.h"
+#include "TraCIAPI/Utils.h"
 
 #define DEFAULT_PORT 5000
 #define CMDARG_PORT "--traci_port="
@@ -49,7 +50,7 @@ void runner_fn()
 			}
 			catch (...)
 			{
-				traci_api::TraCIServer::p_printf("Invalid port identifier - Falling back to default port");
+				traci_api::printToParamics("Invalid port identifier - Falling back to default port");
 				port = DEFAULT_PORT;
 			}
 
@@ -69,7 +70,7 @@ void runner_fn()
 void qpx_NET_postOpen(void)
 {
 	qps_GUI_singleStep(PTRUE);
-	traci_api::TraCIServer::p_printf("TraCI support enabled");
+	traci_api::printToParamics("TraCI support enabled");
 	runner = new std::thread(runner_fn);
 }
 
