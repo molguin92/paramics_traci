@@ -40,6 +40,7 @@ def run():
 
         for v in dep:
             traci.vehicle.changeLane(v, 5, 10000)
+            traci.vehicle.slowDown(v, 70, 1000)
         
         print("Departed: " + str(dep))
         print("Arrived: " + str(arr))

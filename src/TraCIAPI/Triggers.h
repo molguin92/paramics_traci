@@ -30,4 +30,18 @@ namespace traci_api
 
 		void handleTrigger() override;
 	};
+
+	class SpeedChangeTrigger : public BaseTimeStepTrigger
+	{
+		double speed;
+	public:
+		explicit SpeedChangeTrigger(VEHICLE* vehicle, double speed)
+			: BaseTimeStepTrigger(vehicle), speed(speed)
+		{
+		}
+
+		~SpeedChangeTrigger() override {};
+
+		void handleTrigger() override;
+	};
 }

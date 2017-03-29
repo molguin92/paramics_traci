@@ -191,8 +191,11 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 	case STA_VHC_CHANGELANE:
 		changeLane(input);
 		break;
-	case STA_VHC_STOP:
 	case STA_VHC_SLOWDWN:
+		slowDown(input);
+		break;
+
+	case STA_VHC_STOP:
 	case STA_VHC_RESUME:
 	case STA_VHC_CHANGETARGET:
 	case STA_VHC_SPEED:
@@ -530,5 +533,68 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVH
 	{
 		std::lock_guard<std::mutex> lock(trigger_mutex);
 		triggers.insert(std::make_pair(trigger_time, new ResetLaneRangeTrigger(vhc, lane_range_l, lane_range_h)));
+	}
+}
+
+void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
+{
+	/* slow down message format
+	*
+	* | type: compound	| ubyte
+	* | items: 2		| int
+	* ------------------
+	* | type: double	| ubyte
+	* | speed			| ubyte
+	* ------------------
+	* | type: int		| ubyte
+	* | duration		| int
+	*/
+
+	std::string vhcid = input.readString();
+	VEHICLE* vhc = findVehicle(std::stoi(vhcid));
+
+	if (DEBUG)
+		traci_api::printToParamics("Vehicle " + vhcid + " slowing down.");
+
+	if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2)
+		throw std::runtime_error("Malformed TraCI message");
+
+	double target_speed = 0;
+	if(!readTypeCheckingDouble(input, target_speed))
+		throw std::runtime_error("Malformed TraCI message");
+
+	int duration = 0;
+	if(!readTypeCheckingInt(input, duration))
+		throw std::runtime_error("Malformed TraCI message");
+
+	if (duration == 0)
+		throw std::runtime_error("Malformed TraCI message");
+
+	/* calculate the number of timesteps required */
+	int stepsize = qpg_CFG_timeStep() * 1000;
+	int steps = abs(duration / stepsize);
+
+	/* calculate the speed difference in each step */
+	double current_speed = qpg_VHC_speed(vhc);
+	double speedstep = (current_speed - target_speed) / steps;
+
+	if (fabs(speedstep - 0) < 0.001)
+		return; // do nothing, already at target speed
+
+	/* do the first step, and schedule the rest with triggers */
+
+	double new_speed = current_speed - speedstep;
+	qps_VHC_speed(vhc, new_speed);
+	qps_VHC_maxSpeed(vhc, new_speed);
+	steps--;
+	int next_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
+	for(; steps > 0; steps--)
+	{
+		new_speed = new_speed - speedstep;
+		next_time = next_time + stepsize;
+		{
+			std::lock_guard<std::mutex> lock(trigger_mutex);
+			triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed)));
+		}
 	}
 }
