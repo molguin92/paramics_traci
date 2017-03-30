@@ -143,6 +143,7 @@ namespace traci_api
 		void changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 		void slowDown(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 		void changeColour(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
+		void setSpeed(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 
 		/* prevent alternative instantiation */
 		VehicleManager(VehicleManager const&) = delete;

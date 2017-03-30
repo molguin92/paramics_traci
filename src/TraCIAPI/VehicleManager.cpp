@@ -197,11 +197,13 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 	case STA_VHC_COLOUR:
 		changeColour(input);
 		break;
+	case STA_VHC_SPEED:
+		setSpeed(input);
+		break;
 
 	case STA_VHC_STOP:
 	case STA_VHC_RESUME:
 	case STA_VHC_CHANGETARGET:
-	case STA_VHC_SPEED:
 	case STA_VHC_CHANGEROUTEID:
 	case STA_VHC_CHANGEROUTE:
 	case STA_VHC_CHANGEEDGETTIME:
@@ -373,7 +375,7 @@ std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
  */
 float traci_api::VehicleManager::getSpeed(int vid) throw(NoSuchVHCError)
 {
-	int mph = qpg_VHC_speed(this->findVehicle(vid)) * qpg_UTL_toExternalSpeed();
+	double mph = qpg_VHC_speed(this->findVehicle(vid)) * qpg_UTL_toExternalSpeed();
 	return MPH2MS(mph);
 }
 
@@ -603,8 +605,8 @@ void traci_api::VehicleManager::changeColour(tcpip::Storage& input) throw(NoSuch
 {
 	/* colour change message format
 	 * 
-	 * | vhc_id | ubyte | ubyte | ubyte | ubyte |
-	 *				R		G		B		A
+	 * | string | ubyte | ubyte | ubyte | ubyte | ubyte |
+	 *	 vhc_id	  Type		R		G		B		A
 	*/
 
 	std::string vhcid = input.readString();
@@ -616,4 +618,22 @@ void traci_api::VehicleManager::changeColour(tcpip::Storage& input) throw(NoSuch
 
 	/* change vehicle color */
 	qps_DRW_vehicleColour(vhc, hex);
+}
+
+void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
+{
+	/* set speed message format
+	 * | string | ubyte | double |
+	 *   vhc_id	  Type	  speed
+	 */
+
+	std::string vhcid = input.readString();
+	VEHICLE* vhc = findVehicle(std::stoi(vhcid));
+
+	double speed = 0;
+	if (!readTypeCheckingDouble(input, speed))
+		throw std::runtime_error("Malformed TraCI message");
+
+	/* speed is in m/s -> convert it to mph and pass to paramics */
+	qps_VHC_speed(vhc, MS2MPH(speed) * qpg_UTL_toInternalSpeed());
 }

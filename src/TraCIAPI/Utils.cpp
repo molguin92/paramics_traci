@@ -115,12 +115,12 @@ void HEX2RGB(uint32_t hex, uint8_t& r, uint8_t& g, uint8_t& b)
 	b = (hex >> 16) & 0xff;
 }
 
-int MPH2MS(int mph)
+double MPH2MS(double mph)
 {
-	return mph * (1609.34 / 3600);
+	return mph * (1609.34 / 3600.0);
 }
 
-int MS2MPH(int ms)
+double MS2MPH(double ms)
 {
-	return ms * (3600 / 1609.34);
+	return ms * (3600.0 / 1609.34);
 }
