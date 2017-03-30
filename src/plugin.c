@@ -102,3 +102,8 @@ void qpx_VHC_timeStep(VEHICLE* vehicle)
 {
 	traci_api::VehicleManager::getInstance()->vehicleTimeStep(vehicle);
 }
+
+void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
+{
+	traci_api::VehicleManager::getInstance()->handleLinkEnterTriggers(vehicle, link2);
+}

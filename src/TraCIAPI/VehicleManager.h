@@ -150,6 +150,7 @@ namespace traci_api
 		void operator=(VehicleManager const&) = delete;
 
 		void handleDelayedTriggers();
+		void handleLinkEnterTriggers(VEHICLE* vhc, LINK* lnk);
 
 	private:
 
@@ -163,9 +164,11 @@ namespace traci_api
 		{
 		}
 
-		std::multimap<int, BaseTimeStepTrigger*> triggers;
+		std::unordered_multimap<int, BaseTrigger*> time_triggers;
+		std::unordered_multimap<VEHICLE*, BaseTrigger*> link_triggers;
 
-		std::mutex trigger_mutex;
+		std::mutex time_trigger_mutex;
+		std::mutex link_trigger_mutex;
 		std::mutex vhc_lists_mutex;
 
 		std::unordered_map<int, VEHICLE*> vehicles_in_sim;

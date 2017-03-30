@@ -1,47 +1,77 @@
 ﻿#pragma once
 #include "programmer.h"
+#include <string>
 
 namespace traci_api
 {
-	class BaseTimeStepTrigger
+	/* Triggered events (multiple causes: time, changing lanes, etc */
+	class BaseTrigger
+	{
+	public:
+		virtual ~BaseTrigger()
+		{
+		};
+		virtual void handleTrigger() = 0;
+		virtual bool repeat() = 0;
+	};
+
+	class ResetLaneRangeTrigger : public BaseTrigger
 	{
 	public:
 		VEHICLE* vehicle;
-
-		BaseTimeStepTrigger(VEHICLE* vehicle) : vehicle(vehicle)
-		{
-		}
-
-		virtual ~BaseTimeStepTrigger() {};
-		virtual void handleTrigger() = 0;
-	};
-
-	class ResetLaneRangeTrigger : public BaseTimeStepTrigger
-	{
-	public:
 		int l_lane;
 		int h_lane;
 
-		ResetLaneRangeTrigger(VEHICLE* vehicle, int l_lane, int h_lane) : BaseTimeStepTrigger(vehicle), l_lane(l_lane), h_lane(h_lane)
+		ResetLaneRangeTrigger(VEHICLE* vehicle, int l_lane, int h_lane) : vehicle(vehicle), l_lane(l_lane), h_lane(h_lane)
 		{
 		}
 
-		~ResetLaneRangeTrigger() override {};
+		~ResetLaneRangeTrigger() override
+		{
+		};
 
 		void handleTrigger() override;
+		bool repeat() override { return false; }
 	};
 
-	class SpeedChangeTrigger : public BaseTimeStepTrigger
+	class SpeedChangeTrigger : public BaseTrigger
 	{
+		VEHICLE* vehicle;
 		double speed;
 	public:
 		explicit SpeedChangeTrigger(VEHICLE* vehicle, double speed)
-			: BaseTimeStepTrigger(vehicle), speed(speed)
+			: vehicle(vehicle), speed(speed)
 		{
 		}
 
-		~SpeedChangeTrigger() override {};
+		~SpeedChangeTrigger() override
+		{
+		};
 
 		void handleTrigger() override;
+		bool repeat() override { return false; }
+	};
+
+	class VehicleStopEvent : public BaseTrigger
+	{
+	public:
+		VEHICLE* vhc;
+		LINK* lnk;
+		double position;
+		int lane;
+		double duration;
+
+		bool done;
+
+		VehicleStopEvent(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false)
+		{
+		}
+
+		void handleTrigger() override;
+		bool repeat() override { return !done; }
+
+		~VehicleStopEvent() override
+		{
+		};
 	};
 }

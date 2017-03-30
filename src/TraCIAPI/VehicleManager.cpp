@@ -267,26 +267,42 @@ VEHICLE* traci_api::VehicleManager::findVehicle(int vid) throw(NoSuchVHCError)
 }
 
 /**
- * \brief Handles delayed triggers. For example, changing back to the original lane 
+ * \brief Handles delayed time_triggers. For example, changing back to the original lane 
  * after a set time after a lane change command.
  */
 void traci_api::VehicleManager::handleDelayedTriggers()
 {
-	std::lock_guard<std::mutex> lock(trigger_mutex);
+	std::lock_guard<std::mutex> lock(time_trigger_mutex);
 	int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
-	auto itup = triggers.upper_bound(current_time); // first element with trigger time > current time
-	std::vector<BaseTimeStepTrigger*> trash;
+	auto itup = time_triggers.upper_bound(current_time); // first element with trigger time > current time
+	std::vector<BaseTrigger*> trash;
 
-	for(auto it = triggers.begin(); it != itup; ++it)
+	for (auto it = time_triggers.begin(); it != itup;)
 	{
 		it->second->handleTrigger();
-		trash.push_back(it->second);
-	}
-	
-	triggers.erase(triggers.begin(), itup); // delete all triggers up to the current time, so they don't get executed again.
 
-	for (BaseTimeStepTrigger* trigger : trash) //deallocate memory
-		delete(trigger);
+		/* delete all triggers handled, we don't want to see them again */
+		delete(it->second);
+		it = time_triggers.erase(it);
+	}
+}
+
+void traci_api::VehicleManager::handleLinkEnterTriggers(VEHICLE* vhc, LINK* lnk)
+{
+	std::lock_guard<std::mutex> lock(link_trigger_mutex);
+	auto iterator = link_triggers.equal_range(vhc); // every trigger for this vehicle
+	for (auto it = iterator.first; it != iterator.second;)
+	{
+		it->second->handleTrigger();
+
+		if (it->second->repeat())
+			++it;
+		else
+		{
+			delete(it->second);
+			it = link_triggers.erase(it);
+		}
+	}
 }
 
 
@@ -474,10 +490,10 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVH
 
 	std::string vhcid = input.readString();
 
-	if(DEBUG)
+	if (DEBUG)
 		printToParamics("Vehicle " + vhcid + " changing lanes.");
 
-	if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2 )
+	if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2)
 		throw std::runtime_error("Malformed TraCI message");
 
 	int8_t new_lane = 0;
@@ -492,7 +508,7 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVH
 	LINK* lnk = qpg_VHC_link(vhc);
 
 	int n_lanes = qpg_LNK_lanes(lnk);
-	
+
 	if (new_lane > n_lanes)
 		new_lane = n_lanes;
 	else if (new_lane < 1)
@@ -507,9 +523,9 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVH
 
 	/* force lane change */
 	int diff = new_lane - current_lane;
-	while(diff != 0)
+	while (diff != 0)
 	{
-		if ( diff < 0)
+		if (diff < 0)
 		{
 			qps_VHC_changeLane(vhc, -1);
 			diff++;
@@ -526,8 +542,8 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVH
 	int trigger_time = duration + Simulation::getInstance()->getCurrentTimeMilliseconds();
 
 	{
-		std::lock_guard<std::mutex> lock(trigger_mutex);
-		triggers.insert(std::make_pair(trigger_time, new ResetLaneRangeTrigger(vhc, lane_range_l, lane_range_h)));
+		std::lock_guard<std::mutex> lock(time_trigger_mutex);
+		time_triggers.insert(std::make_pair(trigger_time, new ResetLaneRangeTrigger(vhc, lane_range_l, lane_range_h)));
 	}
 }
 
@@ -555,11 +571,11 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
 		throw std::runtime_error("Malformed TraCI message");
 
 	double target_speed = 0;
-	if(!readTypeCheckingDouble(input, target_speed))
+	if (!readTypeCheckingDouble(input, target_speed))
 		throw std::runtime_error("Malformed TraCI message");
 
 	int duration = 0;
-	if(!readTypeCheckingInt(input, duration))
+	if (!readTypeCheckingInt(input, duration))
 		throw std::runtime_error("Malformed TraCI message");
 
 	if (duration == 0)
@@ -576,27 +592,27 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
 
 	/* do calculations in mph */
 	target_speed = MS2MPH(target_speed);
-	
+
 	double current_speed = qpg_VHC_speed(vhc) * ext_spd_factor; // mph
 	double speedstep = (current_speed - target_speed) / steps; // mph
 
 	if (fabs(speedstep - 0) < 0.001)
 		return; // do nothing, already at target speed
 
-	/* do the first step, and schedule the rest with triggers */
+	/* do the first step, and schedule the rest with time_triggers */
 
 	double new_speed = (current_speed - speedstep);
 	qps_VHC_speed(vhc, new_speed * int_spd_factor);
 	qps_VHC_maxSpeed(vhc, new_speed * int_spd_factor);
 	steps--;
 	int next_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
-	for(; steps > 0; steps--)
+	for (; steps > 0; steps--)
 	{
 		new_speed = new_speed - speedstep;
 		next_time = next_time + stepsize;
 		{
-			std::lock_guard<std::mutex> lock(trigger_mutex);
-			triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed * int_spd_factor)));
+			std::lock_guard<std::mutex> lock(time_trigger_mutex);
+			time_triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed * int_spd_factor)));
 		}
 	}
 }
