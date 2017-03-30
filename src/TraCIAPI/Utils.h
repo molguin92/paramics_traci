@@ -59,6 +59,9 @@ public:
 	}
 };
 
+uint32_t RGB2HEX(uint8_t r, uint8_t g, uint8_t b);
+void HEX2RGB(uint32_t hex, uint8_t& r, uint8_t& g, uint8_t& b);
+
 namespace traci_api
 {
 	void printToParamics(std::string text);
@@ -111,7 +114,7 @@ namespace traci_api
 	* @param[out] into Holder of the read value
 	* @return Whether a color was given (by data type)
 	*/
-	//bool  readTypeCheckingColor(tcpip::Storage& inputStorage, RGBColor& into);
+	bool  readTypeCheckingColor(tcpip::Storage& inputStorage, uint32_t& hex);
 
 
 	/** @brief Reads the value type and a 2D position, verifying the type

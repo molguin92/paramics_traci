@@ -195,11 +195,14 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 		slowDown(input);
 		break;
 
+	case STA_VHC_COLOUR:
+		changeColour(input);
+		break;
+
 	case STA_VHC_STOP:
 	case STA_VHC_RESUME:
 	case STA_VHC_CHANGETARGET:
 	case STA_VHC_SPEED:
-	case STA_VHC_COLOR:
 	case STA_VHC_CHANGEROUTEID:
 	case STA_VHC_CHANGEROUTE:
 	case STA_VHC_CHANGEEDGETTIME:
@@ -597,4 +600,23 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
 			triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed)));
 		}
 	}
+}
+
+void traci_api::VehicleManager::changeColour(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
+{
+	/* colour change message format
+	 * 
+	 * | vhc_id | ubyte | ubyte | ubyte | ubyte |
+	 *				R		G		B		A
+	*/
+
+	std::string vhcid = input.readString();
+	VEHICLE* vhc = findVehicle(std::stoi(vhcid));
+
+	uint32_t hex = 0x000000;
+	if (!readTypeCheckingColor(input, hex))
+		throw std::runtime_error("Malformed TraCI message");
+
+	/* change vehicle color */
+	qps_DRW_vehicleColour(vhc, hex);
 }

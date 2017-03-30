@@ -53,6 +53,22 @@ bool traci_api::readTypeCheckingStringList(tcpip::Storage& inputStorage, std::ve
 	return true;
 }
 
+bool traci_api::readTypeCheckingColor(tcpip::Storage& inputStorage, uint32_t& hex)
+{
+	if (inputStorage.readUnsignedByte() != VTYPE_COLOR)
+		return false;
+
+	uint8_t r, g, b; /* paramics doesn't use transparency :( */
+	r = inputStorage.readUnsignedByte();
+	g = inputStorage.readUnsignedByte();
+	b = inputStorage.readUnsignedByte();
+	inputStorage.readUnsignedByte(); /* discard the alpha channel */
+
+	hex = RGB2HEX(r, g, b);
+
+	return true;
+}
+
 bool traci_api::readTypeCheckingPosition2D(tcpip::Storage& inputStorage, Vector2D& into)
 {
 	if (inputStorage.readUnsignedByte() != VTYPE_POSITION)
@@ -82,4 +98,19 @@ bool traci_api::readTypeCheckingUnsignedByte(tcpip::Storage& inputStorage, uint8
 	}
 	into = inputStorage.readUnsignedByte();
 	return true;
+}
+
+uint32_t RGB2HEX(uint8_t r, uint8_t g, uint8_t b)
+{
+	/*
+	 * Paramics is weird and idiotic, and put the RGB in the reverse order.
+	 */
+	return ((b & 0xff) << 16) + ((g & 0xff) << 8) + (r & 0xff);
+}
+
+void HEX2RGB(uint32_t hex, uint8_t& r, uint8_t& g, uint8_t& b)
+{
+	r = hex & 0xff;
+	g = (hex >> 8) & 0xff;
+	b = (hex >> 16) & 0xff;
 }

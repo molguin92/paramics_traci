@@ -77,7 +77,7 @@ namespace traci_api
 		static const uint8_t STA_VHC_RESUME = 0x19;
 		static const uint8_t STA_VHC_CHANGETARGET = 0x31;
 		static const uint8_t STA_VHC_SPEED = 0x40;
-		static const uint8_t STA_VHC_COLOR = 0x45;
+		static const uint8_t STA_VHC_COLOUR = 0x45;
 		static const uint8_t STA_VHC_CHANGEROUTEID = 0x53;
 		static const uint8_t STA_VHC_CHANGEROUTE = 0x57;
 		static const uint8_t STA_VHC_CHANGEEDGETTIME = 0x58;
@@ -143,6 +143,7 @@ namespace traci_api
 		void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 		void changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 		void slowDown(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
+		void changeColour(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 
 		/* prevent alternative instantiation */
 		VehicleManager(VehicleManager const&) = delete;
