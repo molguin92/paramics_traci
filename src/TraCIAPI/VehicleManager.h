@@ -128,7 +128,6 @@ namespace traci_api
 		std::vector<std::string> getVehiclesInSim();
 
 		float getSpeed(int vid) throw(NoSuchVHCError);
-		void setSpeed(int vid, float speed) throw(NoSuchVHCError);
 
 		PositionalData getPosition(int vid) throw(NoSuchVHCError);
 		DimensionalData getDimensions(int vid) throw(NoSuchVHCError);

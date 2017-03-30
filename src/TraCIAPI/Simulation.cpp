@@ -140,23 +140,3 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 
 	return true;
 }
-
-void traci_api::Simulation::setVhcState(tcpip::Storage& state)
-{
-	uint8_t varID = state.readUnsignedByte();
-	int vID = std::stoi(state.readString());
-	uint8_t vType = state.readUnsignedByte();
-
-	switch(varID)
-	{
-	case SET_VHCSPEED:
-		if (vType != VTYPE_DOUBLE) throw std::runtime_error("Wrong VARTYPE for VHCSPEED.");
-		else
-			traci_api::VehicleManager::getInstance()->setSpeed(vID, static_cast<float>(state.readDouble()));
-
-		break;
-
-	default:
-		throw std::runtime_error("No such Vehicle State Variable: " + std::to_string(varID));
-	}
-}

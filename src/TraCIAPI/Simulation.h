@@ -43,7 +43,6 @@ namespace traci_api
 
 		int runSimulation(uint32_t target_time, tcpip::Storage& result_store);
 		bool getVariable(uint8_t varID, tcpip::Storage& result_store);
-		void setVhcState(tcpip::Storage& state);
 
 		float getCurrentTimeSeconds();
 		int getCurrentTimeMilliseconds();

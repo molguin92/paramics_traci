@@ -194,7 +194,6 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 	case STA_VHC_SLOWDWN:
 		slowDown(input);
 		break;
-
 	case STA_VHC_COLOUR:
 		changeColour(input);
 		break;
@@ -370,21 +369,12 @@ std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
 /**
  * \brief Requests the speed of a specific vehicle.
  * \param vid The ID of the vehicle.
- * \return The current speed.
+ * \return The current speed in m/s.
  */
 float traci_api::VehicleManager::getSpeed(int vid) throw(NoSuchVHCError)
 {
-	return qpg_VHC_speed(this->findVehicle(vid));
-}
-
-/**
- * \brief Sets the speed of a specific vehicle.
- * \param vid The ID of the vehicle
- * \param speed The new value for the speed.
- */
-void traci_api::VehicleManager::setSpeed(int vid, float speed) throw(NoSuchVHCError)
-{
-	qps_VHC_speed(this->findVehicle(vid), speed);
+	int mph = qpg_VHC_speed(this->findVehicle(vid)) * qpg_UTL_toExternalSpeed();
+	return MPH2MS(mph);
 }
 
 /**
@@ -574,21 +564,28 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
 		throw std::runtime_error("Malformed TraCI message");
 
 	/* calculate the number of timesteps required */
+	/* note that speed from traci comes in m/s, whereas Paramics uses MPH*/
 	int stepsize = qpg_CFG_timeStep() * 1000;
 	int steps = abs(duration / stepsize);
 
 	/* calculate the speed difference in each step */
-	double current_speed = qpg_VHC_speed(vhc);
-	double speedstep = (current_speed - target_speed) / steps;
+	float ext_spd_factor = qpg_UTL_toExternalSpeed();
+	float int_spd_factor = qpg_UTL_toInternalSpeed();
+
+	/* do calculations in mph */
+	target_speed = MS2MPH(target_speed);
+	
+	double current_speed = qpg_VHC_speed(vhc) * ext_spd_factor; // mph
+	double speedstep = (current_speed - target_speed) / steps; // mph
 
 	if (fabs(speedstep - 0) < 0.001)
 		return; // do nothing, already at target speed
 
 	/* do the first step, and schedule the rest with triggers */
 
-	double new_speed = current_speed - speedstep;
-	qps_VHC_speed(vhc, new_speed);
-	qps_VHC_maxSpeed(vhc, new_speed);
+	double new_speed = (current_speed - speedstep);
+	qps_VHC_speed(vhc, new_speed * int_spd_factor);
+	qps_VHC_maxSpeed(vhc, new_speed * int_spd_factor);
 	steps--;
 	int next_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
 	for(; steps > 0; steps--)
@@ -597,7 +594,7 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
 		next_time = next_time + stepsize;
 		{
 			std::lock_guard<std::mutex> lock(trigger_mutex);
-			triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed)));
+			triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed * int_spd_factor)));
 		}
 	}
 }
