@@ -29,33 +29,34 @@ def run():
     print("Server timestep: " + str(traci.simulation.getDeltaT()))
     for i in range(0, 1000):
         traci.simulationStep()
+        print(str(traci.simulation.getNetBoundary()))
         #print("Current SIM time: " + str(traci.simulation.getCurrentTime()))
         #print("N Departed vehicles: " + str(traci.simulation.getDepartedNumber()))
         #print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))
-        dep = traci.simulation.getDepartedIDList()
-        arr = traci.simulation.getArrivedIDList()
-        total_c = traci.vehicle.getIDCount()
-        total_l = traci.vehicle.getIDList()
-        total_l.sort()
-
-        for v in dep:
-            # traci.vehicle.changeLane(v, 5, 10000)
-            traci.vehicle.slowDown(v, 0, 20000)
-            traci.vehicle.setColor(v, (255, 0, 0, 0))
-            #traci.vehicle.setSpeed(v, 8.3)
-        
-        #print("Departed: " + str(dep))
-        #print("Arrived: " + str(arr))
-        #print("N Total: " + str(total_c))
-        #print("Total: " + str(total_l))
-
-        if len(total_l) > 0:
-            vhc = random.choice(total_l)
-            speed = traci.vehicle.getSpeed(vhc)
-            position = traci.vehicle.getPosition(vhc)
-
-            print("Vehicle " + vhc + "'s speed: " + str(speed))
-            print("Vehicle " + vhc + "'s speed: " + str(position))
+##        dep = traci.simulation.getDepartedIDList()
+##        arr = traci.simulation.getArrivedIDList()
+##        total_c = traci.vehicle.getIDCount()
+##        total_l = traci.vehicle.getIDList()
+##        total_l.sort()
+##
+##        for v in dep:
+##            # traci.vehicle.changeLane(v, 5, 10000)
+##            traci.vehicle.slowDown(v, 0, 20000)
+##            traci.vehicle.setColor(v, (255, 0, 0, 0))
+##            #traci.vehicle.setSpeed(v, 8.3)
+##        
+##        #print("Departed: " + str(dep))
+##        #print("Arrived: " + str(arr))
+##        #print("N Total: " + str(total_c))
+##        #print("Total: " + str(total_l))
+##
+##        if len(total_l) > 0:
+##            vhc = random.choice(total_l)
+##            speed = traci.vehicle.getSpeed(vhc)
+##            position = traci.vehicle.getPosition(vhc)
+##
+##            print("Vehicle " + vhc + "'s speed: " + str(speed))
+##            print("Vehicle " + vhc + "'s speed: " + str(position))
         
         time.sleep(0.1)
     traci.close()

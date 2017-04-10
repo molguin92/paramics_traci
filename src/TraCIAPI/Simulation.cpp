@@ -29,6 +29,13 @@ int traci_api::Simulation::getCurrentTimeMilliseconds()
 	return static_cast<int>(this->getCurrentTimeSeconds() * 1000);
 }
 
+BoundaryBox traci_api::Simulation::getNetworkBoundaries()
+{
+	float llx, lly, urx, ury;
+	qpg_POS_network(&llx, &lly, &urx, &ury);
+	return BoundaryBox(llx, lly, urx, ury);
+}
+
 traci_api::Simulation* traci_api::Simulation::getInstance()
 {
 	if (instance == nullptr)
@@ -133,6 +140,16 @@ bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_st
 	case GET_TIMESTEPSZ:
 		result_store.writeUnsignedByte(VTYPE_INT);
 		result_store.writeInt(static_cast<int>(qpg_CFG_timeStep() * 1000.0f));
+		break;
+	case GET_NETWORKBNDS:
+		result_store.writeUnsignedByte(VTYPE_BOUNDBOX);
+		{
+			BoundaryBox bb = this->getNetworkBoundaries();
+			result_store.writeDouble(bb.lowerL.x);
+			result_store.writeDouble(bb.lowerL.y);
+			result_store.writeDouble(bb.upperR.x);
+			result_store.writeDouble(bb.upperR.y);
+		}
 		break;
 	default:
 		return false;

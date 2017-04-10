@@ -13,10 +13,11 @@ void traci_api::SpeedChangeTrigger::handleTrigger()
 
 void traci_api::VehicleStopTrigger::handleTrigger()
 {
-	/* check if car is in correct road */
-	if (lnk != qpg_VHC_link(vhc))
+	/* check if car is in correct road and lane */
+	if (!(lnk == qpg_VHC_link(vhc) && lane == qpg_VHC_lane(vhc)))
 		return;
 
-	qps_VHC_incident(vhc, -1, "CMD_STOP", -1, lane, position, duration, -1, -1);
+	// TODO: FInish
+
 	done = true;
 }

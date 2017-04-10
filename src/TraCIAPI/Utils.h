@@ -33,6 +33,17 @@ public:
 	}
 };
 
+class BoundaryBox
+{
+public: 
+	Vector2D lowerL;
+	Vector2D upperR;
+
+	BoundaryBox(double ll_x, double ll_y, double ur_x, double ur_y) : lowerL(ll_x, ll_y), upperR(ur_x, ur_y)
+	{
+	}
+};
+
 class DimensionalData
 {
 public:

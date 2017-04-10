@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "storage.h"
 #include <mutex>
+#include "Utils.h"
 
 namespace traci_api
 {
@@ -29,8 +30,8 @@ namespace traci_api
 		// simulation timestep size
 		static const uint8_t GET_TIMESTEPSZ = 0x7b;
 
-		// set vehicle speed
-		static const uint8_t SET_VHCSPEED = 0x40;
+		// network boundary box
+		static const uint8_t GET_NETWORKBNDS = 0x7c;
 
 		//Simulation();
 		~Simulation();
@@ -46,6 +47,8 @@ namespace traci_api
 
 		float getCurrentTimeSeconds();
 		int getCurrentTimeMilliseconds();
+
+		BoundaryBox getNetworkBoundaries();
 
 	private:
 
