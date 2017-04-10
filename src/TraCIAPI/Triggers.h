@@ -52,7 +52,7 @@ namespace traci_api
 		bool repeat() override { return false; }
 	};
 
-	class VehicleStopEvent : public BaseTrigger
+	class VehicleStopTrigger : public BaseTrigger
 	{
 	public:
 		VEHICLE* vhc;
@@ -63,14 +63,14 @@ namespace traci_api
 
 		bool done;
 
-		VehicleStopEvent(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false)
+		VehicleStopTrigger(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false)
 		{
 		}
 
 		void handleTrigger() override;
 		bool repeat() override { return !done; }
 
-		~VehicleStopEvent() override
+		~VehicleStopTrigger() override
 		{
 		};
 	};

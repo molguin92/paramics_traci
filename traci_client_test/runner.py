@@ -40,7 +40,7 @@ def run():
 
         for v in dep:
             # traci.vehicle.changeLane(v, 5, 10000)
-            traci.vehicle.slowDown(v, 8.3, 1000)
+            traci.vehicle.slowDown(v, 0, 20000)
             traci.vehicle.setColor(v, (255, 0, 0, 0))
             #traci.vehicle.setSpeed(v, 8.3)
         

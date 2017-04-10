@@ -9,6 +9,7 @@
 
 namespace traci_api
 {
+	class NoSuchLNKError;
 	class NoSuchVHCError;
 
 	class VehicleManager
@@ -139,7 +140,7 @@ namespace traci_api
 		std::string getVehicleType(int vid) throw(NoSuchVHCError);
 
 
-		void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
+		void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error);
 		void changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 		void slowDown(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 		void changeColour(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
@@ -191,4 +192,19 @@ namespace traci_api
 		{
 		}
 	};
+
+	class NoSuchLNKError: public std::runtime_error
+	{
+	public:
+		explicit NoSuchLNKError(const std::string& _Message)
+			: runtime_error(_Message)
+		{
+		}
+
+		explicit NoSuchLNKError(const char* _Message)
+			: runtime_error(_Message)
+		{
+		}
+	};
+
 }
