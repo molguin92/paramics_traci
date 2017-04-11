@@ -394,7 +394,7 @@ std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
 float traci_api::VehicleManager::getSpeed(int vid) throw(NoSuchVHCError)
 {
     double mph = qpg_VHC_speed(this->findVehicle(vid)) * qpg_UTL_toExternalSpeed();
-    return MPH2MS(mph);
+    return KPH2MS(mph);
 }
 
 /**
@@ -678,11 +678,11 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
     float ext_spd_factor = qpg_UTL_toExternalSpeed();
     float int_spd_factor = qpg_UTL_toInternalSpeed();
 
-    /* do calculations in mph */
-    target_speed = MS2MPH(target_speed);
+    /* do calculations in Kph */
+    target_speed = MS2KPH(target_speed);
 
-    double current_speed = qpg_VHC_speed(vhc) * ext_spd_factor; // mph
-    double speedstep = (current_speed - target_speed) / steps; // mph
+    double current_speed = qpg_VHC_speed(vhc) * ext_spd_factor; // kph
+    double speedstep = (current_speed - target_speed) / steps; // kph
 
     if (fabs(speedstep - 0) < NUMERICAL_EPS)
         return; // do nothing, already at target speed
@@ -691,7 +691,7 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
 
     double new_speed = (current_speed - speedstep);
     qps_VHC_speed(vhc, new_speed * int_spd_factor);
-    //qps_VHC_maxSpeed(vhc, new_speed * int_spd_factor); //TODO: Fix - maxspeed shouldn't be set 
+    //qps_VHC_maxSpeed(vhc, new_speed * int_spd_factor);
     steps--;
     int next_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
     for (; steps > 0; steps--)
@@ -738,6 +738,6 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchVHCE
     if (!readTypeCheckingDouble(input, speed))
         throw std::runtime_error("Malformed TraCI message");
 
-    /* speed is in m/s -> convert it to mph and pass to paramics */
-    qps_VHC_speed(vhc, MS2MPH(speed) * qpg_UTL_toInternalSpeed());
+    /* speed is in m/s -> convert to kph and pass to paramics */
+    qps_VHC_speed(vhc, MS2KPH(speed) * qpg_UTL_toInternalSpeed());
 }

@@ -58,11 +58,12 @@ namespace traci_api
         VEHICLE* vhc;
         LINK* lnk;
         double position;
+        double sposition;
         int lane;
         double duration;
         bool done;
 
-        VehicleStopTrigger(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false)
+        VehicleStopTrigger(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration, double sposition) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false), sposition(sposition)
         {
         }
 

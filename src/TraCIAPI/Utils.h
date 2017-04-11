@@ -62,8 +62,8 @@ public:
 uint32_t RGB2HEX(uint8_t r, uint8_t g, uint8_t b);
 void HEX2RGB(uint32_t hex, uint8_t& r, uint8_t& g, uint8_t& b);
 
-double MPH2MS(double mph);
-double MS2MPH(double ms);
+double KPH2MS(double kph);
+double MS2KPH(double ms);
 
 namespace traci_api
 {
