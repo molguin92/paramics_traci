@@ -48,8 +48,6 @@ namespace traci_api
 		float getCurrentTimeSeconds();
 		int getCurrentTimeMilliseconds();
 
-		BoundaryBox getNetworkBoundaries();
-
 	private:
 
 		static Simulation* instance;
