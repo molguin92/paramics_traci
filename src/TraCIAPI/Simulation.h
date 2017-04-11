@@ -5,54 +5,51 @@
 
 namespace traci_api
 {
+    class Simulation
+    {
+    public:
 
+        // Command constants:
+        // simulation time
+        static const uint8_t GET_SIMTIME = 0x70;
 
-	class Simulation
-	{
-	public:
+        // loaded vehicles
+        static const uint8_t GET_LOADEDVHC_CNT = 0x71;
+        static const uint8_t GET_LOADEDVHC_LST = 0x72;
 
-		// Command constants:
-		// simulation time
-		static const uint8_t GET_SIMTIME = 0x70;
+        // departed vehicles
+        static const uint8_t GET_DEPARTEDVHC_CNT = 0x73;
+        static const uint8_t GET_DEPARTEDVHC_LST = 0x74;
 
-		// loaded vehicles
-		static const uint8_t GET_LOADEDVHC_CNT = 0x71;
-		static const uint8_t GET_LOADEDVHC_LST = 0x72;
+        // arrived vehicles
+        static const uint8_t GET_ARRIVEDVHC_CNT = 0x79;
+        static const uint8_t GET_ARRIVEDVHC_LST = 0x7a;
 
-		// departed vehicles
-		static const uint8_t GET_DEPARTEDVHC_CNT = 0x73;
-		static const uint8_t GET_DEPARTEDVHC_LST = 0x74;
+        // simulation timestep size
+        static const uint8_t GET_TIMESTEPSZ = 0x7b;
 
-		// arrived vehicles
-		static const uint8_t GET_ARRIVEDVHC_CNT = 0x79;
-		static const uint8_t GET_ARRIVEDVHC_LST = 0x7a;
+        // network boundary box
+        static const uint8_t GET_NETWORKBNDS = 0x7c;
 
-		// simulation timestep size
-		static const uint8_t GET_TIMESTEPSZ = 0x7b;
+        //Simulation();
+        ~Simulation();
+        // prevent alternative instantiation
+        Simulation(Simulation const&) = delete;
+        void operator =(Simulation const&) = delete;
 
-		// network boundary box
-		static const uint8_t GET_NETWORKBNDS = 0x7c;
+        static Simulation* getInstance();
+        static void deleteInstance();
 
-		//Simulation();
-		~Simulation();
-		// prevent alternative instantiation
-		Simulation(Simulation const&) = delete;
-		void operator =(Simulation const&) = delete;
+        int runSimulation(uint32_t target_time, tcpip::Storage& result_store);
+        bool getVariable(uint8_t varID, tcpip::Storage& result_store);
 
-		static Simulation* getInstance();
-		static void deleteInstance();
+        float getCurrentTimeSeconds();
+        int getCurrentTimeMilliseconds();
 
-		int runSimulation(uint32_t target_time, tcpip::Storage& result_store);
-		bool getVariable(uint8_t varID, tcpip::Storage& result_store);
+    private:
 
-		float getCurrentTimeSeconds();
-		int getCurrentTimeMilliseconds();
-
-	private:
-
-		static Simulation* instance;
-		Simulation();
-		int stepcnt;
-	};
+        static Simulation* instance;
+        Simulation();
+        int stepcnt;
+    };
 }
-

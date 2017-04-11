@@ -4,74 +4,73 @@
 
 namespace traci_api
 {
-	/* Triggered events (multiple causes: time, changing lanes, etc */
-	class BaseTrigger
-	{
-	public:
-		virtual ~BaseTrigger()
-		{
-		};
-		virtual void handleTrigger() = 0;
-		virtual bool repeat() = 0;
-	};
+    /* Triggered events (multiple causes: time, changing lanes, etc */
+    class BaseTrigger
+    {
+    public:
+        virtual ~BaseTrigger()
+        {
+        };
+        virtual void handleTrigger() = 0;
+        virtual bool repeat() = 0;
+    };
 
-	class ResetLaneRangeTrigger : public BaseTrigger
-	{
-	public:
-		VEHICLE* vehicle;
-		int l_lane;
-		int h_lane;
+    class ResetLaneRangeTrigger : public BaseTrigger
+    {
+    public:
+        VEHICLE* vehicle;
+        int l_lane;
+        int h_lane;
 
-		ResetLaneRangeTrigger(VEHICLE* vehicle, int l_lane, int h_lane) : vehicle(vehicle), l_lane(l_lane), h_lane(h_lane)
-		{
-		}
+        ResetLaneRangeTrigger(VEHICLE* vehicle, int l_lane, int h_lane) : vehicle(vehicle), l_lane(l_lane), h_lane(h_lane)
+        {
+        }
 
-		~ResetLaneRangeTrigger() override
-		{
-		};
+        ~ResetLaneRangeTrigger() override
+        {
+        };
 
-		void handleTrigger() override;
-		bool repeat() override { return false; }
-	};
+        void handleTrigger() override;
+        bool repeat() override { return false; }
+    };
 
-	class SpeedChangeTrigger : public BaseTrigger
-	{
-		VEHICLE* vehicle;
-		double speed;
-	public:
-		explicit SpeedChangeTrigger(VEHICLE* vehicle, double speed)
-			: vehicle(vehicle), speed(speed)
-		{
-		}
+    class SpeedChangeTrigger : public BaseTrigger
+    {
+        VEHICLE* vehicle;
+        double speed;
+    public:
+        explicit SpeedChangeTrigger(VEHICLE* vehicle, double speed)
+            : vehicle(vehicle), speed(speed)
+        {
+        }
 
-		~SpeedChangeTrigger() override
-		{
-		};
+        ~SpeedChangeTrigger() override
+        {
+        };
 
-		void handleTrigger() override;
-		bool repeat() override { return false; }
-	};
+        void handleTrigger() override;
+        bool repeat() override { return false; }
+    };
 
-	class VehicleStopTrigger : public BaseTrigger
-	{
-	public:
-		VEHICLE* vhc;
-		LINK* lnk;
-		double position;
-		int lane;
-		double duration;
+    class VehicleStopTrigger : public BaseTrigger
+    {
+    public:
+        VEHICLE* vhc;
+        LINK* lnk;
+        double position;
+        int lane;
+        double duration;
+        bool done;
 
-		bool done;
+        VehicleStopTrigger(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false)
+        {
+        }
 
-		VehicleStopTrigger(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false)
-		{
-		}
+        void handleTrigger() override;
+        bool repeat() override { return !done; }
 
-		void handleTrigger() override;
-		bool repeat() override { return !done; }
-
-		~VehicleStopTrigger() override
-		{
-		};
-	};
+        ~VehicleStopTrigger() override
+        {
+        };
+    };
 }
