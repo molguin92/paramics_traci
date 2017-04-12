@@ -76,6 +76,8 @@ void qpx_NET_postOpen(void)
     //for (int i = 1; i <= lnks; i++)
     //    qps_GUI_printf(qpg_LNK_name(qpg_NET_linkByIndex(i)));
 
+    qps_GUI_printf(&(std::to_string(qpg_UTL_toExternalSpeed()))[0]);
+
     qps_GUI_singleStep(PTRUE);
     traci_api::printToParamics("TraCI support enabled");
     runner = new std::thread(runner_fn);

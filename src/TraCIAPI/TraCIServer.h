@@ -22,6 +22,8 @@ namespace traci_api
         bool running;
         int port;
 
+        
+
         void waitForCommands();
         void cmdSimStep(int target_time);
         void cmdGetSimVar(uint8_t simvar);
@@ -36,7 +38,10 @@ namespace traci_api
 
         void writeToOutputWithSize(tcpip::Storage& storage);
 
+        void handleSubscriptions();
+
         //commands
         void cmdShutDown();
     };
+
 }

@@ -2,4 +2,6 @@
 <NetworkSearchHistory>
     <Item Index="1" Value="FIND: 90"/>
     <Item Index="2" Value="GOTO: vehicle 90"/>
+    <Item Index="3" Value="FIND: 116"/>
+    <Item Index="4" Value="GOTO: vehicle 116"/>
 </NetworkSearchHistory>

@@ -114,6 +114,7 @@ namespace traci_api
         void reset();
 
         void getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
+        void getVehicleVariable(std::string vid, uint8_t varID, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
         void setVehicleState(tcpip::Storage& input);
 
         void vehicleTimeStep(VEHICLE* vehicle);
@@ -129,16 +130,16 @@ namespace traci_api
         int currentVehicleCount();
         std::vector<std::string> getVehiclesInSim();
 
-        float getSpeed(int vid) throw(NoSuchVHCError);
+        float getSpeed(std::string vid) throw(NoSuchVHCError);
 
-        PositionalData getPosition(int vid) throw(NoSuchVHCError);
-        DimensionalData getDimensions(int vid) throw(NoSuchVHCError);
+        PositionalData getPosition(std::string vid) throw(NoSuchVHCError);
+        DimensionalData getDimensions(std::string vid) throw(NoSuchVHCError);
 
-        std::string getRoadID(int vid) throw(NoSuchVHCError);
-        std::string getLaneID(int vid) throw(NoSuchVHCError);
-        int getLaneIndex(int vid) throw(NoSuchVHCError);
+        std::string getRoadID(std::string vid) throw(NoSuchVHCError);
+        std::string getLaneID(std::string vid) throw(NoSuchVHCError);
+        int getLaneIndex(std::string vid) throw(NoSuchVHCError);
 
-        std::string getVehicleType(int vid) throw(NoSuchVHCError);
+        std::string getVehicleType(std::string vid) throw(NoSuchVHCError);
 
 
         void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error);
@@ -146,6 +147,7 @@ namespace traci_api
         void slowDown(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
         void changeColour(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
         void setSpeed(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
+        void setMaxSpeed(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
 
         /* prevent alternative instantiation */
         VehicleManager(VehicleManager const&) = delete;
@@ -153,6 +155,9 @@ namespace traci_api
 
         void handleDelayedTriggers();
         void handleLinkEnterTriggers(VEHICLE* vhc, LINK* lnk);
+
+        VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
+        VEHICLE* findVehicle(std::string vid) throw(NoSuchVHCError);
 
     private:
 
@@ -176,7 +181,5 @@ namespace traci_api
         std::unordered_map<int, VEHICLE*> vehicles_in_sim;
         std::vector<VEHICLE*> departed_vehicles;
         std::vector<VEHICLE*> arrived_vehicles;
-
-        VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
     };
 }

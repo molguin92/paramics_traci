@@ -37,25 +37,20 @@ void traci_api::VehicleManager::reset()
 void traci_api::VehicleManager::getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError)
 {
     uint8_t varID = input.readUnsignedByte();
-    int vid;
-    std::string s_vid;
-
-    if (varID != VAR_VHC_LIST && varID != VAR_VHC_COUNT)
-    {
-        s_vid = input.readString();
-        vid = std::stoi(s_vid);
-    }
-    else
-    {
-        s_vid = "";
-        vid = 0;
-    }
+    std::string s_vid = input.readString();
 
     //tcpip::Storage output;
     output.writeUnsignedByte(RES_GETVHCVAR);
     output.writeUnsignedByte(varID);
     output.writeString(s_vid);
 
+    getVehicleVariable(s_vid, varID, output);
+
+    //return output;
+}
+
+void traci_api::VehicleManager::getVehicleVariable(std::string vid, uint8_t varID, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError)
+{
     switch (varID)
     {
     case VAR_VHC_LIST:
@@ -179,8 +174,6 @@ void traci_api::VehicleManager::getVehicleVariable(tcpip::Storage& input, tcpip:
     default:
         throw std::runtime_error("No such variable: " + std::to_string(varID));
     }
-
-    //return output;
 }
 
 void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
@@ -202,6 +195,10 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
         setSpeed(input);
         break;
 
+    case STA_VHC_MAXSPEED:
+        setMaxSpeed(input);
+        break;
+
     case STA_VHC_STOP:
     case STA_VHC_RESUME:
     case STA_VHC_CHANGETARGET:
@@ -214,7 +211,6 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
     case STA_VHC_REROUTE:
     case STA_VHC_SPEEDMODE:
     case STA_VHC_SPEEDFACTOR:
-    case STA_VHC_MAXSPEED:
     case STA_VHC_CHANGELANEMODE:
     case STA_VHC_ADD:
     case STA_VHC_ADDFULL:
@@ -265,6 +261,11 @@ VEHICLE* traci_api::VehicleManager::findVehicle(int vid) throw(NoSuchVHCError)
         throw NoSuchVHCError(std::to_string(vid));
 
     return iterator->second;
+}
+
+VEHICLE* traci_api::VehicleManager::findVehicle(std::string vid) throw(NoSuchVHCError)
+{
+    return findVehicle(std::stoi(vid));
 }
 
 /**
@@ -392,10 +393,11 @@ std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
  * \param vid The ID of the vehicle.
  * \return The current speed in m/s.
  */
-float traci_api::VehicleManager::getSpeed(int vid) throw(NoSuchVHCError)
+float traci_api::VehicleManager::getSpeed(std::string vid) throw(NoSuchVHCError)
 {
-    double mph = qpg_VHC_speed(this->findVehicle(vid)) * qpg_UTL_toExternalSpeed();
-    return KPH2MS(mph);
+    //double mph = qpg_VHC_speed(this->findVehicle(vid)) * qpg_UTL_toExternalSpeed();
+    //return KPH2MS(mph);
+    return qpg_VHC_speed(findVehicle(vid));
 }
 
 /**
@@ -403,7 +405,7 @@ float traci_api::VehicleManager::getSpeed(int vid) throw(NoSuchVHCError)
  * \param vid The ID of the vehicle.
  * \return A Vector3D object representing the position of the vehicle.
  */
-PositionalData traci_api::VehicleManager::getPosition(int vid) throw(NoSuchVHCError)
+PositionalData traci_api::VehicleManager::getPosition(std::string vid) throw(NoSuchVHCError)
 {
     float x;
     float y;
@@ -419,13 +421,13 @@ PositionalData traci_api::VehicleManager::getPosition(int vid) throw(NoSuchVHCEr
     return PositionalData(x, y, z, b, g);
 }
 
-DimensionalData traci_api::VehicleManager::getDimensions(int vid) throw(NoSuchVHCError)
+DimensionalData traci_api::VehicleManager::getDimensions(std::string vid) throw(NoSuchVHCError)
 {
     VEHICLE* vhc = this->findVehicle(vid);
     return DimensionalData(qpg_VHC_height(vhc), qpg_VHC_length(vhc), qpg_VHC_width(vhc));
 }
 
-std::string traci_api::VehicleManager::getRoadID(int vid) throw(NoSuchVHCError)
+std::string traci_api::VehicleManager::getRoadID(std::string vid) throw(NoSuchVHCError)
 {
     VEHICLE* vhc = this->findVehicle(vid);
     LINK* lnk = qpg_VHC_link(vhc);
@@ -433,7 +435,7 @@ std::string traci_api::VehicleManager::getRoadID(int vid) throw(NoSuchVHCError)
     return qpg_LNK_name(lnk);
 }
 
-std::string traci_api::VehicleManager::getLaneID(int vid) throw(NoSuchVHCError)
+std::string traci_api::VehicleManager::getLaneID(std::string vid) throw(NoSuchVHCError)
 {
     VEHICLE* vhc = this->findVehicle(vid);
     LINK* lnk = qpg_VHC_link(vhc);
@@ -441,126 +443,126 @@ std::string traci_api::VehicleManager::getLaneID(int vid) throw(NoSuchVHCError)
     return std::string(qpg_LNK_name(lnk)) + "." + std::to_string(qpg_VHC_lane(vhc));
 }
 
-int traci_api::VehicleManager::getLaneIndex(int vid) throw(NoSuchVHCError)
+int traci_api::VehicleManager::getLaneIndex(std::string vid) throw(NoSuchVHCError)
 {
     return qpg_VHC_lane(this->findVehicle(vid));
 }
 
-std::string traci_api::VehicleManager::getVehicleType(int vid) throw(NoSuchVHCError)
+std::string traci_api::VehicleManager::getVehicleType(std::string vid) throw(NoSuchVHCError)
 {
     return std::to_string(qpg_VHC_type(this->findVehicle(vid)));
 }
 
 void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error)
 {
-    /* stop message format
-     * 
-     * | type: compound | byte
-     * | items: 4 to 7	| int
-     * ------------------
-     * | type: string	| byte
-     * | edge id		| string
-     * ------------------
-     * | type: double	| byte
-     * | end position	| double
-     * ------------------
-     * | type: byte		| byte
-     * | lane index		| byte
-     * ------------------
-     * | type: int		| byte
-     * | duration(ms)	| int
-     * -----optional-----
-     * | type:  byte	| byte
-     * | stopflags		| byte 
-     * /
+    ///* stop message format
+    // * 
+    // * | type: compound | byte
+    // * | items: 4 to 7	| int
+    // * ------------------
+    // * | type: string	| byte
+    // * | edge id		| string
+    // * ------------------
+    // * | type: double	| byte
+    // * | end position	| double
+    // * ------------------
+    // * | type: byte		| byte
+    // * | lane index		| byte
+    // * ------------------
+    // * | type: int		| byte
+    // * | duration(ms)	| int
+    // * -----optional-----
+    // * | type:  byte	| byte
+    // * | stopflags		| byte 
+    // * /
 
-    /* extract message information and check types */
-    std::string vhcid = input.readString();
+    ///* extract message information and check types */
+    //std::string vhcid = input.readString();
 
-    if (input.readUnsignedByte() != VTYPE_COMPOUND)
-        throw std::runtime_error("Malformed TraCI message");
+    //if (input.readUnsignedByte() != VTYPE_COMPOUND)
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    int c_items = input.readInt();
-    if (c_items < 4 || c_items > 7)
-        throw std::runtime_error("Malformed TraCI message");
+    //int c_items = input.readInt();
+    //if (c_items < 4 || c_items > 7)
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    std::string roadID = "";
-    if (!readTypeCheckingString(input, roadID))
-        throw std::runtime_error("Malformed TraCI message");
+    //std::string roadID = "";
+    //if (!readTypeCheckingString(input, roadID))
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    double position = 0.0;
-    if (!readTypeCheckingDouble(input, position))
-        throw std::runtime_error("Malformed TraCI message");
+    //double position = 0.0;
+    //if (!readTypeCheckingDouble(input, position))
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    int8_t lane = 0;
-    if (!readTypeCheckingByte(input, lane))
-        throw std::runtime_error("Malformed TraCI message");
+    //int8_t lane = 0;
+    //if (!readTypeCheckingByte(input, lane))
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    int duration = -1;
-    if (!readTypeCheckingInt(input, duration))
-        throw std::runtime_error("Malformed TraCI message");
+    //int duration = -1;
+    //if (!readTypeCheckingInt(input, duration))
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    /*
-     * optional flags:
-     * 
-     *	1 : parking
-     *	2 : triggered
-     *	4 : containerTriggered
-     *	8 : busStop (Edge ID is re-purposed as busStop ID)
-     *	16 : containerStop (Edge ID is re-purposed as containerStop ID)
-     *	32 : chargingStation (Edge ID is re-purposed as chargingStation ID)
-     *	64 : parkingArea (Edge ID is re-purposed as parkingArea ID)
-     */
+    ///*
+    // * optional flags:
+    // * 
+    // *	1 : parking
+    // *	2 : triggered
+    // *	4 : containerTriggered
+    // *	8 : busStop (Edge ID is re-purposed as busStop ID)
+    // *	16 : containerStop (Edge ID is re-purposed as containerStop ID)
+    // *	32 : chargingStation (Edge ID is re-purposed as chargingStation ID)
+    // *	64 : parkingArea (Edge ID is re-purposed as parkingArea ID)
+    // */
 
-    bool parking = false,
-        triggered = false,
-        contTriggered = false,
-        busStop = false,
-        contStop = false,
-        chargStation = false,
-        parkingArea = false;
+    //bool parking = false,
+    //    triggered = false,
+    //    contTriggered = false,
+    //    busStop = false,
+    //    contStop = false,
+    //    chargStation = false,
+    //    parkingArea = false;
 
-    if (c_items >= 5) // message includes flags
-    {
-        int8_t flags = 0;
-        if (!readTypeCheckingByte(input, flags))
-            throw std::runtime_error("Malformed TraCI message");
+    //if (c_items >= 5) // message includes flags
+    //{
+    //    int8_t flags = 0;
+    //    if (!readTypeCheckingByte(input, flags))
+    //        throw std::runtime_error("Malformed TraCI message");
 
-        parking = ((flags & 1) != 0);
-        triggered = ((flags & 2) != 0);
-        contTriggered = ((flags & 4) != 0);
-        busStop = ((flags & 8) != 0);
-        contStop = ((flags & 16) != 0);
-        chargStation = ((flags & 32) != 0);
-        parkingArea = ((flags & 64) != 0);
-    }
+    //    parking = ((flags & 1) != 0);
+    //    triggered = ((flags & 2) != 0);
+    //    contTriggered = ((flags & 4) != 0);
+    //    busStop = ((flags & 8) != 0);
+    //    contStop = ((flags & 16) != 0);
+    //    chargStation = ((flags & 32) != 0);
+    //    parkingArea = ((flags & 64) != 0);
+    //}
 
-    double start_position = position - POSITION_EPS;
-    if (c_items >= 6 && !readTypeCheckingDouble(input, start_position))
-        throw std::runtime_error("Malformed TraCI message");
+    //double start_position = position - POSITION_EPS;
+    //if (c_items >= 6 && !readTypeCheckingDouble(input, start_position))
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    int endtime = -1;
-    if (c_items == 7 && !readTypeCheckingInt(input, endtime))
-        throw std::runtime_error("Malformed TraCI message");
+    //int endtime = -1;
+    //if (c_items == 7 && !readTypeCheckingInt(input, endtime))
+    //    throw std::runtime_error("Malformed TraCI message");
 
-    // TODO: special behavior for bus and container stops
+    //// TODO: special behavior for bus and container stops
 
-    // check validity of parameters
-    VEHICLE* vhc = findVehicle(std::stoi(vhcid));
+    //// check validity of parameters
+    //VEHICLE* vhc = findVehicle(std::stoi(vhcid));
 
-    LINK* lnk = qpg_NET_link(&roadID[0u]);
-    if (!lnk)
-        throw NoSuchLNKError(roadID);
+    //LINK* lnk = qpg_NET_link(&roadID[0u]);
+    //if (!lnk)
+    //    throw NoSuchLNKError(roadID);
 
-    if (start_position < 0)
-        throw std::runtime_error("Position should be greater than 0");
+    //if (start_position < 0)
+    //    throw std::runtime_error("Position should be greater than 0");
 
-    if (position < start_position)
-        throw std::runtime_error("Final position should be greater than start position");
+    //if (position < start_position)
+    //    throw std::runtime_error("Final position should be greater than start position");
 
-    int n_lanes = qpg_LNK_lanes(lnk);
-    if (lane < 1 || lane > n_lanes)
-        throw std::runtime_error("Lane index outside the range for this road. Number of lanes: " + std::to_string(n_lanes));
+    //int n_lanes = qpg_LNK_lanes(lnk);
+    //if (lane < 1 || lane > n_lanes)
+    //    throw std::runtime_error("Lane index outside the range for this road. Number of lanes: " + std::to_string(n_lanes));
 }
 
 void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
@@ -671,19 +673,15 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
         throw std::runtime_error("Malformed TraCI message");
 
     /* calculate the number of timesteps required */
-    /* note that speed from traci comes in m/s, whereas Paramics uses MPH*/
+    /* note that speed from traci comes in m/s */
     int stepsize = qpg_CFG_timeStep() * 1000;
     int steps = abs(duration / stepsize);
 
     /* calculate the speed difference in each step */
-    float ext_spd_factor = qpg_UTL_toExternalSpeed();
-    float int_spd_factor = qpg_UTL_toInternalSpeed();
+    /* do calculations in m/s */
 
-    /* do calculations in Kph */
-    target_speed = MS2KPH(target_speed);
-
-    double current_speed = qpg_VHC_speed(vhc) * ext_spd_factor; // kph
-    double speedstep = (current_speed - target_speed) / steps; // kph
+    double current_speed = qpg_VHC_speed(vhc); // m/s
+    double speedstep = (current_speed - target_speed) / steps; // m/s
 
     if (fabs(speedstep - 0) < NUMERICAL_EPS)
         return; // do nothing, already at target speed
@@ -691,7 +689,7 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
     /* do the first step, and schedule the rest with time_triggers */
 
     double new_speed = (current_speed - speedstep);
-    qps_VHC_speed(vhc, new_speed * int_spd_factor);
+    qps_VHC_speed(vhc, new_speed);
     //qps_VHC_maxSpeed(vhc, new_speed * int_spd_factor);
     steps--;
     int next_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
@@ -701,7 +699,7 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
         next_time = next_time + stepsize;
         {
             std::lock_guard<std::mutex> lock(time_trigger_mutex);
-            time_triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed * int_spd_factor)));
+            time_triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed)));
         }
     }
 }
@@ -739,6 +737,24 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchVHCE
     if (!readTypeCheckingDouble(input, speed))
         throw std::runtime_error("Malformed TraCI message");
 
-    /* speed is in m/s -> convert to kph and pass to paramics */
-    qps_VHC_speed(vhc, MS2KPH(speed) * qpg_UTL_toInternalSpeed());
+    /* speed is in m/s */
+    qps_VHC_speed(vhc, speed);
+}
+
+void traci_api::VehicleManager::setMaxSpeed(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
+{
+    /* set maxspeed message format
+    * | string | ubyte | double |
+    *   vhc_id	  Type	  speed
+    */
+
+    std::string vhcid = input.readString();
+    VEHICLE* vhc = findVehicle(std::stoi(vhcid));
+
+    double speed = 0;
+    if (!readTypeCheckingDouble(input, speed))
+        throw std::runtime_error("Malformed TraCI message");
+
+    /* speed is in m/s */
+    qps_VHC_maxSpeed(vhc, speed);
 }

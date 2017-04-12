@@ -114,14 +114,6 @@ void HEX2RGB(uint32_t hex, uint8_t& r, uint8_t& g, uint8_t& b)
     g = (hex >> 8) & 0xff;
     b = (hex >> 16) & 0xff;
 }
-double KPH2MS(double kph)
-{
-    return kph * (36.0 / 10.0);
-}
 
-double MS2KPH(double ms)
-{
-    return ms * (10.0 / 36.0);
-}
 
 

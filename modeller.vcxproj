@@ -154,6 +154,7 @@
     <ClCompile Include="src\shawn\storage.cpp" />
     <ClCompile Include="src\TraCIAPI\Network.cpp" />
     <ClCompile Include="src\TraCIAPI\Simulation.cpp" />
+    <ClCompile Include="src\TraCIAPI\Subscriptions.cpp" />
     <ClCompile Include="src\TraCIAPI\TraCIServer.cpp" />
     <ClCompile Include="src\TraCIAPI\Triggers.cpp" />
     <ClCompile Include="src\TraCIAPI\Utils.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="src\TraCIAPI\Exceptions.h" />
     <ClInclude Include="src\TraCIAPI\Network.h" />
     <ClInclude Include="src\TraCIAPI\Simulation.h" />
+    <ClInclude Include="src\TraCIAPI\Subscriptions.h" />
     <ClInclude Include="src\TraCIAPI\TraCIServer.h" />
     <ClInclude Include="src\TraCIAPI\Triggers.h" />
     <ClInclude Include="src\TraCIAPI\Utils.h" />
