@@ -15,4 +15,7 @@ void traci_api::SpeedChangeTrigger::handleTrigger()
 void traci_api::VehicleStopTrigger::handleTrigger()
 {
 
+    // first case: we're in the same link and lane as the stop
+    if (lnk == qpg_VHC_link(vhc));
+
 }

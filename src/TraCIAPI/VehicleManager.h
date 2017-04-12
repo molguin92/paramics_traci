@@ -9,6 +9,7 @@
 
 namespace traci_api
 {
+    class NotImplementedError;
     class NoSuchLNKError;
     class NoSuchVHCError;
 
@@ -177,33 +178,5 @@ namespace traci_api
         std::vector<VEHICLE*> arrived_vehicles;
 
         VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
-    };
-
-    class NoSuchVHCError: public std::runtime_error
-    {
-    public:
-        explicit NoSuchVHCError(const std::string& _Message)
-            : runtime_error(_Message)
-        {
-        }
-
-        explicit NoSuchVHCError(const char* _Message)
-            : runtime_error(_Message)
-        {
-        }
-    };
-
-    class NoSuchLNKError: public std::runtime_error
-    {
-    public:
-        explicit NoSuchLNKError(const std::string& _Message)
-            : runtime_error(_Message)
-        {
-        }
-
-        explicit NoSuchLNKError(const char* _Message)
-            : runtime_error(_Message)
-        {
-        }
     };
 }

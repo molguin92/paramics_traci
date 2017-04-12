@@ -152,6 +152,7 @@
     </ClCompile>
     <ClCompile Include="src\shawn\socket.cpp" />
     <ClCompile Include="src\shawn\storage.cpp" />
+    <ClCompile Include="src\TraCIAPI\Network.cpp" />
     <ClCompile Include="src\TraCIAPI\Simulation.cpp" />
     <ClCompile Include="src\TraCIAPI\TraCIServer.cpp" />
     <ClCompile Include="src\TraCIAPI\Triggers.cpp" />
@@ -163,6 +164,8 @@
     <ClInclude Include="src\shawn\socket.h" />
     <ClInclude Include="src\shawn\storage.h" />
     <ClInclude Include="src\TraCIAPI\Constants.h" />
+    <ClInclude Include="src\TraCIAPI\Exceptions.h" />
+    <ClInclude Include="src\TraCIAPI\Network.h" />
     <ClInclude Include="src\TraCIAPI\Simulation.h" />
     <ClInclude Include="src\TraCIAPI\TraCIServer.h" />
     <ClInclude Include="src\TraCIAPI\Triggers.h" />

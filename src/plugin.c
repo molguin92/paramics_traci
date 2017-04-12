@@ -72,6 +72,10 @@ void qpx_NET_postOpen(void)
     // qps_GUI_printf(qpg_UTL_accelerationUnitLabel());
     // qps_GUI_printf(qpg_UTL_speedUnitLabel());
 
+    //int lnks = qpg_NET_links();
+    //for (int i = 1; i <= lnks; i++)
+    //    qps_GUI_printf(qpg_LNK_name(qpg_NET_linkByIndex(i)));
+
     qps_GUI_singleStep(PTRUE);
     traci_api::printToParamics("TraCI support enabled");
     runner = new std::thread(runner_fn);

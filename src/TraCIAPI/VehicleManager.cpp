@@ -2,6 +2,7 @@
 #include "Constants.h"
 #include <string>
 #include "Simulation.h"
+#include "Exceptions.h"
 
 /* null singleton */
 traci_api::VehicleManager* traci_api::VehicleManager::instance = nullptr;

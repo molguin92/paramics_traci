@@ -45,20 +45,6 @@ public:
     }
 };
 
-class NotImplementedError : public std::runtime_error
-{
-public:
-    explicit NotImplementedError(const std::string& _Message)
-        : runtime_error(_Message)
-    {
-    }
-
-    explicit NotImplementedError(const char* _Message)
-        : runtime_error(_Message)
-    {
-    }
-};
-
 uint32_t RGB2HEX(uint8_t r, uint8_t g, uint8_t b);
 void HEX2RGB(uint32_t hex, uint8_t& r, uint8_t& g, uint8_t& b);
 

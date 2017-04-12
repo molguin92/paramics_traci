@@ -4,6 +4,8 @@
 #include "storage.h"
 #include "Constants.h"
 #include "VehicleManager.h"
+#include "Exceptions.h"
+#include "Network.h"
 
 /*
  * This class abstracts a server for the TraCI protocol.
@@ -147,9 +149,14 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
     case CMD_GETVHCVAR:
         if (DEBUG)
             printToParamics("Got CMD_GETVHCVAR");
-        {
-            this->cmdGetVhcVar(storage);
-        }
+        this->cmdGetVhcVar(storage);
+        break;
+
+    case CMD_GETLNKVAR:
+    case CMD_GETNDEVAR:
+        if (DEBUG)
+            printToParamics("Got CMD_GETLNKVAR/CMD_GETNDEVAR");
+        this->cmdGetNetworkVar(storage, cmdId);
         break;
     default:
         if (DEBUG)
@@ -282,26 +289,6 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
 
         this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
     }
-    /*catch (std::runtime_error& e)
-    {
-        if (DEBUG)
-        {
-            printToParamics("Runtime error");
-            printToParamics(e.what());
-        }
-
-        this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
-    }
-    catch (traci_api::NoSuchVHCError& e)
-    {
-        if (DEBUG)
-        {
-            printToParamics("No such vehicle");
-            printToParamics(e.what());
-        }
-
-        this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
-    }*/
     catch (std::exception& e)
     {
         if (DEBUG)
@@ -314,6 +301,43 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
     }
 
     this->writeStatusResponse(CMD_GETVHCVAR, STATUS_OK, "");
+    this->writeToOutputWithSize(result);
+}
+
+void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmdid)
+{
+    tcpip::Storage result;
+    try
+    {
+        if (cmdid == CMD_GETLNKVAR)
+            Network::getLinkVariable(input, result);
+        else if (cmdid == CMD_GETNDEVAR)
+            Network::getJunctionVariable(input, result);
+        else
+            throw std::runtime_error("???");
+    }
+    catch (NotImplementedError& e)
+    {
+        if (DEBUG)
+        {
+            printToParamics("Variable not implemented");
+            printToParamics(e.what());
+        }
+
+        this->writeStatusResponse(cmdid, STATUS_NIMPL, e.what());
+    }
+    catch (std::exception& e)
+    {
+        if (DEBUG)
+        {
+            printToParamics("Fatal error???");
+            printToParamics(e.what());
+        }
+        this->writeStatusResponse(cmdid, STATUS_ERROR, e.what());
+        throw;
+    }
+
+    this->writeStatusResponse(cmdid, STATUS_OK, "");
     this->writeToOutputWithSize(result);
 }
 
