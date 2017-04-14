@@ -37,7 +37,10 @@ uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storag
             VehicleManager::getInstance()->getVehicleVariable(objID, sub_var, temp);
             output.writeUnsignedByte(traci_api::STATUS_OK);
             output.writeStorage(temp);
-            temp.reset();
+        }
+        catch(NoSuchVHCError& e)
+        {
+            return STATUS_VHCNOTFOUND;
         }
         catch ( std::runtime_error& e )
         {
@@ -47,6 +50,8 @@ uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storag
             output.writeString(e.what());
             errors += std::string(e.what()) + "; ";
         }
+
+        temp.reset();
     }
 
     if (validate && result_errors)

@@ -16,7 +16,7 @@ namespace traci_api
         static const uint8_t STATUS_ERROR = 0xff;
 
 
-        VariableSubscription(std::string obj_id, int begin_time, int end_time, const std::vector<uint8_t>& vars):
+        VariableSubscription(std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars):
             objID(obj_id),
             beginTime(begin_time),
             endTime(end_time),
@@ -39,7 +39,9 @@ namespace traci_api
     class VehicleVariableSubscription : VariableSubscription
     {
     public:
-        VehicleVariableSubscription(std::string vhc_id, int begin_time, int end_time, const std::vector<uint8_t>& vars)
+        static const uint8_t STATUS_VHCNOTFOUND = 0xee;
+
+        VehicleVariableSubscription(std::string vhc_id, int begin_time, int end_time, std::vector<uint8_t> vars)
             : VariableSubscription(vhc_id, begin_time, end_time, vars)
         {
         }

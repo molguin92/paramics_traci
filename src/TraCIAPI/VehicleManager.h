@@ -6,6 +6,7 @@
 #include "storage.h"
 #include <map>
 #include "Triggers.h"
+#include "Subscriptions.h"
 
 namespace traci_api
 {
@@ -156,6 +157,9 @@ namespace traci_api
         VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
         VEHICLE* findVehicle(std::string vid) throw(NoSuchVHCError);
 
+        uint8_t addVehicleVariableSubscription(std::string vehicle_id, int start_time, int end_time, std::vector<uint8_t> variables, std::string& errors);
+        int processSubscriptions(tcpip::Storage& results);
+
     private:
 
         static VehicleManager* instance;
@@ -169,14 +173,14 @@ namespace traci_api
         }
 
         std::unordered_multimap<int, BaseTrigger*> time_triggers;
-        std::unordered_multimap<VEHICLE*, BaseTrigger*> link_triggers;
 
         std::mutex time_trigger_mutex;
-        std::mutex link_trigger_mutex;
         std::mutex vhc_lists_mutex;
 
         std::unordered_map<int, VEHICLE*> vehicles_in_sim;
         std::vector<VEHICLE*> departed_vehicles;
         std::vector<VEHICLE*> arrived_vehicles;
+
+        std::vector<VehicleVariableSubscription> subscriptions;
     };
 }
