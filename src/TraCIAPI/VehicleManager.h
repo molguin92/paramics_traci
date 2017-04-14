@@ -117,8 +117,6 @@ namespace traci_api
         void getVehicleVariable(std::string vid, uint8_t varID, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
         void setVehicleState(tcpip::Storage& input);
 
-        void vehicleTimeStep(VEHICLE* vehicle);
-
         void vehicleDepart(VEHICLE* vehicle);
         void vehicleArrive(VEHICLE* vehicle);
 
@@ -142,7 +140,7 @@ namespace traci_api
         std::string getVehicleType(std::string vid) throw(NoSuchVHCError);
 
 
-        void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error);
+        //void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error);
         void changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
         void slowDown(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
         void changeColour(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
@@ -154,7 +152,6 @@ namespace traci_api
         void operator=(VehicleManager const&) = delete;
 
         void handleDelayedTriggers();
-        void handleLinkEnterTriggers(VEHICLE* vhc, LINK* lnk);
 
         VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
         VEHICLE* findVehicle(std::string vid) throw(NoSuchVHCError);

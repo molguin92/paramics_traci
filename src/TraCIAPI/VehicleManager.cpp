@@ -234,20 +234,6 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
     }
 }
 
-void traci_api::VehicleManager::vehicleTimeStep(VEHICLE* vehicle)
-{
-    int vid = qpg_VHC_uniqueID(vehicle);
-    {
-        // update total internal vehicle list
-        std::lock_guard<std::mutex> lock(vhc_lists_mutex);
-        auto iterator = vehicles_in_sim.find(vid);
-        if (iterator == vehicles_in_sim.end())
-            throw std::runtime_error("Weird. Car in timestep but not added to list?");
-    }
-
-    // TODO: Check subs status here.
-}
-
 /**
  * \brief Searchs the internal list of vehicles for a specific ID.
  * \param vid The vehicle ID to find.
@@ -286,26 +272,6 @@ void traci_api::VehicleManager::handleDelayedTriggers()
         /* delete all triggers handled, we don't want to see them again */
         delete(it->second);
         it = time_triggers.erase(it);
-    }
-}
-
-void traci_api::VehicleManager::handleLinkEnterTriggers(VEHICLE* vhc, LINK* lnk)
-{
-    return; // TODO: remove
-
-    std::lock_guard<std::mutex> lock(link_trigger_mutex);
-    auto iterator = link_triggers.equal_range(vhc); // every trigger for this vehicle
-    for (auto it = iterator.first; it != iterator.second;)
-    {
-        it->second->handleTrigger();
-
-        if (it->second->repeat())
-            ++it;
-        else
-        {
-            delete(it->second);
-            it = link_triggers.erase(it);
-        }
     }
 }
 
@@ -453,117 +419,117 @@ std::string traci_api::VehicleManager::getVehicleType(std::string vid) throw(NoS
     return std::to_string(qpg_VHC_type(this->findVehicle(vid)));
 }
 
-void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error)
-{
-    ///* stop message format
-    // * 
-    // * | type: compound | byte
-    // * | items: 4 to 7	| int
-    // * ------------------
-    // * | type: string	| byte
-    // * | edge id		| string
-    // * ------------------
-    // * | type: double	| byte
-    // * | end position	| double
-    // * ------------------
-    // * | type: byte		| byte
-    // * | lane index		| byte
-    // * ------------------
-    // * | type: int		| byte
-    // * | duration(ms)	| int
-    // * -----optional-----
-    // * | type:  byte	| byte
-    // * | stopflags		| byte 
-    // * /
-
-    ///* extract message information and check types */
-    //std::string vhcid = input.readString();
-
-    //if (input.readUnsignedByte() != VTYPE_COMPOUND)
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    //int c_items = input.readInt();
-    //if (c_items < 4 || c_items > 7)
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    //std::string roadID = "";
-    //if (!readTypeCheckingString(input, roadID))
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    //double position = 0.0;
-    //if (!readTypeCheckingDouble(input, position))
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    //int8_t lane = 0;
-    //if (!readTypeCheckingByte(input, lane))
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    //int duration = -1;
-    //if (!readTypeCheckingInt(input, duration))
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    ///*
-    // * optional flags:
-    // * 
-    // *	1 : parking
-    // *	2 : triggered
-    // *	4 : containerTriggered
-    // *	8 : busStop (Edge ID is re-purposed as busStop ID)
-    // *	16 : containerStop (Edge ID is re-purposed as containerStop ID)
-    // *	32 : chargingStation (Edge ID is re-purposed as chargingStation ID)
-    // *	64 : parkingArea (Edge ID is re-purposed as parkingArea ID)
-    // */
-
-    //bool parking = false,
-    //    triggered = false,
-    //    contTriggered = false,
-    //    busStop = false,
-    //    contStop = false,
-    //    chargStation = false,
-    //    parkingArea = false;
-
-    //if (c_items >= 5) // message includes flags
-    //{
-    //    int8_t flags = 0;
-    //    if (!readTypeCheckingByte(input, flags))
-    //        throw std::runtime_error("Malformed TraCI message");
-
-    //    parking = ((flags & 1) != 0);
-    //    triggered = ((flags & 2) != 0);
-    //    contTriggered = ((flags & 4) != 0);
-    //    busStop = ((flags & 8) != 0);
-    //    contStop = ((flags & 16) != 0);
-    //    chargStation = ((flags & 32) != 0);
-    //    parkingArea = ((flags & 64) != 0);
-    //}
-
-    //double start_position = position - POSITION_EPS;
-    //if (c_items >= 6 && !readTypeCheckingDouble(input, start_position))
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    //int endtime = -1;
-    //if (c_items == 7 && !readTypeCheckingInt(input, endtime))
-    //    throw std::runtime_error("Malformed TraCI message");
-
-    //// TODO: special behavior for bus and container stops
-
-    //// check validity of parameters
-    //VEHICLE* vhc = findVehicle(std::stoi(vhcid));
-
-    //LINK* lnk = qpg_NET_link(&roadID[0u]);
-    //if (!lnk)
-    //    throw NoSuchLNKError(roadID);
-
-    //if (start_position < 0)
-    //    throw std::runtime_error("Position should be greater than 0");
-
-    //if (position < start_position)
-    //    throw std::runtime_error("Final position should be greater than start position");
-
-    //int n_lanes = qpg_LNK_lanes(lnk);
-    //if (lane < 1 || lane > n_lanes)
-    //    throw std::runtime_error("Lane index outside the range for this road. Number of lanes: " + std::to_string(n_lanes));
-}
+//void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error)
+//{
+//    ///* stop message format
+//    // * 
+//    // * | type: compound | byte
+//    // * | items: 4 to 7	| int
+//    // * ------------------
+//    // * | type: string	| byte
+//    // * | edge id		| string
+//    // * ------------------
+//    // * | type: double	| byte
+//    // * | end position	| double
+//    // * ------------------
+//    // * | type: byte		| byte
+//    // * | lane index		| byte
+//    // * ------------------
+//    // * | type: int		| byte
+//    // * | duration(ms)	| int
+//    // * -----optional-----
+//    // * | type:  byte	| byte
+//    // * | stopflags		| byte 
+//    // * /
+//
+//    ///* extract message information and check types */
+//    //std::string vhcid = input.readString();
+//
+//    //if (input.readUnsignedByte() != VTYPE_COMPOUND)
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    //int c_items = input.readInt();
+//    //if (c_items < 4 || c_items > 7)
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    //std::string roadID = "";
+//    //if (!readTypeCheckingString(input, roadID))
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    //double position = 0.0;
+//    //if (!readTypeCheckingDouble(input, position))
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    //int8_t lane = 0;
+//    //if (!readTypeCheckingByte(input, lane))
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    //int duration = -1;
+//    //if (!readTypeCheckingInt(input, duration))
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    ///*
+//    // * optional flags:
+//    // * 
+//    // *	1 : parking
+//    // *	2 : triggered
+//    // *	4 : containerTriggered
+//    // *	8 : busStop (Edge ID is re-purposed as busStop ID)
+//    // *	16 : containerStop (Edge ID is re-purposed as containerStop ID)
+//    // *	32 : chargingStation (Edge ID is re-purposed as chargingStation ID)
+//    // *	64 : parkingArea (Edge ID is re-purposed as parkingArea ID)
+//    // */
+//
+//    //bool parking = false,
+//    //    triggered = false,
+//    //    contTriggered = false,
+//    //    busStop = false,
+//    //    contStop = false,
+//    //    chargStation = false,
+//    //    parkingArea = false;
+//
+//    //if (c_items >= 5) // message includes flags
+//    //{
+//    //    int8_t flags = 0;
+//    //    if (!readTypeCheckingByte(input, flags))
+//    //        throw std::runtime_error("Malformed TraCI message");
+//
+//    //    parking = ((flags & 1) != 0);
+//    //    triggered = ((flags & 2) != 0);
+//    //    contTriggered = ((flags & 4) != 0);
+//    //    busStop = ((flags & 8) != 0);
+//    //    contStop = ((flags & 16) != 0);
+//    //    chargStation = ((flags & 32) != 0);
+//    //    parkingArea = ((flags & 64) != 0);
+//    //}
+//
+//    //double start_position = position - POSITION_EPS;
+//    //if (c_items >= 6 && !readTypeCheckingDouble(input, start_position))
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    //int endtime = -1;
+//    //if (c_items == 7 && !readTypeCheckingInt(input, endtime))
+//    //    throw std::runtime_error("Malformed TraCI message");
+//
+//    //// TODO: special behavior for bus and container stops
+//
+//    //// check validity of parameters
+//    //VEHICLE* vhc = findVehicle(std::stoi(vhcid));
+//
+//    //LINK* lnk = qpg_NET_link(&roadID[0u]);
+//    //if (!lnk)
+//    //    throw NoSuchLNKError(roadID);
+//
+//    //if (start_position < 0)
+//    //    throw std::runtime_error("Position should be greater than 0");
+//
+//    //if (position < start_position)
+//    //    throw std::runtime_error("Final position should be greater than start position");
+//
+//    //int n_lanes = qpg_LNK_lanes(lnk);
+//    //if (lane < 1 || lane > n_lanes)
+//    //    throw std::runtime_error("Lane index outside the range for this road. Number of lanes: " + std::to_string(n_lanes));
+//}
 
 void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error)
 {
