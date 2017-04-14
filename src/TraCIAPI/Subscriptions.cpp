@@ -2,11 +2,22 @@
 #include "VehicleManager.h"
 #include "Constants.h"
 
-uint8_t traci_api::VehicleSubscription::handleSubscription(tcpip::Storage& output)
+int traci_api::VariableSubscription::checkTime() const
+{
+    int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
+    if (beginTime > current_time) // begin time in the future
+        return -1;
+    else if (beginTime <= current_time && current_time <= endTime) // within range
+        return 0;
+    else // expired
+        return 1;
+}
+
+uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storage& output, bool validate, std::string& errors)
 {
 
     int time_status = checkTime();
-    if (time_status < 0) // not yet
+    if (!validate && time_status < 0) // not yet (skip this check if validating, duh)
         return STATUS_TIMESTEPNOTREACHED;
     else if (time_status > 0) // expired
         return STATUS_EXPIRED;
@@ -14,6 +25,8 @@ uint8_t traci_api::VehicleSubscription::handleSubscription(tcpip::Storage& outpu
     // prepare output
     output.writeString(objID);
     output.writeUnsignedByte(vars.size());
+
+    bool result_errors = false;
 
     // get ze vahriables
     tcpip::Storage temp;
@@ -28,11 +41,16 @@ uint8_t traci_api::VehicleSubscription::handleSubscription(tcpip::Storage& outpu
         }
         catch ( std::runtime_error& e )
         {
+            result_errors = true;
             output.writeUnsignedByte(traci_api::STATUS_ERROR);
             output.writeUnsignedByte(VTYPE_STR);
             output.writeString(e.what());
+            errors += std::string(e.what()) + "; ";
         }
     }
 
-    return STATUS_OK;
+    if (validate && result_errors)
+        return STATUS_ERROR;
+    else
+        return STATUS_OK;
 }

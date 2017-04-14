@@ -7,7 +7,7 @@
 
 namespace traci_api
 {
-    class Subscription
+    class VariableSubscription
     {
     public:
         static const uint8_t STATUS_OK = 0x00;
@@ -16,7 +16,7 @@ namespace traci_api
         static const uint8_t STATUS_ERROR = 0xff;
 
 
-        Subscription(std::string obj_id, int begin_time, int end_time, const std::vector<uint8_t>& vars):
+        VariableSubscription(std::string obj_id, int begin_time, int end_time, const std::vector<uint8_t>& vars):
             objID(obj_id),
             beginTime(begin_time),
             endTime(end_time),
@@ -24,19 +24,10 @@ namespace traci_api
         {
         }
 
-        int checkTime() const
-        {
-            int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
-            if (beginTime > current_time) // begin time in the future
-                return -1;
-            else if (beginTime <= current_time && current_time <= endTime) // within range
-                return 0;
-            else // expired
-                return 1;
-        }
+        int checkTime() const;
 
-        virtual ~Subscription() {};
-        virtual uint8_t handleSubscription(tcpip::Storage& output) { return STATUS_ERROR; };
+        virtual ~VariableSubscription() {};
+        virtual uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) { return STATUS_ERROR; };
 
     protected:
         std::string objID;
@@ -45,15 +36,15 @@ namespace traci_api
         std::vector<uint8_t> vars;
     };
 
-    class VehicleSubscription : Subscription
+    class VehicleVariableSubscription : VariableSubscription
     {
     public:
-        VehicleSubscription(std::string vhc_id, int begin_time, int end_time, const std::vector<uint8_t>& vars)
-            : Subscription(vhc_id, begin_time, end_time, vars)
+        VehicleVariableSubscription(std::string vhc_id, int begin_time, int end_time, const std::vector<uint8_t>& vars)
+            : VariableSubscription(vhc_id, begin_time, end_time, vars)
         {
         }
 
-        ~VehicleSubscription() override {};
-        uint8_t handleSubscription(tcpip::Storage& output) override;
+        ~VehicleVariableSubscription() override {};
+        uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) override;
     };
 }
