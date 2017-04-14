@@ -114,56 +114,75 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
         printToParamics("Command ID: " + std::to_string(cmdId));
     }
 
-    switch (cmdId)
+    if (cmdId >= CMD_SUB_INDVAR && cmdId <= CMD_SUB_SIMVAR)
     {
-    case CMD_GETVERSION:
-        if (DEBUG)
-            printToParamics("Got CMD_GETVERSION");
-        this->writeVersion();
-        break;
+        // subscription
+        // | begin Time | end Time | Object ID | Variable Number | The list of variables to return
 
-    case CMD_SIMSTEP:
-        if (DEBUG)
-            printToParamics("Got CMD_SIMSTEP");
+        int btime = storage.readInt();
+        int etime = storage.readInt();
+        std::string oID = storage.readString();
+        int varN = storage.readUnsignedByte();
+        std::vector<uint8_t> vars;
 
-        this->cmdSimStep(storage.readInt());
-        break;
+        for (int i = 0; i < varN; i++)
+            vars.push_back(storage.readUnsignedByte());
 
-    case CMD_SHUTDOWN:
-        if (DEBUG)
-            printToParamics("Got CMD_SHUTDOWN");
-        this->cmdShutDown();
-        break;
+        addSubscription(cmdId, oID, btime, etime, vars);
+    }
+    else
+    {
+        switch (cmdId)
+        {
+        case CMD_GETVERSION:
+            if (DEBUG)
+                printToParamics("Got CMD_GETVERSION");
+            this->writeVersion();
+            break;
 
-    case CMD_GETSIMVAR:
-        if (DEBUG)
-            printToParamics("Got CMD_GETSIMVAR");
-        this->cmdGetSimVar(storage.readUnsignedByte());
-        break;
+        case CMD_SIMSTEP:
+            if (DEBUG)
+                printToParamics("Got CMD_SIMSTEP");
 
-    case CMD_SETVHCSTATE:
-        if (DEBUG)
-            printToParamics("Got CMD_SETVHCSTATE");
-        this->cmdSetVhcState(storage);
-        break;
+            this->cmdSimStep(storage.readInt());
+            break;
 
-    case CMD_GETVHCVAR:
-        if (DEBUG)
-            printToParamics("Got CMD_GETVHCVAR");
-        this->cmdGetVhcVar(storage);
-        break;
+        case CMD_SHUTDOWN:
+            if (DEBUG)
+                printToParamics("Got CMD_SHUTDOWN");
+            this->cmdShutDown();
+            break;
 
-    case CMD_GETLNKVAR:
-    case CMD_GETNDEVAR:
-        if (DEBUG)
-            printToParamics("Got CMD_GETLNKVAR/CMD_GETNDEVAR");
-        this->cmdGetNetworkVar(storage, cmdId);
-        break;
-    default:
-        if (DEBUG)
-            printToParamics("Command not implemented!");
+        case CMD_GETSIMVAR:
+            if (DEBUG)
+                printToParamics("Got CMD_GETSIMVAR");
+            this->cmdGetSimVar(storage.readUnsignedByte());
+            break;
 
-        writeStatusResponse(cmdId, STATUS_NIMPL, "Method not implemented.");
+        case CMD_SETVHCSTATE:
+            if (DEBUG)
+                printToParamics("Got CMD_SETVHCSTATE");
+            this->cmdSetVhcState(storage);
+            break;
+
+        case CMD_GETVHCVAR:
+            if (DEBUG)
+                printToParamics("Got CMD_GETVHCVAR");
+            this->cmdGetVhcVar(storage);
+            break;
+
+        case CMD_GETLNKVAR:
+        case CMD_GETNDEVAR:
+            if (DEBUG)
+                printToParamics("Got CMD_GETLNKVAR/CMD_GETNDEVAR");
+            this->cmdGetNetworkVar(storage, cmdId);
+            break;
+        default:
+            if (DEBUG)
+                printToParamics("Command not implemented!");
+
+            writeStatusResponse(cmdId, STATUS_NIMPL, "Method not implemented.");
+        }
     }
 }
 
@@ -229,6 +248,7 @@ void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage)
 void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string object_id, int start_time, int end_time, std::vector<uint8_t> variables)
 {
     VariableSubscription* sub;
+    uint8_t res_type = sub_type + 0x10; // suscriptions: 0xd*, responses: 0xe* -- 0xd* + 0x10 = 0xe*
 
     switch (sub_type)
     {
@@ -236,7 +256,7 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
         sub = new VehicleVariableSubscription(object_id, start_time, end_time, variables);
         break;
     default:
-        writeStatusResponse(sub_type, STATUS_NIMPL, "Subscription type not implemented: " + std::to_string(sub_type));
+        writeStatusResponse(res_type, STATUS_NIMPL, "Subscription type not implemented: " + std::to_string(sub_type));
         return;
     }
 
@@ -246,12 +266,12 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
 
     if ( result == VariableSubscription::STATUS_EXPIRED )
     {
-        writeStatusResponse(sub_type, STATUS_ERROR, "Expired subscription.");
+        writeStatusResponse(res_type, STATUS_ERROR, "Expired subscription.");
         return;
     }
     else if (result != VariableSubscription::STATUS_OK )
     {
-        writeStatusResponse(sub_type, STATUS_ERROR, errors);
+        writeStatusResponse(res_type, STATUS_ERROR, errors);
         return;
     }
 
