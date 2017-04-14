@@ -52,7 +52,7 @@ namespace traci_api
         bool repeat() override { return false; }
     };
 
-    class VehicleStopTrigger : public BaseTrigger
+    /*class VehicleStopTrigger : public BaseTrigger
     {
     public:
         VEHICLE* vhc;
@@ -73,5 +73,5 @@ namespace traci_api
         ~VehicleStopTrigger() override
         {
         };
-    };
+    };*/
 }

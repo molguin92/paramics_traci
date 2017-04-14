@@ -6,6 +6,7 @@
 #include "VehicleManager.h"
 #include "Exceptions.h"
 #include "Network.h"
+#include "Subscriptions.h"
 
 /*
  * This class abstracts a server for the TraCI protocol.
@@ -223,6 +224,68 @@ void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage)
         outgoing.writeUnsignedByte(size);
 
     outgoing.writeStorage(storage);
+}
+
+void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string object_id, int start_time, int end_time, std::vector<uint8_t> variables)
+{
+    VariableSubscription* sub;
+
+    switch (sub_type)
+    {
+    case CMD_SUB_VHCVAR:
+        sub = new VehicleVariableSubscription(object_id, start_time, end_time, variables);
+        break;
+    default:
+        writeStatusResponse(sub_type, STATUS_NIMPL, "Subscription type not implemented: " + std::to_string(sub_type));
+        return;
+    }
+
+    std::string errors;
+    tcpip::Storage temp;
+    uint8_t result = sub->handleSubscription(temp, true, errors); // validate
+
+    if ( result == VariableSubscription::STATUS_EXPIRED )
+    {
+        writeStatusResponse(sub_type, STATUS_ERROR, "Expired subscription.");
+        return;
+    }
+    else if (result != VariableSubscription::STATUS_OK )
+    {
+        writeStatusResponse(sub_type, STATUS_ERROR, errors);
+        return;
+    }
+
+    subs.push_back(sub);
+}
+
+void traci_api::TraCIServer::processSubscriptions()
+{
+    tcpip::Storage temp;
+    tcpip::Storage sub_results;
+    uint8_t sub_res;
+    std::string errors;
+    int count = 0;
+
+    for (auto i = subs.begin(); i != subs.end(); ++i)
+    {
+        sub_res = (*i)->handleSubscription(temp, false, errors);
+
+        if (sub_res == VariableSubscription::STATUS_EXPIRED || sub_res == VehicleVariableSubscription::STATUS_VHCNOTFOUND)
+        {
+            subs.erase(i);
+            delete *i;
+        }
+        else if (sub_res == VariableSubscription::STATUS_OK)
+        {
+            sub_results.writeStorage(temp);
+            count++;
+        }
+
+        temp.reset();
+    }
+
+    outgoing.writeInt(count);
+    outgoing.writeStorage(sub_results);    
 }
 
 

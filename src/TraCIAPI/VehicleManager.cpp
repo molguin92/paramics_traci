@@ -254,43 +254,6 @@ VEHICLE* traci_api::VehicleManager::findVehicle(std::string vid) throw(NoSuchVHC
     return findVehicle(std::stoi(vid));
 }
 
-uint8_t traci_api::VehicleManager::addVehicleVariableSubscription(std::string vehicle_id, int start_time, int end_time, std::vector<uint8_t> variables, std::string& errors)
-{
-    VehicleVariableSubscription sub(vehicle_id, start_time, end_time, variables);
-    tcpip::Storage temp;
-    uint8_t result = sub.handleSubscription(temp, true, errors);
-    if (result != VariableSubscription::STATUS_OK)
-        return result;
-
-    subscriptions.push_back(sub);
-    return result;
-}
-
-int traci_api::VehicleManager::processSubscriptions(tcpip::Storage& results)
-{
-    tcpip::Storage temp;
-    uint8_t sub_res;
-    std::string errors;
-    int count = 0;
-
-    for (auto i = subscriptions.begin(); i != subscriptions.end(); ++i)
-    {
-        sub_res = i->handleSubscription(temp, false, errors);
-
-        if (sub_res == VariableSubscription::STATUS_EXPIRED || sub_res == VehicleVariableSubscription::STATUS_VHCNOTFOUND)
-            subscriptions.erase(i);
-        else if (sub_res == VariableSubscription::STATUS_OK)
-        {
-            results.writeStorage(temp);
-            count++;
-        }
-
-        temp.reset();
-    }
-
-    return count;
-}
-
 /**
  * \brief Handles delayed time_triggers. For example, changing back to the original lane 
  * after a set time after a lane change command.

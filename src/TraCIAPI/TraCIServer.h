@@ -3,6 +3,7 @@
 #include "socket.h"
 #include "storage.h"
 #include "Simulation.h"
+#include "Subscriptions.h"
 
 namespace traci_api
 {
@@ -21,6 +22,7 @@ namespace traci_api
         tcpip::Storage outgoing;
         bool running;
         int port;
+        std::vector<VariableSubscription*> subs;
 
         
 
@@ -38,7 +40,8 @@ namespace traci_api
 
         void writeToOutputWithSize(tcpip::Storage& storage);
 
-        void handleSubscriptions();
+        void addSubscription(uint8_t sub_type, std::string object_id, int start_time, int end_time, std::vector<uint8_t> variables);
+        void processSubscriptions();
 
         //commands
         void cmdShutDown();

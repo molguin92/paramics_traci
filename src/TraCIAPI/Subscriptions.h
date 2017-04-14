@@ -36,7 +36,7 @@ namespace traci_api
         std::vector<uint8_t> vars;
     };
 
-    class VehicleVariableSubscription : VariableSubscription
+    class VehicleVariableSubscription : public VariableSubscription
     {
     public:
         static const uint8_t STATUS_VHCNOTFOUND = 0xee;

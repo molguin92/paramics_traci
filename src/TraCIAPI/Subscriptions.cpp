@@ -1,6 +1,7 @@
 ﻿#include "Subscriptions.h"
 #include "VehicleManager.h"
 #include "Constants.h"
+#include "Exceptions.h"
 
 int traci_api::VariableSubscription::checkTime() const
 {
@@ -38,8 +39,10 @@ uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storag
             output.writeUnsignedByte(traci_api::STATUS_OK);
             output.writeStorage(temp);
         }
+        // ReSharper disable once CppEntityNeverUsed
         catch(NoSuchVHCError& e)
         {
+            errors = "Vehicle " + objID + " not found in simulation.";
             return STATUS_VHCNOTFOUND;
         }
         catch ( std::runtime_error& e )

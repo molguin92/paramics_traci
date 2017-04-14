@@ -61,4 +61,32 @@ namespace traci_api
 
     //Change State:
     static const uint8_t CMD_SETVHCSTATE = 0xc4;
+
+
+    // subscription commands and responses:
+    static const uint8_t CMD_SUB_INDVAR = 0xd0;
+    static const uint8_t CMD_SUB_MULTVAR = 0xd1;
+    static const uint8_t CMD_SUB_TLIGHTVAR = 0xd2;
+    static const uint8_t CMD_SUB_LANEVAR = 0xd3;
+    static const uint8_t CMD_SUB_VHCVAR = 0xd4;
+    static const uint8_t CMD_SUB_VHCTYPEVAR = 0xd5;
+    static const uint8_t CMD_SUB_RTEVAR = 0xd6;
+    static const uint8_t CMD_SUB_POIVAR = 0xd7;
+    static const uint8_t CMD_SUB_POLVAR = 0xd8;
+    static const uint8_t CMD_SUB_JUNCTVAR = 0xd9;
+    static const uint8_t CMD_SUB_EDGEVAR = 0xda;
+    static const uint8_t CMD_SUB_SIMVAR = 0xdb;
+
+    static const uint8_t RES_SUB_INDVAR = 0xe0;
+    static const uint8_t RES_SUB_MULTVAR = 0xe1;
+    static const uint8_t RES_SUB_TLIGHTVAR = 0xe2;
+    static const uint8_t RES_SUB_LANEVAR = 0xe3;
+    static const uint8_t RES_SUB_VHCVAR = 0xe4;
+    static const uint8_t RES_SUB_VHCTYPEVAR = 0xe5;
+    static const uint8_t RES_SUB_RTEVAR = 0xe6;
+    static const uint8_t RES_SUB_POIVAR = 0xe7;
+    static const uint8_t RES_SUB_POLVAR = 0xe8;
+    static const uint8_t RES_SUB_JUNCTVAR = 0xe9;
+    static const uint8_t RES_SUB_EDGEVAR = 0xea;
+    static const uint8_t RES_SUB_SIMVAR = 0xeb;
 }

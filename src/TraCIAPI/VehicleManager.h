@@ -157,9 +157,6 @@ namespace traci_api
         VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
         VEHICLE* findVehicle(std::string vid) throw(NoSuchVHCError);
 
-        uint8_t addVehicleVariableSubscription(std::string vehicle_id, int start_time, int end_time, std::vector<uint8_t> variables, std::string& errors);
-        int processSubscriptions(tcpip::Storage& results);
-
     private:
 
         static VehicleManager* instance;
