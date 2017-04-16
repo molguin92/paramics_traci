@@ -1,0 +1,9 @@
+## Paramics Batch Mode Version 6.3.0
+## 01/22/08 14:10:53
+start 00:00:00
+
+analyser intervals 00:15:00
+file analyser 00:15:00
+file analyser 00:30:00
+file analyser 00:45:00
+file analyser 01:00:00

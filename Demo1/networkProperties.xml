@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NetworkProperties>
+    <NetworkName>Constitucion Proyecto</NetworkName>
+    <Author>Ing. Carlos H. Stenta</Author>
+    <Description>Ingenieria CSYA
+Rincón 1186 5to. 26
+Ciudad Autónoma de Buenos Aires
+Argentina
+http://www.csya.com.ar 
+
+</Description>
+    <CreationDate>Mon 23. Apr 08:03:41 2007</CreationDate>
+    <LastEditDate>Thu 23. Apr 14:53:36 2009</LastEditDate>
+    <LastEditUser>jyoung</LastEditUser>
+    <Welcome>The demo1 network was created by Ingenieria CSYA and shows an area of Buenos Aires. This network is used alongside our Getting Started Guide which covers the basics of using UAF and Paramics Modeller.</Welcome>
+</NetworkProperties>

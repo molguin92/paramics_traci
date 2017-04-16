@@ -1,0 +1,3715 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:41:38 2008
+## Modified Date Wed 5. Aug 16:57:58 2009
+## Modified By mwhyte
+## Network C:/Documents and Settings/All Users/Application Data/paramics/data/Demo1
+## Notes 
+bus route count 69
+
+
+number "4 EO"
+service: "Provincia"
+max number: 10
+type 100
+use service colour
+timetable 10 
+	release time 00:01:30  starting occupancy 50
+	release time 00:08:00  starting occupancy 50
+	release time 00:12:00  starting occupancy 50
+	release time 00:18:30  starting occupancy 50
+	release time 00:21:00  starting occupancy 50
+	release time 00:28:00  starting occupancy 50
+	release time 00:32:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:44:00  starting occupancy 50
+	release time 00:56:00  starting occupancy 50
+node 8
+	busstop 1
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 9
+node 42
+node 10
+node 67
+	busstop 68
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 170 per hour
+	alight 33 percent
+node 11
+node 12
+node 6
+	busstop 16
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "4 OE"
+service: "Centro"
+max number: 10
+type 100
+use service colour
+timetable 10 
+	release time 00:05:00  starting occupancy 50
+	release time 00:13:00  starting occupancy 50
+	release time 00:17:00  starting occupancy 50
+	release time 00:21:00  starting occupancy 50
+	release time 00:29:00  starting occupancy 50
+	release time 00:33:00  starting occupancy 50
+	release time 00:35:30  starting occupancy 50
+	release time 00:41:00  starting occupancy 50
+	release time 00:49:00  starting occupancy 50
+	release time 00:53:00  starting occupancy 50
+node 14
+	busstop 21
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+node 58
+	busstop 53
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 225 per hour
+	alight 25 percent
+node 69
+node 61
+node 189
+node 63
+node 21
+node 89
+	busstop 8
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 22
+
+
+number "9 ES"
+service: "Provincia"
+max number: 10
+type 102
+use service colour
+timetable 12 
+	release time 00:02:30  starting occupancy 50
+	release time 00:05:30  starting occupancy 50
+	release time 00:11:30  starting occupancy 50
+	release time 00:14:30  starting occupancy 50
+	release time 00:17:30  starting occupancy 50
+	release time 00:23:30  starting occupancy 50
+	release time 00:29:30  starting occupancy 50
+	release time 00:35:30  starting occupancy 50
+	release time 00:38:30  starting occupancy 50
+	release time 00:41:30  starting occupancy 50
+	release time 00:47:30  starting occupancy 50
+	release time 00:56:30  starting occupancy 50
+node 8
+	busstop 3
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 9
+node 42
+node 10
+node 67
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+	busstop 70
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 190 per hour
+	alight 33 percent
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "9 SE"
+service: "9 SE"
+max number: 10
+type 102
+use service colour
+timetable 12 
+	release time 00:05:15  starting occupancy 50
+	release time 00:08:30  starting occupancy 50
+	release time 00:15:00  starting occupancy 50
+	release time 00:18:15  starting occupancy 50
+	release time 00:21:30  starting occupancy 50
+	release time 00:28:00  starting occupancy 50
+	release time 00:31:15  starting occupancy 50
+	release time 00:37:45  starting occupancy 50
+	release time 00:41:00  starting occupancy 50
+	release time 00:44:15  starting occupancy 50
+	release time 00:50:45  starting occupancy 50
+	release time 00:54:00  starting occupancy 50
+node 76
+	busstop 23
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+node 58
+	busstop 56
+	dwell time mode 1
+	min stop time 00:00:05
+	passenger frequency 230 per hour
+	alight 33 percent
+node 69
+node 61
+node 189
+node 63
+node 21
+node 89
+	busstop 8
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 22
+
+
+number "12 OE B"
+service: "12 OE B"
+max number: 10
+type 114
+use service colour
+timetable 12 
+	release time 00:02:10  starting occupancy 50
+	release time 00:08:10  starting occupancy 50
+	release time 00:10:10  starting occupancy 50
+	release time 00:16:10  starting occupancy 50
+	release time 00:20:10  starting occupancy 50
+	release time 00:26:10  starting occupancy 50
+	release time 00:28:10  starting occupancy 50
+	release time 00:34:10  starting occupancy 50
+	release time 00:40:10  starting occupancy 50
+	release time 00:46:10  starting occupancy 50
+	release time 00:52:10  starting occupancy 50
+	release time 00:56:10  starting occupancy 50
+node 14
+	busstop 21
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+	busstop 62
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 100 per hour
+	alight 50 percent
+node 70
+node 19
+node 61
+node 189
+	busstop 37
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 97
+
+
+number "12 OE A"
+service: "12 OE A"
+max number: 10
+type 114
+use service colour
+timetable 7 
+	release time 00:06:10  starting occupancy 50
+	release time 00:12:10  starting occupancy 50
+	release time 00:24:10  starting occupancy 50
+	release time 00:30:10  starting occupancy 50
+	release time 00:42:10  starting occupancy 50
+	release time 00:48:10  starting occupancy 50
+	release time 00:54:10  starting occupancy 50
+node 76
+	busstop 23
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+	busstop 62
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 55 per hour
+	alight 50 percent
+node 70
+node 19
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 64
+node 84
+	busstop 28
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 110
+
+
+number "12 EO A"
+service: "12 EO A"
+max number: 10
+type 114
+use service colour
+timetable 10 
+	release time 00:04:15  starting occupancy 50
+	release time 00:10:15  starting occupancy 50
+	release time 00:16:15  starting occupancy 50
+	release time 00:22:15  starting occupancy 50
+	release time 00:28:15  starting occupancy 50
+	release time 00:34:15  starting occupancy 50
+	release time 00:40:15  starting occupancy 50
+	release time 00:46:15  starting occupancy 50
+	release time 00:52:15  starting occupancy 50
+	release time 00:58:15  starting occupancy 50
+node 110
+	busstop 14
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 84
+node 64
+node 66
+node 40
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 120 per hour
+	alight 5 percent
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+node 30
+	busstop 32
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 92
+
+
+number "12 EO B"
+service: "12 EO B"
+max number: 10
+type 114
+use service colour
+timetable 10 
+	release time 00:00:15  starting occupancy 50
+	release time 00:06:15  starting occupancy 50
+	release time 00:12:15  starting occupancy 50
+	release time 00:18:15  starting occupancy 50
+	release time 00:24:15  starting occupancy 50
+	release time 00:30:15  starting occupancy 50
+	release time 00:36:15  starting occupancy 50
+	release time 00:42:15  starting occupancy 50
+	release time 00:48:15  starting occupancy 50
+	release time 00:54:15  starting occupancy 50
+node 108
+	busstop 38
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 360 per hour
+	alight 5 percent
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+node 30
+	busstop 32
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 92
+
+
+number "28 SE"
+service: "28 SE"
+max number: 10
+type 105
+use service colour
+timetable 9 
+	release time 00:04:30  starting occupancy 50
+	release time 00:10:50  starting occupancy 50
+	release time 00:17:10  starting occupancy 50
+	release time 00:23:30  starting occupancy 50
+	release time 00:29:50  starting occupancy 50
+	release time 00:36:10  starting occupancy 50
+	release time 00:42:30  starting occupancy 50
+	release time 00:48:50  starting occupancy 50
+	release time 00:55:10  starting occupancy 50
+node 76
+	busstop 24
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+node 58
+	busstop 55
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 270 per hour
+	alight 25 percent
+node 69
+node 61
+node 189
+node 63
+node 21
+node 89
+	busstop 8
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 22
+
+
+number "28 ES"
+service: "28 ES"
+max number: 10
+type 105
+use service colour
+timetable 10 
+	release time 00:03:00  starting occupancy 50
+	release time 00:09:00  starting occupancy 50
+	release time 00:15:00  starting occupancy 50
+	release time 00:21:00  starting occupancy 50
+	release time 00:27:00  starting occupancy 50
+	release time 00:33:00  starting occupancy 50
+	release time 00:39:00  starting occupancy 50
+	release time 00:45:00  starting occupancy 50
+	release time 00:51:00  starting occupancy 50
+	release time 00:57:00  starting occupancy 50
+node 8
+	busstop 2
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 9
+node 42
+node 10
+node 67
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+	busstop 70
+	dwell time mode 1
+	min stop time 00:00:05
+	passenger frequency 200 per hour
+	alight 33 percent
+node 111
+	busstop 25
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "39 OE D"
+service: "39 OE D"
+max number: 10
+type 111
+use service colour
+timetable 7 
+	release time 00:08:03  starting occupancy 50
+	release time 00:15:03  starting occupancy 50
+	release time 00:22:03  starting occupancy 50
+	release time 00:31:23  starting occupancy 50
+	release time 00:38:23  starting occupancy 50
+	release time 00:47:43  starting occupancy 50
+	release time 00:56:03  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 58
+node 69
+	busstop 52
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 45 per hour
+	alight 50 percent
+node 61
+node 189
+	busstop 37
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 97
+
+
+number "39 OE ABC"
+service: "39 OE"
+max number: 10
+type 111
+use service colour
+timetable 13 
+	release time 00:01:03  starting occupancy 50
+	release time 00:05:43  starting occupancy 50
+	release time 00:09:13  starting occupancy 50
+	release time 00:12:43  starting occupancy 50
+	release time 00:16:13  starting occupancy 50
+	release time 00:24:23  starting occupancy 50
+	release time 00:26:43  starting occupancy 50
+	release time 00:29:03  starting occupancy 50
+	release time 00:36:03  starting occupancy 50
+	release time 00:40:43  starting occupancy 50
+	release time 00:45:23  starting occupancy 50
+	release time 00:50:03  starting occupancy 50
+	release time 00:57:03  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 58
+node 69
+	busstop 52
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 105 per hour
+	alight 50 percent
+node 61
+node 189
+node 63
+node 21
+node 89
+	busstop 8
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 22
+
+
+number "39 EO ABC"
+service: "39 EO"
+max number: 10
+type 111
+use service colour
+timetable 20 
+	release time 00:01:50  starting occupancy 50
+	release time 00:03:05  starting occupancy 50
+	release time 00:07:45  starting occupancy 50
+	release time 00:10:05  starting occupancy 50
+	release time 00:12:25  starting occupancy 50
+	release time 00:17:05  starting occupancy 50
+	release time 00:19:25  starting occupancy 50
+	release time 00:24:05  starting occupancy 50
+	release time 00:26:25  starting occupancy 50
+	release time 00:28:45  starting occupancy 50
+	release time 00:31:05  starting occupancy 50
+	release time 00:35:45  starting occupancy 50
+	release time 00:38:05  starting occupancy 50
+	release time 00:40:25  starting occupancy 50
+	release time 00:45:05  starting occupancy 50
+	release time 00:47:25  starting occupancy 50
+	release time 00:49:45  starting occupancy 50
+	release time 00:50:55  starting occupancy 50
+	release time 00:54:25  starting occupancy 50
+	release time 00:57:05  starting occupancy 50
+node 78
+	busstop 9
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 40
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 510 per hour
+	alight 25 percent
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+	busstop 19
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 86
+
+
+number "39 EO D"
+service: "39 EO D"
+max number: 10
+type 111
+use service colour
+timetable 3 
+	release time 00:15:00  starting occupancy 50
+	release time 00:30:00  starting occupancy 50
+	release time 00:45:00  starting occupancy 50
+node 108
+	busstop 38
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 150 per hour
+	alight 25 percent
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+	busstop 19
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 86
+
+
+number "45 A "
+service: "Sur Norte"
+max number: 10
+type 103
+use service colour
+timetable 5 
+	release time 00:06:10  starting occupancy 50
+	release time 00:18:10  starting occupancy 50
+	release time 00:30:10  starting occupancy 50
+	release time 00:42:10  starting occupancy 50
+	release time 00:54:10  starting occupancy 50
+node 76
+	busstop 23
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+node 58
+node 59
+	busstop 44
+	dwell time mode 1
+	min stop time 00:00:00
+	alight 10 percent
+node 68
+node 39
+node 193
+node 63
+node 41
+node 9
+node 79
+	busstop 6
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112
+
+
+number "45 B"
+service: "Sur Norte"
+max number: 10
+type 103
+use service colour
+timetable 4 
+	release time 00:12:10  starting occupancy 50
+	release time 00:24:10  starting occupancy 50
+	release time 00:36:10  starting occupancy 50
+	release time 00:48:10  starting occupancy 50
+node 110
+	busstop 14
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 84
+node 64
+node 66
+node 40
+	busstop 71
+	dwell time mode 1
+	min stop time 00:00:00
+	alight 10 percent
+node 21
+node 41
+node 9
+node 79
+	busstop 5
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112
+
+
+number "45 AB"
+service: "Este Sur"
+max number: 10
+type 103
+use service colour
+timetable 6 
+	release time 00:02:30  starting occupancy 50
+	release time 00:15:00  starting occupancy 50
+	release time 00:25:00  starting occupancy 50
+	release time 00:35:00  starting occupancy 50
+	release time 00:45:00  starting occupancy 50
+	release time 00:55:00  starting occupancy 50
+node 8
+	busstop 3
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 9
+node 42
+node 10
+node 67
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+	busstop 70
+	dwell time mode 1
+	min stop time 00:00:05
+	passenger frequency 180 per hour
+	alight 33 percent
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "45 C"
+service: "Este Reg B"
+max number: 10
+type 103
+use service colour
+timetable 4 
+	release time 00:12:10  starting occupancy 50
+	release time 00:24:10  starting occupancy 50
+	release time 00:36:10  starting occupancy 50
+	release time 00:48:10  starting occupancy 50
+node 8
+	busstop 3
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 9
+node 42
+node 10
+node 67
+node 11
+node 60
+node 59
+	busstop 44
+	dwell time mode 1
+	min stop time 00:00:00
+	alight 10 percent
+node 68
+node 39
+node 193
+node 63
+node 41
+node 9
+node 42
+	busstop 27
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 91b
+
+
+number "46 SE"
+service: "Centro"
+max number: 10
+type 116
+use service colour
+timetable 8 
+	release time 00:06:35  starting occupancy 50
+	release time 00:12:35  starting occupancy 50
+	release time 00:18:35  starting occupancy 50
+	release time 00:24:35  starting occupancy 50
+	release time 00:30:35  starting occupancy 50
+	release time 00:36:35  starting occupancy 50
+	release time 00:42:35  starting occupancy 50
+	release time 00:48:35  starting occupancy 50
+node 76
+	busstop 23
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+node 58
+	busstop 54
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 40 per hour
+	alight 50 percent
+node 69
+node 61
+node 189
+node 63
+node 21
+node 89
+	busstop 8
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 22
+
+
+number "46 ES"
+service: "Provincia"
+max number: 10
+type 116
+use service colour
+timetable 9 
+	release time 00:07:05  starting occupancy 50
+	release time 00:13:05  starting occupancy 50
+	release time 00:19:05  starting occupancy 50
+	release time 00:25:05  starting occupancy 50
+	release time 00:31:05  starting occupancy 50
+	release time 00:37:05  starting occupancy 50
+	release time 00:43:05  starting occupancy 50
+	release time 00:49:05  starting occupancy 50
+	release time 00:55:05  starting occupancy 50
+node 78
+	busstop 10
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 40
+node 21
+node 41
+node 9
+node 42
+node 10
+node 67
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+	busstop 70
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 45 per hour
+	alight 50 percent
+	pay time 0
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "51"
+service: "Sur Norte"
+max number: 10
+type 117
+use service colour
+timetable 7 
+	release time 00:00:45  starting occupancy 40
+	release time 00:10:05  starting occupancy 40
+	release time 00:18:45  starting occupancy 40
+	release time 00:27:25  starting occupancy 40
+	release time 00:36:05  starting occupancy 40
+	release time 00:44:45  starting occupancy 40
+	release time 00:53:25  starting occupancy 40
+node 109
+	busstop 72
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 65
+node 72
+node 71
+node 66
+node 40
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 0 per hour
+	alight 100 percent
+	pay time 0
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+node 30
+	busstop 33
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 92
+
+
+number "51 "
+service: "Norte Sur"
+max number: 10
+type 117
+use service colour
+timetable 6 
+	release time 00:05:00  starting occupancy 50
+	release time 00:15:00  starting occupancy 50
+	release time 00:25:00  starting occupancy 50
+	release time 00:35:00  starting occupancy 50
+	release time 00:45:00  starting occupancy 50
+	release time 00:55:00  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 18
+node 70
+	busstop 60
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 55 per hour
+	alight 0 percent
+node 19
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 75
+	busstop 35
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 117
+
+
+number "53 "
+service: "a la Boca"
+max number: 10
+type 109
+use service colour
+timetable 10 
+	release time 00:03:30  starting occupancy 50
+	release time 00:06:30  starting occupancy 50
+	release time 00:10:00  starting occupancy 50
+	release time 00:15:00  starting occupancy 50
+	release time 00:18:30  starting occupancy 50
+	release time 00:21:30  starting occupancy 50
+	release time 00:25:00  starting occupancy 50
+	release time 00:30:00  starting occupancy 50
+	release time 00:40:00  starting occupancy 50
+	release time 00:50:00  starting occupancy 50
+node 93
+	busstop 30
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 103
+node 36
+node 10
+node 39
+node 61
+node 45
+node 88
+	busstop 76
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 100 per hour
+	alight 50 percent
+node 46
+node 107
+node 40
+	busstop 11
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 78
+
+
+number "53"
+service: "a San Miguel"
+max number: 10
+type 109
+use service colour
+timetable 15 
+	release time 00:02:30  starting occupancy 50
+	release time 00:05:00  starting occupancy 50
+	release time 00:08:30  starting occupancy 50
+	release time 00:10:30  starting occupancy 50
+	release time 00:14:30  starting occupancy 50
+	release time 00:16:30  starting occupancy 50
+	release time 00:20:00  starting occupancy 50
+	release time 00:22:30  starting occupancy 50
+	release time 00:25:00  starting occupancy 50
+	release time 00:28:30  starting occupancy 50
+	release time 00:30:30  starting occupancy 50
+	release time 00:34:30  starting occupancy 50
+	release time 00:36:30  starting occupancy 50
+	release time 00:40:00  starting occupancy 50
+	release time 00:50:00  starting occupancy 50
+node 78
+	busstop 10
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 40
+node 107
+node 46
+node 88
+node 45
+node 61
+node 39
+	busstop 75
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 495 per hour
+	alight 25 percent
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+node 30
+	busstop 33
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 92
+
+
+number "59"
+service: "NS"
+max number: 10
+type 113
+use service colour
+timetable 10 
+	release time 00:01:30  starting occupancy 50
+	release time 00:07:30  starting occupancy 50
+	release time 00:13:30  starting occupancy 50
+	release time 00:19:30  starting occupancy 50
+	release time 00:25:30  starting occupancy 50
+	release time 00:31:30  starting occupancy 50
+	release time 00:37:30  starting occupancy 50
+	release time 00:43:30  starting occupancy 50
+	release time 00:49:30  starting occupancy 50
+	release time 00:58:30  starting occupancy 50
+node 93
+	busstop 30
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 29
+node 33
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+	busstop 70
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 100 per hour
+	alight 33 percent
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "59"
+service: "SN"
+max number: 10
+type 113
+use service colour
+timetable 10 
+	release time 00:03:45  starting occupancy 50
+	release time 00:09:25  starting occupancy 50
+	release time 00:15:05  starting occupancy 50
+	release time 00:20:45  starting occupancy 50
+	release time 00:26:25  starting occupancy 50
+	release time 00:32:05  starting occupancy 50
+	release time 00:37:45  starting occupancy 50
+	release time 00:43:25  starting occupancy 50
+	release time 00:49:05  starting occupancy 50
+	release time 00:54:45  starting occupancy 50
+node 76
+	busstop 23
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+node 58
+node 59
+	busstop 45
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 250 per hour
+	alight 33 percent
+node 68
+node 39
+node 193
+node 63
+node 41
+node 9
+node 79
+	busstop 5
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112
+
+
+number "60"
+service: "al Sur"
+max number: 10
+type 118
+use service colour
+timetable 25 
+	release time 00:01:10  starting occupancy 50
+	release time 00:02:45  starting occupancy 50
+	release time 00:04:20  starting occupancy 50
+	release time 00:05:50  starting occupancy 50
+	release time 00:07:00  starting occupancy 50
+	release time 00:08:10  starting occupancy 50
+	release time 00:09:20  starting occupancy 50
+	release time 00:10:40  starting occupancy 50
+	release time 00:12:15  starting occupancy 50
+	release time 00:13:50  starting occupancy 50
+	release time 00:15:10  starting occupancy 50
+	release time 00:16:20  starting occupancy 50
+	release time 00:18:35  starting occupancy 50
+	release time 00:21:45  starting occupancy 50
+	release time 00:24:55  starting occupancy 50
+	release time 00:28:05  starting occupancy 50
+	release time 00:31:15  starting occupancy 50
+	release time 00:34:25  starting occupancy 50
+	release time 00:37:35  starting occupancy 50
+	release time 00:40:45  starting occupancy 50
+	release time 00:43:55  starting occupancy 50
+	release time 00:47:05  starting occupancy 50
+	release time 00:50:15  starting occupancy 50
+	release time 00:53:25  starting occupancy 50
+	release time 00:56:35  starting occupancy 50
+node 14
+	busstop 21
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+node 70
+	busstop 61
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 0 per hour
+	alight 100 percent
+node 19
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 64
+node 84
+	busstop 28
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 110
+
+
+number "60 "
+service: "al Norte"
+max number: 10
+type 118
+use service colour
+timetable 20 
+	release time 00:02:50  starting occupancy 50
+	release time 00:04:10  starting occupancy 50
+	release time 00:05:30  starting occupancy 50
+	release time 00:08:10  starting occupancy 50
+	release time 00:10:25  starting occupancy 50
+	release time 00:12:10  starting occupancy 50
+	release time 00:14:05  starting occupancy 50
+	release time 00:15:55  starting occupancy 50
+	release time 00:17:30  starting occupancy 50
+	release time 00:19:35  starting occupancy 50
+	release time 00:23:15  starting occupancy 50
+	release time 00:26:55  starting occupancy 50
+	release time 00:30:35  starting occupancy 50
+	release time 00:34:15  starting occupancy 50
+	release time 00:37:55  starting occupancy 50
+	release time 00:41:35  starting occupancy 50
+	release time 00:45:15  starting occupancy 50
+	release time 00:48:55  starting occupancy 50
+	release time 00:52:35  starting occupancy 50
+	release time 00:56:15  starting occupancy 50
+node 110
+	busstop 15
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 84
+node 64
+node 66
+node 40
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 630 per hour
+	alight 0 percent
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+node 30
+	busstop 33
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 92
+
+
+number "61"
+service: "a terminal"
+max number: 10
+type 104
+use service colour
+timetable 10 
+	release time 00:02:00  starting occupancy 50
+	release time 00:06:00  starting occupancy 50
+	release time 00:12:00  starting occupancy 50
+	release time 00:18:00  starting occupancy 50
+	release time 00:24:00  starting occupancy 50
+	release time 00:30:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:42:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:54:00  starting occupancy 50
+node 8
+	busstop 2
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 9
+node 42
+node 10
+node 67
+node 11
+node 60
+node 58
+node 69
+	busstop 50
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 0 per hour
+	alight 100 percent
+	pay time 0
+node 61
+node 189
+	busstop 37
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 97
+
+
+number "61 "
+service: "Inicio"
+max number: 10
+type 104
+use service colour
+timetable 9 
+	release time 00:04:00  starting occupancy 50
+	release time 00:09:00  starting occupancy 50
+	release time 00:15:00  starting occupancy 50
+	release time 00:21:00  starting occupancy 50
+	release time 00:30:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:42:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:54:00  starting occupancy 50
+node 108
+	busstop 38
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 107
+node 46
+node 88
+node 45
+node 61
+node 189
+node 63
+node 41
+node 9
+node 42
+node 10
+	busstop 69
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 300 per hour
+	alight 0 percent
+node 67
+node 11
+node 12
+node 6
+	busstop 17
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "62"
+service: "a terminal"
+max number: 10
+type 104
+use service colour
+timetable 10 
+	release time 00:02:30  starting occupancy 50
+	release time 00:06:30  starting occupancy 50
+	release time 00:12:30  starting occupancy 50
+	release time 00:18:30  starting occupancy 50
+	release time 00:24:30  starting occupancy 50
+	release time 00:30:30  starting occupancy 50
+	release time 00:36:30  starting occupancy 50
+	release time 00:42:30  starting occupancy 50
+	release time 00:48:30  starting occupancy 50
+	release time 00:54:30  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 58
+node 69
+	busstop 49
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 0 per hour
+	alight 100 percent
+	pay time 0
+node 61
+node 189
+	busstop 37
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 97
+
+
+number "62 "
+service: "Inicio"
+max number: 10
+type 104
+use service colour
+timetable 9 
+	release time 00:04:30  starting occupancy 50
+	release time 00:09:30  starting occupancy 50
+	release time 00:15:30  starting occupancy 50
+	release time 00:21:30  starting occupancy 50
+	release time 00:27:30  starting occupancy 50
+	release time 00:33:30  starting occupancy 50
+	release time 00:39:30  starting occupancy 50
+	release time 00:45:30  starting occupancy 50
+	release time 00:51:30  starting occupancy 50
+node 108
+	busstop 38
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 300 per hour
+	alight 0 percent
+node 88
+node 45
+node 61
+node 189
+node 63
+node 21
+node 89
+	busstop 8
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 22
+
+
+number "65 B"
+service: "a Avellaneda"
+max number: 10
+type 119
+use service colour
+timetable 7 
+	release time 00:05:25  starting occupancy 50
+	release time 00:13:25  starting occupancy 50
+	release time 00:21:25  starting occupancy 50
+	release time 00:29:25  starting occupancy 50
+	release time 00:37:25  starting occupancy 50
+	release time 00:45:25  starting occupancy 50
+	release time 00:53:25  starting occupancy 50
+node 76
+	busstop 23
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+	busstop 63
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 0 per hour
+	alight 100 percent
+	pay time 0
+node 70
+node 19
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 75
+	busstop 35
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 117
+
+
+number "65 A "
+service: "a Boca"
+max number: 10
+type 119
+use service colour
+timetable 7 
+	release time 00:09:25  starting occupancy 50
+	release time 00:17:25  starting occupancy 50
+	release time 00:25:25  starting occupancy 50
+	release time 00:33:25  starting occupancy 50
+	release time 00:41:25  starting occupancy 50
+	release time 00:49:25  starting occupancy 50
+	release time 00:57:25  starting occupancy 50
+node 14
+	busstop 22
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+	busstop 63
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 0 per hour
+	alight 100 percent
+	pay time 0
+node 70
+node 19
+node 61
+node 45
+node 88
+node 46
+node 107
+node 40
+	busstop 11
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 78
+
+
+number "65 AB"
+service: "a Barrancas"
+max number: 10
+type 119
+use service colour
+timetable 10 
+	release time 00:03:45  starting occupancy 50
+	release time 00:09:25  starting occupancy 50
+	release time 00:15:05  starting occupancy 50
+	release time 00:20:45  starting occupancy 50
+	release time 00:26:25  starting occupancy 50
+	release time 00:34:55  starting occupancy 50
+	release time 00:40:35  starting occupancy 50
+	release time 00:46:15  starting occupancy 50
+	release time 00:51:55  starting occupancy 50
+	release time 00:57:35  starting occupancy 50
+node 78
+	busstop 29
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 40
+node 21
+node 41
+node 9
+node 42
+node 10
+	busstop 69
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 210 per hour
+	alight 0 percent
+node 67
+node 11
+node 12
+node 6
+	busstop 16
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "67 "
+service: "Norte Sur"
+max number: 10
+type 110
+use service colour
+timetable 12 
+	release time 00:02:30  starting occupancy 50
+	release time 00:07:30  starting occupancy 50
+	release time 00:12:30  starting occupancy 50
+	release time 00:17:30  starting occupancy 50
+	release time 00:22:30  starting occupancy 50
+	release time 00:27:30  starting occupancy 50
+	release time 00:32:30  starting occupancy 50
+	release time 00:37:30  starting occupancy 50
+	release time 00:42:30  starting occupancy 50
+	release time 00:47:30  starting occupancy 50
+	release time 00:52:30  starting occupancy 50
+	release time 00:57:30  starting occupancy 50
+node 93
+	busstop 30
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 29
+node 33
+	busstop 79
+	dwell time mode 1
+	min stop time 00:00:05
+	alight 100 percent
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "79"
+service: "Norte Sur"
+max number: 10
+type 120
+use service colour
+timetable 13 
+	release time 00:05:35  starting occupancy 50
+	release time 00:10:00  starting occupancy 50
+	release time 00:14:25  starting occupancy 50
+	release time 00:18:50  starting occupancy 50
+	release time 00:23:15  starting occupancy 50
+	release time 00:27:40  starting occupancy 50
+	release time 00:32:05  starting occupancy 50
+	release time 00:36:30  starting occupancy 50
+	release time 00:40:55  starting occupancy 50
+	release time 00:45:20  starting occupancy 50
+	release time 00:49:45  starting occupancy 50
+	release time 00:54:10  starting occupancy 50
+	release time 00:58:35  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+node 111
+	busstop 25
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 70 per hour
+	alight 0 percent
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "84"
+service: "a terminal"
+max number: 10
+type 121
+use service colour
+timetable 7 
+	release time 00:04:45  starting occupancy 50
+	release time 00:12:45  starting occupancy 50
+	release time 00:20:45  starting occupancy 50
+	release time 00:28:45  starting occupancy 50
+	release time 00:36:45  starting occupancy 50
+	release time 00:44:45  starting occupancy 50
+	release time 00:52:45  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 58
+node 69
+	busstop 51
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 0 per hour
+	alight 100 percent
+node 61
+node 189
+	busstop 37
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 97
+
+
+number "84 "
+service: "inicial"
+max number: 10
+type 121
+use service colour
+timetable 7 
+	release time 00:04:45  starting occupancy 50
+	release time 00:12:45  starting occupancy 50
+	release time 00:20:45  starting occupancy 50
+	release time 00:28:45  starting occupancy 50
+	release time 00:36:45  starting occupancy 50
+	release time 00:44:45  starting occupancy 50
+	release time 00:52:45  starting occupancy 50
+node 108
+	busstop 38
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 107
+node 46
+node 88
+node 45
+node 61
+node 189
+node 63
+node 41
+node 9
+node 42
+node 10
+node 67
+	busstop 68
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 75 per hour
+	alight 0 percent
+node 11
+node 12
+node 6
+	busstop 17
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "91"
+service: "SN"
+max number: 10
+type 123
+use service colour
+timetable 10 
+	release time 00:01:35  starting occupancy 50
+	release time 00:06:35  starting occupancy 50
+	release time 00:10:05  starting occupancy 50
+	release time 00:18:35  starting occupancy 50
+	release time 00:20:35  starting occupancy 50
+	release time 00:25:35  starting occupancy 50
+	release time 00:33:35  starting occupancy 50
+	release time 00:38:35  starting occupancy 50
+	release time 00:48:05  starting occupancy 50
+	release time 00:57:35  starting occupancy 50
+node 76
+	busstop 24
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+node 58
+node 59
+node 68
+	busstop 43
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 170 per hour
+	alight 33 percent
+node 39
+node 193
+node 63
+node 41
+node 9
+node 79
+	busstop 5
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112
+
+
+number "91  "
+service: "SS"
+max number: 10
+type 123
+use service colour
+timetable 3 
+	release time 00:10:15  starting occupancy 50
+	release time 00:28:15  starting occupancy 50
+	release time 00:46:15  starting occupancy 50
+node 76
+	busstop 24
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+	busstop 80
+	dwell time mode 1
+	min stop time 00:00:00
+	alight 10 percent
+node 15
+node 27
+node 62
+node 12
+node 26
+node 33
+	busstop 79
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 15 per hour
+	alight 0 percent
+	pay time 0
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "91 "
+service: "MS"
+max number: 10
+type 123
+use service colour
+timetable 8 
+	release time 00:00:25  starting occupancy 50
+	release time 00:08:00  starting occupancy 50
+	release time 00:16:00  starting occupancy 50
+	release time 00:24:00  starting occupancy 50
+	release time 00:32:00  starting occupancy 50
+	release time 00:40:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:56:00  starting occupancy 50
+node 93
+	busstop 30
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 29
+node 33
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+	busstop 70
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 100 per hour
+	alight 33 percent
+	pay time 0
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "96"
+service: "E"
+max number: 10
+type 124
+use service colour
+timetable 7 
+	release time 00:00:40  starting occupancy 70
+	release time 00:09:40  starting occupancy 70
+	release time 00:18:20  starting occupancy 70
+	release time 00:27:00  starting occupancy 70
+	release time 00:35:40  starting occupancy 70
+	release time 00:44:20  starting occupancy 70
+	release time 00:53:00  starting occupancy 70
+node 14
+	busstop 21
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 52
+node 53
+node 56
+node 111
+	busstop 25
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	alight 100 percent
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "97 "
+service: "O a Reg"
+max number: 10
+type 101
+use service colour
+timetable 5 
+	release time 00:02:25  starting occupancy 50
+	release time 00:12:25  starting occupancy 50
+	release time 00:24:25  starting occupancy 50
+	release time 00:36:25  starting occupancy 50
+	release time 00:48:25  starting occupancy 50
+node 14
+	busstop 21
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+node 58
+	busstop 57
+	dwell time mode 1
+	min stop time 00:00:05
+	alight 100 percent
+node 69
+node 61
+node 189
+	busstop 37
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 97
+
+
+number "97 EO"
+service: "Provincia Inicio"
+max number: 10
+type 101
+use service colour
+timetable 6 
+	release time 00:02:00  starting occupancy 50
+	release time 00:12:00  starting occupancy 50
+	release time 00:24:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:54:00  starting occupancy 50
+node 78
+	busstop 29
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 40
+node 21
+node 41
+node 9
+node 42
+node 10
+node 67
+node 11
+node 12
+node 6
+	busstop 16
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "98"
+service: "C"
+max number: 10
+type 107
+use service colour
+timetable 15 
+	release time 00:02:45  starting occupancy 40
+	release time 00:06:45  starting occupancy 40
+	release time 00:10:45  starting occupancy 40
+	release time 00:14:45  starting occupancy 40
+	release time 00:18:45  starting occupancy 40
+	release time 00:22:45  starting occupancy 40
+	release time 00:26:45  starting occupancy 40
+	release time 00:30:45  starting occupancy 40
+	release time 00:34:45  starting occupancy 40
+	release time 00:38:45  starting occupancy 40
+	release time 00:42:45  starting occupancy 40
+	release time 00:46:45  starting occupancy 40
+	release time 00:50:45  starting occupancy 40
+	release time 00:54:45  starting occupancy 40
+	release time 00:58:45  starting occupancy 40
+node 110
+	busstop 14
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 84
+node 64
+node 66
+node 40
+node 107
+node 46
+node 88
+node 45
+node 61
+node 39
+	busstop 74
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 250 per hour
+	alight 0 percent
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+	busstop 20
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 86
+
+
+number "98 "
+service: "98"
+max number: 10
+type 107
+use service colour
+timetable 12 
+	release time 00:02:30  starting occupancy 50
+	release time 00:07:30  starting occupancy 50
+	release time 00:12:30  starting occupancy 50
+	release time 00:17:30  starting occupancy 50
+	release time 00:22:30  starting occupancy 50
+	release time 00:27:30  starting occupancy 50
+	release time 00:32:30  starting occupancy 50
+	release time 00:37:30  starting occupancy 50
+	release time 00:42:30  starting occupancy 50
+	release time 00:47:30  starting occupancy 50
+	release time 00:52:30  starting occupancy 50
+	release time 00:57:30  starting occupancy 50
+node 93
+	busstop 31
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 103
+node 36
+node 10
+	busstop 81
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	alight 100 percent
+node 39
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 64
+node 84
+	busstop 28
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 110
+
+
+number "100 D"
+service: "SN"
+max number: 10
+type 125
+use service colour
+timetable 10 
+	release time 00:00:15  starting occupancy 50
+	release time 00:06:15  starting occupancy 50
+	release time 00:12:15  starting occupancy 50
+	release time 00:18:15  starting occupancy 50
+	release time 00:24:15  starting occupancy 50
+	release time 00:30:15  starting occupancy 50
+	release time 00:36:15  starting occupancy 50
+	release time 00:42:15  starting occupancy 50
+	release time 00:48:15  starting occupancy 50
+	release time 00:54:15  starting occupancy 50
+node 109
+	busstop 72
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 65
+node 72
+node 71
+node 66
+node 40
+	busstop 71
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 50 per hour
+	alight 80 percent
+	pay time 0
+node 21
+node 41
+node 9
+node 79
+	busstop 5
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112
+
+
+number "100 ABC"
+service: "SN"
+max number: 10
+type 125
+use service colour
+timetable 7 
+	release time 00:04:20  starting occupancy 50
+	release time 00:12:20  starting occupancy 50
+	release time 00:20:20  starting occupancy 50
+	release time 00:28:20  starting occupancy 50
+	release time 00:36:20  starting occupancy 50
+	release time 00:44:20  starting occupancy 50
+	release time 00:52:20  starting occupancy 50
+node 76
+	busstop 23
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 114
+node 15
+node 16
+node 17
+node 18
+node 58
+node 59
+node 68
+	busstop 42
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 150 per hour
+	alight 33 percent
+node 39
+node 193
+node 63
+node 41
+node 9
+node 79
+	busstop 5
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112
+
+
+number "100 AB"
+service: "NS"
+max number: 10
+type 125
+use service colour
+timetable 11 
+	release time 00:02:05  starting occupancy 50
+	release time 00:08:05  starting occupancy 50
+	release time 00:13:05  starting occupancy 50
+	release time 00:18:05  starting occupancy 50
+	release time 00:23:05  starting occupancy 50
+	release time 00:28:05  starting occupancy 50
+	release time 00:33:05  starting occupancy 50
+	release time 00:38:05  starting occupancy 50
+	release time 00:43:05  starting occupancy 50
+	release time 00:48:05  starting occupancy 50
+	release time 00:53:05  starting occupancy 50
+node 93
+	busstop 31
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 29
+node 33
+node 11
+node 60
+node 18
+node 52
+node 53
+node 56
+	busstop 70
+	dwell time mode 1
+	min stop time 00:00:00
+	force stop
+	passenger frequency 50 per hour
+	alight 33 percent
+node 111
+	busstop 26
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 77
+
+
+number "100 CD"
+service: "NS"
+max number: 10
+type 125
+use service colour
+timetable 6 
+	release time 00:05:45  starting occupancy 50
+	release time 00:15:45  starting occupancy 50
+	release time 00:25:45  starting occupancy 50
+	release time 00:35:45  starting occupancy 50
+	release time 00:45:45  starting occupancy 50
+	release time 00:55:45  starting occupancy 50
+node 93
+	busstop 30
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 103
+node 36
+node 10
+node 39
+node 61
+node 45
+node 88
+	busstop 76
+	dwell time mode 1
+	min stop time 00:00:00
+	force stop
+	passenger frequency 50 per hour
+	alight 33 percent
+node 46
+node 49
+node 73
+node 75
+	busstop 35
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 117
+
+
+number "102 "
+service: "SN"
+max number: 10
+type 126
+use service colour
+timetable 10 
+	release time 00:01:25  starting occupancy 50
+	release time 00:06:25  starting occupancy 50
+	release time 00:12:25  starting occupancy 50
+	release time 00:18:25  starting occupancy 50
+	release time 00:24:25  starting occupancy 50
+	release time 00:30:25  starting occupancy 50
+	release time 00:36:25  starting occupancy 50
+	release time 00:42:25  starting occupancy 50
+	release time 00:48:25  starting occupancy 50
+	release time 00:54:25  starting occupancy 50
+node 110
+	busstop 15
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 84
+node 64
+node 66
+node 40
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 135 per hour
+	alight 50 percent
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+node 30
+	busstop 33
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 92
+
+
+number "102"
+service: "NS"
+max number: 10
+type 126
+use service colour
+timetable 10 
+	release time 00:00:30  starting occupancy 50
+	release time 00:06:30  starting occupancy 50
+	release time 00:12:30  starting occupancy 50
+	release time 00:18:30  starting occupancy 50
+	release time 00:24:30  starting occupancy 50
+	release time 00:30:30  starting occupancy 50
+	release time 00:36:30  starting occupancy 50
+	release time 00:42:30  starting occupancy 50
+	release time 00:48:30  starting occupancy 50
+	release time 00:54:30  starting occupancy 50
+node 14
+	busstop 22
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+node 70
+	busstop 59
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 230 per hour
+	alight 33 percent
+node 19
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 64
+node 84
+	busstop 28
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 110
+
+
+number "129 "
+service: "SN"
+max number: 10
+type 106
+use service colour
+timetable 9 
+	release time 00:06:00  starting occupancy 50
+	release time 00:12:00  starting occupancy 50
+	release time 00:18:00  starting occupancy 50
+	release time 00:24:00  starting occupancy 50
+	release time 00:30:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:42:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:54:00  starting occupancy 50
+node 109
+	busstop 72
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 65
+node 72
+node 71
+node 66
+node 40
+node 107
+node 46
+node 88
+node 45
+node 61
+node 39
+	busstop 75
+	dwell time mode 1
+	min stop time 00:00:00
+	alight 10 percent
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 33
+node 11
+node 12
+node 6
+	busstop 16
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "129"
+service: "NS"
+max number: 10
+type 106
+use service colour
+timetable 7 
+	release time 00:04:55  starting occupancy 50
+	release time 00:12:55  starting occupancy 50
+	release time 00:20:55  starting occupancy 50
+	release time 00:28:55  starting occupancy 50
+	release time 00:36:55  starting occupancy 50
+	release time 00:44:55  starting occupancy 50
+	release time 00:52:55  starting occupancy 50
+node 93
+	busstop 31
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 87
+node 32
+node 103
+node 36
+node 10
+	busstop 81
+	dwell time mode 1
+	min stop time 00:00:00
+	alight 10 percent
+node 39
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 75
+	busstop 35
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 117
+
+
+number "133 "
+service: "Provincia"
+max number: 10
+type 112
+use service colour
+timetable 12 
+	release time 00:04:00  starting occupancy 50
+	release time 00:08:00  starting occupancy 50
+	release time 00:12:00  starting occupancy 50
+	release time 00:16:00  starting occupancy 50
+	release time 00:20:00  starting occupancy 50
+	release time 00:24:00  starting occupancy 50
+	release time 00:28:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:40:00  starting occupancy 50
+	release time 00:44:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:52:00  starting occupancy 50
+node 110
+	busstop 14
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 84
+node 64
+node 66
+node 40
+node 21
+node 41
+node 9
+node 42
+node 10
+node 67
+	busstop 67
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 120 per hour
+	alight 33 percent
+node 11
+node 12
+node 6
+	busstop 17
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "133"
+service: "Capital"
+max number: 10
+type 112
+use service colour
+timetable 15 
+	release time 00:00:15  starting occupancy 50
+	release time 00:04:15  starting occupancy 50
+	release time 00:08:15  starting occupancy 50
+	release time 00:12:15  starting occupancy 50
+	release time 00:16:15  starting occupancy 50
+	release time 00:20:15  starting occupancy 50
+	release time 00:24:15  starting occupancy 50
+	release time 00:28:15  starting occupancy 50
+	release time 00:32:15  starting occupancy 50
+	release time 00:36:15  starting occupancy 50
+	release time 00:40:15  starting occupancy 50
+	release time 00:44:15  starting occupancy 50
+	release time 00:48:15  starting occupancy 50
+	release time 00:52:15  starting occupancy 50
+	release time 00:56:15  starting occupancy 50
+node 14
+	busstop 21
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+	busstop 66
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 75 per hour
+	alight 50 percent
+node 70
+node 19
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 64
+node 84
+	busstop 28
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 110
+
+
+number "143 "
+service: "EO"
+max number: 10
+type 127
+use service colour
+timetable 10 
+	release time 00:00:40  starting occupancy 50
+	release time 00:06:40  starting occupancy 50
+	release time 00:12:40  starting occupancy 50
+	release time 00:18:40  starting occupancy 50
+	release time 00:24:40  starting occupancy 50
+	release time 00:30:40  starting occupancy 50
+	release time 00:36:40  starting occupancy 50
+	release time 00:42:40  starting occupancy 50
+	release time 00:48:40  starting occupancy 50
+	release time 00:54:40  starting occupancy 50
+node 8
+	busstop 4
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 9
+node 42
+node 10
+node 67
+	busstop 68
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 120 per hour
+	alight 33 percent
+	pay time 0
+node 11
+node 12
+node 6
+	busstop 16
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "143"
+service: "OE"
+max number: 10
+type 127
+use service colour
+timetable 10 
+	release time 00:00:25  starting occupancy 50
+	release time 00:06:25  starting occupancy 50
+	release time 00:12:25  starting occupancy 50
+	release time 00:18:25  starting occupancy 50
+	release time 00:24:25  starting occupancy 50
+	release time 00:30:25  starting occupancy 50
+	release time 00:36:25  starting occupancy 50
+	release time 00:42:25  starting occupancy 50
+	release time 00:48:25  starting occupancy 50
+	release time 00:54:25  starting occupancy 50
+node 14
+	busstop 22
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+node 58
+	busstop 54
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 100 per hour
+	alight 33 percent
+	pay time 0
+node 69
+node 61
+node 189
+node 63
+node 21
+node 89
+	busstop 8
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 22
+
+
+number "148"
+service: "a terminal"
+max number: 10
+type 108
+use service colour
+timetable 29 
+	release time 00:03:00  starting occupancy 50
+	release time 00:05:00  starting occupancy 50
+	release time 00:07:00  starting occupancy 50
+	release time 00:09:00  starting occupancy 50
+	release time 00:10:00  starting occupancy 50
+	release time 00:12:00  starting occupancy 50
+	release time 00:14:00  starting occupancy 50
+	release time 00:16:00  starting occupancy 50
+	release time 00:18:00  starting occupancy 50
+	release time 00:20:00  starting occupancy 50
+	release time 00:22:00  starting occupancy 50
+	release time 00:24:00  starting occupancy 50
+	release time 00:26:00  starting occupancy 50
+	release time 00:28:00  starting occupancy 50
+	release time 00:30:00  starting occupancy 50
+	release time 00:32:00  starting occupancy 50
+	release time 00:34:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:38:00  starting occupancy 50
+	release time 00:40:00  starting occupancy 50
+	release time 00:42:00  starting occupancy 50
+	release time 00:44:00  starting occupancy 50
+	release time 00:46:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:50:00  starting occupancy 50
+	release time 00:52:00  starting occupancy 50
+	release time 00:54:00  starting occupancy 50
+	release time 00:56:00  starting occupancy 50
+	release time 00:58:00  starting occupancy 50
+node 109
+	busstop 72
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 65
+node 72
+node 71
+node 66
+node 40
+node 21
+node 41
+node 9
+node 42
+node 10
+node 67
+node 11
+node 60
+node 59
+node 68
+	busstop 40
+	dwell time mode 1
+	min stop time 00:00:05
+	alight 10 percent
+node 39
+node 193
+node 63
+node 41
+node 9
+node 42
+	busstop 27
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 91b
+
+
+number "148 "
+service: "Inicio a S"
+max number: 10
+type 108
+use service colour
+timetable 29 
+	release time 00:03:00  starting occupancy 50
+	release time 00:05:00  starting occupancy 50
+	release time 00:07:00  starting occupancy 50
+	release time 00:09:00  starting occupancy 50
+	release time 00:10:00  starting occupancy 50
+	release time 00:12:00  starting occupancy 50
+	release time 00:14:00  starting occupancy 50
+	release time 00:16:00  starting occupancy 50
+	release time 00:18:00  starting occupancy 50
+	release time 00:20:00  starting occupancy 50
+	release time 00:22:00  starting occupancy 50
+	release time 00:24:00  starting occupancy 50
+	release time 00:26:00  starting occupancy 50
+	release time 00:28:00  starting occupancy 50
+	release time 00:30:00  starting occupancy 50
+	release time 00:32:00  starting occupancy 50
+	release time 00:34:00  starting occupancy 50
+	release time 00:36:00  starting occupancy 50
+	release time 00:38:00  starting occupancy 50
+	release time 00:40:00  starting occupancy 50
+	release time 00:42:00  starting occupancy 50
+	release time 00:44:00  starting occupancy 50
+	release time 00:46:00  starting occupancy 50
+	release time 00:48:00  starting occupancy 50
+	release time 00:50:00  starting occupancy 50
+	release time 00:52:00  starting occupancy 50
+	release time 00:54:00  starting occupancy 50
+	release time 00:56:00  starting occupancy 50
+	release time 00:58:00  starting occupancy 50
+node 98
+	busstop 36
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 63
+node 41
+node 9
+node 42
+node 10
+	busstop 81
+	dwell time mode 1
+	min stop time 00:00:05
+	alight 10 percent
+node 39
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 75
+	busstop 35
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 117
+
+
+number "151"
+service: "a terminal"
+max number: 10
+type 128
+use service colour
+timetable 7 
+	release time 00:04:50  starting occupancy 50
+	release time 00:12:50  starting occupancy 50
+	release time 00:24:50  starting occupancy 50
+	release time 00:32:50  starting occupancy 50
+	release time 00:40:50  starting occupancy 50
+	release time 00:44:50  starting occupancy 50
+	release time 00:52:50  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 58
+node 69
+	busstop 51
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 150 per hour
+	alight 33 percent
+	pay time 0
+node 61
+node 189
+	busstop 37
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 97
+
+
+number "151 "
+service: "inicial"
+max number: 10
+type 128
+use service colour
+timetable 7 
+	release time 00:04:50  starting occupancy 50
+	release time 00:12:50  starting occupancy 50
+	release time 00:20:50  starting occupancy 50
+	release time 00:28:50  starting occupancy 50
+	release time 00:36:50  starting occupancy 50
+	release time 00:44:50  starting occupancy 50
+	release time 00:52:50  starting occupancy 50
+node 108
+	busstop 38
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 107
+node 46
+node 88
+node 45
+node 61
+node 189
+node 63
+node 41
+node 9
+node 42
+node 10
+node 67
+	busstop 68
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 150 per hour
+	alight 33 percent
+	pay time 0
+node 11
+node 12
+node 6
+	busstop 17
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 90
+
+
+number "154"
+service: "Inicio a S"
+max number: 10
+type 95
+use service colour
+timetable 5 
+	release time 00:10:25  starting occupancy 50
+	release time 00:20:25  starting occupancy 50
+	release time 00:30:25  starting occupancy 50
+	release time 00:40:25  starting occupancy 50
+	release time 00:50:25  starting occupancy 50
+node 98
+	busstop 36
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 63
+node 41
+node 9
+node 42
+node 10
+node 39
+node 61
+node 45
+node 88
+	busstop 76
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	alight 100 percent
+node 46
+node 49
+node 73
+node 75
+	busstop 35
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 117
+
+
+number "168"
+service: "90 DE"
+max number: 10
+type 122
+use service colour
+timetable 18 
+	release time 00:01:45  starting occupancy 50
+	release time 00:05:45  starting occupancy 50
+	release time 00:09:45  starting occupancy 50
+	release time 00:13:45  starting occupancy 50
+	release time 00:15:45  starting occupancy 50
+	release time 00:17:45  starting occupancy 50
+	release time 00:21:45  starting occupancy 50
+	release time 00:25:45  starting occupancy 50
+	release time 00:29:45  starting occupancy 50
+	release time 00:31:45  starting occupancy 50
+	release time 00:33:45  starting occupancy 50
+	release time 00:37:45  starting occupancy 50
+	release time 00:41:45  starting occupancy 50
+	release time 00:45:45  starting occupancy 50
+	release time 00:49:45  starting occupancy 50
+	release time 00:51:45  starting occupancy 50
+	release time 00:53:45  starting occupancy 50
+	release time 00:57:45  starting occupancy 50
+node 91
+	busstop 34
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 51
+node 26
+node 33
+node 11
+node 60
+node 59
+	busstop 48
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 260 per hour
+	alight 33 percent
+node 68
+node 39
+node 193
+node 63
+node 41
+node 9
+node 42
+	busstop 27
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 91b
+
+
+number "168 "
+service: "ABC EO"
+max number: 10
+type 96
+use service colour
+timetable 7 
+	release time 00:01:40  starting occupancy 50
+	release time 00:10:00  starting occupancy 50
+	release time 00:19:20  starting occupancy 50
+	release time 00:28:40  starting occupancy 50
+	release time 00:38:00  starting occupancy 50
+	release time 00:47:20  starting occupancy 50
+	release time 00:56:40  starting occupancy 50
+node 78
+	busstop 10
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 40
+node 107
+node 46
+	busstop 39
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 190 per hour
+	alight 25 percent
+node 88
+node 45
+node 61
+node 39
+node 10
+node 36
+node 34
+node 103
+node 32
+node 29
+node 25
+node 30
+	busstop 33
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 92
+
+
+number "168  "
+service: "ABC NS"
+max number: 10
+type 96
+use service colour
+timetable 10 
+	release time 00:01:05  starting occupancy 50
+	release time 00:06:20  starting occupancy 50
+	release time 00:12:30  starting occupancy 50
+	release time 00:18:40  starting occupancy 50
+	release time 00:24:50  starting occupancy 50
+	release time 00:31:00  starting occupancy 50
+	release time 00:37:10  starting occupancy 50
+	release time 00:43:20  starting occupancy 50
+	release time 00:49:30  starting occupancy 50
+	release time 00:55:40  starting occupancy 50
+node 14
+	busstop 21
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 17
+node 18
+node 70
+	busstop 58
+	dwell time mode 1
+	min stop time 00:00:05
+	force stop
+	passenger frequency 105 per hour
+	alight 50 percent
+node 19
+node 61
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 64
+node 84
+	busstop 28
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 110
+
+
+number "Taxi 1"
+service: "Taxi 1"
+max number: 10
+type 90
+use service colour
+timetable 29 
+	release time 00:02:15  starting occupancy 4
+	release time 00:04:15  starting occupancy 4
+	release time 00:06:15  starting occupancy 4
+	release time 00:08:15  starting occupancy 4
+	release time 00:10:15  starting occupancy 4
+	release time 00:12:15  starting occupancy 4
+	release time 00:14:15  starting occupancy 4
+	release time 00:16:15  starting occupancy 4
+	release time 00:18:15  starting occupancy 4
+	release time 00:20:15  starting occupancy 4
+	release time 00:22:15  starting occupancy 4
+	release time 00:24:15  starting occupancy 4
+	release time 00:26:15  starting occupancy 4
+	release time 00:28:15  starting occupancy 4
+	release time 00:30:15  starting occupancy 4
+	release time 00:32:15  starting occupancy 4
+	release time 00:34:15  starting occupancy 4
+	release time 00:36:15  starting occupancy 4
+	release time 00:38:15  starting occupancy 4
+	release time 00:40:15  starting occupancy 4
+	release time 00:42:15  starting occupancy 4
+	release time 00:44:15  starting occupancy 4
+	release time 00:46:15  starting occupancy 4
+	release time 00:48:15  starting occupancy 4
+	release time 00:50:15  starting occupancy 4
+	release time 00:52:15  starting occupancy 4
+	release time 00:54:15  starting occupancy 4
+	release time 00:56:15  starting occupancy 4
+	release time 00:58:15  starting occupancy 4
+node 87
+	busstop 83
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 32
+node 29
+node 33
+node 11
+node 60
+node 18
+node 52
+node 53
+node 54
+node 104
+	busstop 41
+	dwell time mode 3
+	mean dwell time 00:00:45 with deviation 00:00:15
+	force stop
+	alight 10 percent
+node 55
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 66
+node 40
+node 21
+node 41
+node 9
+node 79
+	busstop 86
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112
+
+
+number "Taxi 2"
+service: "Taxi 2"
+max number: 10
+type 91
+use service colour
+timetable 30 
+	release time 00:00:15  starting occupancy 4
+	release time 00:02:10  starting occupancy 4
+	release time 00:04:10  starting occupancy 4
+	release time 00:06:10  starting occupancy 4
+	release time 00:08:10  starting occupancy 4
+	release time 00:10:10  starting occupancy 4
+	release time 00:12:10  starting occupancy 4
+	release time 00:14:10  starting occupancy 4
+	release time 00:16:10  starting occupancy 4
+	release time 00:18:10  starting occupancy 4
+	release time 00:20:10  starting occupancy 4
+	release time 00:22:10  starting occupancy 4
+	release time 00:24:10  starting occupancy 4
+	release time 00:26:10  starting occupancy 4
+	release time 00:28:10  starting occupancy 4
+	release time 00:30:10  starting occupancy 4
+	release time 00:32:10  starting occupancy 4
+	release time 00:34:10  starting occupancy 4
+	release time 00:36:10  starting occupancy 4
+	release time 00:38:10  starting occupancy 4
+	release time 00:40:10  starting occupancy 4
+	release time 00:42:10  starting occupancy 4
+	release time 00:44:10  starting occupancy 4
+	release time 00:46:10  starting occupancy 4
+	release time 00:48:10  starting occupancy 4
+	release time 00:50:10  starting occupancy 4
+	release time 00:52:10  starting occupancy 4
+	release time 00:54:10  starting occupancy 4
+	release time 00:56:10  starting occupancy 4
+	release time 00:58:10  starting occupancy 4
+node 14
+	busstop 84
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	start
+node 113
+node 15
+node 16
+node 52
+node 53
+node 54
+node 104
+	busstop 41
+	dwell time mode 3
+	mean dwell time 00:00:45 with deviation 00:00:15
+	force stop
+	alight 10 percent
+node 55
+node 45
+node 88
+node 46
+node 49
+node 73
+node 72
+node 71
+node 66
+node 40
+node 21
+node 41
+node 9
+node 79
+	busstop 86
+	dwell time mode 1
+	min stop time 00:00:00
+	passenger frequency 0 per hour
+	alight 0 percent
+	pay time 0
+	end
+node 112

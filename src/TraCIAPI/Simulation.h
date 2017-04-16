@@ -40,11 +40,13 @@ namespace traci_api
         static Simulation* getInstance();
         static void deleteInstance();
 
-        int runSimulation(uint32_t target_time, tcpip::Storage& result_store);
+        int runSimulation(uint32_t target_time);
         bool getVariable(uint8_t varID, tcpip::Storage& result_store);
 
         float getCurrentTimeSeconds();
         int getCurrentTimeMilliseconds();
+
+        void getRealNetworkBounds(double &llx, double &lly, double &urx, double &ury);
 
     private:
 

@@ -1,0 +1,310 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:41:38 2008
+## Modified Date Wed 5. Aug 16:57:58 2009
+## Modified By mwhyte
+## Network C:/Documents and Settings/All Users/Application Data/paramics/data/Demo1
+## Notes 
+link 1 2 category 1 
+link 2 1 category 1 
+link 2 3 category 1 
+link 3 2 category 1 
+link 3 4 category 1 
+link 4 3 category 1 
+link 6 90 category 5 
+link 7 8 category 5 
+link 8 9 category 5 bus lane 1 
+link 9 79 category 5 
+link 9 42 category 4 width 18.7 m lanes 6 
+link 10 36 category 2 bus lane 1 bus lane 2 
+link 10 67 category 4 width 16.6 m lanes 6 
+link 10 39 category 3 speed 60 kph width 12.1 m lanes 4 
+link 11 12 category 5 
+link 11 60 category 5 
+link 12 26 category 2 
+link 12 6 category 5 
+link 13 14 category 2 
+link 14 113 category 2 bus lane 1 
+link 15 27 category 2 
+link 15 16 category 2 width 10.0 m lanes 3 
+link 16 52 category 2 
+link 16 17 category 3 bus lane 1 arc centre #215 
+link 17 18 category 3 
+link 18 52 category 3 arc centre #193 
+link 18 70 category 2 bus lane 1 bus lane 2 force merge force across force exit 
+link 18 58 category 4 bus lane 1 bus lane 2 
+link 19 61 category 1 width 8.0 m lanes 2 
+link 21 41 category 5 
+link 21 89 category 2 
+link 89 22 category 2 
+link 25 86 category 2 
+link 25 30 category 2 
+link 26 25 category 2 
+link 26 33 category 2 
+link 27 62 category 2 
+link 28 76 category 2 
+link 29 25 category 3 
+link 29 33 category 5 
+link 30 92 category 2 
+link 31 93 category 2 width 10.5 m lanes 3 
+link 32 29 category 5 
+link 32 103 category 2 width 10.0 m lanes 3 
+link 33 11 category 5 
+link 34 103 category 2 bus lane 1 bus lane 2 
+link 36 34 category 2 speed 30 kph bus lane 1 bus lane 2 arc centre #1 
+link 36 10 category 2 speed 60 kph width 12.0 m lanes 4 
+link 35 81 category 2 
+link 37 44 category 2 gradient -2.856853 
+link 42 10 category 4 width 18.7 m lanes 6 
+link 42 91b category 2 
+link 44 10 category 2 gradient -2.847836 
+link 39 10 category 2 bus lane 1 bus lane 2 
+link 39 61 category 1 speed 60 kph width 15.0 m lanes 4 
+link 39 193 category 4 
+link 40 21 category 5 
+link 40 107 category 3 
+link 40 78 category 2 speed 60 kph width 10.0 m lanes 3 
+link 41 9 category 5 
+link 45 61 category 2 
+link 45 88 category 4 
+link 46 88 category 2 bus lane 1 bus lane 2 force exit 
+link 46 49 category 4 
+link 46 107 category 3 
+link 47 78 category 2 speed 60 kph width 10.0 m lanes 3 
+link 48 110 category 3 
+link 49 73 category 1 speed 60 kph width 12.0 m lanes 4 
+link 50 91 category 2 
+link 51 26 category 2 
+link 52 53 category 4 
+link 53 56 category 2 
+link 53 54 category 2 
+link 54 10p category 125 lanes 6 headway factor 1.00 
+link 54 104 category 2 
+link 54 11p category 125 lanes 6 
+link 55 45 category 1 width 8.0 m lanes 2 
+link 56 111 category 2 
+link 58 59 category 1 width 10.5 m lanes 3 bus lane 1 
+link 58 69 category 2 bus lane 1 bus lane 2 force merge force across force exit 
+link 59 68 category 5 bus lane 1 bus lane 2 
+link 60 18 category 2 arc centre #200 
+link 60 58 category 2 bus lane 1 bus lane 2 arc centre #199 
+link 60 59 category 3 speed 30 kph arc centre #198 
+link 61 39 category 1 speed 45 kph width 7.3 m lanes 2 
+link 61 45 category 4 
+link 61 189 category 3 
+link 62 12 category 2 
+link 62 60 category 1 speed 30 kph width 5.5 m 
+link 63 21 category 3 
+link 63 41 category 4 
+link 64 66 category 5 
+link 64 84 category 3 
+link 65 72 category 1 speed 20 kph width 11.0 m lanes 3 arc centre #461 left 
+link 66 40 category 5 
+link 67 11 category 4 width 16.6 m lanes 6 
+link 68 13p category 125 lanes 6 headway factor 1.00 
+link 68 39 category 5 bus lane 1 bus lane 2 
+link 68 14p category 125 lanes 6 
+link 69 13p category 125 lanes 6 
+link 69 12p category 125 lanes 6 headway factor 1.00 
+link 69 61 category 2 bus lane 1 bus lane 2 force merge force across force exit 
+link 70 11p category 125 lanes 6 headway factor 1.00 
+link 70 19 category 2 bus lane 1 bus lane 2 force merge force across force exit 
+link 70 12p category 125 lanes 6 
+link 71 64 category 1 width 10.5 m lanes 3 
+link 71 66 category 1 width 10.5 m lanes 3 
+link 71 73 category 1 speed 30 kph width 8.0 m lanes 2 arc centre #506 
+link 72 71 category 1 width 12.0 m lanes 4 
+link 73 75 category 1 speed 30 kph width 10.8 m lanes 3 arc centre #531 left 
+link 73 72 category 1 speed 30 kph width 7.0 m lanes 2 arc centre #537 
+link 75 117 category 1 width 12.0 m lanes 4 
+link 76 114 category 2 bus lane 1 
+link 77 57 category 2 
+link 78 40 category 2 speed 60 kph width 10.0 m lanes 3 bus lane 1 
+link 78 47 category 2 speed 60 kph width 10.0 m lanes 3 
+link 79 112 category 5 
+link 81 37 category 2 gradient -1.804876 
+link 82 85 category 1 width 5.0 m 
+link 83 109 category 1 speed 60 kph width 13.1 m lanes 4 
+link 84 64 category 3 
+link 84 110 category 3 
+link 85 27 category 1 width 5.0 m 
+link 86 24 category 2 
+link 87 32 category 2 width 10.5 m lanes 3 
+link 88 45 category 2 bus lane 1 bus lane 2 
+link 88 46 category 4 bus lane 1 
+link 189 97 category 2 
+link 189 63 category 3 
+link 92b 193 category 2 bus lane 1 bus lane 2 
+link 193 63 category 4 
+link 98 63 category 2 
+link 22 23 category 2 
+link 91 51 category 2 bus lane 1 
+link 92 80 category 2 
+link 90 5 category 5 
+link 103 32 category 2 bus lane 1 bus lane 2 
+link 103 36 category 4 speed 20 kph arc centre #291 left 
+link 104 55 category 3 bus lane 1 
+link 112 43 category 5 
+link 117 74 category 1 width 12.0 m lanes 4 
+link 113 15 category 2 
+link 110 84 category 3 bus lane 1 
+link 110 48 category 3 
+link 93 87 category 2 width 10.5 m lanes 3 bus lane 1 
+link 111 77 category 2 
+link 114 15 category 2 
+link 107 46 category 3 
+link 107 40 category 3 
+link 108 107 category 2 
+link 109 65 category 1 speed 60 kph width 13.1 m lanes 4 bus lane 1 
+link 10p 54 category 125 lanes 6 
+link 10p 125 category 125 headway factor 1.00 
+link 11p 70 category 125 lanes 6 
+link 11p 126 category 125 headway factor 1.00 
+link 11p 54 category 125 lanes 6 headway factor 1.00 
+link 11p 127 category 125 
+link 12p 69 category 125 lanes 6 
+link 12p 131 category 125 headway factor 1.00 
+link 12p 70 category 125 lanes 6 headway factor 1.00 
+link 12p 129 category 125 
+link 13p 68 category 125 lanes 6 
+link 13p 130 category 125 
+link 13p 69 category 125 lanes 6 headway factor 1.00 
+link 13p 128 category 125 headway factor 1.00 
+link 14p 123 category 125 
+link 14p 68 category 125 lanes 6 headway factor 1.00 
+link 14p 124 category 125 headway factor 1.00 
+link 130p 130 category 125 headway factor 1.00 
+link 120p 131 category 125 
+link 110p 126 category 125 
+link 1p 125 category 125 
+link 131p 128 category 125 
+link 121p 129 category 125 headway factor 1.00 
+link 111p 127 category 125 headway factor 1.00 
+link 142p 124 category 125 
+link 141p 123 category 125 headway factor 1.00 
+link 123 141p category 125 
+link 123 14p category 125 headway factor 1.00 
+link 124 14p category 125 
+link 124 142p category 125 headway factor 1.00 
+link 125 10p category 125 
+link 125 1p category 125 headway factor 1.00 
+link 126 110p category 125 headway factor 1.00 
+link 126 11p category 125 
+link 127 11p category 125 headway factor 1.00 
+link 127 111p category 125 
+link 128 13p category 125 
+link 128 131p category 125 headway factor 1.00 
+link 129 12p category 125 headway factor 1.00 
+link 129 121p category 125 
+link 130 130p category 125 
+link 130 13p category 125 headway factor 1.00 
+link 131 120p category 125 headway factor 1.00 
+link 131 12p category 125 
+link 5 90 barred 
+link 6 12 barred 
+link 8 7 barred 
+link 9 41 barred 
+link 9 8 barred 
+link 10 44 barred 
+link 10 42 barred 
+link 11 33 barred 
+link 11 67 barred 
+link 12 62 barred 
+link 12 11 barred 
+link 14 13 barred 
+link 15 113 barred 
+link 15 114 barred 
+link 16 15 barred 
+link 17 16 barred arc centre #215 left 
+link 18 60 barred arc centre #200 left 
+link 18 17 barred 
+link 19 70 barred 
+link 21 63 barred 
+link 21 40 barred 
+link 89 21 barred 
+link 23 22 barred 
+link 24 86 barred 
+link 25 26 barred 
+link 25 29 barred 
+link 26 51 barred 
+link 26 12 barred 
+link 27 85 barred 
+link 27 15 barred 
+link 29 32 barred 
+link 30 25 barred 
+link 32 87 barred 
+link 33 29 barred 
+link 33 26 barred 
+link 34 36 barred arc centre #1 left 
+link 36 103 barred arc centre #291 
+link 37 81 barred 
+link 42 9 barred 
+link 44 37 barred 
+link 39 68 barred 
+link 40 66 barred 
+link 41 63 barred 
+link 41 21 barred 
+link 43 112 barred 
+link 45 55 barred 
+link 49 46 barred 
+link 51 91 barred 
+link 52 18 barred arc centre #193 left 
+link 52 16 barred 
+link 53 52 barred 
+link 54 53 barred 
+link 55 104 barred 
+link 56 53 barred 
+link 57 77 barred 
+link 58 60 barred arc centre #199 left 
+link 58 18 barred 
+link 59 60 barred arc centre #198 left 
+link 59 58 barred 
+link 60 11 barred 
+link 60 62 barred 
+link 61 69 barred 
+link 61 19 barred 
+link 62 27 barred 
+link 63 98 barred 
+link 63 193 barred 
+link 63 189 barred 
+link 64 71 barred 
+link 65 109 barred 
+link 66 71 barred 
+link 66 64 barred 
+link 67 10 barred 
+link 68 59 barred 
+link 69 58 barred 
+link 70 18 barred 
+link 71 72 barred 
+link 72 73 barred arc centre #537 left 
+link 72 65 barred arc centre #461 
+link 73 49 barred 
+link 73 71 barred arc centre #506 left 
+link 75 73 barred arc centre #531 
+link 74 117 barred 
+link 76 28 barred 
+link 77 111 barred 
+link 79 9 barred 
+link 80 92 barred 
+link 81 35 barred 
+link 85 82 barred 
+link 86 25 barred 
+link 87 93 barred 
+link 189 61 barred 
+link 91b 42 barred 
+link 193 92b barred 
+link 193 39 barred 
+link 97 189 barred 
+link 22 89 barred 
+link 91 50 barred 
+link 92 30 barred 
+link 90 6 barred 
+link 103 34 barred 
+link 104 54 barred 
+link 112 79 barred 
+link 117 75 barred 
+link 113 14 barred 
+link 93 31 barred 
+link 111 56 barred 
+link 114 76 barred 
+link 107 108 barred 
+link 109 83 barred 

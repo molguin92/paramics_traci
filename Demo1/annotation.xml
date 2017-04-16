@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Annotation>
+    <Layer>
+        <LayerName>Layer 5</LayerName>
+        <Billboard>true</Billboard>
+        <Colour>13421772</Colour>
+        <Size>1</Size>
+        <Item>
+            <Text>Annotation 8</Text>
+            <Visible>true</Visible>
+            <Xpos>4458.77</Xpos>
+            <Ypos>1116.28</Ypos>
+            <Zpos>4.00</Zpos>
+            <Rotation>0</Rotation>
+        </Item>
+        <Item>
+            <Text>Annotation 9</Text>
+            <Visible>true</Visible>
+            <Xpos>4458.77</Xpos>
+            <Ypos>1116.28</Ypos>
+            <Zpos>4.00</Zpos>
+            <Rotation>0</Rotation>
+        </Item>
+        <Item>
+            <Text>Annotation 10</Text>
+            <Visible>true</Visible>
+            <Xpos>4458.77</Xpos>
+            <Ypos>1116.28</Ypos>
+            <Zpos>4.00</Zpos>
+            <Rotation>0</Rotation>
+        </Item>
+    </Layer>
+    <Layer>
+        <LayerName>Layer 6</LayerName>
+        <Billboard>true</Billboard>
+        <Colour>13421772</Colour>
+        <Size>1</Size>
+        <Item>
+            <Text>Annotation 11</Text>
+            <Visible>false</Visible>
+            <Xpos>4458.77</Xpos>
+            <Ypos>1116.28</Ypos>
+            <Zpos>4.00</Zpos>
+            <Rotation>0</Rotation>
+        </Item>
+        <Item>
+            <Text>Annotation 12</Text>
+            <Visible>true</Visible>
+            <Xpos>4458.77</Xpos>
+            <Ypos>1116.28</Ypos>
+            <Zpos>4.00</Zpos>
+            <Rotation>0</Rotation>
+        </Item>
+    </Layer>
+    <Layer>
+        <LayerName>Layer 7</LayerName>
+        <Billboard>true</Billboard>
+        <Colour>40192</Colour>
+        <Size>1</Size>
+        <Item>
+            <Text>Annotation 13</Text>
+            <Visible>false</Visible>
+            <Xpos>4458.77</Xpos>
+            <Ypos>1116.28</Ypos>
+            <Zpos>4.00</Zpos>
+            <Rotation>0</Rotation>
+        </Item>
+        <Item>
+            <Text>Annotation 14</Text>
+            <Visible>true</Visible>
+            <Xpos>4458.77</Xpos>
+            <Ypos>1116.28</Ypos>
+            <Zpos>4.00</Zpos>
+            <Rotation>0</Rotation>
+        </Item>
+    </Layer>
+</Annotation>

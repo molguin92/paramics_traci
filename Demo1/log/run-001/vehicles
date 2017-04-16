@@ -1,0 +1,280 @@
+vehicle types
+
+type 1 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 42
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 2 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 52
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 3 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 51
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 4 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 48
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 5 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 40
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 6 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 39
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 7 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 41
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 8 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 38
+	name "Car"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 9 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 54
+	name "Taxi"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 10 car 	
+	acc profile 1 dec profile 5 draw style pmx model type 54
+	name "Taxi"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 11 minibus 			name "Minibus" 
+	capacity 48 entry doors 1 exit doors 1 
+	fixed route 
+
+type 12 LGV 	
+	acc profile 2 dec profile 6 draw style pmx model type 35
+	name "LGV"
+	matrix 1 proportion 5.000 perturbation 5.0 familiarity 85.00
+
+type 13 OGV1 	
+	acc profile 3 dec profile 7 draw style pmx model type 36
+	name "OGV1"
+	matrix 1 proportion 5.000 perturbation 5.0 familiarity 85.00
+
+type 14 OGV2 	
+	acc profile 4 dec profile 8 draw style pmx model type 36
+	name "OGV2"
+	matrix 1 proportion 2.000 perturbation 5.0 familiarity 85.00
+
+type 15 coach 	
+	draw style pmx model type 44
+	name "Coach"
+	matrix 1 proportion 8.000 perturbation 5.0 familiarity 85.00
+
+type 30 	length 0.25 m width 0.60 m height 1.80 m weight 0.08 tonne 
+	top speed 4.00 kph acc 10.00 mpss dec -10.00 mpss crawl speed 8.05 kph horsepower 50.00 colour 0x0000ffff draw style pmx model type 55
+	name "Peaton1"
+	matrix 2 proportion 20.000 perturbation 5.0 familiarity 30.00
+
+type 31 	length 0.25 m width 0.60 m height 1.80 m weight 0.08 tonne 
+	top speed 5.00 kph acc 10.00 mpss dec -10.00 mpss crawl speed 8.05 kph horsepower 50.00 colour 0x0000ffff draw style pmx model type 56
+	name "Peaton2"
+	matrix 2 proportion 20.000 perturbation 5.0 familiarity 30.00
+
+type 32 	length 0.25 m width 0.60 m height 1.80 m weight 0.08 tonne 
+	top speed 4.00 kph acc 10.00 mpss dec -10.00 mpss crawl speed 8.05 kph horsepower 50.00 colour 0x0000ffff draw style pmx model type 57
+	name "Peaton3"
+	matrix 2 proportion 20.000 perturbation 5.0 familiarity 30.00
+
+type 33 	length 0.25 m width 0.60 m height 1.80 m weight 0.08 tonne 
+	top speed 4.00 kph acc 10.00 mpss dec -10.00 mpss crawl speed 8.05 kph horsepower 50.00 colour 0x0000ffff draw style pmx model type 58
+	name "Peaton4"
+	matrix 2 proportion 20.000 perturbation 5.0 familiarity 30.00
+
+type 34 	length 0.25 m width 0.60 m height 1.80 m weight 0.08 tonne 
+	top speed 4.00 kph acc 10.00 mpss dec -10.00 mpss crawl speed 8.05 kph horsepower 50.00 colour 0x0000ffff draw style pmx model type 59
+	name "Peaton5"
+	matrix 2 proportion 20.000 perturbation 5.0 familiarity 30.00
+
+type 90 car 		acc profile 1 dec profile 5 draw style pmx model type 54
+	name "Taxi" 
+	capacity 4 entry doors 1 exit doors 1 
+	fixed route 
+
+type 91 car 		acc profile 1 dec profile 5 draw style pmx model type 54
+	name "Taxi" 
+	capacity 4 entry doors 1 exit doors 1 
+	fixed route 
+
+type 95 bus 	length 12.50 m 	dec profile 7 draw style pmx model type 9
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 96 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 10
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 97 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 11
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 98 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 33
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 99 bus 	length 12.50 m 	acc profile 3 dec profile 7 	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 100 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 15
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 101 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 31
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 102 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 28
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 103 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 16
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 104 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 23
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 105 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 12
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 106 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 2
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 107 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 32
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 108 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 7
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 109 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 19
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 110 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 25
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 111 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 14
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 112 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 4
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 113 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 20
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 114 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 3
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 115 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 14
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 116 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 17
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 117 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 18
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 118 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 21
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 119 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 24
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 120 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 26
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 121 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 27
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 122 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 10
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 123 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 29
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 124 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 30
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 125 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 0
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 126 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 1
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 127 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 6
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+
+type 128 bus 	length 12.50 m 	acc profile 3 dec profile 7 draw style pmx model type 8
+	name "Bus" 
+	capacity 80 entry doors 1 exit doors 1 
+	fixed route 
+

@@ -1,0 +1,241 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:41:39 2008
+## Modified Date Wed 5. Aug 16:57:59 2009
+## Modified By mwhyte
+## Network C:/Documents and Settings/All Users/Application Data/paramics/data/Demo1
+## Notes 
+Zone Count 26
+
+zone 1 4 
+4778 m 543 m
+4819 m 556 m
+4844 m 477 m
+4800 m 464 m
+max 4844 m 556 m
+min 4778 m 464 m
+centroid 4810 m 510 m
+
+zone 2 4 
+4851 m 885 m
+4825 m 925 m
+4917 m 979 m
+4939 m 939 m
+max 4939 m 979 m
+min 4825 m 885 m
+centroid 4883 m 932 m
+
+zone 3 4 
+4872 m 1046 m
+4782 m 996 m
+4759 m 1041 m
+4851 m 1092 m
+max 4872 m 1092 m
+min 4759 m 996 m
+centroid 4816 m 1044 m
+
+zone 4 4 
+4819 m 1169 m
+4727 m 1122 m
+4709 m 1170 m
+4799 m 1212 m
+max 4819 m 1212 m
+min 4709 m 1122 m
+centroid 4764 m 1168 m
+
+zone 5 4 
+4587 m 1240 m
+4547 m 1225 m
+4522 m 1294 m
+4564 m 1309 m
+max 4587 m 1309 m
+min 4522 m 1225 m
+centroid 4555 m 1267 m
+
+zone 6 4 
+4480 m 1258 m
+4461 m 1250 m
+4443 m 1296 m
+4464 m 1309 m
+max 4480 m 1309 m
+min 4443 m 1250 m
+centroid 4462 m 1278 m
+
+zone 7 4 
+4403 m 1423 m
+4374 m 1423 m
+4375 m 1485 m
+4403 m 1486 m
+max 4403 m 1486 m
+min 4374 m 1423 m
+centroid 4389 m 1454 m
+
+zone 8 4 
+4265 m 1354 m
+4233 m 1355 m
+4238 m 1467 m
+4268 m 1466 m
+max 4268 m 1467 m
+min 4233 m 1354 m
+centroid 4251 m 1411 m
+
+zone 9 4 
+3991 m 1092 m
+3866 m 1093 m
+3862 m 1276 m
+3994 m 1280 m
+max 3994 m 1280 m
+min 3862 m 1092 m
+centroid 3928 m 1185 m
+
+zone 10 4 
+3999 m 988 m
+3863 m 986 m
+3863 m 1023 m
+3999 m 1022 m
+max 3999 m 1023 m
+min 3863 m 986 m
+centroid 3931 m 1005 m
+
+zone 11 4 
+4184 m 930 m
+4102 m 932 m
+4101 m 959 m
+4183 m 965 m
+max 4184 m 965 m
+min 4101 m 930 m
+centroid 4143 m 947 m
+
+zone 12 4 
+3949 m 832 m
+3855 m 815 m
+3851 m 843 m
+3943 m 861 m
+max 3949 m 861 m
+min 3851 m 815 m
+centroid 3900 m 838 m
+
+zone 13 4 
+4264 m 545 m
+4239 m 544 m
+4234 m 656 m
+4260 m 658 m
+max 4264 m 658 m
+min 4234 m 544 m
+centroid 4249 m 601 m
+
+zone 14 4 
+4387 m 547 m
+4362 m 546 m
+4358 m 649 m
+4386 m 650 m
+max 4387 m 650 m
+min 4358 m 546 m
+centroid 4373 m 598 m
+
+zone 15 4 
+4519 m 376 m
+4494 m 388 m
+4544 m 491 m
+4570 m 478 m
+max 4570 m 491 m
+min 4494 m 376 m
+centroid 4532 m 433 m
+
+zone 16 4 
+4682 m 452 m
+4649 m 442 m
+4629 m 506 m
+4662 m 516 m
+max 4682 m 516 m
+min 4629 m 442 m
+centroid 4656 m 479 m
+
+zone 17 4 
+64 m 635 m
+-12 m 634 m
+-8 m 733 m
+63 m 730 m
+max 64 m 733 m
+min -12 m 634 m
+centroid 27 m 683 m
+
+zone 18 4 
+4446 m 852 m
+4435 m 852 m
+4435 m 874 m
+4446 m 874 m
+max 4446 m 874 m
+min 4435 m 852 m
+centroid 4441 m 863 m
+
+zone 19 4 
+4365 m 919 m
+4348 m 919 m
+4348 m 924 m
+4365 m 924 m
+max 4365 m 924 m
+min 4348 m 919 m
+centroid 4357 m 922 m
+
+zone 20 4 
+4521 m 918 m
+4501 m 918 m
+4501 m 923 m
+4522 m 923 m
+max 4522 m 923 m
+min 4501 m 918 m
+centroid 4511 m 921 m
+
+zone 21 4 
+4363 m 933 m
+4347 m 933 m
+4347 m 937 m
+4363 m 937 m
+max 4363 m 937 m
+min 4347 m 933 m
+centroid 4355 m 935 m
+
+zone 22 4 
+4518 m 932 m
+4503 m 932 m
+4503 m 937 m
+4518 m 937 m
+max 4518 m 937 m
+min 4503 m 932 m
+centroid 4511 m 935 m
+
+zone 23 4 
+4364 m 946 m
+4348 m 946 m
+4348 m 951 m
+4364 m 951 m
+max 4364 m 951 m
+min 4348 m 946 m
+centroid 4356 m 949 m
+
+zone 24 4 
+4517 m 945 m
+4501 m 945 m
+4501 m 950 m
+4517 m 950 m
+max 4517 m 950 m
+min 4501 m 945 m
+centroid 4509 m 948 m
+
+zone 25 4 
+4360 m 968 m
+4345 m 968 m
+4345 m 973 m
+4360 m 973 m
+max 4360 m 973 m
+min 4345 m 968 m
+centroid 4353 m 971 m
+
+zone 26 4 
+4508 m 968 m
+4492 m 968 m
+4492 m 972 m
+4508 m 972 m
+max 4508 m 972 m
+min 4492 m 968 m
+centroid 4500 m 970 m

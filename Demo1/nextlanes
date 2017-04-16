@@ -1,0 +1,82 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:41:39 2008
+## Modified Date Wed 5. Aug 16:57:59 2009
+## Modified By mwhyte
+## Network C:/Documents and Settings/All Users/Application Data/paramics/data/Demo1
+## Notes 
+Next Lanes
+link 16:52
+lane 1 next 1,2 0
+lane 2 next 3 0
+link 17:18
+lane 1 next 0 1 0 0
+lane 2 next 0 2 0 0
+lane 3 next 0 0 0 0
+link 18:52
+lane 1 next 0 1,2
+lane 2 next 0 2,3
+lane 3 next 0 4
+link 18:58
+lane 1 next 0 0 0
+lane 2 next 0 0 0
+lane 3 next 0 2 0
+lane 4 next 0 3 0
+link 19:61
+lane 1 next 0 0 0 0
+lane 2 next 0 1 0 0
+link 52:53
+lane 1 next 0 0
+lane 2 next 0 0
+lane 3 next 0 1
+lane 4 next 0 2
+link 54:104
+lane 1 next 2
+lane 2 next 3
+link 58:59
+lane 1 next 3 0
+lane 2 next 4 0
+lane 3 next 5 0
+link 60:59
+lane 1 next 0 0
+lane 2 next 0 3,4
+lane 3 next 0 5
+link 64:66
+lane 1 next 1 0
+lane 2 next 0 0
+lane 3 next 0 0
+lane 4 next 0 0
+lane 5 next 0 0
+link 68:39
+lane 1 next 0 1 0
+lane 2 next 0 1 0
+lane 3 next 0 1,2 0
+lane 4 next 0 2,3 0
+lane 5 next 0 3,4 0
+link 71:64
+lane 1 next 0 0
+lane 2 next 0 0
+lane 3 next 0 0
+link 71:66
+lane 1 next 0 3
+lane 2 next 0 4
+lane 3 next 0 5
+link 84:64
+lane 1 next 1 0
+lane 2 next 2 0
+lane 3 next 3,4 0
+link 189:63
+lane 1 next 1 0 0 0
+lane 2 next 2 0 0 0
+lane 3 next 3 1 0 0
+link 193:63
+lane 1 next 0 1 1 0
+lane 2 next 0 2 2 0
+lane 3 next 0 3 3 0
+lane 4 next 0 0 4 0
+link 104:55
+lane 1 next 0
+lane 2 next 1
+lane 3 next 2
+link 113:15
+lane 1 next 0 1 0
+lane 2 next 0 2,3 0

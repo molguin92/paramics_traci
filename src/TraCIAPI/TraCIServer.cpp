@@ -330,10 +330,11 @@ void traci_api::TraCIServer::cmdSimStep(int target_time)
 {
     tcpip::Storage subs_store;
 
-    if (Simulation::getInstance()->runSimulation(target_time, subs_store) >= 0)
+    if (Simulation::getInstance()->runSimulation(target_time) >= 0)
         this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
 
-    outgoing.writeStorage(subs_store); // TODO: FIX, add length
+    // handle subscriptions after simstep command
+    this->processSubscriptions();
 }
 
 /**
