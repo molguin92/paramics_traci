@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!-- debug config -->
+<launch>
+    <basedir path="C:\Users\Public\paramics\programmer\plugins\pveins\example8_network" />
+    <seed value="1234" />
+</launch>
