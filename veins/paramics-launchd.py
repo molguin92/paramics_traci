@@ -314,10 +314,16 @@ def copy_and_modify_files(basedir, runpath, seed, plugin):
     """
     Copy (and modify) files
     """
+    logging.debug("Copying and modifying files for use.")
+    files = os.listdir(basedir)
+
+    # TODO: Change this, keep network name!! otherwise plugins won't work
 
     # copy all files
-    with os.listdir(basedir) as files:
-        for f in files:
+    logging.debug("Copying files.")
+    for f in files:
+        if os.path.isfile(os.path.join(basedir, f)):
+            logging.debug("Copying: " + f)
             shutil.copy(os.path.join(basedir, f), runpath)
 
     # modify config to include seed
@@ -621,10 +627,11 @@ def main():
 
     # Option handling
     parser = OptionParser()
-    parser.add_option("-c", "--command", dest="command", default="%PROGRAMFILES(X86)%\paramicsv6\Modeller.exe",
+    parser.add_option("-c", "--command", dest="command", default=os.path.expandvars("%PROGRAMFILES(X86)%\paramicsv6\Modeller.exe"),
                       help="run Paramics as COMMAND [default: %default]. By default, runs the Paramics Modeller module.",
                       metavar="COMMAND")
-    parser.add_option("-u", "--plugin", dest="plugin", default=os.path.join(os.getcwd(), "pveins.dll"),
+    # TODO: CHANGE PLUGIN
+    parser.add_option("-u", "--plugin", dest="plugin", default=os.path.join("C:\Users\Public\paramics\programmer\plugins\pveins\Debug\modeller\\bin", "modeller.dll"),
                       help="location of the TraCI Paramics Plugin [default: %plugin]", metavar="PLUGIN")
     parser.add_option("-s", "--shlex", dest="shlex", default=False, action="store_true",
                       help="treat command as shell string to execute, replace {} with command line parameters [default: no]")
