@@ -10,6 +10,20 @@ namespace traci_api
     class VariableSubscription
     {
     public:
+        static const uint8_t RES_SUB_INDVAR = 0xe0;
+        static const uint8_t RES_SUB_MULTVAR = 0xe1;
+        static const uint8_t RES_SUB_TLIGHTVAR = 0xe2;
+        static const uint8_t RES_SUB_LANEVAR = 0xe3;
+        static const uint8_t RES_SUB_VHCVAR = 0xe4;
+        static const uint8_t RES_SUB_VHCTYPEVAR = 0xe5;
+        static const uint8_t RES_SUB_RTEVAR = 0xe6;
+        static const uint8_t RES_SUB_POIVAR = 0xe7;
+        static const uint8_t RES_SUB_POLVAR = 0xe8;
+        static const uint8_t RES_SUB_JUNCTVAR = 0xe9;
+        static const uint8_t RES_SUB_EDGEVAR = 0xea;
+        static const uint8_t RES_SUB_SIMVAR = 0xeb;
+
+
         static const uint8_t STATUS_OK = 0x00;
         static const uint8_t STATUS_TIMESTEPNOTREACHED = 0x01;
         static const uint8_t STATUS_EXPIRED = 0x02;

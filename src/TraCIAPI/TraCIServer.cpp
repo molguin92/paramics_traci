@@ -112,6 +112,8 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
     {
         printToParamics("Command length: " + std::to_string(cmdLen));
         printToParamics("Command ID: " + std::to_string(cmdId));
+
+        std::cerr << "Got command " << std::to_string(cmdId) << std::endl;
     }
 
     if (cmdId >= CMD_SUB_INDVAR && cmdId <= CMD_SUB_SIMVAR)
@@ -194,6 +196,9 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
  */
 void traci_api::TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description)
 {
+    if (DEBUG)
+        std::cerr << "Writing status response " << std::to_string(cmdStatus) << " for command " << std::to_string(cmdId) << std::endl;
+
     outgoing.writeUnsignedByte(1 + 1 + 1 + 4 + static_cast<int>(description.length())); // command length
     outgoing.writeUnsignedByte(cmdId); // command type
     outgoing.writeUnsignedByte(cmdStatus); // status
@@ -248,7 +253,6 @@ void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage)
 void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string object_id, int start_time, int end_time, std::vector<uint8_t> variables)
 {
     VariableSubscription* sub;
-    uint8_t res_type = sub_type + 0x10; // suscriptions: 0xd*, responses: 0xe* -- 0xd* + 0x10 = 0xe*
 
     switch (sub_type)
     {
@@ -256,7 +260,7 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
         sub = new VehicleVariableSubscription(object_id, start_time, end_time, variables);
         break;
     default:
-        writeStatusResponse(res_type, STATUS_NIMPL, "Subscription type not implemented: " + std::to_string(sub_type));
+        writeStatusResponse(sub_type, STATUS_NIMPL, "Subscription type not implemented: " + std::to_string(sub_type));
         return;
     }
 
@@ -266,19 +270,20 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
 
     if ( result == VariableSubscription::STATUS_EXPIRED )
     {
-        writeStatusResponse(res_type, STATUS_ERROR, "Expired subscription.");
+        writeStatusResponse(sub_type, STATUS_ERROR, "Expired subscription.");
         return;
     }
     else if (result != VariableSubscription::STATUS_OK )
     {
-        writeStatusResponse(res_type, STATUS_ERROR, errors);
+        writeStatusResponse(sub_type, STATUS_ERROR, errors);
         return;
     }
 
+    writeToOutputWithSize(temp);
     subs.push_back(sub);
 }
 
-void traci_api::TraCIServer::processSubscriptions()
+void traci_api::TraCIServer::processSubscriptions(tcpip::Storage& sub_store)
 {
     tcpip::Storage temp;
     tcpip::Storage sub_results;
@@ -304,8 +309,8 @@ void traci_api::TraCIServer::processSubscriptions()
         temp.reset();
     }
 
-    outgoing.writeInt(count);
-    outgoing.writeStorage(sub_results);    
+    sub_store.writeInt(count);
+    sub_store.writeStorage(sub_results);    
 }
 
 
@@ -334,7 +339,9 @@ void traci_api::TraCIServer::cmdSimStep(int target_time)
         this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
 
     // handle subscriptions after simstep command
-    this->processSubscriptions();
+    tcpip::Storage subscriptions;
+    this->processSubscriptions(subscriptions);
+    outgoing.writeStorage(subscriptions);
 }
 
 /**

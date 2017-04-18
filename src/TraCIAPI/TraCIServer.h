@@ -41,7 +41,7 @@ namespace traci_api
         void writeToOutputWithSize(tcpip::Storage& storage);
 
         void addSubscription(uint8_t sub_type, std::string object_id, int start_time, int end_time, std::vector<uint8_t> variables);
-        void processSubscriptions();
+        void processSubscriptions(tcpip::Storage& sub_store);
 
         //commands
         void cmdShutDown();

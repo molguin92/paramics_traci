@@ -24,6 +24,7 @@ uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storag
         return STATUS_EXPIRED;
 
     // prepare output
+    output.writeUnsignedByte(RES_SUB_VHCVAR);
     output.writeString(objID);
     output.writeUnsignedByte(vars.size());
 

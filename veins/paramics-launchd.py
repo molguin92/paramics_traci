@@ -41,6 +41,7 @@ structure:
 """
 
 import os
+import stat
 import sys
 import tempfile
 import shutil
@@ -168,8 +169,7 @@ def parse_launch_configuration(launch_xml_string):
 
     # get "launch.seed"
     seed = 23423
-    seed_nodes = [x for x in launch_node.getElementsByTagName(
-        "seed") if x.parentNode == launch_node]
+    seed_nodes = [x for x in launch_node.getElementsByTagName("seed") if x.parentNode == launch_node]
     if len(seed_nodes) > 1:
         raise RuntimeError(
             'launch config contains %d <seed> nodes, expected at most 1' % (len(seed_nodes)))
@@ -177,12 +177,23 @@ def parse_launch_configuration(launch_xml_string):
         seed = int(seed_nodes[0].getAttribute("value"))
     logging.debug("Seed is %d" % seed)
 
-    return (basedir, seed)
+    #get "launch.network"
+    network = ""
+    network_nodes = [x for x in launch_node.getElementsByTagName("network") if x.parentNode == launch_node]
+    if len (network_nodes) != 1:
+        raise RuntimeError(
+            'launch config contains %d <network> nodes, expected exactly 1' % (len(network_nodes)))
+    else:
+        network = network_nodes[0].getAttribute("name")
+    logging.debug("Network is %s" % network)
+
+    return (basedir, network, seed)
 
 
-def run_paramics(command, runpath, shlex, remote_port, seed, client_socket, unused_port_lock):
+def run_paramics(command, network, runpath, shlex, remote_port, seed, client_socket, unused_port_lock):
     """
     Actually run Paramics.
+    :param network: 
     """
 
     # create log files
@@ -201,11 +212,11 @@ def run_paramics(command, runpath, shlex, remote_port, seed, client_socket, unus
             cmd = shlex.split(command.replace(
                 '{}', + unicode(runpath).encode()))
         else:
-            cmd = [command, runpath, "--traci_port=" + str(remote_port)]
+            cmd = [command, network, "--traci_port={}".format(remote_port)]
         logging.info("Starting paramics (%s) on port %d, seed %d" %
                      (" ".join(cmd), remote_port, seed))
         paramics = subprocess.Popen(
-            cmd, cwd=os.path.expanduser('~'), stdin=None, stdout=paramicsLogOut, stderr=paramicsLogErr)
+            cmd, cwd=runpath, stdin=None, stdout=paramicsLogOut, stderr=paramicsLogErr)
 
         paramics_socket = None
 
@@ -310,26 +321,34 @@ def run_paramics(command, runpath, shlex, remote_port, seed, client_socket, unus
     return result_xml
 
 
-def copy_and_modify_files(basedir, runpath, seed, plugin):
+def copy_and_modify_files(basedir, network_name, runpath, seed, plugin):
     """
     Copy (and modify) files
+    :param network_name: 
     """
     logging.debug("Copying and modifying files for use.")
-    files = os.listdir(basedir)
+    orig_network_dir = os.path.join(basedir, network_name)
+    new_network_dir = os.path.join(runpath, network_name)
 
-    # TODO: Change this, keep network name!! otherwise plugins won't work
 
-    # copy all files
-    logging.debug("Copying files.")
-    for f in files:
-        if os.path.isfile(os.path.join(basedir, f)):
-            logging.debug("Copying: " + f)
-            shutil.copy(os.path.join(basedir, f), runpath)
+    logging.debug("Original network path: %s" % orig_network_dir)
+    logging.debug("New network path: %s" % new_network_dir)
 
+    shutil.copytree(orig_network_dir, new_network_dir)
+
+    # set permissions
+    os.chmod(new_network_dir, stat.S_IWRITE)
+    for f in os.listdir(new_network_dir):
+        os.chmod(os.path.join(new_network_dir, f), stat.S_IWRITE)
+
+    # create tool log folder (paramics can't do it itself???)
+    os.mkdir(os.path.join(new_network_dir, "Tool Log"))
+
+    logging.debug("Copied all files. Modifying copies for VEINS use.")
     # modify config to include seed
-    new_config_file = os.path.join(runpath, "configuration")
-    plugin_file = os.path.join(runpath, "programming.modeller")
-    seed_config = "seed " + str(seed)
+    new_config_file = os.path.join(new_network_dir, "configuration")
+    plugin_file = os.path.join(new_network_dir, "programming.modeller")
+    seed_config = "seed {}".format(seed)
     if not os.path.exists(new_config_file):
         # config file doesn't exist, create it and add seed line
         with open(new_config_file, 'w') as f:
@@ -377,7 +396,7 @@ def handle_launch_configuration(command, shlex, launch_xml_string, client_socket
     unused_port_lock = UnusedPortLock()
     try:
         # parse launch configuration
-        (basedir, seed) = parse_launch_configuration(launch_xml_string)
+        (basedir, network, seed) = parse_launch_configuration(launch_xml_string)
 
         # find remote_port
         logging.debug("Finding free port number...")
@@ -386,10 +405,10 @@ def handle_launch_configuration(command, shlex, launch_xml_string, client_socket
         logging.debug("...found port %d" % remote_port)
 
         # copy (and modify) files
-        copy_and_modify_files(basedir, runpath, seed, plugin)
+        copy_and_modify_files(basedir, network, runpath, seed, plugin)
 
         # run Paramics
-        result_xml = run_paramics(command, runpath, shlex, remote_port, seed, client_socket, unused_port_lock)
+        result_xml = run_paramics(command, network, runpath, shlex, remote_port, seed, client_socket, unused_port_lock)
     finally:
         unused_port_lock.__exit__()
 
