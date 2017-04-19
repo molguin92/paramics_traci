@@ -259,6 +259,11 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
     case CMD_SUB_VHCVAR:
         sub = new VehicleVariableSubscription(object_id, start_time, end_time, variables);
         break;
+
+    case CMD_SUB_SIMVAR:
+        sub = new SimulationVariableSubscription(start_time, end_time, variables);
+        break;
+
     default:
         writeStatusResponse(sub_type, STATUS_NIMPL, "Subscription type not implemented: " + std::to_string(sub_type));
         return;
@@ -352,7 +357,7 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar)
 {
     tcpip::Storage subs_store;
 
-    if (Simulation::getInstance()->getVariable(simvar, subs_store))
+    if (Simulation::getInstance()->packSimulationVariable(simvar, subs_store))
     {
         this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
         this->writeToOutputWithSize(subs_store);
@@ -368,7 +373,7 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
     tcpip::Storage result;
     try
     {
-        VehicleManager::getInstance()->getVehicleVariable(input, result);
+        VehicleManager::getInstance()->packVehicleVariable(input, result);
     }
     catch (NotImplementedError& e)
     {

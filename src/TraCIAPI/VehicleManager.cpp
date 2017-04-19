@@ -34,7 +34,7 @@ void traci_api::VehicleManager::reset()
     arrived_vehicles.clear();
 }
 
-void traci_api::VehicleManager::getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError)
+void traci_api::VehicleManager::packVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError)
 {
     uint8_t varID = input.readUnsignedByte();
     std::string s_vid = input.readString();

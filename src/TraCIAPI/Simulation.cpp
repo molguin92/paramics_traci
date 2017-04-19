@@ -186,55 +186,69 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
     return steps_performed;
 }
 
-bool traci_api::Simulation::getVariable(uint8_t varID, tcpip::Storage& result_store)
+bool traci_api::Simulation::packSimulationVariable(uint8_t varID, tcpip::Storage& result_store)
 {
     result_store.writeUnsignedByte(RES_GETSIMVAR);
     result_store.writeUnsignedByte(varID);
     result_store.writeString("");
+
+    tcpip::Storage temp;
+    try
+    {
+        getSimulationVariable(varID, temp);
+    } 
+    catch (...)
+    {
+        return false;
+    }
+    
+    return true;
+}
+
+void traci_api::Simulation::getSimulationVariable(uint8_t varID, tcpip::Storage& result)
+{
 
     VehicleManager* vhcman = traci_api::VehicleManager::getInstance();
 
     switch (varID)
     {
     case GET_SIMTIME:
-        result_store.writeUnsignedByte(VTYPE_INT);
-        result_store.writeInt(this->getCurrentTimeMilliseconds());
+        result.writeUnsignedByte(VTYPE_INT);
+        result.writeInt(this->getCurrentTimeMilliseconds());
         break;
     case GET_DEPARTEDVHC_CNT:
-        result_store.writeUnsignedByte(VTYPE_INT);
-        result_store.writeInt(vhcman->getDepartedVehicleCount());
+        result.writeUnsignedByte(VTYPE_INT);
+        result.writeInt(vhcman->getDepartedVehicleCount());
         break;
     case GET_DEPARTEDVHC_LST:
-        result_store.writeUnsignedByte(VTYPE_STRLST);
-        result_store.writeStringList(vhcman->getDepartedVehicles());
+        result.writeUnsignedByte(VTYPE_STRLST);
+        result.writeStringList(vhcman->getDepartedVehicles());
         break;
     case GET_ARRIVEDVHC_CNT:
-        result_store.writeUnsignedByte(VTYPE_INT);
-        result_store.writeInt(vhcman->getArrivedVehicleCount());
+        result.writeUnsignedByte(VTYPE_INT);
+        result.writeInt(vhcman->getArrivedVehicleCount());
         break;
     case GET_ARRIVEDVHC_LST:
-        result_store.writeUnsignedByte(VTYPE_STRLST);
-        result_store.writeStringList(vhcman->getArrivedVehicles());
+        result.writeUnsignedByte(VTYPE_STRLST);
+        result.writeStringList(vhcman->getArrivedVehicles());
         break;
     case GET_TIMESTEPSZ:
-        result_store.writeUnsignedByte(VTYPE_INT);
-        result_store.writeInt(static_cast<int>(qpg_CFG_timeStep() * 1000.0f));
+        result.writeUnsignedByte(VTYPE_INT);
+        result.writeInt(static_cast<int>(qpg_CFG_timeStep() * 1000.0f));
         break;
     case GET_NETWORKBNDS:
-        result_store.writeUnsignedByte(VTYPE_BOUNDBOX);
+        result.writeUnsignedByte(VTYPE_BOUNDBOX);
         {
             double llx, lly, urx, ury;
             this->getRealNetworkBounds(llx, lly, urx, ury);
 
-            result_store.writeDouble(llx);
-            result_store.writeDouble(lly);
-            result_store.writeDouble(urx);
-            result_store.writeDouble(ury);
+            result.writeDouble(llx);
+            result.writeDouble(lly);
+            result.writeDouble(urx);
+            result.writeDouble(ury);
         }
         break;
     default:
-        return false;
+        throw std::runtime_error("Unimplemented variable " + std::to_string(varID));
     }
-
-    return true;
 }

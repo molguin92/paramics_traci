@@ -114,7 +114,7 @@ namespace traci_api
 
         void reset();
 
-        void getVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
+        void packVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
         void getVehicleVariable(std::string vid, uint8_t varID, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
         void setVehicleState(tcpip::Storage& input);
 

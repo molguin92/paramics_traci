@@ -41,7 +41,8 @@ namespace traci_api
         static void deleteInstance();
 
         int runSimulation(uint32_t target_time);
-        bool getVariable(uint8_t varID, tcpip::Storage& result_store);
+        bool packSimulationVariable(uint8_t varID, tcpip::Storage& result_store);
+        void getSimulationVariable(uint8_t varID, tcpip::Storage& result);
 
         float getCurrentTimeSeconds();
         int getCurrentTimeMilliseconds();

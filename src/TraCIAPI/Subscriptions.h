@@ -63,4 +63,16 @@ namespace traci_api
         ~VehicleVariableSubscription() override {};
         uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) override;
     };
+
+    class SimulationVariableSubscription : public VariableSubscription
+    {
+    public:
+        SimulationVariableSubscription(int begin_time, int end_time, const std::vector<uint8_t>& vars)
+            : VariableSubscription("", begin_time, end_time, vars)
+        {
+        }
+
+        ~SimulationVariableSubscription() override {};
+        uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) override;
+    };
 }
