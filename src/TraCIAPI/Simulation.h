@@ -11,25 +11,25 @@ namespace traci_api
 
         // Command constants:
         // simulation time
-        static const uint8_t GET_SIMTIME = 0x70;
+        static const uint8_t VAR_SIMTIME = 0x70;
 
         // loaded vehicles
-        static const uint8_t GET_LOADEDVHC_CNT = 0x71;
-        static const uint8_t GET_LOADEDVHC_LST = 0x72;
+        static const uint8_t VAR_LOADEDVHC_CNT = 0x71;
+        static const uint8_t VAR_LOADEDVHC_LST = 0x72;
 
         // departed vehicles
-        static const uint8_t GET_DEPARTEDVHC_CNT = 0x73;
-        static const uint8_t GET_DEPARTEDVHC_LST = 0x74;
+        static const uint8_t VAR_DEPARTEDVHC_CNT = 0x73;
+        static const uint8_t VAR_DEPARTEDVHC_LST = 0x74;
 
         // arrived vehicles
-        static const uint8_t GET_ARRIVEDVHC_CNT = 0x79;
-        static const uint8_t GET_ARRIVEDVHC_LST = 0x7a;
+        static const uint8_t VAR_ARRIVEDVHC_CNT = 0x79;
+        static const uint8_t VAR_ARRIVEDVHC_LST = 0x7a;
 
         // simulation timestep size
-        static const uint8_t GET_TIMESTEPSZ = 0x7b;
+        static const uint8_t VAR_TIMESTEPSZ = 0x7b;
 
         // network boundary box
-        static const uint8_t GET_NETWORKBNDS = 0x7c;
+        static const uint8_t VAR_NETWORKBNDS = 0x7c;
 
         //Simulation();
         ~Simulation();

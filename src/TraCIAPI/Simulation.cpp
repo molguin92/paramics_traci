@@ -212,31 +212,31 @@ void traci_api::Simulation::getSimulationVariable(uint8_t varID, tcpip::Storage&
 
     switch (varID)
     {
-    case GET_SIMTIME:
+    case VAR_SIMTIME:
         result.writeUnsignedByte(VTYPE_INT);
         result.writeInt(this->getCurrentTimeMilliseconds());
         break;
-    case GET_DEPARTEDVHC_CNT:
+    case VAR_DEPARTEDVHC_CNT:
         result.writeUnsignedByte(VTYPE_INT);
         result.writeInt(vhcman->getDepartedVehicleCount());
         break;
-    case GET_DEPARTEDVHC_LST:
+    case VAR_DEPARTEDVHC_LST:
         result.writeUnsignedByte(VTYPE_STRLST);
         result.writeStringList(vhcman->getDepartedVehicles());
         break;
-    case GET_ARRIVEDVHC_CNT:
+    case VAR_ARRIVEDVHC_CNT:
         result.writeUnsignedByte(VTYPE_INT);
         result.writeInt(vhcman->getArrivedVehicleCount());
         break;
-    case GET_ARRIVEDVHC_LST:
+    case VAR_ARRIVEDVHC_LST:
         result.writeUnsignedByte(VTYPE_STRLST);
         result.writeStringList(vhcman->getArrivedVehicles());
         break;
-    case GET_TIMESTEPSZ:
+    case VAR_TIMESTEPSZ:
         result.writeUnsignedByte(VTYPE_INT);
         result.writeInt(static_cast<int>(qpg_CFG_timeStep() * 1000.0f));
         break;
-    case GET_NETWORKBNDS:
+    case VAR_NETWORKBNDS:
         result.writeUnsignedByte(VTYPE_BOUNDBOX);
         {
             double llx, lly, urx, ury;
