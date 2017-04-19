@@ -75,7 +75,7 @@ uint8_t traci_api::SimulationVariableSubscription::handleSubscription(tcpip::Sto
 
     // prepare output
     output.writeUnsignedByte(RES_SUB_SIMVAR);
-    output.writeString("");
+    output.writeString(objID);
     output.writeUnsignedByte(vars.size());
 
     bool result_errors = false;

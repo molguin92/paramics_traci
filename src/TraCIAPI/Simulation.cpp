@@ -188,20 +188,23 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
 
 bool traci_api::Simulation::packSimulationVariable(uint8_t varID, tcpip::Storage& result_store)
 {
+    if (DEBUG)
+    {
+        printToParamics("Fetching SIMVAR " + std::to_string(varID));
+        std::cerr << "Fetching SIMVAR " << std::to_string(varID) << std::endl;
+    }
+
     result_store.writeUnsignedByte(RES_GETSIMVAR);
     result_store.writeUnsignedByte(varID);
     result_store.writeString("");
-
-    tcpip::Storage temp;
     try
     {
-        getSimulationVariable(varID, temp);
+        getSimulationVariable(varID, result_store);
     } 
     catch (...)
     {
         return false;
     }
-    
     return true;
 }
 
@@ -247,6 +250,18 @@ void traci_api::Simulation::getSimulationVariable(uint8_t varID, tcpip::Storage&
             result.writeDouble(urx);
             result.writeDouble(ury);
         }
+        break;
+    // we don't have teleporting vehicles in Paramics
+    case VAR_VHCENDTELEPORT_CNT:
+    case VAR_VHCSTARTTELEPORT_CNT:
+        result.writeUnsignedByte(VTYPE_INT);
+        result.writeInt(0);
+        break;
+
+    case VAR_VHCENDTELEPORT_LST:
+    case VAR_VHCSTARTTELEPORT_LST:
+        result.writeUnsignedByte(VTYPE_STRLST);
+        result.writeStringList(std::vector<std::string>());
         break;
     default:
         throw std::runtime_error("Unimplemented variable " + std::to_string(varID));

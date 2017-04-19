@@ -31,6 +31,12 @@ namespace traci_api
         // network boundary box
         static const uint8_t VAR_NETWORKBNDS = 0x7c;
 
+        // teleporting vehicles
+        static const uint8_t VAR_VHCSTARTTELEPORT_CNT = 0x75;
+        static const uint8_t VAR_VHCSTARTTELEPORT_LST = 0x76;
+        static const uint8_t VAR_VHCENDTELEPORT_CNT = 0x77;
+        static const uint8_t VAR_VHCENDTELEPORT_LST = 0x78;
+
         //Simulation();
         ~Simulation();
         // prevent alternative instantiation

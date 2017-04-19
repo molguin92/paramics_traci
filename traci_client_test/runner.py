@@ -28,6 +28,7 @@ def run():
     print("Server version: " + str(traci.getVersion()))
     print("Server timestep: " + str(traci.simulation.getDeltaT()))
     print(str(traci.simulation.getNetBoundary()))
+    traci.simulation.subscribe([112])
 ##    print(str(traci.edge.getIDList()))
 ##    print(str(traci.edge.getIDCount()))
 ##    print(str(traci.junction.getIDList()))
@@ -66,5 +67,5 @@ def run():
         time.sleep(0.1)
     traci.close()
 
-#if __name__ == '__main__':
-#    run()
+if __name__ == '__main__':
+    run()

@@ -73,7 +73,10 @@ void traci_api::TraCIServer::waitForCommands()
     {
         auto msize = incoming.size();
         if (DEBUG)
+        {
             printToParamics("Got message of length " + std::to_string(msize));
+            std::cerr << "Got message of length " + std::to_string(msize) << std::endl;
+        }
 
         /* Multiple commands may arrive at once in one message, 
          * divide them into multiple storages for easy handling */
@@ -81,6 +84,12 @@ void traci_api::TraCIServer::waitForCommands()
         {
             uint8_t cmdlen = incoming.readUnsignedByte();
             cmdStore.writeUnsignedByte(cmdlen);
+
+            if (DEBUG)
+            {
+                printToParamics("Got command of length " + std::to_string(cmdlen));
+                std::cerr << "Got command of length " + std::to_string(cmdlen) << std::endl;
+            }
 
             for (uint8_t i = 0; i < cmdlen - 1; i++)
                 cmdStore.writeUnsignedByte(incoming.readUnsignedByte());
@@ -121,11 +130,25 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
         // subscription
         // | begin Time | end Time | Object ID | Variable Number | The list of variables to return
 
+        if (DEBUG)
+        {
+            printToParamics("Subscribing to " + std::to_string(cmdId));
+            std::cerr << "Subscribing to " << std::to_string(cmdId) << std::endl;
+        }
+
         int btime = storage.readInt();
         int etime = storage.readInt();
         std::string oID = storage.readString();
         int varN = storage.readUnsignedByte();
         std::vector<uint8_t> vars;
+
+        if (DEBUG)
+        {
+            printToParamics("Start time: " + std::to_string(btime));
+            printToParamics("End time: " + std::to_string(etime));
+            printToParamics("Object ID: " + oID);
+            printToParamics("N Vars: " + std::to_string(varN));
+        }
 
         for (int i = 0; i < varN; i++)
             vars.push_back(storage.readUnsignedByte());
@@ -238,16 +261,21 @@ void traci_api::TraCIServer::sendResponse()
 
 void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage)
 {
-    auto size = 1 + storage.size();
+    this->writeToStorageWithSize(storage, outgoing);
+}
+
+void traci_api::TraCIServer::writeToStorageWithSize(tcpip::Storage& src, tcpip::Storage& dest)
+{
+    auto size = 1 + src.size();
     if (size > 255)
     {
-        outgoing.writeUnsignedByte(0);
-        outgoing.writeInt(size);
+        dest.writeUnsignedByte(0);
+        dest.writeInt(size);
     }
     else
-        outgoing.writeUnsignedByte(size);
+        dest.writeUnsignedByte(size);
 
-    outgoing.writeStorage(storage);
+    dest.writeStorage(src);
 }
 
 void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string object_id, int start_time, int end_time, std::vector<uint8_t> variables)
@@ -257,11 +285,19 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
     switch (sub_type)
     {
     case CMD_SUB_VHCVAR:
+        if (DEBUG)
+        {
+            printToParamics("Adding VHC subscription.");
+        }
         sub = new VehicleVariableSubscription(object_id, start_time, end_time, variables);
         break;
 
     case CMD_SUB_SIMVAR:
-        sub = new SimulationVariableSubscription(start_time, end_time, variables);
+        if (DEBUG)
+        {
+            printToParamics("Adding SIM subscription.");
+        }
+        sub = new SimulationVariableSubscription(object_id, start_time, end_time, variables);
         break;
 
     default:
@@ -275,15 +311,24 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
 
     if ( result == VariableSubscription::STATUS_EXPIRED )
     {
+        if (DEBUG)
+        {
+            printToParamics("Expired subscription.");
+        }
         writeStatusResponse(sub_type, STATUS_ERROR, "Expired subscription.");
         return;
     }
     else if (result != VariableSubscription::STATUS_OK )
     {
+        if (DEBUG)
+        {
+            printToParamics("Error adding subscription.");
+        }
         writeStatusResponse(sub_type, STATUS_ERROR, errors);
         return;
     }
 
+    writeStatusResponse(sub_type, STATUS_OK, "");
     writeToOutputWithSize(temp);
     subs.push_back(sub);
 }
@@ -307,7 +352,7 @@ void traci_api::TraCIServer::processSubscriptions(tcpip::Storage& sub_store)
         }
         else if (sub_res == VariableSubscription::STATUS_OK)
         {
-            sub_results.writeStorage(temp);
+            writeToStorageWithSize(temp, sub_results);
             count++;
         }
 

@@ -67,8 +67,8 @@ namespace traci_api
     class SimulationVariableSubscription : public VariableSubscription
     {
     public:
-        SimulationVariableSubscription(int begin_time, int end_time, const std::vector<uint8_t>& vars)
-            : VariableSubscription("", begin_time, end_time, vars)
+        SimulationVariableSubscription(std::string object_id, int begin_time, int end_time, const std::vector<uint8_t>& vars)
+            : VariableSubscription(object_id, begin_time, end_time, vars)
         {
         }
 
