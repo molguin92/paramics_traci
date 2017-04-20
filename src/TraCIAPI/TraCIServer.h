@@ -32,6 +32,7 @@ namespace traci_api
         void cmdGetVhcVar(tcpip::Storage& input);
         void cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmdid);
         void cmdSetVhcState(tcpip::Storage& input);
+        void cmdGetPolygonVar(tcpip::Storage& input);
 
         void parseCommand(tcpip::Storage& storage);
         void writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description);

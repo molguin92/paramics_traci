@@ -195,6 +195,12 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
             debugPrint("Got CMD_GETLNKVAR/CMD_GETNDEVAR");
             this->cmdGetNetworkVar(storage, cmdId);
             break;
+
+        case CMD_GETPOLVAR:
+            debugPrint("Got CMD_GETPOLVAR");
+            this->cmdGetPolygonVar(storage);            
+            break;
+
         default:
 
             debugPrint("Command not implemented!");
@@ -470,16 +476,57 @@ void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& input)
         debugPrint(e.what());
 
 
-        this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
+        this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_NIMPL, e.what());
     }
     catch (std::exception& e)
     {
         debugPrint("Fatal error???");
         debugPrint(e.what());
 
-        this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
+        this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_ERROR, e.what());
         throw;
     }
 
     this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
+}
+
+// ReSharper disable once CppMemberFunctionMayBeStatic
+// ReSharper disable once CppMemberFunctionMayBeConst
+void traci_api::TraCIServer::cmdGetPolygonVar(tcpip::Storage& input)
+{
+    /* 
+     * we currently don't have polygons in Paramics, at least not API-accesible ones,
+     * so we'll just report that there are 0 polygons, to maintain compatibility.
+     */
+
+    uint8_t var_id = input.readUnsignedByte();
+    std::string pol_id = input.readString();
+    tcpip::Storage result;
+
+    result.writeUnsignedByte(RES_GETPOLVAR);
+    result.writeUnsignedByte(var_id);
+    result.writeString(pol_id);
+
+    try {
+        switch (var_id)
+        {
+        case VARLST:
+            result.writeUnsignedByte(VTYPE_STRLST);
+            result.writeStringList(std::vector<std::string>()); // hard coded, no polygons
+            break;
+        case VARCNT:
+            result.writeUnsignedByte(VTYPE_INT);
+            result.writeInt(0); // hard coded -- no polygons
+            break;
+        default:
+            throw std::exception();
+        }
+
+        writeStatusResponse(CMD_GETPOLVAR, STATUS_OK, "");
+        writeToOutputWithSize(result, false);
+    }
+    catch ( ... )
+    {
+        writeStatusResponse(CMD_GETPOLVAR, STATUS_ERROR, "No such polygon (id: " + pol_id + ")");
+    }    
 }

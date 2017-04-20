@@ -41,6 +41,10 @@ namespace traci_api
     static const uint8_t STATUS_ERROR = 0x0ff;
     static const uint8_t STATUS_NIMPL = 0x01;
 
+    // standard variable fetch types
+    static const uint8_t VARLST = 0x00;
+    static const uint8_t VARCNT = 0x01;
+
     //Command definitions:
     //Simulation control:
     static const uint8_t CMD_GETVERSION = 0x00;
@@ -58,6 +62,10 @@ namespace traci_api
     static const uint8_t RES_GETLNKVAR = 0xba;
     static const uint8_t CMD_GETNDEVAR = 0xa9;
     static const uint8_t RES_GETNDEVAR = 0xb9;
+
+    // polygons
+    static const uint8_t CMD_GETPOLVAR = 0xa8;
+    static const uint8_t RES_GETPOLVAR = 0xb8;
 
     //Change State:
     static const uint8_t CMD_SETVHCSTATE = 0xc4;
