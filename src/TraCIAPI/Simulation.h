@@ -37,6 +37,12 @@ namespace traci_api
         static const uint8_t VAR_VHCENDTELEPORT_CNT = 0x77;
         static const uint8_t VAR_VHCENDTELEPORT_LST = 0x78;
 
+        // parking
+        static const uint8_t VAR_VHCSTARTPARK_CNT = 0x6c;
+        static const uint8_t VAR_VHCSTARTPARK_LST = 0x6d;
+        static const uint8_t VAR_VHCENDPARK_CNT = 0x6e;
+        static const uint8_t VAR_VHCENDPARK_LST = 0x6f;
+
         //Simulation();
         ~Simulation();
         // prevent alternative instantiation

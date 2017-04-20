@@ -251,15 +251,19 @@ void traci_api::Simulation::getSimulationVariable(uint8_t varID, tcpip::Storage&
             result.writeDouble(ury);
         }
         break;
-    // we don't have teleporting vehicles in Paramics
+    // we don't have teleporting vehicles in Paramics, nor parking (temporarily at least)
     case VAR_VHCENDTELEPORT_CNT:
     case VAR_VHCSTARTTELEPORT_CNT:
+    case VAR_VHCSTARTPARK_CNT:
+    case VAR_VHCENDPARK_CNT:
         result.writeUnsignedByte(VTYPE_INT);
         result.writeInt(0);
         break;
 
     case VAR_VHCENDTELEPORT_LST:
     case VAR_VHCSTARTTELEPORT_LST:
+    case VAR_VHCSTARTPARK_LST:
+    case VAR_VHCENDPARK_LST:
         result.writeUnsignedByte(VTYPE_STRLST);
         result.writeStringList(std::vector<std::string>());
         break;

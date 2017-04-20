@@ -28,13 +28,14 @@ def run():
     print("Server version: " + str(traci.getVersion()))
     print("Server timestep: " + str(traci.simulation.getDeltaT()))
     print(str(traci.simulation.getNetBoundary()))
-    traci.simulation.subscribe([112])
+    traci.simulation.subscribe([112, 115])
 ##    print(str(traci.edge.getIDList()))
 ##    print(str(traci.edge.getIDCount()))
 ##    print(str(traci.junction.getIDList()))
 ##    print(str(traci.junction.getIDCount()))
     for i in range(0, 1000):
         traci.simulationStep()
+        print(str(traci.simulation.getSubscriptionResults()))
 ##        print("Current SIM time: " + str(traci.simulation.getCurrentTime()))
 ##        print("N Departed vehicles: " + str(traci.simulation.getDepartedNumber()))
 ##        print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))
@@ -61,8 +62,8 @@ def run():
             speed = traci.vehicle.getSpeed(vhc)
             position = traci.vehicle.getPosition(vhc)
 
-            print("Vehicle " + vhc + "'s speed: " + str(speed) + "m/s")
-            print("Vehicle " + vhc + "'s position: " + str(position))
+            #print("Vehicle " + vhc + "'s speed: " + str(speed) + "m/s")
+            #print("Vehicle " + vhc + "'s position: " + str(position))
         
         time.sleep(0.1)
     traci.close()
