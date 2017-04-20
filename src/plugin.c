@@ -31,39 +31,48 @@ bool starts_with(std::string const& in_string,
 
 void runner_fn()
 {
-    //try to get port from command line arguments
-    int argc;
-    LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc);
-    std::string prefix(CMDARG_PORT);
+    try {
+        //try to get port from command line arguments
+        int argc;
+        LPWSTR* argv = CommandLineToArgvW(GetCommandLineW(), &argc);
+        std::string prefix(CMDARG_PORT);
 
-    int port = DEFAULT_PORT; // if it fails, use the default port
-    for (int i = 0; i < argc; i++)
-    {
-        // convert from widestring to normal string
-        std::wstring temp(argv[i]);
-        std::string str(temp.begin(), temp.end());
-
-        // check if argument prefix matches
-        if (starts_with(str, prefix))
+        int port = DEFAULT_PORT; // if it fails, use the default port
+        for (int i = 0; i < argc; i++)
         {
-            std::string s_port = str.substr(prefix.length(), str.npos);
-            try
+            // convert from widestring to normal string
+            std::wstring temp(argv[i]);
+            std::string str(temp.begin(), temp.end());
+
+            // check if argument prefix matches
+            if (starts_with(str, prefix))
             {
-                port = std::stoi(s_port);
-            }
-            catch (...)
-            {
-                traci_api::infoPrint("Invalid port identifier - Falling back to default port");
-                port = DEFAULT_PORT;
+                std::string s_port = str.substr(prefix.length(), str.npos);
+                try
+                {
+                    port = std::stoi(s_port);
+                }
+                catch (...)
+                {
+                    traci_api::infoPrint("Invalid port identifier - Falling back to default port");
+                    port = DEFAULT_PORT;
+                }
             }
         }
+
+
+        server = new traci_api::TraCIServer(port);
+        server->run();
+        server->close();
+        delete(server);
     }
-
-
-    server = new traci_api::TraCIServer(port);
-    server->run();
-    server->close();
-    delete(server);
+    catch (std::exception& e)
+    {
+        traci_api::debugPrint("Uncaught exception in server thread.");
+        traci_api::debugPrint(e.what());
+        traci_api::debugPrint("Exiting...");
+        throw;
+    }
 }
 
 

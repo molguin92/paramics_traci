@@ -7,6 +7,7 @@
 #include "Exceptions.h"
 #include "Network.h"
 #include "Subscriptions.h"
+#include <windows.h>
 
 /*
  * This class abstracts a server for the TraCI protocol.
@@ -20,6 +21,7 @@
  */
 traci_api::TraCIServer::TraCIServer(int port): ssocket(port), running(false), port(port)
 {
+    ssocket.set_blocking(true);
 }
 
 
@@ -71,11 +73,12 @@ void traci_api::TraCIServer::waitForCommands()
         auto msize = incoming.size();
 
         debugPrint("Got message of length " + std::to_string(msize));
+        debugPrint("Incoming: " + incoming.hexDump());
 
 
         /* Multiple commands may arrive at once in one message, 
          * divide them into multiple storages for easy handling */
-        while (incoming.size() > 0 && incoming.valid_pos())
+        while (msize > 0 && incoming.valid_pos())
         {
             uint8_t cmdlen = incoming.readUnsignedByte();
             cmdStore.writeUnsignedByte(cmdlen);
@@ -93,6 +96,7 @@ void traci_api::TraCIServer::waitForCommands()
         this->sendResponse();
         incoming.reset();
         outgoing.reset();
+        debugPrint("------ waiting for commands ------");
     }
 }
 
@@ -120,20 +124,28 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 
 
         int btime = storage.readInt();
-        int etime = storage.readInt();
-        std::string oID = storage.readString();
-        int varN = storage.readUnsignedByte();
-        std::vector<uint8_t> vars;
-
         debugPrint("Start time: " + std::to_string(btime));
+
+        int etime = storage.readInt();
         debugPrint("End time: " + std::to_string(etime));
+
+        std::string oID = storage.readString();
         debugPrint("Object ID: " + oID);
+
+        int varN = storage.readUnsignedByte();
         debugPrint("N Vars: " + std::to_string(varN));
 
+        std::vector<uint8_t> vars;
+        std::string vars_s = "";
 
         for (int i = 0; i < varN; i++)
-            vars.push_back(storage.readUnsignedByte());
+        {
+            uint8_t vid = storage.readUnsignedByte();
+            vars.push_back(vid);
+            vars_s = vars_s + std::to_string(vid) + " ";
+        }
 
+        debugPrint("Vars: " + vars_s);
         addSubscription(cmdId, oID, btime, etime, vars);
     }
     else
@@ -233,19 +245,20 @@ void traci_api::TraCIServer::writeVersion()
 void traci_api::TraCIServer::sendResponse()
 {
     debugPrint("Sending response to TraCI client");
+    debugPrint("Outgoing data: " + outgoing.hexDump());
 
     ssocket.sendExact(outgoing);
 }
 
-void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage)
+void traci_api::TraCIServer::writeToOutputWithSize(tcpip::Storage& storage, bool force_extended)
 {
-    this->writeToStorageWithSize(storage, outgoing);
+    this->writeToStorageWithSize(storage, outgoing, force_extended);
 }
 
-void traci_api::TraCIServer::writeToStorageWithSize(tcpip::Storage& src, tcpip::Storage& dest)
+void traci_api::TraCIServer::writeToStorageWithSize(tcpip::Storage& src, tcpip::Storage& dest, bool force_extended)
 {
     auto size = 1 + src.size();
-    if (size > 255)
+    if (size > 255 || force_extended)
     {
         dest.writeUnsignedByte(0);
         dest.writeInt(size);
@@ -301,7 +314,7 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
     }
 
     writeStatusResponse(sub_type, STATUS_OK, "");
-    writeToOutputWithSize(temp);
+    writeToOutputWithSize(temp, true);
     subs.push_back(sub);
 }
 
@@ -324,7 +337,7 @@ void traci_api::TraCIServer::processSubscriptions(tcpip::Storage& sub_store)
         }
         else if (sub_res == VariableSubscription::STATUS_OK)
         {
-            writeToStorageWithSize(temp, sub_results);
+            writeToStorageWithSize(temp, sub_results, true);
             count++;
         }
 
@@ -376,7 +389,7 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar)
     if (Simulation::getInstance()->packSimulationVariable(simvar, subs_store))
     {
         this->writeStatusResponse(CMD_GETSIMVAR, STATUS_OK, "");
-        this->writeToOutputWithSize(subs_store);
+        this->writeToOutputWithSize(subs_store, false);
     }
     else
     {
@@ -409,7 +422,7 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
     }
 
     this->writeStatusResponse(CMD_GETVHCVAR, STATUS_OK, "");
-    this->writeToOutputWithSize(result);
+    this->writeToOutputWithSize(result, false);
 }
 
 void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmdid)
@@ -442,7 +455,7 @@ void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmd
     }
 
     this->writeStatusResponse(cmdid, STATUS_OK, "");
-    this->writeToOutputWithSize(result);
+    this->writeToOutputWithSize(result, false);
 }
 
 void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& input)

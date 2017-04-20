@@ -115,29 +115,46 @@ def forward_connection(client_socket, server_socket, process):
     do_exit = False
     while not do_exit:
 
+        data = ""
+        
         (r, w, e) = select.select(
             [client_socket, server_socket], [], [client_socket, server_socket], 1)
         if client_socket in e:
+            logging.debug("error in client socket??")
             do_exit = True
+            
         if server_socket in e:
+            logging.debug("error in server socket??")
             do_exit = True
         if client_socket in r:
             try:
+                logging.debug("reading data from client")
                 data = client_socket.recv(65535)
+                s_data = ':'.join(x.encode('hex') for x in data)
+                logging.debug("Data: " + s_data)
                 if data == "":
                     do_exit = True
-            except:
+            except Exception as e:
+                logging.debug(str(e))
+                logging.debug("Error when receiving from client?")
                 do_exit = True
             finally:
+                logging.debug("sending data to server")
                 server_socket.send(data)
         if server_socket in r:
             try:
+                logging.debug("reading data from server")
                 data = server_socket.recv(65535)
+                s_data = ':'.join(x.encode('hex') for x in data)
+                logging.debug("Data: " + s_data)
                 if data == "":
                     do_exit = True
-            except:
+            except Exception as e:
+                logging.debug(str(e))
+                logging.debug("Error when receiving from server?")
                 do_exit = True
             finally:
+                logging.debug("sending data to client")
                 client_socket.send(data)
 
     logging.debug("Done with proxy mode")
