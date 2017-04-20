@@ -547,8 +547,8 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchVH
 
     std::string vhcid = input.readString();
 
-    if (DEBUG)
-        printToParamics("Vehicle " + vhcid + " changing lanes.");
+
+    debugPrint("Vehicle " + vhcid + " changing lanes.");
 
     if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2)
         throw std::runtime_error("Malformed TraCI message");
@@ -621,8 +621,7 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchVHCE
     std::string vhcid = input.readString();
     VEHICLE* vhc = findVehicle(std::stoi(vhcid));
 
-    if (DEBUG)
-        traci_api::printToParamics("Vehicle " + vhcid + " slowing down.");
+    debugPrint("Vehicle " + vhcid + " slowing down.");
 
     if (input.readUnsignedByte() != VTYPE_COMPOUND || input.readInt() != 2)
         throw std::runtime_error("Malformed TraCI message");

@@ -50,7 +50,7 @@ void traci_api::Simulation::getRealNetworkBounds(double& llx, double& lly, doubl
 
     float tempX, tempY, tempZ;
 
-    for(int i = 1; i <= node_count; i++)
+    for (int i = 1; i <= node_count; i++)
     {
         NODE* node = qpg_NET_nodeByIndex(i);
         qpg_POS_node(node, &tempX, &tempY, &tempZ);
@@ -78,7 +78,7 @@ void traci_api::Simulation::getRealNetworkBounds(double& llx, double& lly, doubl
         // to get position data from those that are curved
 
         LINK* lnk = qpg_NET_linkByIndex(i);
-        if(!qpg_LNK_arc(lnk) && !qpg_LNK_arcLeft(lnk))
+        if (!qpg_LNK_arc(lnk) && !qpg_LNK_arcLeft(lnk))
             continue;
 
         // arc are perfect sections of circles, thus we only need the start, end and middle point (for all lanes)
@@ -87,7 +87,7 @@ void traci_api::Simulation::getRealNetworkBounds(double& llx, double& lly, doubl
 
         float g, b;
 
-        for(int j = 1; j <= lanes; j++)
+        for (int j = 1; j <= lanes; j++)
         {
             // start points
             qpg_POS_link(lnk, j, 0, &tempX, &tempY, &tempZ, &b, &g);
@@ -107,9 +107,8 @@ void traci_api::Simulation::getRealNetworkBounds(double& llx, double& lly, doubl
             x.push_back(tempX);
             y.push_back(tempY);
         }
-
     }
-    
+
 
     // we have all the coordinates, now get maximums and minimums
     // add some wiggle room as well, just in case
@@ -145,8 +144,7 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
 
     if (target_timems == 0)
     {
-        if (DEBUG)
-            printToParamics("Running one simulation step...");
+        debugPrint("Running one simulation step...");
 
         qps_GUI_runSimulation();
         traci_api::VehicleManager::getInstance()->handleDelayedTriggers();
@@ -154,11 +152,8 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
     }
     else if (target_simtime > current_simtime)
     {
-        if (DEBUG)
-        {
-            printToParamics("Running simulation up to target time: " + std::to_string(target_simtime));
-            printToParamics("Current time: " + std::to_string(current_simtime));
-        }
+        debugPrint("Running simulation up to target time: " + std::to_string(target_simtime));
+        debugPrint("Current time: " + std::to_string(current_simtime));
 
         while (target_simtime > current_simtime)
         {
@@ -168,18 +163,14 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
 
             current_simtime = this->getCurrentTimeSeconds();
 
-            if (DEBUG)
-                printToParamics("Current time: " + std::to_string(current_simtime));
+            debugPrint("Current time: " + std::to_string(current_simtime));
         }
     }
     else
     {
-        if (DEBUG)
-        {
-            printToParamics("Invalid target simulation time: " + std::to_string(target_timems));
-            printToParamics("Current simulation time: " + std::to_string(current_simtime));
-            printToParamics("Doing nothing");
-        }
+        debugPrint("Invalid target simulation time: " + std::to_string(target_timems));
+        debugPrint("Current simulation time: " + std::to_string(current_simtime));
+        debugPrint("Doing nothing");
     }
 
     stepcnt += steps_performed;
@@ -188,11 +179,7 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
 
 bool traci_api::Simulation::packSimulationVariable(uint8_t varID, tcpip::Storage& result_store)
 {
-    if (DEBUG)
-    {
-        printToParamics("Fetching SIMVAR " + std::to_string(varID));
-        std::cerr << "Fetching SIMVAR " << std::to_string(varID) << std::endl;
-    }
+    debugPrint("Fetching SIMVAR " + std::to_string(varID));
 
     result_store.writeUnsignedByte(RES_GETSIMVAR);
     result_store.writeUnsignedByte(varID);
@@ -200,7 +187,7 @@ bool traci_api::Simulation::packSimulationVariable(uint8_t varID, tcpip::Storage
     try
     {
         getSimulationVariable(varID, result_store);
-    } 
+    }
     catch (...)
     {
         return false;
@@ -210,7 +197,6 @@ bool traci_api::Simulation::packSimulationVariable(uint8_t varID, tcpip::Storage
 
 void traci_api::Simulation::getSimulationVariable(uint8_t varID, tcpip::Storage& result)
 {
-
     VehicleManager* vhcman = traci_api::VehicleManager::getInstance();
 
     switch (varID)
@@ -251,7 +237,7 @@ void traci_api::Simulation::getSimulationVariable(uint8_t varID, tcpip::Storage&
             result.writeDouble(ury);
         }
         break;
-    // we don't have teleporting vehicles in Paramics, nor parking (temporarily at least)
+        // we don't have teleporting vehicles in Paramics, nor parking (temporarily at least)
     case VAR_VHCENDTELEPORT_CNT:
     case VAR_VHCSTARTTELEPORT_CNT:
     case VAR_VHCSTARTPARK_CNT:

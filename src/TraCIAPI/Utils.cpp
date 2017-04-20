@@ -7,10 +7,22 @@
 * \brief Convenience function, prints an std::string on Paramics' output window.
 * \param text
 */
-void traci_api::printToParamics(std::string text)
+void traci_api::debugPrint(std::string text)
 {
-    text = "TraCI: " + text;
+    if (DEBUG)
+    {
+        text = "TraCI DEBUG: " + text;
+        qps_GUI_printf(&text[0u]);
+        std::cerr << text << std::endl;
+    }
+
+}
+
+void traci_api::infoPrint(std::string text)
+{
+    text = "TraCI INFO: " + text;
     qps_GUI_printf(&text[0u]);
+    std::cerr << text << std::endl;
 }
 
 bool traci_api::readTypeCheckingInt(tcpip::Storage& inputStorage, int& into)

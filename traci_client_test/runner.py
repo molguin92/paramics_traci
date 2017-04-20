@@ -29,6 +29,7 @@ def run():
     print("Server timestep: " + str(traci.simulation.getDeltaT()))
     print(str(traci.simulation.getNetBoundary()))
     traci.simulation.subscribe([112, 115])
+    traci.vehicle.subscribe("x",[0, 1])
 ##    print(str(traci.edge.getIDList()))
 ##    print(str(traci.edge.getIDCount()))
 ##    print(str(traci.junction.getIDList()))
@@ -36,6 +37,7 @@ def run():
     for i in range(0, 1000):
         traci.simulationStep()
         print(str(traci.simulation.getSubscriptionResults()))
+        print(str(traci.vehicle.getSubscriptionResults()))
 ##        print("Current SIM time: " + str(traci.simulation.getCurrentTime()))
 ##        print("N Departed vehicles: " + str(traci.simulation.getDepartedNumber()))
 ##        print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))

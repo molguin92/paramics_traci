@@ -53,7 +53,7 @@ void runner_fn()
             }
             catch (...)
             {
-                traci_api::printToParamics("Invalid port identifier - Falling back to default port");
+                traci_api::infoPrint("Invalid port identifier - Falling back to default port");
                 port = DEFAULT_PORT;
             }
         }
@@ -80,7 +80,7 @@ void qpx_NET_postOpen(void)
     //qps_DRW_forceTimeStepRedraw(PTRUE);
 
     qps_GUI_singleStep(PTRUE);
-    traci_api::printToParamics("TraCI support enabled");
+    traci_api::infoPrint("TraCI support enabled");
     runner = new std::thread(runner_fn);
 }
 

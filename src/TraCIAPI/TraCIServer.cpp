@@ -26,8 +26,7 @@ traci_api::TraCIServer::TraCIServer(int port): ssocket(port), running(false), po
 traci_api::TraCIServer::~TraCIServer()
 {
     VehicleManager::deleteInstance();
-    if (DEBUG)
-        printToParamics("Server succesfully shut down");
+    debugPrint("Server succesfully shut down");
 }
 
 /**
@@ -37,11 +36,11 @@ void traci_api::TraCIServer::run()
 {
     running = true;
     std::string version_str = "Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion());
-    printToParamics(version_str);
-    printToParamics("Simulation start time: " + std::to_string(qpg_CFG_simulationTime()));
-    printToParamics("Awaiting connections on port " + std::to_string(port));
+    infoPrint(version_str);
+    debugPrint("Simulation start time: " + std::to_string(qpg_CFG_simulationTime()));
+    infoPrint("Awaiting connections on port " + std::to_string(port));
     ssocket.accept();
-    printToParamics("Accepted connection");
+    infoPrint("Accepted connection");
     this->waitForCommands();
 }
 
@@ -50,8 +49,7 @@ void traci_api::TraCIServer::run()
  */
 void traci_api::TraCIServer::close()
 {
-    if (DEBUG)
-        printToParamics("Closing connections");
+    debugPrint("Closing connections");
     running = false;
     ssocket.close();
 }
@@ -65,18 +63,15 @@ void traci_api::TraCIServer::waitForCommands()
     tcpip::Storage incoming; // the whole incoming message
     tcpip::Storage cmdStore; // individual commands in the message
 
-    if (DEBUG)
-        printToParamics("Waiting for incoming commands from TraCI client...");
+    debugPrint("Waiting for incoming commands from TraCI client...");
 
     /* While the connection is open, receive commands from the client */
     while (running && ssocket.receiveExact(incoming))
     {
         auto msize = incoming.size();
-        if (DEBUG)
-        {
-            printToParamics("Got message of length " + std::to_string(msize));
-            std::cerr << "Got message of length " + std::to_string(msize) << std::endl;
-        }
+
+        debugPrint("Got message of length " + std::to_string(msize));
+
 
         /* Multiple commands may arrive at once in one message, 
          * divide them into multiple storages for easy handling */
@@ -85,11 +80,8 @@ void traci_api::TraCIServer::waitForCommands()
             uint8_t cmdlen = incoming.readUnsignedByte();
             cmdStore.writeUnsignedByte(cmdlen);
 
-            if (DEBUG)
-            {
-                printToParamics("Got command of length " + std::to_string(cmdlen));
-                std::cerr << "Got command of length " + std::to_string(cmdlen) << std::endl;
-            }
+            debugPrint("Got command of length " + std::to_string(cmdlen));
+
 
             for (uint8_t i = 0; i < cmdlen - 1; i++)
                 cmdStore.writeUnsignedByte(incoming.readUnsignedByte());
@@ -110,31 +102,22 @@ void traci_api::TraCIServer::waitForCommands()
  */
 void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 {
-    if (DEBUG)
-        printToParamics("Parsing command");
+    debugPrint("Parsing command");
 
     uint8_t cmdLen = storage.readUnsignedByte();
     uint8_t cmdId = storage.readUnsignedByte();
     tcpip::Storage state;
 
-    if (DEBUG)
-    {
-        printToParamics("Command length: " + std::to_string(cmdLen));
-        printToParamics("Command ID: " + std::to_string(cmdId));
-
-        std::cerr << "Got command " << std::to_string(cmdId) << std::endl;
-    }
+    debugPrint("Command length: " + std::to_string(cmdLen));
+    debugPrint("Command ID: " + std::to_string(cmdId));
 
     if (cmdId >= CMD_SUB_INDVAR && cmdId <= CMD_SUB_SIMVAR)
     {
         // subscription
         // | begin Time | end Time | Object ID | Variable Number | The list of variables to return
 
-        if (DEBUG)
-        {
-            printToParamics("Subscribing to " + std::to_string(cmdId));
-            std::cerr << "Subscribing to " << std::to_string(cmdId) << std::endl;
-        }
+        debugPrint("Subscribing to " + std::to_string(cmdId));
+
 
         int btime = storage.readInt();
         int etime = storage.readInt();
@@ -142,13 +125,11 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
         int varN = storage.readUnsignedByte();
         std::vector<uint8_t> vars;
 
-        if (DEBUG)
-        {
-            printToParamics("Start time: " + std::to_string(btime));
-            printToParamics("End time: " + std::to_string(etime));
-            printToParamics("Object ID: " + oID);
-            printToParamics("N Vars: " + std::to_string(varN));
-        }
+        debugPrint("Start time: " + std::to_string(btime));
+        debugPrint("End time: " + std::to_string(etime));
+        debugPrint("Object ID: " + oID);
+        debugPrint("N Vars: " + std::to_string(varN));
+
 
         for (int i = 0; i < varN; i++)
             vars.push_back(storage.readUnsignedByte());
@@ -160,51 +141,51 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
         switch (cmdId)
         {
         case CMD_GETVERSION:
-            if (DEBUG)
-                printToParamics("Got CMD_GETVERSION");
+
+            debugPrint("Got CMD_GETVERSION");
             this->writeVersion();
             break;
 
         case CMD_SIMSTEP:
-            if (DEBUG)
-                printToParamics("Got CMD_SIMSTEP");
+
+            debugPrint("Got CMD_SIMSTEP");
 
             this->cmdSimStep(storage.readInt());
             break;
 
         case CMD_SHUTDOWN:
-            if (DEBUG)
-                printToParamics("Got CMD_SHUTDOWN");
+
+            debugPrint("Got CMD_SHUTDOWN");
             this->cmdShutDown();
             break;
 
         case CMD_GETSIMVAR:
-            if (DEBUG)
-                printToParamics("Got CMD_GETSIMVAR");
+
+            debugPrint("Got CMD_GETSIMVAR");
             this->cmdGetSimVar(storage.readUnsignedByte());
             break;
 
         case CMD_SETVHCSTATE:
-            if (DEBUG)
-                printToParamics("Got CMD_SETVHCSTATE");
+
+            debugPrint("Got CMD_SETVHCSTATE");
             this->cmdSetVhcState(storage);
             break;
 
         case CMD_GETVHCVAR:
-            if (DEBUG)
-                printToParamics("Got CMD_GETVHCVAR");
+
+            debugPrint("Got CMD_GETVHCVAR");
             this->cmdGetVhcVar(storage);
             break;
 
         case CMD_GETLNKVAR:
         case CMD_GETNDEVAR:
-            if (DEBUG)
-                printToParamics("Got CMD_GETLNKVAR/CMD_GETNDEVAR");
+
+            debugPrint("Got CMD_GETLNKVAR/CMD_GETNDEVAR");
             this->cmdGetNetworkVar(storage, cmdId);
             break;
         default:
-            if (DEBUG)
-                printToParamics("Command not implemented!");
+
+            debugPrint("Command not implemented!");
 
             writeStatusResponse(cmdId, STATUS_NIMPL, "Method not implemented.");
         }
@@ -219,8 +200,7 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
  */
 void traci_api::TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description)
 {
-    if (DEBUG)
-        std::cerr << "Writing status response " << std::to_string(cmdStatus) << " for command " << std::to_string(cmdId) << std::endl;
+    debugPrint("Writing status response " + std::to_string(cmdStatus) + " for command " + std::to_string(cmdId));
 
     outgoing.writeUnsignedByte(1 + 1 + 1 + 4 + static_cast<int>(description.length())); // command length
     outgoing.writeUnsignedByte(cmdId); // command type
@@ -233,8 +213,7 @@ void traci_api::TraCIServer::writeStatusResponse(uint8_t cmdId, uint8_t cmdStatu
  */
 void traci_api::TraCIServer::writeVersion()
 {
-    if (DEBUG)
-        printToParamics("Writing version information");
+    debugPrint("Writing version information");
 
     this->writeStatusResponse(CMD_GETVERSION, STATUS_OK, "");
 
@@ -253,8 +232,7 @@ void traci_api::TraCIServer::writeVersion()
  */
 void traci_api::TraCIServer::sendResponse()
 {
-    if (DEBUG)
-        printToParamics("Sending response to TraCI client");
+    debugPrint("Sending response to TraCI client");
 
     ssocket.sendExact(outgoing);
 }
@@ -285,18 +263,16 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
     switch (sub_type)
     {
     case CMD_SUB_VHCVAR:
-        if (DEBUG)
-        {
-            printToParamics("Adding VHC subscription.");
-        }
+
+        debugPrint("Adding VHC subscription.");
+
         sub = new VehicleVariableSubscription(object_id, start_time, end_time, variables);
         break;
 
     case CMD_SUB_SIMVAR:
-        if (DEBUG)
-        {
-            printToParamics("Adding SIM subscription.");
-        }
+
+        debugPrint("Adding SIM subscription.");
+
         sub = new SimulationVariableSubscription(object_id, start_time, end_time, variables);
         break;
 
@@ -309,21 +285,17 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
     tcpip::Storage temp;
     uint8_t result = sub->handleSubscription(temp, true, errors); // validate
 
-    if ( result == VariableSubscription::STATUS_EXPIRED )
+    if (result == VariableSubscription::STATUS_EXPIRED)
     {
-        if (DEBUG)
-        {
-            printToParamics("Expired subscription.");
-        }
+        debugPrint("Expired subscription.");
+
         writeStatusResponse(sub_type, STATUS_ERROR, "Expired subscription.");
         return;
     }
-    else if (result != VariableSubscription::STATUS_OK )
+    else if (result != VariableSubscription::STATUS_OK)
     {
-        if (DEBUG)
-        {
-            printToParamics("Error adding subscription.");
-        }
+        debugPrint("Error adding subscription.");
+
         writeStatusResponse(sub_type, STATUS_ERROR, errors);
         return;
     }
@@ -360,7 +332,7 @@ void traci_api::TraCIServer::processSubscriptions(tcpip::Storage& sub_store)
     }
 
     sub_store.writeInt(count);
-    sub_store.writeStorage(sub_results);    
+    sub_store.writeStorage(sub_results);
 }
 
 
@@ -369,8 +341,7 @@ void traci_api::TraCIServer::processSubscriptions(tcpip::Storage& sub_store)
  */
 void traci_api::TraCIServer::cmdShutDown()
 {
-    if (DEBUG)
-        printToParamics("Got shutdown command, acknowledging and shutting down");
+    debugPrint("Got shutdown command, acknowledging and shutting down");
 
     this->writeStatusResponse(CMD_SHUTDOWN, STATUS_OK, "");
     running = false;
@@ -422,21 +393,17 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
     }
     catch (NotImplementedError& e)
     {
-        if (DEBUG)
-        {
-            printToParamics("Variable not implemented");
-            printToParamics(e.what());
-        }
+        debugPrint("Variable not implemented");
+        debugPrint(e.what());
+
 
         this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
     }
     catch (std::exception& e)
     {
-        if (DEBUG)
-        {
-            printToParamics("Fatal error???");
-            printToParamics(e.what());
-        }
+        debugPrint("Fatal error???");
+        debugPrint(e.what());
+
         this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
         throw;
     }
@@ -459,21 +426,17 @@ void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmd
     }
     catch (NotImplementedError& e)
     {
-        if (DEBUG)
-        {
-            printToParamics("Variable not implemented");
-            printToParamics(e.what());
-        }
+        debugPrint("Variable not implemented");
+        debugPrint(e.what());
+
 
         this->writeStatusResponse(cmdid, STATUS_NIMPL, e.what());
     }
     catch (std::exception& e)
     {
-        if (DEBUG)
-        {
-            printToParamics("Fatal error???");
-            printToParamics(e.what());
-        }
+        debugPrint("Fatal error???");
+        debugPrint(e.what());
+
         this->writeStatusResponse(cmdid, STATUS_ERROR, e.what());
         throw;
     }
@@ -490,21 +453,17 @@ void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& input)
     }
     catch (NotImplementedError& e)
     {
-        if (DEBUG)
-        {
-            printToParamics("State change not implemented");
-            printToParamics(e.what());
-        }
+        debugPrint("State change not implemented");
+        debugPrint(e.what());
+
 
         this->writeStatusResponse(CMD_GETVHCVAR, STATUS_NIMPL, e.what());
     }
     catch (std::exception& e)
     {
-        if (DEBUG)
-        {
-            printToParamics("Fatal error???");
-            printToParamics(e.what());
-        }
+        debugPrint("Fatal error???");
+        debugPrint(e.what());
+
         this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
         throw;
     }
