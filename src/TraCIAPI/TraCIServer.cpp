@@ -189,10 +189,11 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
             this->cmdGetVhcVar(storage);
             break;
 
+        case CMD_GETRTEVAR:
         case CMD_GETLNKVAR:
         case CMD_GETNDEVAR:
 
-            debugPrint("Got CMD_GETLNKVAR/CMD_GETNDEVAR");
+            debugPrint("Got CMD_GETLNKVAR/CMD_GETNDEVAR/CMD_GETRTEVAR");
             this->cmdGetNetworkVar(storage, cmdId);
             break;
 
@@ -442,13 +443,23 @@ void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmd
     tcpip::Storage result;
     try
     {
-        if (cmdid == CMD_GETLNKVAR)
-            Network::getLinkVariable(input, result);
-        else if (cmdid == CMD_GETNDEVAR)
-            Network::getJunctionVariable(input, result);
-        else
+        switch (cmdid)
+        {
+        case CMD_GETLNKVAR:
+            debugPrint("Got CMD_GETLNKVAR");
+            Network::getInstance()->getLinkVariable(input, result);
+            break;
+        case CMD_GETNDEVAR:
+            debugPrint("Got CMD_GETNDEVAR");
+            Network::getInstance()->getJunctionVariable(input, result);
+            break;
+        case CMD_GETRTEVAR:
+            debugPrint("Got CMD_GETRTEVAR");
+            Network::getInstance()->getRouteVariable(input, result);
+            break;
+        default:
             throw std::runtime_error("???");
-
+        }
 
         this->writeStatusResponse(cmdid, STATUS_OK, "");
         this->writeToOutputWithSize(result, false);

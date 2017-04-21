@@ -66,6 +66,9 @@ namespace traci_api
     static const uint8_t CMD_GETNDEVAR = 0xa9;
     static const uint8_t RES_GETNDEVAR = 0xb9;
 
+    static const uint8_t CMD_GETRTEVAR = 0xa6;
+    static const uint8_t RES_GETRTEVAR = 0xb6;
+
     // polygons
     static const uint8_t CMD_GETPOLVAR = 0xa8;
     static const uint8_t RES_GETPOLVAR = 0xb8;

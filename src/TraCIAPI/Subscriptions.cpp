@@ -41,7 +41,7 @@ uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storag
             output.writeStorage(temp);
         }
         // ReSharper disable once CppEntityNeverUsed
-        catch(NoSuchVHCError& e)
+        catch(NoSuchObjectError& e)
         {
             errors = "Vehicle " + objID + " not found in simulation.";
             return STATUS_VHCNOTFOUND;

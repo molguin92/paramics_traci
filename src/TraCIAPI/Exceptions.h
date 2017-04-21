@@ -17,43 +17,15 @@ namespace traci_api
         }
     };
 
-    class NoSuchVHCError : public std::runtime_error
+    class NoSuchObjectError : public std::runtime_error
     {
     public:
-        explicit NoSuchVHCError(const std::string& _Message)
+        explicit NoSuchObjectError(const std::string& _Message)
             : runtime_error(_Message)
         {
         }
 
-        explicit NoSuchVHCError(const char* _Message)
-            : runtime_error(_Message)
-        {
-        }
-    };
-
-    class NoSuchLNKError : public std::runtime_error
-    {
-    public:
-        explicit NoSuchLNKError(const std::string& _Message)
-            : runtime_error(_Message)
-        {
-        }
-
-        explicit NoSuchLNKError(const char* _Message)
-            : runtime_error(_Message)
-        {
-        }
-    };
-
-    class NoSuchNDEError : public std::runtime_error
-    {
-    public:
-        explicit NoSuchNDEError(const std::string& _Message)
-            : runtime_error(_Message)
-        {
-        }
-
-        explicit NoSuchNDEError(const char* _Message)
+        explicit NoSuchObjectError(const char* _Message)
             : runtime_error(_Message)
         {
         }

@@ -1,21 +1,37 @@
 ﻿#pragma once
+
 #include <cstdint>
 #include "storage.h"
 #include "Exceptions.h"
+#include <unordered_map>
+#include <programmer.h>
+#include "Constants.h"
 
 namespace traci_api
 {
-    namespace  Network
+    class Network
     {
-         const uint8_t VAR_LNK_LST = 0x00;
-         const uint8_t VAR_LNK_CNT = 0x01;
+    private:
+        static const uint8_t VAR_NDE_POS = 0x42;
+        static const uint8_t VAR_NDE_SHP = 0x4e;
+        static const uint8_t VAR_RTE_EDGES = 0x54;
 
-         const uint8_t VAR_NDE_LST = 0x00;
-         const uint8_t VAR_NDE_CNT = 0x01;
-         const uint8_t VAR_NDE_POS = 0x42;
-         const uint8_t VAR_NDE_SHP = 0x4e;
+        static Network* instance;
 
-         void getLinkVariable(tcpip::Storage& input, tcpip::Storage& output) throw(traci_api::NoSuchLNKError);
-         void getJunctionVariable(tcpip::Storage& input, tcpip::Storage& output) throw(traci_api::NoSuchNDEError);
+        std::unordered_map<BUSROUTE*, std::vector<std::string>> route_links_map;
+        std::unordered_map<std::string, BUSROUTE*> route_name_map;
+
+        Network();
+        ~Network(){}
+
+    public:
+        static Network* getInstance();
+        void getLinkVariable(tcpip::Storage& input, tcpip::Storage& output) const throw(traci_api::NoSuchObjectError);
+        void getJunctionVariable(tcpip::Storage& input, tcpip::Storage& output) const throw(traci_api::NoSuchObjectError);
+        void getRouteVariable(tcpip::Storage& input, tcpip::Storage& output) const throw(traci_api::NoSuchObjectError);
+
+        /* prevent alternative instantiation */
+        Network(Network const&) = delete;
+        void operator=(Network const&) = delete;
     };
 }

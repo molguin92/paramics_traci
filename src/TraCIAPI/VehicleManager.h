@@ -11,8 +11,8 @@
 namespace traci_api
 {
     class NotImplementedError;
-    class NoSuchLNKError;
-    class NoSuchVHCError;
+    class NoSuchObjectError;
+    class NoSuchObjectError;
 
     class VehicleManager
     {
@@ -119,8 +119,8 @@ namespace traci_api
 
         void reset();
 
-        void packVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
-        void getVehicleVariable(std::string vid, uint8_t varID, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchVHCError);
+        void packVehicleVariable(tcpip::Storage& input, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchObjectError);
+        void getVehicleVariable(std::string vid, uint8_t varID, tcpip::Storage& output) throw(NotImplementedError, std::runtime_error, NoSuchObjectError);
         void setVehicleState(tcpip::Storage& input);
 
         void vehicleDepart(VEHICLE* vehicle);
@@ -134,24 +134,24 @@ namespace traci_api
         int currentVehicleCount();
         std::vector<std::string> getVehiclesInSim();
 
-        float getSpeed(std::string vid) throw(NoSuchVHCError);
+        float getSpeed(std::string vid) throw(NoSuchObjectError);
 
-        PositionalData getPosition(std::string vid) throw(NoSuchVHCError);
-        DimensionalData getDimensions(std::string vid) throw(NoSuchVHCError);
+        PositionalData getPosition(std::string vid) throw(NoSuchObjectError);
+        DimensionalData getDimensions(std::string vid) throw(NoSuchObjectError);
 
-        std::string getRoadID(std::string vid) throw(NoSuchVHCError);
-        std::string getLaneID(std::string vid) throw(NoSuchVHCError);
-        int getLaneIndex(std::string vid) throw(NoSuchVHCError);
+        std::string getRoadID(std::string vid) throw(NoSuchObjectError);
+        std::string getLaneID(std::string vid) throw(NoSuchObjectError);
+        int getLaneIndex(std::string vid) throw(NoSuchObjectError);
 
-        std::string getVehicleType(std::string vid) throw(NoSuchVHCError);
+        std::string getVehicleType(std::string vid) throw(NoSuchObjectError);
 
 
-        //void stopVehicle(tcpip::Storage& input) throw(NoSuchVHCError, NoSuchLNKError, std::runtime_error);
-        void changeLane(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
-        void slowDown(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
-        void changeColour(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
-        void setSpeed(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
-        void setMaxSpeed(tcpip::Storage& input) throw(NoSuchVHCError, std::runtime_error);
+        //void stopVehicle(tcpip::Storage& input) throw(NoSuchObjectError, NoSuchObjectError, std::runtime_error);
+        void changeLane(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
+        void slowDown(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
+        void changeColour(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
+        void setSpeed(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
+        void setMaxSpeed(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
 
         /* prevent alternative instantiation */
         VehicleManager(VehicleManager const&) = delete;
@@ -159,8 +159,8 @@ namespace traci_api
 
         void handleDelayedTriggers();
 
-        VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
-        VEHICLE* findVehicle(std::string vid) throw(NoSuchVHCError);
+        VEHICLE* findVehicle(int vid) throw(NoSuchObjectError);
+        VEHICLE* findVehicle(std::string vid) throw(NoSuchObjectError);
 
         //types
         void packVhcTypesVariable(tcpip::Storage& input, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError);
