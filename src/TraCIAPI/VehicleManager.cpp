@@ -254,6 +254,102 @@ VEHICLE* traci_api::VehicleManager::findVehicle(std::string vid) throw(NoSuchVHC
     return findVehicle(std::stoi(vid));
 }
 
+void traci_api::VehicleManager::packVhcTypesVariable(tcpip::Storage& input, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError)
+{
+    uint8_t varID = input.readUnsignedByte();
+    std::string type_id = input.readString();
+
+    output.writeUnsignedByte(RES_GETVTPVAR);
+    output.writeUnsignedByte(varID);
+    output.writeString(type_id);
+
+    int type_index = -1;
+    if (varID != VARLST && varID != VARCNT)
+    {
+        try
+        {
+            type_index = types_index_map.at(type_id);
+        }
+        // ReSharper disable once CppEntityNeverUsed
+        catch (std::out_of_range& e)
+        {
+            throw std::runtime_error("No such type: " + type_id);
+        }
+    }
+
+    getVhcTypesVariable(type_index, varID, output);
+}
+
+void traci_api::VehicleManager::getVhcTypesVariable(int type_id, uint8_t varID, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError)
+{
+    if (type_id < 0 && varID != VAR_VHC_LIST && varID != VAR_VHC_COUNT)
+        throw std::runtime_error("Invalid type ID " + std::to_string(type_id) + " for variable " + std::to_string(varID));
+
+    switch (varID)
+    {
+    case VAR_VHC_LIST:
+        {
+            std::vector<std::string> type_names;
+            for (auto kv : types_index_map)
+                type_names.push_back(kv.first);
+            output.writeUnsignedByte(VTYPE_STRLST);
+            output.writeStringList(type_names);
+        }
+        break;
+    case VAR_VHC_COUNT:
+        output.writeUnsignedByte(VTYPE_INT);
+        output.writeInt(types_index_map.size());
+        break;
+    case VAR_VHC_LENGTH:
+        output.writeUnsignedByte(VTYPE_FLOAT);
+        output.writeDouble(qpg_VTP_length(type_id));
+        break;
+    case VAR_VHC_WIDTH:
+        output.writeUnsignedByte(VTYPE_FLOAT);
+        output.writeDouble(qpg_VTP_width(type_id));
+        break;
+    case VAR_VHC_HEIGHT:
+        output.writeUnsignedByte(VTYPE_FLOAT);
+        output.writeDouble(qpg_VTP_height(type_id));
+        break;
+    case VAR_VHC_ACCEL:
+        output.writeUnsignedByte(VTYPE_FLOAT);
+        output.writeDouble(qpg_VTP_acceleration(type_id));
+        break;
+    case VAR_VHC_VMAX:
+        output.writeUnsignedByte(VTYPE_FLOAT);
+        output.writeDouble(qpg_VTP_maxSpeed(type_id));
+        break;
+    case VAR_VHC_DECEL:
+        output.writeUnsignedByte(VTYPE_FLOAT);
+        output.writeDouble(qpg_VTP_deceleration(type_id));
+        break;
+
+    case VAR_VHC_TAU:
+    case VAR_VHC_SIGMA:
+    case VAR_VHC_SPDFACTOR:
+    case VAR_VHC_SPEEDDEV:
+    case VAR_VHC_VCLASS:
+    case VAR_VHC_EMSCLASS:
+    case VAR_VHC_SHAPE:
+    case VAR_VHC_MINGAP:
+    case VAR_VHC_COLOR:
+    case VAR_VHC_MAXLATSPD:
+    case VAR_VHC_LATGAP:
+    case VAR_VHC_LATALIGN:
+        throw NotImplementedError("Variable not implemented: " + std::to_string(varID));
+    default:
+        throw std::runtime_error("No such variable (" + std::to_string(varID) + ")");
+    }
+}
+
+traci_api::VehicleManager::VehicleManager()
+{
+    int type_n = qpg_NET_vehicleTypes();
+    for (int i = 1; i <= type_n; i++)
+        types_index_map[qpg_VTP_name(i)] = i;
+}
+
 /**
  * \brief Handles delayed time_triggers. For example, changing back to the original lane 
  * after a set time after a lane change command.

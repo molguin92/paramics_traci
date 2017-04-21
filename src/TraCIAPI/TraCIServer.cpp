@@ -8,7 +8,6 @@
 #include "Network.h"
 #include "Subscriptions.h"
 #include <windows.h>
-#include "VehicleTypes.h"
 
 /*
  * This class abstracts a server for the TraCI protocol.
@@ -544,7 +543,7 @@ void traci_api::TraCIServer::cmdGetVtpVar(tcpip::Storage& input)
     tcpip::Storage result;
     try
     {
-        VehicleTypes::getInstance()->getVhcTypesVariable(input, result);
+        VehicleManager::getInstance()->packVhcTypesVariable(input, result);
 
         this->writeStatusResponse(CMD_GETVTPVAR, STATUS_OK, "");
         this->writeToOutputWithSize(result, false);

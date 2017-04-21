@@ -37,9 +37,6 @@
     <ClCompile Include="src\TraCIAPI\Subscriptions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TraCIAPI\VehicleTypes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\shawn\socket.h">
@@ -62,6 +59,5 @@
     <ClInclude Include="src\TraCIAPI\Network.h" />
     <ClInclude Include="src\TraCIAPI\Exceptions.h" />
     <ClInclude Include="src\TraCIAPI\Subscriptions.h" />
-    <ClInclude Include="src\TraCIAPI\VehicleTypes.h" />
   </ItemGroup>
 </Project>

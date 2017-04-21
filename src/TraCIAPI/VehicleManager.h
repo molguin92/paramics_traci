@@ -73,6 +73,11 @@ namespace traci_api
         static const uint8_t VAR_VHC_NONTRACISPD = 0xb1;
         static const uint8_t VAR_VHC_VALIDROUTE = 0x92;
 
+        // only for types
+        static const uint8_t VAR_VHC_MAXLATSPD = 0xba;
+        static const uint8_t VAR_VHC_LATGAP = 0Xbb;
+        static const uint8_t VAR_VHC_LATALIGN = 0Xb9;
+
         /* vehicle states */
         static const uint8_t STA_VHC_STOP = 0x12;
         static const uint8_t STA_VHC_CHANGELANE = 0x13;
@@ -157,13 +162,15 @@ namespace traci_api
         VEHICLE* findVehicle(int vid) throw(NoSuchVHCError);
         VEHICLE* findVehicle(std::string vid) throw(NoSuchVHCError);
 
+        //types
+        void packVhcTypesVariable(tcpip::Storage& input, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError);
+        void getVhcTypesVariable(int type_id, uint8_t varID, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError);
+
     private:
 
         static VehicleManager* instance;
 
-        VehicleManager()
-        {
-        }
+        VehicleManager();
 
         ~VehicleManager()
         {
@@ -179,5 +186,8 @@ namespace traci_api
         std::vector<VEHICLE*> arrived_vehicles;
 
         std::vector<VehicleVariableSubscription> subscriptions;
+
+        // vehicle types
+        std::unordered_map<std::string, int> types_index_map;
     };
 }

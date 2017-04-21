@@ -163,7 +163,6 @@
     <ClCompile Include="src\TraCIAPI\Triggers.cpp" />
     <ClCompile Include="src\TraCIAPI\Utils.cpp" />
     <ClCompile Include="src\TraCIAPI\VehicleManager.cpp" />
-    <ClCompile Include="src\TraCIAPI\VehicleTypes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LICENSE" />
@@ -178,7 +177,6 @@
     <ClInclude Include="src\TraCIAPI\Triggers.h" />
     <ClInclude Include="src\TraCIAPI\Utils.h" />
     <ClInclude Include="src\TraCIAPI\VehicleManager.h" />
-    <ClInclude Include="src\TraCIAPI\VehicleTypes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
