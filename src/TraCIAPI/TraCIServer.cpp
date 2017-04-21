@@ -8,6 +8,7 @@
 #include "Network.h"
 #include "Subscriptions.h"
 #include <windows.h>
+#include "VehicleTypes.h"
 
 /*
  * This class abstracts a server for the TraCI protocol.
@@ -198,8 +199,14 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 
         case CMD_GETPOLVAR:
             debugPrint("Got CMD_GETPOLVAR");
-            this->cmdGetPolygonVar(storage);            
+            this->cmdGetPolygonVar(storage);
             break;
+
+        case CMD_GETVTPVAR:
+            debugPrint("Got CMD_GETVTPVAR");
+            this->cmdGetVtpVar(storage);
+            break;
+
 
         default:
 
@@ -409,6 +416,9 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
     try
     {
         VehicleManager::getInstance()->packVehicleVariable(input, result);
+
+        this->writeStatusResponse(CMD_GETVHCVAR, STATUS_OK, "");
+        this->writeToOutputWithSize(result, false);
     }
     catch (NotImplementedError& e)
     {
@@ -426,9 +436,6 @@ void traci_api::TraCIServer::cmdGetVhcVar(tcpip::Storage& input)
         this->writeStatusResponse(CMD_GETVHCVAR, STATUS_ERROR, e.what());
         throw;
     }
-
-    this->writeStatusResponse(CMD_GETVHCVAR, STATUS_OK, "");
-    this->writeToOutputWithSize(result, false);
 }
 
 void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmdid)
@@ -442,6 +449,10 @@ void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmd
             Network::getJunctionVariable(input, result);
         else
             throw std::runtime_error("???");
+
+
+        this->writeStatusResponse(cmdid, STATUS_OK, "");
+        this->writeToOutputWithSize(result, false);
     }
     catch (NotImplementedError& e)
     {
@@ -459,9 +470,6 @@ void traci_api::TraCIServer::cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmd
         this->writeStatusResponse(cmdid, STATUS_ERROR, e.what());
         throw;
     }
-
-    this->writeStatusResponse(cmdid, STATUS_OK, "");
-    this->writeToOutputWithSize(result, false);
 }
 
 void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& input)
@@ -469,6 +477,7 @@ void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& input)
     try
     {
         VehicleManager::getInstance()->setVehicleState(input);
+        this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
     }
     catch (NotImplementedError& e)
     {
@@ -486,8 +495,6 @@ void traci_api::TraCIServer::cmdSetVhcState(tcpip::Storage& input)
         this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_ERROR, e.what());
         throw;
     }
-
-    this->writeStatusResponse(CMD_SETVHCSTATE, STATUS_OK, "");
 }
 
 // ReSharper disable once CppMemberFunctionMayBeStatic
@@ -507,7 +514,8 @@ void traci_api::TraCIServer::cmdGetPolygonVar(tcpip::Storage& input)
     result.writeUnsignedByte(var_id);
     result.writeString(pol_id);
 
-    try {
+    try
+    {
         switch (var_id)
         {
         case VARLST:
@@ -525,8 +533,36 @@ void traci_api::TraCIServer::cmdGetPolygonVar(tcpip::Storage& input)
         writeStatusResponse(CMD_GETPOLVAR, STATUS_OK, "");
         writeToOutputWithSize(result, false);
     }
-    catch ( ... )
+    catch (...)
     {
         writeStatusResponse(CMD_GETPOLVAR, STATUS_ERROR, "No such polygon (id: " + pol_id + ")");
-    }    
+    }
+}
+
+void traci_api::TraCIServer::cmdGetVtpVar(tcpip::Storage& input)
+{
+    tcpip::Storage result;
+    try
+    {
+        VehicleTypes::getInstance()->getVhcTypesVariable(input, result);
+
+        this->writeStatusResponse(CMD_GETVTPVAR, STATUS_OK, "");
+        this->writeToOutputWithSize(result, false);
+    }
+    catch (NotImplementedError& e)
+    {
+        debugPrint("Variable not implemented");
+        debugPrint(e.what());
+
+
+        this->writeStatusResponse(CMD_GETVTPVAR, STATUS_NIMPL, e.what());
+    }
+    catch (std::exception& e)
+    {
+        debugPrint("Fatal error???");
+        debugPrint(e.what());
+
+        this->writeStatusResponse(CMD_GETVTPVAR, STATUS_ERROR, e.what());
+        throw;
+    }
 }

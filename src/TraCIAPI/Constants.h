@@ -58,6 +58,9 @@ namespace traci_api
     static const uint8_t CMD_GETVHCVAR = 0xa4;
     static const uint8_t RES_GETVHCVAR = 0xb4;
 
+    static const uint8_t CMD_GETVTPVAR = 0xa5;
+    static const uint8_t RES_GETVTPVAR = 0xb5;
+
     static const uint8_t CMD_GETLNKVAR = 0xaa;
     static const uint8_t RES_GETLNKVAR = 0xba;
     static const uint8_t CMD_GETNDEVAR = 0xa9;
