@@ -132,6 +132,18 @@ void traci_api::VehicleManager::getVehicleVariable(std::string vid, uint8_t varI
         output.writeDouble(getPosition(vid).gradient);
         break;
 
+    case VAR_VHC_SIGNALST:
+        // the only signal state we can obtain from Paramics is brake light */
+        {
+            VEHICLE* v = findVehicle(vid);
+            output.writeUnsignedByte(VTYPE_INT);
+            if (qpg_VHC_braking(v))
+                output.writeInt(0x08);
+            else
+                output.writeInt(0x00);
+        }
+        break;
+
         /* not implemented yet*/
     case VAR_VHC_ROUTE:
     case VAR_VHC_ROUTEIDX:
@@ -139,7 +151,6 @@ void traci_api::VehicleManager::getVehicleVariable(std::string vid, uint8_t varI
     case VAR_VHC_COLOR:
     case VAR_VHC_LANEPOS:
     case VAR_VHC_DIST:
-    case VAR_VHC_SIGNALST:
     case VAR_VHC_CO2:
     case VAR_VHC_CO:
     case VAR_VHC_HC:
