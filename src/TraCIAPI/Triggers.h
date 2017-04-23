@@ -36,9 +36,10 @@ namespace traci_api
 
     class SpeedChangeTrigger : public BaseTrigger
     {
+    public:
         VEHICLE* vehicle;
         double speed;
-    public:
+        
         explicit SpeedChangeTrigger(VEHICLE* vehicle, double speed)
             : vehicle(vehicle), speed(speed)
         {
@@ -50,6 +51,19 @@ namespace traci_api
 
         void handleTrigger() override;
         bool repeat() override { return false; }
+    };
+
+    class SpeedSetTrigger : public SpeedChangeTrigger
+    {
+    public:
+        SpeedSetTrigger(VEHICLE* vehicle, double speed)
+            : SpeedChangeTrigger(vehicle, speed)
+        {
+        }
+
+        ~SpeedSetTrigger() override {};
+
+        bool repeat() override { return true;  }
     };
 
     /*class VehicleStopTrigger : public BaseTrigger

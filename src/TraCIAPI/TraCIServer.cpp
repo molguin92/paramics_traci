@@ -73,7 +73,7 @@ void traci_api::TraCIServer::waitForCommands()
         auto msize = incoming.size();
 
         debugPrint("Got message of length " + std::to_string(msize));
-        debugPrint("Incoming: " + incoming.hexDump());
+        //debugPrint("Incoming: " + incoming.hexDump());
 
 
         /* Multiple commands may arrive at once in one message, 
@@ -258,7 +258,7 @@ void traci_api::TraCIServer::writeVersion()
 void traci_api::TraCIServer::sendResponse()
 {
     debugPrint("Sending response to TraCI client");
-    debugPrint("Outgoing data: " + outgoing.hexDump());
+    //debugPrint("Outgoing data: " + outgoing.hexDump());
 
     ssocket.sendExact(outgoing);
 }
@@ -305,6 +305,7 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
             debugPrint("Unsubscribing...");
             delete *it;
             it = subs.erase(it);
+            writeStatusResponse(sub_type, STATUS_OK, "");
             return;
         case VariableSubscription::STATUS_ERROR:
             // error when updating

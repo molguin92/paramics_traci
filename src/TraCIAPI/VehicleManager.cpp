@@ -144,12 +144,26 @@ void traci_api::VehicleManager::getVehicleVariable(std::string vid, uint8_t varI
         }
         break;
 
+    case VAR_VHC_LANEPOS:
+        output.writeUnsignedByte(VTYPE_DOUBLE);
+        {
+            // Client asks about position from start of the lane
+            // we know length of lane and distance from end, thus
+            // position = length - distance_to_end
+
+            VEHICLE* vhc = findVehicle(vid);
+            LINK* current_link = qpg_VHC_link(vhc);
+            float length = qpg_LNK_length(current_link);
+            float distance = qpg_VHC_distance(vhc);
+            output.writeDouble(length - distance);
+        }
+        break;
+
         /* not implemented yet*/
     case VAR_VHC_ROUTE:
     case VAR_VHC_ROUTEIDX:
     case VAR_VHC_EDGES:
     case VAR_VHC_COLOR:
-    case VAR_VHC_LANEPOS:
     case VAR_VHC_DIST:
     case VAR_VHC_CO2:
     case VAR_VHC_CO:
@@ -362,15 +376,18 @@ traci_api::VehicleManager::VehicleManager()
 }
 
 /**
- * \brief Handles delayed time_triggers. For example, changing back to the original lane 
+ * \brief Handles delayed time_triggers and repetitive timestep triggers. For example, changing back to the original lane 
  * after a set time after a lane change command.
  */
 void traci_api::VehicleManager::handleDelayedTriggers()
 {
-    std::lock_guard<std::mutex> lock(time_trigger_mutex);
+    std::lock_guard<std::mutex> lock(trigger_mutex);
+
+    // first handle one-time, time-triggered events
     int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
     auto itup = time_triggers.upper_bound(current_time); // first element with trigger time > current time
-    std::vector<BaseTrigger*> trash;
+
+    debugPrint("Handling vehicle triggers");
 
     for (auto it = time_triggers.begin(); it != itup;)
     {
@@ -380,6 +397,20 @@ void traci_api::VehicleManager::handleDelayedTriggers()
         delete(it->second);
         it = time_triggers.erase(it);
     }
+
+    // handle speed set triggers
+    for (auto kv = speed_set_triggers.begin(); kv != speed_set_triggers.end(); ++kv)
+    {
+        kv->second->handleTrigger();
+
+        /* check if need repeating */
+        if(!kv->second->repeat())
+        {
+            delete kv->second;
+            kv = speed_set_triggers.erase(kv);
+        }
+    }
+
 }
 
 
@@ -706,7 +737,7 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchOb
     int trigger_time = duration + Simulation::getInstance()->getCurrentTimeMilliseconds();
 
     {
-        std::lock_guard<std::mutex> lock(time_trigger_mutex);
+        std::lock_guard<std::mutex> lock(trigger_mutex);
         time_triggers.insert(std::make_pair(trigger_time, new ResetLaneRangeTrigger(vhc, lane_range_l, lane_range_h)));
     }
 }
@@ -770,7 +801,7 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchObje
         new_speed = new_speed - speedstep;
         next_time = next_time + stepsize;
         {
-            std::lock_guard<std::mutex> lock(time_trigger_mutex);
+            std::lock_guard<std::mutex> lock(trigger_mutex);
             time_triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed)));
         }
     }
@@ -809,17 +840,33 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchObje
     if (!readTypeCheckingDouble(input, speed))
         throw std::runtime_error("Malformed TraCI message");
 
-    // if speed is -1, reset to defaults
-    if(abs(speed - (-1.0)) < NUMERICAL_EPS)
+    debugPrint("Setting speed " + std::to_string(speed) + " for vehicle " + vhcid + "--------------------------------------------------------------------");
+
+    // check if there already exists a speed set event for this vehicle and modify it, or add a new one if not
+    std::lock_guard<std::mutex> lock(trigger_mutex);
+    try
     {
-        int type = qpg_VHC_type(vhc);
-        qps_VHC_maxSpeed(vhc, qpg_VTP_maxSpeed(type));
+        SpeedSetTrigger* trigger = speed_set_triggers.at(vhc);
+        if(abs(speed - (-1.0)) < NUMERICAL_EPS)
+        {
+            // remove trigger
+            speed_set_triggers.erase(vhc);
+            delete trigger;
+        }
+        else
+        {
+            trigger->speed = speed;
+            trigger->handleTrigger();
+        }
     }
-    else
+    catch (std::out_of_range& e)
     {
-        /* speed is in m/s */
-        qps_VHC_speed(vhc, speed);
-        qps_VHC_maxSpeed(vhc, speed);
+        if (abs(speed - (-1.0)) < NUMERICAL_EPS)
+            return;
+
+        SpeedSetTrigger* trigger = new SpeedSetTrigger(vhc, speed);
+        trigger->handleTrigger();
+        speed_set_triggers[vhc] = trigger;
     }
 }
 
