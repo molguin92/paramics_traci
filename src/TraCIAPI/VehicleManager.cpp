@@ -809,8 +809,18 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchObje
     if (!readTypeCheckingDouble(input, speed))
         throw std::runtime_error("Malformed TraCI message");
 
-    /* speed is in m/s */
-    qps_VHC_speed(vhc, speed);
+    // if speed is -1, reset to defaults
+    if(abs(speed - (-1.0)) < NUMERICAL_EPS)
+    {
+        int type = qpg_VHC_type(vhc);
+        qps_VHC_maxSpeed(vhc, qpg_VTP_maxSpeed(type));
+    }
+    else
+    {
+        /* speed is in m/s */
+        qps_VHC_speed(vhc, speed);
+        qps_VHC_maxSpeed(vhc, speed);
+    }
 }
 
 void traci_api::VehicleManager::setMaxSpeed(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)
