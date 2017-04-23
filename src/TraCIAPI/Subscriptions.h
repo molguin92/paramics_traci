@@ -4,6 +4,7 @@
 #include "programmer.h"
 #include "storage.h"
 #include "Simulation.h"
+#include "Constants.h"
 
 namespace traci_api
 {
@@ -29,12 +30,17 @@ namespace traci_api
         static const uint8_t STATUS_EXPIRED = 0x02;
         static const uint8_t STATUS_ERROR = 0xff;
 
+        //update statuses
+        static const uint8_t STATUS_NOUPD = 0xa0;
+        static const uint8_t STATUS_UNSUB = 0xa1;
 
-        VariableSubscription(std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars):
+
+        VariableSubscription(std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars) :
             objID(obj_id),
             beginTime(begin_time),
             endTime(end_time),
-            vars(vars)
+            vars(vars),
+            sub_type(-1)
         {
         }
 
@@ -43,11 +49,14 @@ namespace traci_api
         virtual ~VariableSubscription() {};
         virtual uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) { return STATUS_ERROR; };
 
+        uint8_t updateSubscription(uint8_t sub_type, std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars, tcpip::Storage& result, std::string& errors);
+
     protected:
         std::string objID;
         int beginTime;
         int endTime;
         std::vector<uint8_t> vars;
+        int sub_type;
     };
 
     class VehicleVariableSubscription : public VariableSubscription
@@ -58,6 +67,7 @@ namespace traci_api
         VehicleVariableSubscription(std::string vhc_id, int begin_time, int end_time, std::vector<uint8_t> vars)
             : VariableSubscription(vhc_id, begin_time, end_time, vars)
         {
+            sub_type = CMD_SUB_VHCVAR;
         }
 
         ~VehicleVariableSubscription() override {};
@@ -70,6 +80,7 @@ namespace traci_api
         SimulationVariableSubscription(std::string object_id, int begin_time, int end_time, const std::vector<uint8_t>& vars)
             : VariableSubscription(object_id, begin_time, end_time, vars)
         {
+            sub_type = CMD_SUB_SIMVAR;
         }
 
         ~SimulationVariableSubscription() override {};

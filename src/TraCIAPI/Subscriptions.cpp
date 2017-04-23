@@ -14,6 +14,41 @@ int traci_api::VariableSubscription::checkTime() const
         return 1;
 }
 
+uint8_t traci_api::VariableSubscription::updateSubscription(uint8_t sub_type, std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars, tcpip::Storage& result_store, std::string& errors)
+{
+    if (sub_type != this->sub_type || obj_id != objID)
+        return STATUS_NOUPD;
+
+    if (vars.size() == 0)
+        return STATUS_UNSUB;
+
+    // backup old values
+    int old_start_time = this->beginTime;
+    int old_end_time = this->endTime;
+    std::vector<uint8_t> old_vars = this->vars;
+
+    // set new values and try
+    this->beginTime = begin_time;
+    this->endTime = end_time;
+    this->vars = vars;
+
+    // validate
+    uint8_t result = this->handleSubscription(result_store, true, errors);
+
+    if (result == STATUS_EXPIRED)
+        // if new time causes subscription to expire, just unsub
+        return STATUS_UNSUB;
+    else if (result != STATUS_OK)
+    {
+        // reset values
+        this->beginTime = old_start_time;
+        this->endTime = old_end_time;
+        this->vars = old_vars;
+    }
+
+    return result;
+}
+
 uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storage& output, bool validate, std::string& errors)
 {
 

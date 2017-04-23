@@ -4,6 +4,7 @@
 #include "storage.h"
 #include "Simulation.h"
 #include "Subscriptions.h"
+#include <unordered_map>
 
 namespace traci_api
 {
