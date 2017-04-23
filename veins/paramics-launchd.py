@@ -128,10 +128,10 @@ def forward_connection(client_socket, server_socket, process):
             do_exit = True
         if client_socket in r:
             try:
-                logging.debug("reading data from client")
+                #logging.debug("reading data from client")
                 data = client_socket.recv(65535)
                 s_data = ':'.join(x.encode('hex') for x in data)
-                logging.debug("Data: " + s_data)
+                #logging.debug("Data: " + s_data)
                 if data == "":
                     do_exit = True
             except Exception as e:
@@ -139,14 +139,14 @@ def forward_connection(client_socket, server_socket, process):
                 logging.debug("Error when receiving from client?")
                 do_exit = True
             finally:
-                logging.debug("sending data to server")
+                #logging.debug("sending data to server")
                 server_socket.send(data)
         if server_socket in r:
             try:
-                logging.debug("reading data from server")
+                #logging.debug("reading data from server")
                 data = server_socket.recv(65535)
                 s_data = ':'.join(x.encode('hex') for x in data)
-                logging.debug("Data: " + s_data)
+                #logging.debug("Data: " + s_data)
                 if data == "":
                     do_exit = True
             except Exception as e:
@@ -154,7 +154,7 @@ def forward_connection(client_socket, server_socket, process):
                 logging.debug("Error when receiving from server?")
                 do_exit = True
             finally:
-                logging.debug("sending data to client")
+                #logging.debug("sending data to client")
                 client_socket.send(data)
 
     logging.debug("Done with proxy mode")
