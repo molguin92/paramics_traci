@@ -411,6 +411,19 @@ void traci_api::VehicleManager::handleDelayedTriggers()
         }
     }
 
+    // handle lane set triggers
+    for  (auto kv = lane_set_triggers.begin(); kv != lane_set_triggers.end(); ++kv)
+    {
+        kv->second->handleTrigger();
+
+        /* check if need repeating */
+        if (!kv->second->repeat())
+        {
+            delete kv->second;
+            kv = lane_set_triggers.erase(kv);
+        }
+    }
+
 }
 
 
@@ -700,46 +713,26 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchOb
         throw std::runtime_error("Malformed TraCI message");
 
     VEHICLE* vhc = findVehicle(std::stoi(vhcid));
-    LINK* lnk = qpg_VHC_link(vhc);
 
-    int n_lanes = qpg_LNK_lanes(lnk);
+    // first, check if there already exists a lane change trigger
+    // if there is, delete it
 
-    if (new_lane > n_lanes)
-        new_lane = n_lanes;
-    else if (new_lane < 1)
-        new_lane = 1;
-
-    int current_lane = qpg_VHC_lane(vhc);
-    int lane_range_h = qpg_VHC_laneHigh(vhc);
-    int lane_range_l = qpg_VHC_laneLow(vhc);
-
-    /* set new temporary lane range */
-    qps_VHC_laneRange(vhc, new_lane, new_lane);
-
-    /* force lane change */
-    int diff = new_lane - current_lane;
-    while (diff != 0)
+    try
     {
-        if (diff < 0)
-        {
-            qps_VHC_changeLane(vhc, -1);
-            diff++;
-        }
-        else
-        {
-            qps_VHC_changeLane(vhc, +1);
-            diff--;
-        }
+        LaneSetTrigger* trigger = lane_set_triggers.at(vhc);
+        delete trigger;
+        lane_set_triggers.erase(vhc);
     }
+    catch (std::out_of_range& e) { /* no previous trigger, ok */ }
 
+    if (duration < 0)
+        // negative duration: remove previous lane set command, we cant just return now
+        return;
+    else if (duration == 0)
+        // "infinite" duration
+        duration = INT32_MAX - Simulation::getInstance()->getCurrentTimeMilliseconds();
 
-    /* set trigger for resetting lane range */
-    int trigger_time = duration + Simulation::getInstance()->getCurrentTimeMilliseconds();
-
-    {
-        std::lock_guard<std::mutex> lock(trigger_mutex);
-        time_triggers.insert(std::make_pair(trigger_time, new ResetLaneRangeTrigger(vhc, lane_range_l, lane_range_h)));
-    }
+    lane_set_triggers[vhc] = new LaneSetTrigger(vhc, new_lane, duration);
 }
 
 void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)

@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "programmer.h"
 #include <string>
+#include "Simulation.h"
 
 namespace traci_api
 {
@@ -13,25 +14,6 @@ namespace traci_api
         };
         virtual void handleTrigger() = 0;
         virtual bool repeat() = 0;
-    };
-
-    class ResetLaneRangeTrigger : public BaseTrigger
-    {
-    public:
-        VEHICLE* vehicle;
-        int l_lane;
-        int h_lane;
-
-        ResetLaneRangeTrigger(VEHICLE* vehicle, int l_lane, int h_lane) : vehicle(vehicle), l_lane(l_lane), h_lane(h_lane)
-        {
-        }
-
-        ~ResetLaneRangeTrigger() override
-        {
-        };
-
-        void handleTrigger() override;
-        bool repeat() override { return false; }
     };
 
     class SpeedChangeTrigger : public BaseTrigger
@@ -64,6 +46,22 @@ namespace traci_api
         ~SpeedSetTrigger() override {};
 
         bool repeat() override { return true;  }
+    };
+
+    class LaneSetTrigger : public BaseTrigger
+    {
+    public:
+        int target_lane;
+        int end_time;
+        VEHICLE* vehicle;
+
+        LaneSetTrigger(VEHICLE* vhc, int target_lane, int duration): target_lane(target_lane), vehicle(vhc)
+        {
+            end_time = Simulation::getInstance()->getCurrentTimeMilliseconds() + duration;
+        }
+
+        void handleTrigger() override;
+        bool repeat() override;
     };
 
     /*class VehicleStopTrigger : public BaseTrigger

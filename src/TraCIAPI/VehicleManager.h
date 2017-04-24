@@ -178,6 +178,7 @@ namespace traci_api
 
         std::unordered_multimap<int, BaseTrigger*> time_triggers;
         std::unordered_map<VEHICLE*, SpeedSetTrigger*> speed_set_triggers;
+        std::unordered_map<VEHICLE*, LaneSetTrigger*> lane_set_triggers;
 
         std::mutex trigger_mutex;
         std::mutex vhc_lists_mutex;
