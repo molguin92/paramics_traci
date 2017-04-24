@@ -142,6 +142,7 @@ namespace traci_api
         std::string getRoadID(std::string vid) throw(NoSuchObjectError);
         std::string getLaneID(std::string vid) throw(NoSuchObjectError);
         int getLaneIndex(std::string vid) throw(NoSuchObjectError);
+        std::vector<std::string> getRouteEdges(std::string vid) throw(NoSuchObjectError);
 
         std::string getVehicleType(std::string vid) throw(NoSuchObjectError);
 

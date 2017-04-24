@@ -159,10 +159,14 @@ void traci_api::VehicleManager::getVehicleVariable(std::string vid, uint8_t varI
         }
         break;
 
+    case VAR_VHC_EDGES:
+        output.writeUnsignedByte(VTYPE_STRLST);
+        output.writeStringList(getRouteEdges(vid));
+        break;
+
         /* not implemented yet*/
     case VAR_VHC_ROUTE:
     case VAR_VHC_ROUTEIDX:
-    case VAR_VHC_EDGES:
     case VAR_VHC_COLOR:
     case VAR_VHC_DIST:
     case VAR_VHC_CO2:
@@ -563,6 +567,30 @@ std::string traci_api::VehicleManager::getLaneID(std::string vid) throw(NoSuchOb
 int traci_api::VehicleManager::getLaneIndex(std::string vid) throw(NoSuchObjectError)
 {
     return qpg_VHC_lane(this->findVehicle(vid));
+}
+
+std::vector<std::string> traci_api::VehicleManager::getRouteEdges(std::string vid) throw(NoSuchObjectError)
+{
+    // return next two edges (and current one as well)
+    VEHICLE* vhc = findVehicle(vid);
+    int next_exit = qpg_VHC_nextExit(vhc);
+    int next_next_exit = qpg_VHC_nextNextExit(vhc);
+
+    LINK* current_link = qpg_VHC_link(vhc);
+
+    NODE* next_node = qpg_LNK_nodeEnd(current_link);
+    LINK* next_link = qpg_NDE_link(next_node, next_exit);
+
+    NODE* next_next_node = qpg_LNK_nodeEnd(next_link);
+    LINK* next_next_link = qpg_NDE_link(next_next_node, next_next_exit);
+
+    std::vector<std::string> result;
+
+    result.push_back(qpg_LNK_name(current_link));
+    result.push_back(qpg_LNK_name(next_link));
+    result.push_back(qpg_LNK_name(next_next_link));
+
+    return result;
 }
 
 std::string traci_api::VehicleManager::getVehicleType(std::string vid) throw(NoSuchObjectError)
