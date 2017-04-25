@@ -55,13 +55,13 @@ namespace traci_api
         int end_time;
         VEHICLE* vehicle;
 
-        LaneSetTrigger(VEHICLE* vhc, int target_lane, int duration): target_lane(target_lane), vehicle(vhc)
-        {
-            end_time = Simulation::getInstance()->getCurrentTimeMilliseconds() + duration;
-        }
-
+        LaneSetTrigger(VEHICLE* vhc, int target_lane, int duration);
         void handleTrigger() override;
         bool repeat() override;
+
+    //private: 
+    //    int orig_llane;
+    //    int orig_hlane;
     };
 
     /*class VehicleStopTrigger : public BaseTrigger

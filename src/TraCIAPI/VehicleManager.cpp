@@ -761,6 +761,7 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchOb
         duration = INT32_MAX - Simulation::getInstance()->getCurrentTimeMilliseconds();
 
     lane_set_triggers[vhc] = new LaneSetTrigger(vhc, new_lane, duration);
+    lane_set_triggers[vhc]->handleTrigger();
 }
 
 void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)

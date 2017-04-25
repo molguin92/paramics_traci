@@ -12,6 +12,14 @@ void traci_api::SpeedChangeTrigger::handleTrigger()
 
 }
 
+traci_api::LaneSetTrigger::LaneSetTrigger(VEHICLE* vhc, int target_lane, int duration) : target_lane(target_lane), vehicle(vhc)
+{
+    end_time = Simulation::getInstance()->getCurrentTimeMilliseconds() + duration;
+    //orig_hlane = qpg_VHC_laneHigh(vhc);
+    //orig_llane = qpg_VHC_laneLow(vhc);
+}
+
+
 void traci_api::LaneSetTrigger::handleTrigger()
 {
     int t_lane = target_lane;
@@ -21,6 +29,9 @@ void traci_api::LaneSetTrigger::handleTrigger()
         t_lane = maxlanes;
     else if (t_lane < 1)
         t_lane = 1;
+
+    // additionally, set lane range for better lane change behavior
+    //qps_VHC_laneRange(vehicle, t_lane, t_lane);
 
     int current_lane = qpg_VHC_lane(vehicle);
     if (current_lane > t_lane)
@@ -34,6 +45,10 @@ void traci_api::LaneSetTrigger::handleTrigger()
 bool traci_api::LaneSetTrigger::repeat()
 {
     if (Simulation::getInstance()->getCurrentTimeMilliseconds() >= end_time)
+    {
+        // reset lane range
+        //qps_VHC_laneRange(vehicle, orig_llane, orig_hlane);
         return false;
+    }
     else return true;
 }
