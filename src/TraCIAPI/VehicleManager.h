@@ -1,12 +1,18 @@
 ﻿#pragma once
-#include "programmer.h"
-#include <mutex>
-#include <unordered_map>
+#include <vector>
 #include "Utils.h"
-#include "storage.h"
-#include <map>
+#include <unordered_map>
 #include "Triggers.h"
 #include "Subscriptions.h"
+
+
+namespace std {
+    class runtime_error;
+}
+
+namespace tcpip {
+    class Storage;
+}
 
 namespace traci_api
 {
@@ -187,8 +193,6 @@ namespace traci_api
         std::unordered_map<int, VEHICLE*> vehicles_in_sim;
         std::vector<VEHICLE*> departed_vehicles;
         std::vector<VEHICLE*> arrived_vehicles;
-
-        std::vector<VehicleVariableSubscription> subscriptions;
 
         // vehicle types
         std::unordered_map<std::string, int> types_index_map;

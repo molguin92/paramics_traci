@@ -305,6 +305,7 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
             debugPrint("Unsubscribing...");
             delete *it;
             it = subs.erase(it);
+            // we don't care about the deleted iterator, since we return from the loop here
             writeStatusResponse(sub_type, STATUS_OK, "");
             return;
         case VariableSubscription::STATUS_ERROR:
@@ -318,6 +319,7 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
         default:
             throw std::runtime_error("Received unexpected result " + std::to_string(result) + " when trying to update subscription.");
         }
+
     }
 
     // if we reach here, it means we need to add a new subscription.
@@ -390,19 +392,20 @@ void traci_api::TraCIServer::processSubscriptions(tcpip::Storage& sub_store)
     std::string errors;
     int count = 0;
 
-    for (auto i = subs.begin(); i != subs.end(); ++i)
+    for (auto i = subs.begin(); i != subs.end();)
     {
         sub_res = (*i)->handleSubscription(temp, false, errors);
 
-        if (sub_res == VariableSubscription::STATUS_EXPIRED || sub_res == VehicleVariableSubscription::STATUS_VHCNOTFOUND)
+        if (sub_res == VariableSubscription::STATUS_EXPIRED || sub_res == VariableSubscription::STATUS_OBJNOTFOUND)
         {
             delete *i;
             i = subs.erase(i);
         }
-        else if (sub_res == VariableSubscription::STATUS_OK)
+        else// if (sub_res == VariableSubscription::STATUS_OK)
         {
             writeToStorageWithSize(temp, sub_results, true);
             count++;
+            ++i; // increment
         }
 
         temp.reset();

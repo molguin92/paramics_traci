@@ -14,6 +14,55 @@ int traci_api::VariableSubscription::checkTime() const
         return 1;
 }
 
+uint8_t traci_api::VariableSubscription::handleSubscription(tcpip::Storage& output, bool validate, std::string& errors)
+{
+    int time_status = checkTime();
+    if (!validate && time_status < 0) // not yet (skip this check if validating, duh)
+        return STATUS_TIMESTEPNOTREACHED;
+    else if (time_status > 0) // expired
+        return STATUS_EXPIRED;
+
+    // prepare output
+    output.writeUnsignedByte(getResponseCode());
+    output.writeString(objID);
+    output.writeUnsignedByte(vars.size());
+
+    bool result_errors = false;
+
+    // get ze vahriables
+    tcpip::Storage temp;
+    for (uint8_t sub_var : vars)
+    {
+        try {
+            output.writeUnsignedByte(sub_var);
+            getObjectVariable(sub_var, temp);
+            output.writeUnsignedByte(traci_api::STATUS_OK);
+            output.writeStorage(temp);
+        }
+        // ReSharper disable once CppEntityNeverUsed
+        catch (NoSuchObjectError& e)
+        {
+            errors = "Object " + objID + " not found in simulation.";
+            return STATUS_OBJNOTFOUND;
+        }
+        catch (std::runtime_error& e)
+        {
+            result_errors = true;
+            output.writeUnsignedByte(traci_api::STATUS_ERROR);
+            output.writeUnsignedByte(VTYPE_STR);
+            output.writeString(e.what());
+            errors += std::string(e.what()) + "; ";
+        }
+
+        temp.reset();
+    }
+
+    if (validate && result_errors)
+        return STATUS_ERROR;
+    else
+        return STATUS_OK;
+}
+
 uint8_t traci_api::VariableSubscription::updateSubscription(uint8_t sub_type, std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars, tcpip::Storage& result_store, std::string& errors)
 {
     if (sub_type != this->sub_type || obj_id != objID)
@@ -49,97 +98,22 @@ uint8_t traci_api::VariableSubscription::updateSubscription(uint8_t sub_type, st
     return result;
 }
 
-uint8_t traci_api::VehicleVariableSubscription::handleSubscription(tcpip::Storage& output, bool validate, std::string& errors)
+void traci_api::VehicleVariableSubscription::getObjectVariable(uint8_t var_id, tcpip::Storage& result)
 {
-
-    int time_status = checkTime();
-    if (!validate && time_status < 0) // not yet (skip this check if validating, duh)
-        return STATUS_TIMESTEPNOTREACHED;
-    else if (time_status > 0) // expired
-        return STATUS_EXPIRED;
-
-    // prepare output
-    output.writeUnsignedByte(RES_SUB_VHCVAR);
-    output.writeString(objID);
-    output.writeUnsignedByte(vars.size());
-
-    bool result_errors = false;
-
-    // get ze vahriables
-    tcpip::Storage temp;
-    for (uint8_t sub_var : vars)
-    {
-        try {
-            output.writeUnsignedByte(sub_var);
-            VehicleManager::getInstance()->getVehicleVariable(objID, sub_var, temp);
-            output.writeUnsignedByte(traci_api::STATUS_OK);
-            output.writeStorage(temp);
-        }
-        // ReSharper disable once CppEntityNeverUsed
-        catch(NoSuchObjectError& e)
-        {
-            errors = "Vehicle " + objID + " not found in simulation.";
-            return STATUS_VHCNOTFOUND;
-        }
-        catch ( std::runtime_error& e )
-        {
-            result_errors = true;
-            output.writeUnsignedByte(traci_api::STATUS_ERROR);
-            output.writeUnsignedByte(VTYPE_STR);
-            output.writeString(e.what());
-            errors += std::string(e.what()) + "; ";
-        }
-
-        temp.reset();
-    }
-
-    if (validate && result_errors)
-        return STATUS_ERROR;
-    else
-        return STATUS_OK;
+    VehicleManager::getInstance()->getVehicleVariable(objID, var_id, result);
 }
 
-uint8_t traci_api::SimulationVariableSubscription::handleSubscription(tcpip::Storage& output, bool validate, std::string& errors)
+uint8_t traci_api::VehicleVariableSubscription::getResponseCode() const
 {
+    return RES_SUB_VHCVAR;
+}
 
-    int time_status = checkTime();
-    if (!validate && time_status < 0) // not yet (skip this check if validating, duh)
-        return STATUS_TIMESTEPNOTREACHED;
-    else if (time_status > 0) // expired
-        return STATUS_EXPIRED;
+void traci_api::SimulationVariableSubscription::getObjectVariable(uint8_t var_id, tcpip::Storage& result)
+{
+    Simulation::getInstance()->getSimulationVariable(var_id, result);
+}
 
-    // prepare output
-    output.writeUnsignedByte(RES_SUB_SIMVAR);
-    output.writeString(objID);
-    output.writeUnsignedByte(vars.size());
-
-    bool result_errors = false;
-
-    // get ze vahriables
-    tcpip::Storage temp;
-    for (uint8_t sub_var : vars)
-    {
-        try 
-        {
-            output.writeUnsignedByte(sub_var);
-            Simulation::getInstance()->getSimulationVariable(sub_var, temp);
-            output.writeUnsignedByte(traci_api::STATUS_OK);
-            output.writeStorage(temp);
-        }
-        catch (std::runtime_error& e)
-        {
-            result_errors = true;
-            output.writeUnsignedByte(traci_api::STATUS_ERROR);
-            output.writeUnsignedByte(VTYPE_STR);
-            output.writeString(e.what());
-            errors += std::string(e.what()) + "; ";
-        }
-
-        temp.reset();
-    }
-
-    if (validate && result_errors)
-        return STATUS_ERROR;
-    else
-        return STATUS_OK;
+uint8_t traci_api::SimulationVariableSubscription::getResponseCode() const
+{
+    return RES_SUB_SIMVAR;
 }

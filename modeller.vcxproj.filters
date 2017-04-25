@@ -60,4 +60,8 @@
     <ClInclude Include="src\TraCIAPI\Exceptions.h" />
     <ClInclude Include="src\TraCIAPI\Subscriptions.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
 </Project>

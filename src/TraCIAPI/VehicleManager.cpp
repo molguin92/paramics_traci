@@ -392,31 +392,35 @@ void traci_api::VehicleManager::handleDelayedTriggers()
     auto itup = time_triggers.upper_bound(current_time); // first element with trigger time > current time
 
     debugPrint("Handling vehicle triggers");
-
+    debugPrint("Handling vehicle triggers: time triggers");
     for (auto it = time_triggers.begin(); it != itup;)
     {
         it->second->handleTrigger();
 
         /* delete all triggers handled, we don't want to see them again */
         delete(it->second);
-        it = time_triggers.erase(it);
+        it = time_triggers.erase(it); // all increments are handled here
     }
 
     // handle speed set triggers
-    for (auto kv = speed_set_triggers.begin(); kv != speed_set_triggers.end(); ++kv)
+    debugPrint("Handling vehicle triggers: speed set triggers");
+    for (auto kv = speed_set_triggers.begin(); kv != speed_set_triggers.end();)
     {
         kv->second->handleTrigger();
 
         /* check if need repeating */
-        if(!kv->second->repeat())
+        if (!kv->second->repeat())
         {
             delete kv->second;
             kv = speed_set_triggers.erase(kv);
         }
+        else
+            ++kv;
     }
 
     // handle lane set triggers
-    for  (auto kv = lane_set_triggers.begin(); kv != lane_set_triggers.end(); ++kv)
+    debugPrint("Handling vehicle triggers: lane set triggers");
+    for (auto kv = lane_set_triggers.begin(); kv != lane_set_triggers.end();)
     {
         kv->second->handleTrigger();
 
@@ -426,8 +430,11 @@ void traci_api::VehicleManager::handleDelayedTriggers()
             delete kv->second;
             kv = lane_set_triggers.erase(kv);
         }
+        else
+            ++kv;
     }
 
+    debugPrint("Handling vehicle triggers: done");
 }
 
 
@@ -751,6 +758,7 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchOb
         delete trigger;
         lane_set_triggers.erase(vhc);
     }
+    // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e) { /* no previous trigger, ok */ }
 
     if (duration < 0)
@@ -881,6 +889,7 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchObje
             trigger->handleTrigger();
         }
     }
+    // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e)
     {
         if (abs(speed - (-1.0)) < NUMERICAL_EPS)

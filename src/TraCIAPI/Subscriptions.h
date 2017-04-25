@@ -1,10 +1,9 @@
 ﻿#pragma once
-#include <cstdint>
 #include <vector>
-#include "programmer.h"
 #include "storage.h"
 #include "Simulation.h"
 #include "Constants.h"
+#include "VehicleManager.h"
 
 namespace traci_api
 {
@@ -29,6 +28,7 @@ namespace traci_api
         static const uint8_t STATUS_TIMESTEPNOTREACHED = 0x01;
         static const uint8_t STATUS_EXPIRED = 0x02;
         static const uint8_t STATUS_ERROR = 0xff;
+        static const uint8_t STATUS_OBJNOTFOUND = 0xee;
 
         //update statuses
         static const uint8_t STATUS_NOUPD = 0xa0;
@@ -47,7 +47,10 @@ namespace traci_api
         int checkTime() const;
 
         virtual ~VariableSubscription() {};
-        virtual uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) { return STATUS_ERROR; };
+        uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors);
+        virtual void getObjectVariable(uint8_t var_id, tcpip::Storage& result) = 0;
+        uint8_t getSubType() const { return sub_type;  }
+        virtual uint8_t getResponseCode() const = 0;
 
         uint8_t updateSubscription(uint8_t sub_type, std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars, tcpip::Storage& result, std::string& errors);
 
@@ -62,7 +65,6 @@ namespace traci_api
     class VehicleVariableSubscription : public VariableSubscription
     {
     public:
-        static const uint8_t STATUS_VHCNOTFOUND = 0xee;
 
         VehicleVariableSubscription(std::string vhc_id, int begin_time, int end_time, std::vector<uint8_t> vars)
             : VariableSubscription(vhc_id, begin_time, end_time, vars)
@@ -70,8 +72,9 @@ namespace traci_api
             sub_type = CMD_SUB_VHCVAR;
         }
 
-        ~VehicleVariableSubscription() override {};
-        uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) override;
+        ~VehicleVariableSubscription() override {}
+        void getObjectVariable(uint8_t var_id, tcpip::Storage& result) override;
+        uint8_t getResponseCode() const override;
     };
 
     class SimulationVariableSubscription : public VariableSubscription
@@ -83,7 +86,8 @@ namespace traci_api
             sub_type = CMD_SUB_SIMVAR;
         }
 
-        ~SimulationVariableSubscription() override {};
-        uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors) override;
+        ~SimulationVariableSubscription() override {}
+        void getObjectVariable(uint8_t var_id, tcpip::Storage& result) override;
+        uint8_t getResponseCode() const override;
     };
 }
