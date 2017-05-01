@@ -15,13 +15,11 @@
 #define DEFAULT_PORT 5000
 #define CMDARG_PORT "--traci_port="
 
-
 std::thread* runner;
 traci_api::TraCIServer* server;
-//VEHICLE* s_veh;
 
-int count = 0;
 
+/* checks a string for a matching prefix */
 bool starts_with(std::string const& in_string,
                  std::string const& prefix)
 {
@@ -60,7 +58,6 @@ void runner_fn()
             }
         }
 
-
         server = new traci_api::TraCIServer(port);
         server->run();
         server->close();
@@ -75,19 +72,9 @@ void runner_fn()
     }
 }
 
-
 // Called once after the network is loaded.
 void qpx_NET_postOpen(void)
 {
-    // qps_GUI_printf(qpg_UTL_accelerationUnitLabel());
-    // qps_GUI_printf(qpg_UTL_speedUnitLabel());
-
-    //int lnks = qpg_NET_links();
-    //for (int i = 1; i <= lnks; i++)
-    //    qps_GUI_printf(qpg_LNK_name(qpg_NET_linkByIndex(i)));
-
-    //qps_DRW_forceTimeStepRedraw(PTRUE);
-
     qps_GUI_singleStep(PTRUE);
     traci_api::infoPrint("TraCI support enabled");
     runner = new std::thread(runner_fn);
@@ -108,33 +95,5 @@ void qpx_VHC_release(VEHICLE* vehicle)
 void qpx_VHC_arrive(VEHICLE* vehicle, LINK* link, ZONE* zone)
 
 {
-    //if (vehicle == s_veh)
-    //    s_veh = nullptr;
-
     traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
 }
-
-//void qpx_VHC_timeStep(VEHICLE* vehicle)
-//{
-//    if (!s_veh)
-//    {
-//        s_veh = vehicle;
-//        qps_GUI_redraw();
-//    }
-//}
-//
-//void qpx_DRW_modelView(void)
-//{
-//
-//    double llx, lly;
-//    double urx, ury;
-//
-//    traci_api::Simulation::getInstance()->getRealNetworkBounds(llx, lly, urx, ury);
-//
-//    qps_GUI_printf("%f, %f ; %f, %f", llx, lly, urx, ury);
-//
-//    qps_DRW_colour(API_RED);
-//    //qps_DRW_translate(llx, lly, 0);
-//    //qps_DRW_moveToVehicleHome(s_veh);
-//    qps_DRW_hollowRectangleXY(llx, lly, urx, ury);
-//}
