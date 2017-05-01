@@ -7,7 +7,7 @@
 
 //Server definitions
 #define API_VERSION 10
-#define PLUGIN_VERSION "0.11alpha"
+#define PLUGIN_VERSION "0.25beta1"
 
 #define POSITION_EPS 0.1f
 #define NUMERICAL_EPS 0.001f
