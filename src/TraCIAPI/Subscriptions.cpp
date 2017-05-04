@@ -33,6 +33,8 @@ uint8_t traci_api::VariableSubscription::handleSubscription(tcpip::Storage& outp
     tcpip::Storage temp;
     for (uint8_t sub_var : vars)
     {
+		// try getting the value for each variable,
+		// recording errors in the output storage
         try {
             output.writeUnsignedByte(sub_var);
             getObjectVariable(sub_var, temp);
@@ -42,11 +44,13 @@ uint8_t traci_api::VariableSubscription::handleSubscription(tcpip::Storage& outp
         // ReSharper disable once CppEntityNeverUsed
         catch (NoSuchObjectError& e)
         {
+			// no such object
             errors = "Object " + objID + " not found in simulation.";
             return STATUS_OBJNOTFOUND;
         }
         catch (std::runtime_error& e)
         {
+			// unknown error
             result_errors = true;
             output.writeUnsignedByte(traci_api::STATUS_ERROR);
             output.writeUnsignedByte(VTYPE_STR);
@@ -58,17 +62,25 @@ uint8_t traci_api::VariableSubscription::handleSubscription(tcpip::Storage& outp
     }
 
     if (validate && result_errors)
+		// if validating this subscription, report the errors.
+		// that way the subscription is not added to the sub
+		// vector in TraCIServer
         return STATUS_ERROR;
     else
+		// else just return the subscription to the client, 
+		// and let it decide what to do about the errors.
         return STATUS_OK;
 }
 
 uint8_t traci_api::VariableSubscription::updateSubscription(uint8_t sub_type, std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars, tcpip::Storage& result_store, std::string& errors)
 {
     if (sub_type != this->sub_type || obj_id != objID)
+		// we're not the correct subscription,
+		// return NO UPDATE
         return STATUS_NOUPD;
 
     if (vars.size() == 0)
+		// 0 vars => cancel this subscription
         return STATUS_UNSUB;
 
     // backup old values
@@ -89,7 +101,8 @@ uint8_t traci_api::VariableSubscription::updateSubscription(uint8_t sub_type, st
         return STATUS_UNSUB;
     else if (result != STATUS_OK)
     {
-        // reset values
+        // reset values if the new values
+		// cause errors on evaluation
         this->beginTime = old_start_time;
         this->endTime = old_end_time;
         this->vars = old_vars;
