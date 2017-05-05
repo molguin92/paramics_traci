@@ -2,6 +2,7 @@
 #include "programmer.h"
 #include <string>
 #include "Simulation.h"
+#include <map>
 
 namespace traci_api
 {
@@ -64,6 +65,17 @@ namespace traci_api
         //private: 
         //    int orig_llane;
         //    int orig_hlane;
+    };
+
+    class RouteSetTrigger : public BaseTrigger
+    {
+        VEHICLE* vhc;
+        std::map<LINK*, int> exit_map;
+
+    public:
+        RouteSetTrigger(VEHICLE* vhc, std::map<LINK*, int> exit_map) : vhc(vhc), exit_map(exit_map){}
+        void handleTrigger() override;
+        bool repeat() override { return !exit_map.empty(); };
     };
 
     /*class VehicleStopTrigger : public BaseTrigger

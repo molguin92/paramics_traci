@@ -379,6 +379,25 @@ traci_api::VehicleManager::VehicleManager()
         types_index_map[qpg_VTP_name(i)] = i;
 }
 
+
+/**
+ * \brief Finds the exit corresponding to a specific link in a node.
+ * \param node The node to exit from.
+ * \param exit_link The link whose exit index we want.
+ * \return The exit index for the specified link.
+ */
+int traci_api::VehicleManager::findExit(NODE* node, LINK* exit_link) throw(NoSuchObjectError)
+{
+    int n_exits = qpg_NDE_exitLinks(node);
+    for(int i = 1; i <= n_exits; i++)
+    {
+        LINK* current_exit = qpg_NDE_link(node, i);
+        if (current_exit == exit_link) return i;
+    }
+
+    throw NoSuchObjectError("Could not find the specified link in the given node");
+}
+
 /**
  * \brief Handles delayed time_triggers and repetitive timestep triggers. For example, changing back to the original lane 
  * after a set time after a lane change command.
@@ -435,6 +454,23 @@ void traci_api::VehicleManager::handleDelayedTriggers()
     }
 
     debugPrint("Handling vehicle triggers: done");
+}
+
+/**
+ * \brief Here we handle triggers like changing routes, etc.
+ */
+void traci_api::VehicleManager::handleLinkChangeTriggers(VEHICLE* vhc, LINK* lnk)
+{
+    std::lock_guard<std::mutex> lock(trigger_mutex);
+    try
+    {
+        RouteSetTrigger* trigger = route_set_triggers.at(vhc);
+        trigger->handleTrigger();
+        if (!trigger->repeat())
+            route_set_triggers.erase(vhc);
+    }
+    catch(std::out_of_range& e)
+    {}
 }
 
 
@@ -917,4 +953,66 @@ void traci_api::VehicleManager::setMaxSpeed(tcpip::Storage& input) throw(NoSuchO
 
     /* speed is in m/s */
     qps_VHC_maxSpeed(vhc, speed);
+}
+
+void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)
+{
+    /* set new route message format
+     * | string | ubyte | strlist |
+     *   vhc_id | Type  | edges   |
+     */
+
+    std::string vhcid = input.readString();
+    VEHICLE* vhc = findVehicle(vhcid);
+
+    std::vector<std::string> edges;
+    if(!readTypeCheckingStringList(input, edges))
+        throw std::runtime_error("Malformed TraCI message");
+
+    /* first, find current edge for the vehicle, and find it in the given list
+     * (list needs to come in order) */
+
+    /* this call only works if we are not on a junction */
+    if (qpg_VHC_onNode(vhc))
+        throw std::runtime_error("Can't change route while on a junction");
+
+    std::string current_edge = qpg_LNK_name(qpg_VHC_link(vhc));
+    for (auto i = edges.begin(); i != edges.end();)
+    {
+        if (*i != current_edge)
+            i = edges.erase(i);
+        else
+            break;
+    }
+
+    if (edges.size() == 0)
+        throw std::runtime_error("Invalid route: could not find current edge");
+
+    /* for each edge, find the next exit corresponding to the next edge */
+    std::map<LINK*, int> exit_map;
+    for (int i = 0; i < edges.size() - 1; i++)
+    {
+        std::string edge_a = edges[i];
+        std::string edge_b = edges[i + 1];
+        LINK* link_a = qpg_NET_link(&edge_a[0u]);
+        LINK* link_b = qpg_NET_link(&edge_b[0u]);
+
+        /* check that the edges share a junction */
+        NODE* junction = qpg_LNK_nodeEnd(link_a);
+        if (junction != qpg_LNK_nodeStart(link_b))
+            throw std::runtime_error("Edges " + edge_a + " and " + edge_b + " are not contiguous");
+
+        /* map A to the corresponding exit */
+        exit_map[link_a] = findExit(junction, link_b);
+    }
+
+    /* program the route, and execute the first change */
+    RouteSetTrigger* trigger = new RouteSetTrigger(vhc, exit_map);
+    trigger->handleTrigger();
+
+    if (trigger->repeat())
+    {
+        std::lock_guard<std::mutex> lock(trigger_mutex);
+        route_set_triggers[vhc] = trigger;
+    }
 }

@@ -97,3 +97,8 @@ void qpx_VHC_arrive(VEHICLE* vehicle, LINK* link, ZONE* zone)
 {
     traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
 }
+
+void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
+{
+    traci_api::VehicleManager::getInstance()->handleLinkChangeTriggers(vehicle, link2);
+}

@@ -161,12 +161,14 @@ namespace traci_api
         void changeColour(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
         void setSpeed(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
         void setMaxSpeed(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
+        void setRoute(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error);
 
         /* prevent alternative instantiation */
         VehicleManager(VehicleManager const&) = delete;
         void operator=(VehicleManager const&) = delete;
 
         void handleDelayedTriggers();
+        void handleLinkChangeTriggers(VEHICLE* vhc, LINK* lnk);
 
         VEHICLE* findVehicle(int vid) throw(NoSuchObjectError);
         VEHICLE* findVehicle(std::string vid) throw(NoSuchObjectError);
@@ -188,6 +190,9 @@ namespace traci_api
         std::unordered_multimap<int, BaseTrigger*> time_triggers;
         std::unordered_map<VEHICLE*, SpeedSetTrigger*> speed_set_triggers;
         std::unordered_map<VEHICLE*, LaneSetTrigger*> lane_set_triggers;
+        std::unordered_map<VEHICLE*, RouteSetTrigger*> route_set_triggers;
+
+
 
         std::mutex trigger_mutex;
         std::mutex vhc_lists_mutex;
@@ -198,5 +203,8 @@ namespace traci_api
 
         // vehicle types
         std::unordered_map<std::string, int> types_index_map;
+
+        // nodes and links
+        static int findExit(NODE* node, LINK* exit_link) throw(NoSuchObjectError);
     };
 }
