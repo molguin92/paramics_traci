@@ -15,7 +15,6 @@ void traci_api::debugPrint(std::string text)
         qps_GUI_printf(&text[0u]);
         std::cerr << text << std::endl;
     }
-
 }
 
 void traci_api::infoPrint(std::string text)
@@ -126,6 +125,3 @@ void HEX2RGB(uint32_t hex, uint8_t& r, uint8_t& g, uint8_t& b)
     g = (hex >> 8) & 0xff;
     b = (hex >> 16) & 0xff;
 }
-
-
-

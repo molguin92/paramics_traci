@@ -272,7 +272,7 @@ void traci_api::TraCIServer::writeToStorageWithSize(tcpip::Storage& src, tcpip::
     uint32_t size = 1 + src.size();
     if (size > 255 || force_extended)
     {
-		// extended-length message
+        // extended-length message
         dest.writeUnsignedByte(0);
         dest.writeInt(size + 4);
     }
@@ -318,14 +318,13 @@ void traci_api::TraCIServer::addSubscription(uint8_t sub_type, std::string objec
         default:
             throw std::runtime_error("Received unexpected result " + std::to_string(result) + " when trying to update subscription.");
         }
-
     }
 
     // if we reach here, it means we need to add a new subscription.
     // note: it could also mean it's an unsubscribe command for a car that reached its
     // destination. Check number of variables and do nothing if it's 0.
 
-    if(variables.size() == 0)
+    if (variables.size() == 0)
     {
         // unsub command that didn't match any of the currently running subscriptions, so just
         // tell the client it's ok, everything's alright

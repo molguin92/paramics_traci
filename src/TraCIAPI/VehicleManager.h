@@ -6,11 +6,13 @@
 #include "Subscriptions.h"
 
 
-namespace std {
+namespace std
+{
     class runtime_error;
 }
 
-namespace tcpip {
+namespace tcpip
+{
     class Storage;
 }
 

@@ -59,7 +59,7 @@ namespace traci_api
         float getCurrentTimeSeconds();
         int getCurrentTimeMilliseconds();
 
-        void getRealNetworkBounds(double &llx, double &lly, double &urx, double &ury);
+        void getRealNetworkBounds(double& llx, double& lly, double& urx, double& ury);
 
     private:
 

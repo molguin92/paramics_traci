@@ -9,7 +9,6 @@ void traci_api::SpeedChangeTrigger::handleTrigger()
         qps_VHC_stopped(this->vehicle, PTRUE);
     else if (speed != 0 && qpg_VHC_stopped(this->vehicle))
         qps_VHC_stopped(this->vehicle, PFALSE);
-
 }
 
 traci_api::LaneSetTrigger::LaneSetTrigger(VEHICLE* vhc, int target_lane, int duration) : target_lane(target_lane), vehicle(vhc)

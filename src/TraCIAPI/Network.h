@@ -22,7 +22,10 @@ namespace traci_api
         std::unordered_map<std::string, BUSROUTE*> route_name_map;
 
         Network();
-        ~Network(){}
+
+        ~Network()
+        {
+        }
 
     public:
         static Network* getInstance();

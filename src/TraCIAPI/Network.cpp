@@ -141,10 +141,10 @@ void traci_api::Network::getRouteVariable(tcpip::Storage& input, tcpip::Storage&
             route = route_name_map.at(routeID);
         }
         // ReSharper disable once CppEntityNeverUsed
-        catch ( std::out_of_range &e )
+        catch (std::out_of_range& e)
         {
             throw traci_api::NoSuchObjectError("No such node: " + routeID);
-        }            
+        }
     }
 
     output.writeUnsignedByte(RES_GETRTEVAR);

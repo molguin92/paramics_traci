@@ -25,7 +25,6 @@ namespace traci_api
         int port;
         std::vector<VariableSubscription*> subs;
 
-        
 
         void waitForCommands();
         void cmdSimStep(int target_time);
@@ -50,5 +49,4 @@ namespace traci_api
         //commands
         void cmdShutDown();
     };
-
 }

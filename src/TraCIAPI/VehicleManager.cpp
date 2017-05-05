@@ -762,10 +762,10 @@ void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchOb
     catch (std::out_of_range& e) { /* no previous trigger, ok */ }
 
     if (duration < 0)
-        // negative duration: remove previous lane set command, we cant just return now
+    // negative duration: remove previous lane set command, we cant just return now
         return;
     else if (duration == 0)
-        // "infinite" duration
+    // "infinite" duration
         duration = INT32_MAX - Simulation::getInstance()->getCurrentTimeMilliseconds();
 
     lane_set_triggers[vhc] = new LaneSetTrigger(vhc, new_lane, duration);
@@ -877,7 +877,7 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchObje
     try
     {
         SpeedSetTrigger* trigger = speed_set_triggers.at(vhc);
-        if(abs(speed - (-1.0)) < NUMERICAL_EPS)
+        if (abs(speed - (-1.0)) < NUMERICAL_EPS)
         {
             // remove trigger
             speed_set_triggers.erase(vhc);

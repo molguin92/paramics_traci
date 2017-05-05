@@ -46,10 +46,12 @@ namespace traci_api
 
         int checkTime() const;
 
-        virtual ~VariableSubscription() {};
+        virtual ~VariableSubscription()
+        {
+        };
         uint8_t handleSubscription(tcpip::Storage& output, bool validate, std::string& errors);
         virtual void getObjectVariable(uint8_t var_id, tcpip::Storage& result) = 0;
-        uint8_t getSubType() const { return sub_type;  }
+        uint8_t getSubType() const { return sub_type; }
         virtual uint8_t getResponseCode() const = 0;
 
         uint8_t updateSubscription(uint8_t sub_type, std::string obj_id, int begin_time, int end_time, std::vector<uint8_t> vars, tcpip::Storage& result, std::string& errors);
@@ -72,7 +74,10 @@ namespace traci_api
             sub_type = CMD_SUB_VHCVAR;
         }
 
-        ~VehicleVariableSubscription() override {}
+        ~VehicleVariableSubscription() override
+        {
+        }
+
         void getObjectVariable(uint8_t var_id, tcpip::Storage& result) override;
         uint8_t getResponseCode() const override;
     };
@@ -86,7 +91,10 @@ namespace traci_api
             sub_type = CMD_SUB_SIMVAR;
         }
 
-        ~SimulationVariableSubscription() override {}
+        ~SimulationVariableSubscription() override
+        {
+        }
+
         void getObjectVariable(uint8_t var_id, tcpip::Storage& result) override;
         uint8_t getResponseCode() const override;
     };

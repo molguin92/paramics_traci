@@ -21,7 +21,7 @@ namespace traci_api
     public:
         VEHICLE* vehicle;
         double speed;
-        
+
         explicit SpeedChangeTrigger(VEHICLE* vehicle, double speed)
             : vehicle(vehicle), speed(speed)
         {
@@ -43,9 +43,11 @@ namespace traci_api
         {
         }
 
-        ~SpeedSetTrigger() override {};
+        ~SpeedSetTrigger() override
+        {
+        };
 
-        bool repeat() override { return true;  }
+        bool repeat() override { return true; }
     };
 
     class LaneSetTrigger : public BaseTrigger
@@ -59,9 +61,9 @@ namespace traci_api
         void handleTrigger() override;
         bool repeat() override;
 
-    //private: 
-    //    int orig_llane;
-    //    int orig_hlane;
+        //private: 
+        //    int orig_llane;
+        //    int orig_hlane;
     };
 
     /*class VehicleStopTrigger : public BaseTrigger
