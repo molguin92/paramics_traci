@@ -207,6 +207,8 @@ void traci_api::VehicleManager::getVehicleVariable(std::string vid, uint8_t varI
 
 void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 {
+    //TODO: implement route change message!
+
     uint8_t varID = input.readUnsignedByte();
 
     switch (varID)
@@ -228,11 +230,14 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
         setMaxSpeed(input);
         break;
 
+    case STA_VHC_CHANGEROUTE:
+        setRoute(input);
+        break;
+
     case STA_VHC_STOP:
     case STA_VHC_RESUME:
     case STA_VHC_CHANGETARGET:
     case STA_VHC_CHANGEROUTEID:
-    case STA_VHC_CHANGEROUTE:
     case STA_VHC_CHANGEEDGETTIME:
     case STA_VHC_SIGNALSTATES:
     case STA_VHC_MOVETO:
