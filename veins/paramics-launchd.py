@@ -667,7 +667,7 @@ def main():
                       help="run Paramics as COMMAND [default: %default]. By default, runs the Paramics Modeller module.",
                       metavar="COMMAND")
     # TODO: CHANGE PLUGIN
-    parser.add_option("-u", "--plugin", dest="plugin", default=os.path.join("C:\Users\Public\paramics\programmer\plugins\pveins\Release\modeller\\bin", "modeller.dll"),
+    parser.add_option("-u", "--plugin", dest="plugin", default=os.path.join("C:\Users\Public\paramics\programmer\plugins\pveins\Debug\modeller\\bin", "modeller.dll"),
                       help="location of the TraCI Paramics Plugin [default: %plugin]", metavar="PLUGIN")
     parser.add_option("-s", "--shlex", dest="shlex", default=False, action="store_true",
                       help="treat command as shell string to execute, replace {} with command line parameters [default: no]")

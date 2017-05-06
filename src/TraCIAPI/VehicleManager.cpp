@@ -970,6 +970,8 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
     std::string vhcid = input.readString();
     VEHICLE* vhc = findVehicle(vhcid);
 
+    debugPrint("Changing Vehicle route");
+
     std::vector<std::string> edges;
     if(!readTypeCheckingStringList(input, edges))
         throw std::runtime_error("Malformed TraCI message");
@@ -978,8 +980,8 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
      * (list needs to come in order) */
 
     /* this call only works if we are not on a junction */
-    if (qpg_VHC_onNode(vhc))
-        throw std::runtime_error("Can't change route while on a junction");
+    /*if (qpg_VHC_onNode(vhc))
+        throw std::runtime_error("Can't change route while on a junction"); */
 
     std::string current_edge = qpg_LNK_name(qpg_VHC_link(vhc));
     for (auto i = edges.begin(); i != edges.end();)
@@ -991,7 +993,11 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
     }
 
     if (edges.size() == 0)
+    {
+        debugPrint("Invalid route: could not find current edge");
         throw std::runtime_error("Invalid route: could not find current edge");
+    }
+        
 
     /* for each edge, find the next exit corresponding to the next edge */
     std::map<LINK*, int> exit_map;
@@ -1005,7 +1011,10 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
         /* check that the edges share a junction */
         NODE* junction = qpg_LNK_nodeEnd(link_a);
         if (junction != qpg_LNK_nodeStart(link_b))
+        {
+            debugPrint("Edges " + edge_a + " and " + edge_b + " are not contiguous");
             throw std::runtime_error("Edges " + edge_a + " and " + edge_b + " are not contiguous");
+        }
 
         /* map A to the corresponding exit */
         exit_map[link_a] = findExit(junction, link_b);
