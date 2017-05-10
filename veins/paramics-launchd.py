@@ -57,6 +57,7 @@ import select
 import logging
 import atexit
 import fileinput
+import zipfile
 from optparse import OptionParser
 
 _API_VERSION = 1
@@ -347,42 +348,41 @@ def copy_and_modify_files(basedir, network_name, runpath, seed, plugin):
     orig_network_dir = os.path.join(basedir, network_name)
     new_network_dir = os.path.join(runpath, network_name)
 
+    # create a zip with the network
+    zip_name = shutil.make_archive(orig_network_dir, 'zip', basedir, network_name, 1, logger=logging.getLogger("make_archive"))
+    zip_path = os.path.join(basedir, zip_name)
+    new_zip_path = os.path.join(runpath, zip_name)
 
     logging.debug("Original network path: %s" % orig_network_dir)
-    logging.debug("New network path: %s" % new_network_dir)
+    logging.debug("Network zip path: %s" % zip_path)
 
-    shutil.copytree(orig_network_dir, new_network_dir)
-
-    # set permissions
-    os.chmod(new_network_dir, stat.S_IWRITE)
-    for f in os.listdir(new_network_dir):
-        os.chmod(os.path.join(new_network_dir, f), stat.S_IWRITE)
-
-    # create tool log folder (paramics can't do it itself???)
-    os.mkdir(os.path.join(new_network_dir, "Tool Log"))
+    shutil.move(zip_path, new_zip_path)
+    zip_ref = zipfile.ZipFile(new_zip_path, 'r')
+    zip_ref.extractall(runpath)
+    zip_ref.close()
 
     logging.debug("Copied all files. Modifying copies for VEINS use.")
     # modify config to include seed
     new_config_file = os.path.join(new_network_dir, "configuration")
     plugin_file = os.path.join(new_network_dir, "programming.modeller")
     seed_config = "seed {}".format(seed)
-    if not os.path.exists(new_config_file):
-        # config file doesn't exist, create it and add seed line
-        with open(new_config_file, 'w') as f:
-            f.write(seed_config)
-    else:
-        # replace seed value inplace using fileinput
-        replaced = False
-        for line in fileinput.input(new_config_file, inplace=True):
-            if line.startswith("seed"):
-                print seed_config
-                replaced = True
-                break
-
-        # check that the config was replaced, and if not, add it
-        if not replaced:
-            with open(new_config_file, 'a') as f:
-                f.write(seed_config)
+    # if not os.path.exists(new_config_file):
+    #     # config file doesn't exist, create it and add seed line
+    #     with open(new_config_file, 'w') as f:
+    #         f.write(seed_config)
+    # else:
+    #     # replace seed value inplace using fileinput
+    #     replaced = False
+    #     for line in fileinput.input(new_config_file, inplace=True):
+    #         if line.startswith("seed"):
+    #             print seed_config
+    #             replaced = True
+    #             break
+    #
+    #     # check that the config was replaced, and if not, add it
+    #     if not replaced:
+    #         with open(new_config_file, 'a') as f:
+    #             f.write(seed_config)
 
     # finally, add plugin file
     if not os.path.exists(plugin_file):

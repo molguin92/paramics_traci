@@ -316,7 +316,7 @@ void traci_api::VehicleManager::packVhcTypesVariable(tcpip::Storage& input, tcpi
 
 void traci_api::VehicleManager::getVhcTypesVariable(int type_id, uint8_t varID, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError)
 {
-    if (type_id < 0 && varID != VAR_VHC_LIST && varID != VAR_VHC_COUNT)
+    if ((type_id < 0 || type_id > types_index_map.size()) && varID != VAR_VHC_LIST && varID != VAR_VHC_COUNT)
         throw std::runtime_error("Invalid type ID " + std::to_string(type_id) + " for variable " + std::to_string(varID));
 
     switch (varID)
