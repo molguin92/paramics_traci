@@ -41,7 +41,8 @@ void traci_api::TraCIServer::run()
     infoPrint(version_str);
     debugPrint("Simulation start time: " + std::to_string(qpg_CFG_simulationTime()));
     infoPrint("Awaiting connections on port " + std::to_string(port));
-    infoPrint("Timestep size: " + std::to_string(static_cast<int>(qpg_CFG_timeStep() * 1000.0f)));
+    infoPrint("Timestep size: " + std::to_string(static_cast<int>(qpg_CFG_timeStep() * 1000.0f)) + "ms");
+    infoPrint("Simulation start time: " + std::to_string(Simulation::getInstance()->getCurrentTimeMilliseconds()) + "ms");
     ssocket.accept();
     infoPrint("Accepted connection");
     this->waitForCommands();
