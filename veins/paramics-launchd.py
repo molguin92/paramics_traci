@@ -366,23 +366,26 @@ def copy_and_modify_files(basedir, network_name, runpath, seed, plugin):
     new_config_file = os.path.join(new_network_dir, "configuration")
     plugin_file = os.path.join(new_network_dir, "programming.modeller")
     seed_config = "seed {}".format(seed)
-    # if not os.path.exists(new_config_file):
-    #     # config file doesn't exist, create it and add seed line
-    #     with open(new_config_file, 'w') as f:
-    #         f.write(seed_config)
-    # else:
-    #     # replace seed value inplace using fileinput
-    #     replaced = False
-    #     for line in fileinput.input(new_config_file, inplace=True):
-    #         if line.startswith("seed"):
-    #             print seed_config
-    #             replaced = True
-    #             break
-    #
-    #     # check that the config was replaced, and if not, add it
-    #     if not replaced:
-    #         with open(new_config_file, 'a') as f:
-    #             f.write(seed_config)
+    if not os.path.exists(new_config_file):
+        # config file doesn't exist, create it and add seed line
+        with open(new_config_file, 'w') as f:
+            f.write(seed_config)
+    else:
+        # replace seed value inplace using fileinput
+        replaced = False
+        for line in fileinput.input(new_config_file, inplace=True):
+            if line.startswith("seed") and not replaced:
+                print seed_config
+                replaced = True
+            else:
+                print line
+
+        fileinput.close()
+
+        # check that the config was replaced, and if not, add it
+        if not replaced:
+            with open(new_config_file, 'a') as f:
+                f.write(seed_config)
 
     # finally, add plugin file
     if not os.path.exists(plugin_file):
