@@ -34,18 +34,19 @@ def run():
 ##    print(str(traci.edge.getIDCount()))
 ##    print(str(traci.junction.getIDList()))
 ##    print(str(traci.junction.getIDCount()))
-    for i in range(0, 1000):
+    for i in range(0, 7200):
         traci.simulationStep()
-        print(str(traci.simulation.getSubscriptionResults()))
-        print(str(traci.vehicle.getSubscriptionResults()))
+        traci.simulation.getSubscriptionResults()
+        traci.vehicle.getSubscriptionResults()
+##        print(str(traci.simulation.getCurrentTime()))
 ##        print("Current SIM time: " + str(traci.simulation.getCurrentTime()))
 ##        print("N Departed vehicles: " + str(traci.simulation.getDepartedNumber()))
 ##        print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))
-        dep = traci.simulation.getDepartedIDList()
-        arr = traci.simulation.getArrivedIDList()
-        total_c = traci.vehicle.getIDCount()
-        total_l = traci.vehicle.getIDList()
-        total_l.sort()
+##        dep = traci.simulation.getDepartedIDList()
+##        arr = traci.simulation.getArrivedIDList()
+##        total_c = traci.vehicle.getIDCount()
+##        total_l = traci.vehicle.getIDList()
+##        total_l.sort()
 ##
 ##        for v in dep:
 ##            traci.vehicle.changeLane(v, 5, 10000)
@@ -59,15 +60,15 @@ def run():
 ##        print("N Total: " + str(total_c))
 ##        print("Total: " + str(total_l))
 
-        if len(total_l) > 0:
-            vhc = random.choice(total_l)
-            speed = traci.vehicle.getSpeed(vhc)
-            position = traci.vehicle.getPosition(vhc)
+        #if len(total_l) > 0:
+            #vhc = random.choice(total_l)
+            #speed = traci.vehicle.getSpeed(vhc)
+            #position = traci.vehicle.getPosition(vhc)
 
             #print("Vehicle " + vhc + "'s speed: " + str(speed) + "m/s")
             #print("Vehicle " + vhc + "'s position: " + str(position))
         
-        time.sleep(0.1)
+        #time.sleep(0.1)
     traci.close()
 
 if __name__ == '__main__':

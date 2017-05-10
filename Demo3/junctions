@@ -1,0 +1,304 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:43:46 2008
+## Modified Date Thu 27. Mar 14:43:53 2008
+## Modified By mwhyte
+## Network P:/Installers/InstallerMasterFolder/!DemoNetworks/Demo3
+## Notes 
+junction 8:11
+out 1 lanes 1 2 3 4 
+out 2 lanes 1 2 3 4 
+out 3 lanes 1 2 3 4 
+out 4 lanes 5 6 
+out 5 lanes 4 5 
+junction 13:8
+out 1 lanes 1 2 3 
+out 2 lanes 1 2 3 4 
+junction 16:26
+out 1 lanes 1 2 3 4 5 6 
+out 2 lanes 1 2 3 4 5 6 7 
+out 3 lanes 3 4 5 6 7 
+junction 6:14
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 26:82
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 4 5 
+junction 26:24
+out 1 lanes 1 2 3 
+out 2 lanes 3 4 5 6 7 
+junction 82:83
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 23:21
+out 1 lanes 1 2 3 
+out 2 lanes 3 4 5 6 7 
+junction 24:23
+out 1 lanes 5 
+out 2 lanes 1 2 3 4 5 
+junction 27:23
+out 1 lanes 1 2 3 4 5 
+out 2 lanes 1 2 3 4 5 
+junction 52:29
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 4 5 
+junction 1:20
+out 1 lanes 1 2 3 
+out 2 lanes 2 3 
+junction 71:161
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+junction 4:71
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+junction 68:71
+out 1 lanes 1 2 
+out 2 lanes 1 2 
+junction 90:81
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 81:89
+out 1 lanes 1 2 3 
+out 2 lanes 3 
+junction 81:37
+out 1 lanes 1 2 3 
+out 2 lanes 2 3 
+junction 89:83
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 83:2
+out 1 lanes 1 2 
+out 2 lanes 2 3 
+out 3 lanes 2 3 
+junction 83:84
+out 1 lanes 1 2 
+out 2 lanes 2 3 
+junction 2:39
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 39:41
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 41:44
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 44:47
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 93:80
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 80:81
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 85:86
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 91:40
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 40:42
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 42:45
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 45:48
+out 1 lanes 1 2 3 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 45:44
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 48:49
+out 1 lanes 1 2 3 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 79:80
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 92:86
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 43:73
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 49:46
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 67:68
+out 1 lanes 1 2 
+out 2 lanes 1 2 
+junction 66:64
+out 1 lanes 1 2 
+out 2 lanes 1 2 
+out 3 lanes 1 2 
+junction 96:50
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 2 
+junction 55:54
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 54:53
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 141:16
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 4 5 
+out 3 lanes 2 3 4 5 
+junction 132:26
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 1 2 3 
+junction 136:39
+out 1 lanes 1 
+out 2 lanes 1 2 
+out 3 lanes 2 
+junction 137:73
+out 1 lanes 1 2 
+out 2 lanes 1 2 
+out 3 lanes 1 2 
+junction 17:16
+out 1 lanes 1 2 3 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 4 
+junction 19:17
+out 1 lanes 1 2 3 4 5 
+out 2 lanes 4 5 6 7 
+junction 146:13
+out 1 lanes 1 2 3 4 
+out 2 lanes 1 2 3 4 5 
+out 3 lanes 4 5 
+junction 145:11
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 4 5 
+out 3 lanes 2 3 4 5 
+out 4 lanes 2 3 4 5 
+out 5 lanes 2 3 4 5 
+junction 142:14
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 4 5 
+out 3 lanes 2 3 4 5 
+junction 88:85
+out 1 lanes 1 2 
+out 2 lanes 3 
+junction 65:64
+out 1 lanes 1 
+out 2 lanes 2 3 
+out 3 lanes 3 
+junction 130:51
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 149:51
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 150:11
+out 1 lanes 1 2 
+out 2 lanes 1 2 
+out 3 lanes 1 2 3 
+out 4 lanes 2 3 
+out 5 lanes 3 
+junction 147:41
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 138:42
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 133:2
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 76:46
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 46:43
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 46:45
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 148:43
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 3:92
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 78:79
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 151:92
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 152:79
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 134:91
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 135:91
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 153:40
+out 1 lanes 1 
+out 2 lanes 1 2 
+out 3 lanes 2 
+junction 154:47
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 155:48
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 156:13
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 2 3 
+junction 157:50
+out 1 lanes 1 
+out 2 lanes 1 2 3 
+out 3 lanes 3 
+junction 160:161
+out 1 lanes 1 2 3 
+out 2 lanes 3 
+junction 165:161
+out 1 lanes 1 2 
+out 2 lanes 2 
+junction 173:8
+out 1 lanes 1 2 
+out 2 lanes 1 2 3 4 5 

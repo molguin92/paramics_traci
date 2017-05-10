@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><overlays>
+    <overlay name="Propuesta">
+        <image_file>Plaza Italia - propuesta.dxf</image_file>
+        <x_pos>12.3501</x_pos>
+        <y_pos>-1816.87</y_pos>
+        <z_pos>0</z_pos>
+        <scale>1</scale>
+        <rotation>18.9</rotation>
+        <visible>true</visible>
+        <style>image</style>
+        <colour>16777215</colour>
+        <meshcolour>11776947</meshcolour>
+        <intensity>1.00</intensity>
+        <meshintensity>0.40</meshintensity>
+        <override>false</override>
+        <layer name="0">
+            <visible>false</visible>
+            <colour>7</colour>
+        </layer>
+        <layer name="Manzanas">
+            <visible>true</visible>
+            <colour>4</colour>
+        </layer>
+        <layer name="Plazas">
+            <visible>true</visible>
+            <colour>255</colour>
+        </layer>
+        <layer name="Veredas">
+            <visible>true</visible>
+            <colour>4</colour>
+        </layer>
+        <layer name="Calles">
+            <visible>true</visible>
+            <colour>7</colour>
+        </layer>
+        <layer name="Semaforo">
+            <visible>true</visible>
+            <colour>10</colour>
+        </layer>
+        <layer name="0-ROTULO">
+            <visible>true</visible>
+            <colour>1</colour>
+        </layer>
+        <layer name="VIEW">
+            <visible>true</visible>
+            <colour>253</colour>
+        </layer>
+        <layer name="proyecto calle darregueira">
+            <visible>true</visible>
+            <colour>4</colour>
+        </layer>
+    </overlay>
+</overlays>

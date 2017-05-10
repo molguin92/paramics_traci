@@ -39,7 +39,6 @@ void traci_api::TraCIServer::run()
     running = true;
     std::string version_str = "Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion());
     infoPrint(version_str);
-    debugPrint("Simulation start time: " + std::to_string(qpg_CFG_simulationTime()));
     infoPrint("Awaiting connections on port " + std::to_string(port));
     infoPrint("Timestep size: " + std::to_string(static_cast<int>(qpg_CFG_timeStep() * 1000.0f)) + "ms");
     infoPrint("Simulation start time: " + std::to_string(Simulation::getInstance()->getCurrentTimeMilliseconds()) + "ms");

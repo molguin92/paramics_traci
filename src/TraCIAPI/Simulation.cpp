@@ -147,6 +147,7 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
         debugPrint("Running one simulation step...");
 
         qps_GUI_runSimulation();
+
         traci_api::VehicleManager::getInstance()->handleDelayedTriggers();
         steps_performed = 1;
     }

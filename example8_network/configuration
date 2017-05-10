@@ -2,4 +2,8 @@ start time 08:00:00
 simulation time  01:00:00
 left hand drive
 units metric
+feedback 00:01:00
+feedback smoothing factor 0.500
+feedback decay factor 0.995
+perturbation enabled
 read parameters file "api_example8"

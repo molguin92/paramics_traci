@@ -1,0 +1,272 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:43:46 2008
+## Modified Date Thu 27. Mar 14:43:53 2008
+## Modified By mwhyte
+## Network P:/Installers/InstallerMasterFolder/!DemoNetworks/Demo3
+## Notes 
+Zone Count 29
+
+zone 1 4 
+-2215 m -1035 m
+-2148 m -958 m
+-804 m -1564 m
+-837 m -1621 m
+max -804 m -958 m
+min -2215 m -1621 m
+centroid -1501 m -1295 m
+
+zone 2 4 
+1829 m -2190 m
+1840 m -2121 m
+2246 m -2143 m
+2236 m -2211 m
+max 2246 m -2121 m
+min 1829 m -2211 m
+centroid 2038 m -2166 m
+
+zone 3 4 
+-824 m -2245 m
+-871 m -2218 m
+-827 m -2165 m
+-789 m -2189 m
+max -789 m -2165 m
+min -871 m -2245 m
+centroid -828 m -2204 m
+
+zone 4 4 
+-749 m -2329 m
+-799 m -2294 m
+-761 m -2244 m
+-709 m -2283 m
+max -709 m -2244 m
+min -799 m -2329 m
+centroid -755 m -2288 m
+
+zone 5 4 
+-620 m -2364 m
+-676 m -2418 m
+-706 m -2391 m
+-651 m -2336 m
+max -620 m -2336 m
+min -706 m -2418 m
+centroid -663 m -2377 m
+
+zone 6 4 
+-534 m -2442 m
+-594 m -2502 m
+-642 m -2454 m
+-570 m -2407 m
+max -534 m -2407 m
+min -642 m -2502 m
+centroid -585 m -2451 m
+
+zone 7 4 
+-356 m -2612 m
+-433 m -2672 m
+-553 m -2551 m
+-486 m -2492 m
+max -356 m -2492 m
+min -553 m -2672 m
+centroid -457 m -2582 m
+
+zone 8 4 
+-23 m -2871 m
+-212 m -2692 m
+-154 m -2639 m
+47 m -2806 m
+max 47 m -2639 m
+min -212 m -2871 m
+centroid -86 m -2752 m
+
+zone 9 4 
+118 m -2759 m
+-73 m -2584 m
+-15 m -2562 m
+165 m -2713 m
+max 165 m -2562 m
+min -73 m -2759 m
+centroid 49 m -2655 m
+
+zone 10 4 
+245 m -2666 m
+62 m -2506 m
+117 m -2473 m
+298 m -2620 m
+max 298 m -2473 m
+min 62 m -2666 m
+centroid 181 m -2566 m
+
+zone 11 4 
+509 m -2698 m
+213 m -2436 m
+283 m -2383 m
+580 m -2626 m
+max 580 m -2383 m
+min 213 m -2698 m
+centroid 396 m -2536 m
+
+zone 12 4 
+-470 m -1514 m
+-570 m -1445 m
+-520 m -1378 m
+-415 m -1441 m
+max -415 m -1378 m
+min -570 m -1514 m
+centroid -494 m -1445 m
+
+zone 13 4 
+-555 m -1621 m
+-633 m -1555 m
+-584 m -1493 m
+-496 m -1548 m
+max -496 m -1493 m
+min -633 m -1621 m
+centroid -567 m -1554 m
+
+zone 14 4 
+-360 m -1384 m
+-523 m -1325 m
+-469 m -1235 m
+-305 m -1303 m
+max -305 m -1235 m
+min -523 m -1384 m
+centroid -414 m -1312 m
+
+zone 15 6 
+51 m -1226 m
+1 m -1211 m
+-118 m -1303 m
+-194 m -1265 m
+-146 m -1186 m
+89 m -1149 m
+max 89 m -1149 m
+min -194 m -1303 m
+centroid -53 m -1223 m
+
+zone 16 4 
+52 m -1266 m
+12 m -1268 m
+23 m -1250 m
+51 m -1249 m
+max 52 m -1249 m
+min 12 m -1268 m
+centroid 35 m -1258 m
+
+zone 17 4 
+270 m -1522 m
+161 m -1426 m
+307 m -1198 m
+484 m -1290 m
+max 484 m -1198 m
+min 161 m -1522 m
+centroid 306 m -1359 m
+
+zone 18 4 
+535 m -1477 m
+446 m -1437 m
+491 m -1346 m
+593 m -1378 m
+max 593 m -1346 m
+min 446 m -1477 m
+centroid 516 m -1410 m
+
+zone 19 4 
+644 m -1533 m
+589 m -1507 m
+632 m -1423 m
+693 m -1442 m
+max 693 m -1423 m
+min 589 m -1533 m
+centroid 640 m -1476 m
+
+zone 20 4 
+748 m -1705 m
+658 m -1676 m
+696 m -1597 m
+787 m -1616 m
+max 787 m -1597 m
+min 658 m -1705 m
+centroid 722 m -1649 m
+
+zone 21 4 
+676 m -1842 m
+593 m -1801 m
+638 m -1720 m
+719 m -1758 m
+max 719 m -1720 m
+min 593 m -1842 m
+centroid 657 m -1780 m
+
+zone 22 4 
+594 m -2016 m
+488 m -1986 m
+521 m -1921 m
+621 m -1955 m
+max 621 m -1921 m
+min 488 m -2016 m
+centroid 556 m -1970 m
+
+zone 23 4 
+-808 m -2127 m
+-876 m -2072 m
+-825 m -2010 m
+-766 m -2067 m
+max -766 m -2010 m
+min -876 m -2127 m
+centroid -819 m -2069 m
+
+zone 24 4 
+-720 m -2013 m
+-784 m -1959 m
+-739 m -1903 m
+-676 m -1956 m
+max -676 m -1903 m
+min -784 m -2013 m
+centroid -730 m -1958 m
+
+zone 25 4 
+-651 m -1887 m
+-717 m -1848 m
+-662 m -1780 m
+-601 m -1829 m
+max -601 m -1780 m
+min -717 m -1887 m
+centroid -658 m -1836 m
+
+zone 26 4 
+-344 m -1801 m
+-379 m -1779 m
+-284 m -1645 m
+-254 m -1665 m
+max -254 m -1645 m
+min -379 m -1801 m
+centroid -315 m -1723 m
+
+zone 27 4 
+609 m -1047 m
+574 m -1018 m
+599 m -991 m
+632 m -1010 m
+max 632 m -991 m
+min 574 m -1047 m
+centroid 604 m -1017 m
+
+zone 28 4 
+639 m -1941 m
+539 m -1901 m
+576 m -1832 m
+671 m -1867 m
+max 671 m -1832 m
+min 539 m -1941 m
+centroid 606 m -1885 m
+
+zone 29 6 
+-12 m -1676 m
+-69 m -1754 m
+-167 m -1686 m
+-226 m -1460 m
+-211 m -1424 m
+-164 m -1440 m
+max -12 m -1424 m
+min -226 m -1754 m
+centroid -142 m -1573 m

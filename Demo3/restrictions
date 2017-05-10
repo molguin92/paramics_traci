@@ -1,0 +1,101 @@
+restrictions
+
+restriction 1 :
+	  Type 11 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "no bus 11"
+
+restriction 2 :
+	  Type 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 16"
+
+restriction 3 :
+	  Type 11 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 16 ni 11"
+
+restriction 4 :
+	  Type 15 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 15"
+
+restriction 5 :
+	  Type 17 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 17 (16b)"
+
+restriction 6 :
+	  Type 16 17 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 17 ni 16"
+
+restriction 7 :
+	  Type 11 17 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 11 ni 17"
+
+restriction 8 :
+	  Type 11 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 11 ni 16"
+
+restriction 9 :
+	  Type 15 17 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 15 ni 17"
+
+restriction 10 :
+	  Type 15 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 15 ni 16"
+
+restriction 11 :
+	  Type 11 15 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 11 15 ni 16"
+
+restriction 12 :
+	  Type 12 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "no bus 12"
+
+restriction 13 :
+	  Type 12 16 17 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 12 16 17"
+
+restriction 14 :
+	  Type 11 12 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 11 12"
+
+restriction 15 :
+	  Type 12 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 16 ni 12"
+
+restriction 16 :
+	  Type 11 12 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 16 ni 12 11"
+
+restriction 17 :
+	  Type 11 12 17 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "Bus 11 12 17"
+
+restriction 18 :
+	  Type 11 12 15 16 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 11 12 15 16"
+
+restriction 19 :
+	  Type 11 12 15 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "No bus 11 12 15"
+
+restriction 20 :
+	  Type Except 26 Barred
+	  colour 0x00e22b8a  fill style 1
+	  name "Solo taxi "

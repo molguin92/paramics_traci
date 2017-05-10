@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PresetViews>
+    <NewView dx="1220.02" dy="789.146" ex="7767.78" ey="1488.46" is3D="0" rDist="185.772" sx="6547.75" sy="699.312" viewAngle="2.39287" xFocal="7157.77" yFocal="1093.89" zHeight="1220.02">Overview</NewView>
+    <NewView dx="78.5928" dy="50.8359" ex="7073.61" ey="1020.92" is3D="1" rDist="177.335" sx="6995.02" sy="970.087" viewAngle="2.47024" xFocal="7034.32" yFocal="995.505" zHeight="78.5927">Plaza Italia</NewView>
+    <NewView dx="78.5928" dy="50.8359" ex="7212.09" ey="1017.46" is3D="1" rDist="327.251" sx="7133.5" sy="966.628" viewAngle="1.39616" xFocal="7172.8" yFocal="992.046" zHeight="78.5927">3</NewView>
+    <NewView dx="78.5928" dy="50.8359" ex="7217.56" ey="1176.63" is3D="1" rDist="198.61" sx="7138.96" sy="1125.8" viewAngle="2.48958" xFocal="7178.26" yFocal="1151.22" zHeight="78.5927">4</NewView>
+    <NewView dx="57.7725" dy="37.3691" ex="7169.05" ey="889.077" is3D="1" rDist="436.596" sx="7111.28" sy="851.707" viewAngle="-2.25892" xFocal="7140.17" yFocal="870.392" zHeight="57.7728">5</NewView>
+    <NewView dx="27.7539" dy="17.9524" ex="6850.93" ey="1079.8" is3D="1" rDist="365.142" sx="6823.18" sy="1061.85" viewAngle="0.952379" xFocal="6837.06" yFocal="1070.82" zHeight="27.7544">6</NewView>
+</PresetViews>

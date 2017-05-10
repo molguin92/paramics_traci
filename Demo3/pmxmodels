@@ -1,0 +1,2947 @@
+model types 70
+
+model type "Rural Predio"
+dir path "C:\2005_La Rural\pmx"
+file name "Rural Predio.pmx"
+draw mode Textured
+lighting range 100.000000 100.000000 5000.000000
+
+model type "Torre y Aca"
+dir path "C:\2005_La Rural\pmx"
+file name "Torre y Aca.pmx"
+draw mode Textured
+lighting range 100.000000 100.000000 5000.000000
+
+model type "carteles"
+dir path "C:\2005_La Rural\pmx"
+file name "carteles.pmx"
+draw mode Textured
+lighting range 100.000000 100.000000 5000.000000
+
+model type "sendas"
+dir path "C:\2005_La Rural\pmx"
+file name "sendas.pmx"
+draw mode Textured
+lighting range 50.000000 100.000000 10000.000000
+
+model type "zoo"
+dir path "C:\2005_La Rural\pmx"
+file name "zoo.pmx"
+draw mode Textured
+lighting range 0.000000 100.000000 5000.000000
+
+model type "zoo cesped"
+dir path "C:\2005_La Rural\pmx"
+file name "zoo cesped.pmx"
+draw mode Textured
+lighting range 100.000000 100.000000 5000.000000
+
+model type "jardín botánico"
+dir path "C:\2005_La Rural\pmx"
+file name "jardín botánico.pmx"
+draw mode Textured
+lighting range 0.000000 100.000000 5000.000000
+
+model type "jardín botánico Cesped"
+dir path "C:\2005_La Rural\pmx"
+file name "jardín botánico Cesped.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "acacia"
+dir path "C:\2005_La Rural\pmx"
+file name "acacia.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "oak swamp white"
+dir path "C:\2005_La Rural\pmx"
+file name "oak swamp white.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "elm wych"
+dir path "C:\2005_La Rural\pmx"
+file name "elm wych.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "small almond"
+dir path "C:\2005_La Rural\pmx"
+file name "small almond.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "10"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "10.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "108"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "108.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "111"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "111.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "118"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "118.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "12"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "12.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "141"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "141.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "15"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "15.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "152"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "152.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "161"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "161.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "188"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "188.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "194"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "194.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "34"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "34.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "36"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "36.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "37"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "37.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "39"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "39.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "41"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "41.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "55"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "55.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "57"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "57.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "60"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "60.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "64"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "64.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "68"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "68.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "95"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "95.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "67"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "67.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "110"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "110.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "93"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "93.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "29"
+dir path "C:\2005_La Rural\pmx\COLECTIVOS"
+file name "29.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Camion Reparto"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Camion Reparto.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Camion Tipo Serenisima"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Camion Tipo Serenisima.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@CamionVolcador"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@CamionVolcador.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Chrysler Caravan"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Chrysler Caravan.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Chrysler"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Chrysler.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Clio 4P"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Clio 4P.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Corsa 2P"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Corsa 2P.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Fiat Uno"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Fiat Uno.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Focus"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Focus.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Focus2"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Focus2.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Ford Transit"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Ford Transit.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Ford TransitCorta"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Ford TransitCorta.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@GrandCherokee"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@GrandCherokee.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@LandRover"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@LandRover.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@MiniCouper"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@MiniCouper.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Peugeot 106 2P"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Peugeot 106 2P.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Peugeot 206 2P"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Peugeot 206 2P.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@Peugeot 206 4P"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@Peugeot 206 4P.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "@VW Golf 2P"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "@VW Golf 2P.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "406"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "406.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "mercedes negro"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "mercedes negro.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "audi_rojo"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "audi_rojo.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "audi_verde"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "audi_verde.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "clio_rojo"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "clio_rojo.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "clio_verde"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "clio_verde.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "fordKa_rojo"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "fordKa_rojo.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "fordKa_verde"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "fordKa_verde.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "ibiza_rojo"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "ibiza_rojo.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "ibiza_verde"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "ibiza_verde.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "passat_rojo"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "passat_rojo.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "passat_verde"
+dir path "C:\\2005_La Rural\pmx\AUTOS\predio"
+file name "passat_verde.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+model type "volvo_taxi"
+dir path "C:\\2005_La Rural\pmx\AUTOS"
+file name "volvo_taxi.pmx"
+draw mode Textured
+lighting range 10.000000 20.000000 5000.000000
+
+groups 4
+
+group name "arbol"
+type count 1
+types 8
+
+group name "arbol2"
+type count 1
+types 9
+
+group name "arbol3"
+type count 1
+types 10
+
+group name "arbol4"
+type count 1
+types 11
+
+positioned models 501
+
+model "Predio"
+position 5832.239258 1314.676758 0.000000
+rotation 0.000000 0.000000 0.000000
+type 0
+
+model "Aca"
+position 5682.386230 1594.260498 0.000000
+rotation 0.000000 0.000000 0.000000
+type 1
+
+model "Carteles"
+position 5810.966309 994.101074 0.000000
+rotation 0.000000 0.000000 0.000000
+type 2
+
+model "Sendas"
+position 5812.273926 994.288452 0.000000
+rotation 0.000000 0.000000 0.000000
+type 3
+
+model "Zoo"
+position 6142.323730 1134.004028 -0.100000
+rotation 0.000000 0.000000 0.000000
+type 4
+
+model "Zoo Cesped"
+position 6143.128906 1195.242676 0.800002
+rotation 0.000000 0.000000 0.000000
+type 5
+
+model "Jardin Botanico"
+position 5812.340332 994.076416 1.000000
+rotation 0.000000 0.000000 0.000000
+type 6
+
+model "arbol"
+position 5868.272461 1041.304565 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 5876.965332 1049.201172 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 5882.613281 1057.519531 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 5894.916992 1075.119629 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 5888.072754 1066.727051 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 5903.065430 1084.082642 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 5909.257813 1092.882690 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 5916.998535 1102.253174 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5922.702148 1110.482788 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 5929.791504 1118.712524 1.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol"
+position 5934.517578 1125.719971 1.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol"
+position 5940.628906 1134.927490 1.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol"
+position 5946.902832 1141.527588 1.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 5952.524902 1148.127686 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 5958.473145 1155.298096 1.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol"
+position 5963.118652 1162.468262 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 5970.859375 1172.164673 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 5977.704102 1181.616577 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5983.570801 1189.520264 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 5990.007813 1197.505493 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 5998.645020 1207.690674 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 6005.326660 1217.875854 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 6012.008301 1227.246338 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 6019.749023 1234.661133 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 6025.697266 1243.135254 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 6032.949219 1252.587158 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6038.327148 1260.246460 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6045.090332 1268.068726 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 6051.527344 1276.542847 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 6058.697754 1286.320679 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 6066.927246 1295.854004 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6073.038574 1305.142944 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6080.045898 1314.024536 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol"
+position 6087.216309 1323.068970 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol"
+position 6095.935059 1335.046875 1.500000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 6104.327637 1344.824707 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6112.340332 1353.212769 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6119.794434 1364.273315 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6129.171875 1375.574341 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6138.716309 1388.477173 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6146.493164 1397.137939 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6153.032715 1405.621948 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6160.632813 1416.403687 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6168.233398 1425.948120 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6174.950195 1436.199585 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6182.727051 1445.037109 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6189.973633 1454.404907 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6197.750488 1465.009888 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6203.052734 1472.433350 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6209.946289 1480.917358 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6217.546387 1489.931641 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6225.676758 1501.773926 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6233.807129 1511.848755 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6242.478027 1522.830566 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6253.006836 1534.412109 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6259.324219 1541.360962 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6265.641113 1550.204956 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6273.432617 1556.943237 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6279.328613 1569.367065 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6287.751953 1579.053467 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6293.904297 1589.116333 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6301.411621 1598.411255 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6307.667969 1606.633667 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6315.175293 1613.962402 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6321.789063 1623.972412 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6331.621094 1631.300781 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6298.740723 1523.075073 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol2"
+position 6315.491699 1557.384155 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6351.011719 1589.271362 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6393.190918 1487.353394 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6380.678223 1457.080688 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6245.258789 1114.796875 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6252.322266 1126.906006 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6258.982422 1139.620483 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6268.669922 1155.564087 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol2"
+position 6274.522461 1169.691406 0.000000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol"
+position 6289.658691 1195.725952 1.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol"
+position 6319.527344 1255.060059 1.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol"
+position 6325.783691 1263.334595 1.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol"
+position 6332.645508 1273.021851 1.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol"
+position 6339.305176 1286.341919 1.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol"
+position 6345.359375 1297.643677 1.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol"
+position 6351.817383 1308.743652 1.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6374.029785 1634.465576 0.500000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6380.902344 1631.716553 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6390.798828 1626.218506 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6399.183594 1621.820068 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6406.056152 1617.421631 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6414.990723 1612.335938 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6423.100586 1608.349854 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6433.959473 1602.164429 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6444.543457 1597.078735 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6452.240723 1593.917358 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6458.976074 1589.106567 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6471.209473 1582.646240 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6481.243652 1577.148193 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6490.178223 1572.199951 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5900.196289 1032.602783 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5903.478516 1023.897705 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5907.331543 1016.619629 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5936.871582 1070.705078 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5948.288086 1100.387939 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6020.210449 1111.661255 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6048.322754 1086.259521 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6037.334473 1091.254272 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6023.777344 1093.965698 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6009.078613 1094.393799 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5994.950684 1090.540771 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6195.635742 1028.933105 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6203.738770 1036.076660 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6207.363770 1043.220215 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6212.161621 1048.551270 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6216.319824 1055.055054 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6220.051758 1062.092041 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5837.951660 1072.140991 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5846.798828 1077.555054 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5823.676758 1076.068970 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5827.486328 1084.350952 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5856.484375 1086.831055 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5860.000488 1095.620850 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5864.834961 1101.041260 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5870.255371 1107.487061 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5874.357422 1113.200439 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5880.656738 1118.767334 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5887.834961 1125.066650 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5899.848145 1141.913696 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5904.975586 1149.824463 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5910.981934 1157.735229 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5916.402344 1164.913574 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5920.504395 1173.263916 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5925.192383 1178.977295 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5930.466309 1185.130127 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5892.084473 1168.722534 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5908.638672 1189.378540 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5938.231445 1226.735229 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5948.046875 1247.098267 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5947.900391 1207.690430 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5952.588379 1214.575806 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5958.448242 1222.340088 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5963.868652 1231.276367 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5971.632813 1241.238159 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6000.455566 1277.043335 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6009.411621 1285.857300 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6017.941406 1297.230225 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6023.912109 1305.617798 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6029.882813 1314.716064 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6036.706543 1323.814331 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6043.104004 1329.927246 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6050.354004 1339.594238 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6057.035645 1348.123901 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6064.143555 1355.800659 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6069.261230 1363.192993 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6074.236816 1369.590210 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6078.644043 1376.129639 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6085.041504 1385.370117 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6091.581055 1393.188965 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6097.551758 1400.296997 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6104.090820 1408.258057 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6108.498047 1414.370972 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6108.782227 1421.194702 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6104.659668 1427.449829 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6097.267090 1437.969727 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6092.717773 1445.646484 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6075.516113 1470.809082 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6070.540527 1478.485840 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6063.716797 1487.015503 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6058.172363 1496.682495 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6054.760254 1505.496460 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6049.500488 1514.310425 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6043.956055 1532.507080 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6038.838379 1541.463257 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6035.426270 1550.561523 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6033.009766 1558.949097 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6027.039063 1563.782593 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6019.078125 1561.792358 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6022.063477 1546.865479 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6012.538574 1561.365967 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6003.866699 1556.532471 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5997.185059 1553.689209 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5978.846191 1549.140015 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5970.743164 1546.723267 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5964.237305 1544.855591 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5956.808594 1542.417969 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5947.290527 1539.167847 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5938.816895 1534.873047 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5942.647461 1523.729736 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5927.557617 1531.971191 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5918.155273 1528.721069 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5917.342773 1511.541748 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5908.520996 1516.997314 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5896.333008 1520.827881 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5901.324219 1517.229492 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5903.413574 1524.310181 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5910.262207 1527.096069 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5731.113281 1069.932983 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5742.276367 1075.623901 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5763.069824 1082.847046 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5753.658203 1081.096069 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5741.400879 1100.576416 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5742.495117 1125.090942 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5733.302246 1144.571167 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5728.486816 1161.206055 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5715.354004 1179.373047 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5673.329102 1169.085693 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5649.471191 1190.754761 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5654.943359 1220.741333 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5668.513672 1254.010986 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5682.741211 1278.087646 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5693.247559 1299.537842 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5708.788086 1327.116699 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5725.641602 1361.918579 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5749.280762 1348.129150 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5772.919922 1333.901978 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5760.225098 1310.700806 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5745.997559 1282.465332 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5733.083496 1256.856445 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5719.293945 1232.123047 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5701.126953 1196.664551 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5647.938965 1205.638672 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5663.260742 1238.908325 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5675.080078 1265.830566 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5700.470215 1312.670776 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5718.199707 1346.159302 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5760.005859 1341.781860 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5737.242188 1356.227905 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5753.657715 1301.289185 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5737.460449 1271.302734 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5724.765625 1246.350464 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5709.443848 1217.677246 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5692.152344 1180.248901 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5664.792480 1185.501953 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5765.915039 1321.426270 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5753.438477 1234.531128 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5765.257813 1265.612061 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5808.376465 1223.149414 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5822.822754 1243.286377 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5786.488770 1267.800903 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5891.989746 1262.985229 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5840.472168 999.640503 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5789.770020 1029.149292 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5775.269043 1027.425415 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5813.093750 963.844604 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5845.746582 971.957031 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5851.019531 979.055359 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5852.046387 965.949707 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5903.265137 993.632080 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5918.580566 1001.563354 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5928.836426 993.905762 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5942.647461 993.495605 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5955.638184 992.401733 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5968.355469 991.171143 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5979.841797 989.803711 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5990.507813 989.940430 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6036.180176 998.692139 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6006.370117 1007.443726 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6000.216797 1071.439087 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6013.070801 1079.233398 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6155.966797 1004.299072 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6151.317383 1056.260986 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6151.864258 1098.787842 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "new model"
+position 5777.644531 991.979492 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5785.205078 992.184326 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5786.075195 1000.571350 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5806.121094 1027.368286 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5808.696289 1019.677246 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5836.189453 993.298218 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5828.776855 983.936768 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5821.990234 967.197510 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "new model"
+position 5852.327637 971.935669 0.500000
+rotation 0.000000 0.000000 0.000000
+type 11
+
+model "arbol3"
+position 5920.561035 1562.020142 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5928.763184 1573.377075 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5943.064453 1593.777588 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5951.266602 1608.078979 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 5958.943848 1623.138550 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5967.841309 1630.617676 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5978.415039 1631.133423 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 5992.083984 1628.425415 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6001.497559 1619.656738 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5998.531738 1608.051147 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5991.568359 1597.735107 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5982.284180 1591.287598 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5950.433594 1576.974121 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6001.755859 1589.740234 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6015.295410 1593.995605 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6021.613770 1598.379883 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6019.679688 1610.630127 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 5970.058594 1642.952148 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 5976.705566 1651.894897 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 5982.552246 1662.671387 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 5991.838379 1663.130005 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6001.926758 1655.907471 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6004.334473 1635.844971 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6013.391113 1665.422852 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6010.295898 1693.968994 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5992.182129 1674.594360 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 5996.997070 1687.778320 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6066.075684 1595.205566 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6073.203125 1634.201050 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6087.704590 1565.649292 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6081.113281 1547.412720 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6058.481934 1642.989624 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6098.030762 1634.640381 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6116.926270 1628.268555 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6128.571289 1592.894043 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6116.267090 1577.953247 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6103.303711 1546.973145 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6122.199219 1486.550903 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6104.402344 1515.333862 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6172.954590 1543.896973 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6148.126465 1589.817871 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6137.580078 1544.556152 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6132.526367 1517.091553 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6151.203125 1563.891357 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6060.021973 1739.445435 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6055.627930 1665.840210 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6073.205078 1654.414917 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6098.472656 1659.468384 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6079.357422 1688.690796 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6057.825195 1712.859741 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6056.287109 1696.161255 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6080.016602 1714.178101 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6095.177246 1720.330200 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6068.371582 1752.408936 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6077.819336 1765.591919 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6085.509277 1778.994629 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6098.252930 1787.343872 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6103.526367 1766.470703 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6094.298340 1754.166504 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6118.027832 1742.301758 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6132.309570 1751.969360 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6140.219238 1765.372070 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6126.596680 1734.831421 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6136.923340 1690.668213 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6143.514648 1727.141235 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6148.128906 1698.358276 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6175.593750 1706.268066 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6183.063965 1719.670776 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6193.610352 1692.865234 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6129.672852 1640.572510 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6116.489746 1687.811768 0.500000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol3"
+position 6112.314941 1651.778076 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6132.748535 1680.121582 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6147.689453 1646.724609 0.500000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "arbol3"
+position 6147.689453 1670.893555 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6179.768066 1655.513306 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6199.542480 1666.059692 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6203.058105 1708.245361 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6158.895020 1749.552246 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6166.804688 1734.391724 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6119.565430 1718.352417 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6242.167480 1686.273804 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6221.733887 1709.563843 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6216.680176 1678.144287 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6271.389648 1672.431763 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6269.412109 1647.823486 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6285.451660 1656.612183 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6241.067871 1623.434814 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6217.777832 1595.970215 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6213.383301 1611.130737 0.500000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "arbol3"
+position 6194.268066 1606.296997 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "arbol3"
+position 6185.699219 1559.057739 0.500000
+rotation 0.000000 0.000000 0.000000
+group 0 item 0
+
+model "new model"
+position 6164.652344 1593.072388 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6205.080078 1583.404785 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6177.834961 1596.368042 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6175.198242 1570.001953 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6163.113770 1612.846558 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6157.400879 1634.818604 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6189.479492 1621.855225 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6183.986328 1643.387573 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6206.397461 1626.029907 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6197.608887 1649.759399 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6225.732910 1657.669189 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6235.180664 1636.576294 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6263.084961 1618.998169 0.000000
+rotation 0.000000 0.000000 0.000000
+group 2 item 0
+
+model "new model"
+position 6248.144043 1602.299683 0.000000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "new model"
+position 6210.571777 1557.916870 0.000000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "new model"
+position 6194.532227 1533.967651 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "new model"
+position 6159.597168 1491.781982 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "new model"
+position 6139.822754 1472.446899 0.000000
+rotation 0.000000 0.000000 0.000000
+group 1 item 0
+
+model "new model"
+position 6176.342285 1274.766724 0.000000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "new model"
+position 6163.046387 1145.904663 0.000000
+rotation 0.000000 0.000000 0.000000
+group 3 item 0
+
+model "arbol1"
+position 5902.467773 907.672302 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5899.125977 933.238708 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5974.822266 899.818604 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5994.373047 925.050781 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6055.197754 895.808167 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6049.015137 895.473938 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6049.516602 888.288635 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6059.208496 889.792542 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6060.712402 899.484375 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6056.200684 904.831604 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6109.505859 812.591980 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6165.651855 844.006897 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6140.085449 829.469116 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6150.328125 853.796692 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6177.479004 880.090149 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6234.924805 846.365906 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6225.207520 853.796692 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6288.940430 823.787842 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6256.645020 850.081299 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6275.793457 813.499084 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6326.951660 826.074219 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6354.388184 865.800232 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6384.111328 902.096680 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6367.535156 916.386597 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6326.951660 918.672974 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6275.222168 923.531555 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6233.495605 925.246338 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6215.775879 928.961731 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6146.898438 931.819641 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6089.455078 937.535583 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6071.449707 938.964600 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6009.145020 943.251404 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5962.845703 948.681580 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5913.974121 951.825256 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5885.108398 889.235352 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5961.416504 826.073914 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 5993.997559 797.494019 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6081.166016 732.903503 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6143.755859 679.173340 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6190.341309 635.731934 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6151.758301 663.740234 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6217.206055 669.742004 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6237.783691 699.179260 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6256.932129 726.615967 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol1"
+position 6292.656738 777.202332 0.000000
+rotation 0.000000 0.000000 0.000000
+type 8
+
+model "arbol2"
+position 5878.447266 903.809448 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5884.328125 913.365906 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5891.434082 924.637573 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5925.739258 919.246765 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5932.110352 929.048218 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5957.839355 906.014771 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5951.468262 897.928528 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5921.083496 887.636963 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5962.249512 937.869507 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5949.752441 870.974487 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5945.832031 845.735718 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5973.276367 877.345459 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5992.389160 861.418091 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5972.051270 833.728943 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6007.582031 811.430603 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6019.343750 783.496399 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6051.443359 813.880981 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6029.145020 831.033569 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6098.490234 827.358032 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6050.708008 770.999573 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6079.132324 749.681396 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6126.914551 804.814697 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6135.490723 797.708618 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6125.444336 786.681946 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6113.682617 773.940002 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6163.425293 774.675110 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6168.571289 783.741455 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6139.656738 806.774902 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6147.252930 813.145874 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6178.127930 838.629700 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6201.896484 820.987061 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6174.452148 790.847534 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6182.048340 783.496460 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6210.227539 760.708008 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6279.083008 756.787415 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6299.420898 788.152100 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6317.553711 810.940491 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6340.586914 843.775391 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6370.481445 883.471375 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6361.905273 905.279663 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6347.693359 918.021545 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6303.832031 919.981873 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6253.354980 924.637573 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6195.526367 929.538330 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6173.473145 930.273438 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6128.876465 935.419128 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6108.538574 936.644287 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6034.047852 943.260193 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5985.775879 945.955566 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 5937.749023 950.856079 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol2"
+position 6043.360352 931.253113 0.000000
+rotation 0.000000 0.000000 0.000000
+type 9
+
+model "arbol3"
+position 6003.664551 908.219666 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5983.571777 912.875366 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5992.147949 905.279236 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5999.744141 898.663269 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6010.525879 890.086975 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6003.909668 878.325195 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5981.121582 884.206055 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5998.764160 871.954224 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5991.658203 891.067078 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5993.778809 817.469849 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5984.837891 827.548706 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 5991.015137 839.578308 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6006.295898 837.302429 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6008.246582 821.371338 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6048.724609 788.208618 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6068.881348 763.174011 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+
+model "arbol3"
+position 6266.718262 741.715820 0.000000
+rotation 0.000000 0.000000 0.000000
+type 10
+

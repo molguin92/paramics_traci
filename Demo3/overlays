@@ -1,0 +1,13 @@
+overlay count 1
+
+name "Plaza Italia" type DXF
+	location "C:\2005_La Rural\overlays\Plaza Italia - propuesta.dxf"
+	position 6411.03467 463.35275 0.00000 1.00000 1.00000 0.00000 0.00000 19.00000
+	colour 0x0000ff00
+	meshcolour 0x00ff0000
+	lightcolour 0x00b3b3b3
+	display 0
+	light 0
+	normal 0
+	meshfile 0 ""
+	smooth 0 0

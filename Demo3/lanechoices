@@ -1,0 +1,170 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:43:46 2008
+## Modified Date Thu 27. Mar 14:43:53 2008
+## Modified By mwhyte
+## Network P:/Installers/InstallerMasterFolder/!DemoNetworks/Demo3
+## Notes 
+link 13:8 to 11 to 12 
+	lane  2  20 %
+	lane  3  40 %
+	lane  4  40 %
+
+link 16:26 to 82   
+	lane  1  30 %
+	lane  2  30 %
+	lane  3  40 %
+
+link 16:26 to 24   
+	lane  3  10 %
+	lane  4  20 %
+	lane  5  30 %
+	lane  6  40 %
+
+link 16:26 to 82 to 37 
+	lane  1  20 %
+	lane  2  30 %
+	lane  3  30 %
+	lane  4  10 %
+	lane  5   5 %
+	lane  6   5 %
+
+link 16:26 to 24 to 27 
+	lane  3  50 %
+	lane  4  40 %
+	lane  5  10 %
+
+link 16:26 to 24 to 23 
+	lane  4  20 %
+	lane  5  40 %
+	lane  6  40 %
+
+link 26:24 to 23   
+	lane  4  20 %
+	lane  5  30 %
+	lane  6  30 %
+	lane  7  20 %
+
+link 26:24 to 27   
+	lane  2  40 %
+	lane  3  30 %
+	lane  4  30 %
+
+link 26:24 to 27 to 144 
+	lane  1  40 %
+	lane  2  40 %
+	lane  3  20 %
+
+link 26:24 to 23 to 21 
+	lane  3  10 %
+	lane  4  10 %
+	lane  5  20 %
+	lane  6  30 %
+	lane  7  30 %
+
+link 20:19 to 17 to 16 
+	lane  3  20 %
+	lane  4  40 %
+	lane  5  40 %
+
+link 20:19 to 17 to 5 
+	lane  1  40 %
+	lane  2  40 %
+	lane  3  20 %
+
+link 23:21 to 1 to 160 
+	lane  1  40 %
+	lane  2  40 %
+	lane  3  20 %
+
+link 23:21 to 20 to 19 
+	lane  3   5 %
+	lane  4  10 %
+	lane  5  10 %
+	lane  6  30 %
+	lane  7  40 %
+
+link 24:23 to 21 to 1 
+	lane  1  40 %
+	lane  2  40 %
+	lane  3  20 %
+
+link 24:23 to 21 to 20 
+	lane  2  10 %
+	lane  3  20 %
+	lane  4  30 %
+	lane  5  40 %
+
+link 27:23 to 21 to 1 
+	lane  1  40 %
+	lane  2  40 %
+	lane  3  20 %
+
+link 27:23 to 21 to 20 
+	lane  3  30 %
+	lane  4  30 %
+	lane  5  40 %
+
+link 141:16 to 26 to 24 
+	lane  3  20 %
+	lane  4  40 %
+	lane  5  40 %
+
+link 141:16 to 26 to 82 
+	lane  1  40 %
+	lane  2  40 %
+	lane  3  10 %
+	lane  4  10 %
+
+link 132:26 to 24 to 23 
+	lane  2  40 %
+	lane  3  60 %
+
+link 132:26 to 24 to 27 
+	lane  1  60 %
+	lane  2  40 %
+
+link 17:16 to 136 to 39 
+	lane  1  40 %
+	lane  2  40 %
+	lane  3  20 %
+
+link 17:16 to 26 to 82 
+	lane  2  20 %
+	lane  3  40 %
+	lane  4  40 %
+
+link 19:17 to 5 to 6 
+	lane  1  10 %
+	lane  2  40 %
+	lane  3  40 %
+	lane  4   5 %
+	lane  5   5 %
+
+link 19:17 to 16 to 136 
+	lane  4  30 %
+	lane  5  40 %
+	lane  6  30 %
+
+link 19:17 to 16 to 26 
+	lane  5  20 %
+	lane  6  40 %
+	lane  7  40 %
+
+link 146:13 to 142 to 14 
+	lane  1  10 %
+	lane  2  20 %
+	lane  3  20 %
+	lane  4  30 %
+	lane  5  20 %
+
+link 142:14 to 141 to 16 
+	lane  1  10 %
+	lane  2  20 %
+	lane  3  20 %
+	lane  4  30 %
+	lane  5  20 %
+
+link 156:13 to 8 to 11 
+	lane  2  40 %
+	lane  3  60 %
+

@@ -76,8 +76,10 @@ void runner_fn()
 void qpx_NET_postOpen(void)
 {
     qps_GUI_singleStep(PTRUE);
+    qps_DRW_forceTimeStepRedraw(PFALSE);
     traci_api::infoPrint("TraCI support enabled");
     runner = new std::thread(runner_fn);
+    //runner_fn();
 }
 
 void qpx_NET_reload()

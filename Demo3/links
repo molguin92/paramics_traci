@@ -1,0 +1,392 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:43:45 2008
+## Modified Date Thu 27. Mar 14:43:53 2008
+## Modified By mwhyte
+## Network P:/Installers/InstallerMasterFolder/!DemoNetworks/Demo3
+## Notes 
+link 0000 1000 category 1 
+link 1000 0000 category 1 
+link 1000 2000 category 1 
+link 2000 1000 category 1 
+link 2000 3000 category 1 
+link 3000 2000 category 1 
+link 11 12 category 5 speed 60 kph bus lane 1 
+link 11 154 category 3 speed 40 kph lane 1 closed 
+link 11 146 category 5 speed 60 kph 
+link 8 11 category 5 speed 40 kph lanes 6 arc centre #902 left 
+link 13 142 category 5 speed 60 kph 
+link 13 8 category 4 speed 40 kph 
+link 12 129 category 5 speed 60 kph 
+link 12 145 category 5 speed 60 kph force exit 
+link 5 6 category 5 speed 60 kph lane restriction 5 on lane 1 
+link 16 136 category 3 speed 40 kph lanes 2 
+link 16 26 category 15 lane 7 closed lane restriction 1 on lane 4 force merge force across 
+link 6 143 category 5 speed 60 kph 
+link 6 14 category 3 speed 40 kph 
+link 14 147 category 3 speed 40 kph lane 1 closed 
+link 14 141 category 5 speed 60 kph 
+link 26 82 category 5 speed 60 kph lane 5 closed 
+link 26 24 category 15 speed 45 kph lane restriction 6 on lane 1 lane restriction 6 on lane 2 lane restriction 15 on lane 3 lane restriction 14 on lane 4 lane restriction 14 on lane 5 lane restriction 14 on lane 6 lane restriction 14 on lane 7 arc centre #4 
+link 82 83 category 3 speed 40 kph lane 1 closed 
+link 82 37 category 5 speed 60 kph lane 5 closed 
+link 37 38 category 5 speed 60 kph lane 5 closed 
+link 38 109 category 5 speed 60 kph lane 5 closed 
+link 20 19 category 5 speed 40 kph lane restriction 5 on lane 3 lane restriction 5 on lane 4 lane restriction 5 on lane 5 arc centre #684 left 
+link 21 1 category 3 speed 40 kph arc centre #648 left 
+link 21 20 category 5 speed 60 kph lane restriction 2 on lane 1 lane restriction 5 on lane 3 lane restriction 5 on lane 4 lane restriction 6 on lane 5 
+link 23 21 category 15 speed 40 kph lane restriction 2 on lane 5 arc centre #25 
+link 24 23 category 5 speed 60 kph lane restriction 2 on lane 1 lane restriction 9 on lane 5 
+link 24 27 category 3 speed 30 kph lane restriction 1 on lane 1 lane restriction 12 on lane 3 arc centre #653 left 
+link 27 23 category 5 speed 60 kph lane restriction 4 on lane 3 lane restriction 4 on lane 4 
+link 27 144 category 3 speed 60 kph 
+link 52 29 category 3 speed 60 kph lanes 5 
+link 52 28 category 3 speed 60 kph 
+link 29 144 category 3 speed 60 kph lanes 5 
+link 29 52 category 3 speed 60 kph 
+link 29 31 category 3 speed 40 kph lane 1 closed 
+link 1 20 category 3 speed 30 kph arc centre #649 left 
+link 1 160 category 3 speed 60 kph 
+link 71 68 category 2 speed 60 kph arc centre #805 left 
+link 71 161 category 3 speed 60 kph 
+link 71 4 category 3 speed 60 kph 
+link 4 71 category 3 speed 60 kph 
+link 4 100 category 3 speed 60 kph 
+link 68 70 category 2 arc centre #694 left 
+link 68 67 category 2 speed 60 kph 
+link 68 71 category 2 speed 60 kph arc centre #805 
+link 70 128 category 2 speed 60 kph 
+link 70 68 category 2 arc centre #694 
+link 90 81 category 3 speed 40 kph 
+link 81 89 category 3 speed 40 kph 
+link 81 37 category 3 speed 40 kph lane 1 closed 
+link 89 83 category 3 speed 40 kph 
+link 89 88 category 2 speed 40 kph 
+link 83 2 category 3 speed 40 kph 
+link 83 84 category 3 speed 40 kph lane 1 closed 
+link 2 39 category 3 speed 40 kph 
+link 2 132 category 3 speed 40 kph lane 1 closed 
+link 39 41 category 3 speed 40 kph 
+link 39 153 category 3 speed 40 kph lanes 2 
+link 41 44 category 3 speed 40 kph 
+link 41 138 category 3 speed 40 kph lane 1 closed 
+link 44 47 category 3 speed 40 kph 
+link 44 156 category 3 speed 40 kph lane 1 closed 
+link 47 122 category 3 speed 40 kph 
+link 47 155 category 3 speed 40 kph lane 1 closed 
+link 93 80 category 3 speed 40 kph lane 3 closed 
+link 80 88 category 3 speed 40 kph lane 3 closed 
+link 80 81 category 3 speed 40 kph lane 1 closed 
+link 85 84 category 2 
+link 85 86 category 3 speed 40 kph 
+link 84 135 category 3 speed 40 kph lane 1 closed 
+link 84 85 category 1 speed 40 kph 
+link 91 40 category 3 speed 40 kph lane 1 closed 
+link 91 133 category 3 speed 40 kph lane 1 closed 
+link 40 42 category 3 speed 40 kph lane 1 closed 
+link 40 137 category 3 speed 40 kph lanes 2 
+link 42 45 category 3 speed 40 kph 
+link 42 148 category 3 speed 40 kph lane 1 closed 
+link 45 48 category 3 speed 40 kph lane 1 closed 
+link 45 44 category 3 speed 40 kph lane 1 closed 
+link 48 121 category 3 speed 40 kph 
+link 48 49 category 3 speed 40 kph lane 1 closed 
+link 94 112 category 3 speed 40 kph 
+link 79 94 category 3 speed 40 kph 
+link 79 80 category 3 speed 40 kph lane 1 closed 
+link 86 87 category 3 speed 40 kph 
+link 86 152 category 3 speed 40 kph 
+link 92 86 category 3 speed 40 kph 
+link 92 134 category 3 speed 40 kph lane 1 closed 
+link 73 74 category 3 speed 40 kph lanes 2 
+link 73 151 category 3 speed 40 kph 
+link 43 139 category 3 speed 40 kph 
+link 43 73 category 3 speed 40 kph 
+link 49 77 category 3 speed 40 kph lane 1 closed 
+link 49 46 category 3 
+link 67 164 category 2 speed 60 kph 
+link 67 68 category 2 speed 60 kph 
+link 67 69 category 3 speed 40 kph 
+link 64 66 category 2 speed 60 kph 
+link 64 149 category 3 speed 40 kph lane 1 closed 
+link 64 164 category 2 speed 60 kph 
+link 66 126 category 2 speed 60 kph 
+link 66 64 category 2 speed 60 kph 
+link 72 99 category 3 speed 40 kph 
+link 51 98 category 1 speed 40 kph lanes 3 
+link 51 157 category 3 speed 40 kph lane 1 closed 
+link 98 125 category 1 speed 40 kph lanes 3 
+link 96 50 category 1 speed 40 kph lanes 3 force merge force across 
+link 50 150 category 3 speed 40 kph lane 1 closed 
+link 50 131 category 1 speed 40 kph lanes 3 
+link 28 52 category 3 speed 60 kph lanes 5 
+link 28 159 category 3 speed 60 kph 
+link 108 158 category 3 speed 60 kph lanes 5 
+link 31 32 category 3 speed 40 kph lane 1 closed 
+link 32 54 category 3 speed 40 kph lane 1 closed 
+link 32 33 category 3 speed 40 kph lane 1 closed 
+link 33 55 category 2 speed 40 kph 
+link 33 34 category 3 speed 40 kph 
+link 34 35 category 3 speed 40 kph lane 1 closed 
+link 35 30 category 3 speed 40 kph lane 1 closed 
+link 102 58 category 3 speed 40 kph 
+link 57 35 category 3 speed 40 kph lane 1 closed 
+link 57 56 category 3 speed 40 kph lane 1 closed 
+link 56 34 category 2 speed 40 kph 
+link 56 55 category 3 speed 40 kph 
+link 55 54 category 3 speed 40 kph lane 1 closed 
+link 55 61 category 2 speed 40 kph 
+link 54 53 category 3 speed 40 kph lane 1 closed 
+link 54 62 category 3 speed 40 kph lane 1 closed 
+link 53 31 category 3 speed 40 kph lane 1 closed 
+link 53 52 category 3 speed 40 kph lane 1 closed 
+link 63 53 category 3 speed 40 kph lane 1 closed 
+link 62 106 category 3 speed 40 kph 
+link 61 105 category 2 speed 40 kph 
+link 61 60 category 3 speed 40 kph 
+link 60 56 category 2 speed 40 kph 
+link 59 57 category 3 speed 40 kph lane 1 closed 
+link 103 59 category 3 speed 40 kph lane 1 closed 
+link 104 60 category 2 speed 40 kph 
+link 107 63 category 3 speed 40 kph lane 1 closed 
+link 141 16 category 5 speed 60 kph 
+link 132 26 category 3 speed 40 kph 
+link 136 39 category 3 speed 40 kph lanes 2 
+link 137 73 category 3 speed 40 kph lanes 2 
+link 17 5 category 5 speed 30 kph lane restriction 2 on lane 4 lane restriction 2 on lane 5 arc centre #676 left 
+link 17 16 category 4 speed 40 kph lane restriction 14 on lane 1 arc centre #689 
+link 19 17 category 15 speed 40 kph bus lane 1 lane restriction 18 on lane 1 lane restriction 19 on lane 2 lane restriction 17 on lane 3 lane restriction 17 on lane 4 lane restriction 5 on lane 5 lane restriction 6 on lane 6 lane restriction 6 on lane 7 arc centre #55 
+link 146 13 category 5 speed 60 kph force exit 
+link 145 11 category 5 speed 60 kph 
+link 129 123 category 5 speed 60 kph 
+link 129 12 category 5 speed 60 kph 
+link 110 90 category 3 speed 40 kph 
+link 111 93 category 3 speed 40 kph lane 3 closed 
+link 113 78 category 3 speed 40 kph 
+link 115 3 category 3 speed 40 kph 
+link 118 76 category 3 speed 40 kph 
+link 142 14 category 5 speed 60 kph 
+link 143 173 category 5 lane restriction 20 on lane 1 lane stop time 40 on lane 1 
+link 128 70 category 2 speed 60 kph 
+link 100 4 category 3 speed 60 kph 
+link 88 85 category 3 speed 40 kph 
+link 120 49 category 3 speed 40 kph 
+link 126 66 category 2 speed 60 kph 
+link 65 64 category 3 speed 40 kph 
+link 124 96 category 1 speed 40 kph lanes 3 
+link 123 129 category 5 speed 60 kph lane 1 closed bus lane 1 force exit 
+link 69 65 category 2 
+link 69 72 category 3 speed 40 kph 
+link 130 51 category 1 speed 40 kph lanes 3 force merge force across 
+link 131 95 category 1 speed 40 kph lanes 3 
+link 127 65 category 3 speed 40 kph 
+link 149 51 category 3 speed 40 kph 
+link 150 11 category 3 speed 40 kph 
+link 147 41 category 3 speed 40 kph 
+link 138 42 category 3 speed 40 kph 
+link 133 2 category 3 speed 40 kph 
+link 77 119 category 3 speed 40 kph 
+link 76 46 category 3 speed 40 kph 
+link 46 43 category 3 
+link 46 45 category 3 speed 40 kph lane 1 closed 
+link 139 75 category 3 speed 40 kph 
+link 75 117 category 3 speed 40 kph 
+link 148 43 category 3 speed 40 kph 
+link 74 116 category 3 speed 40 kph lanes 2 
+link 3 92 category 3 speed 40 kph 
+link 87 114 category 3 speed 40 kph 
+link 78 79 category 3 speed 40 kph lane 1 closed 
+link 151 92 category 3 speed 40 kph 
+link 144 27 category 3 speed 60 kph lanes 5 
+link 144 29 category 3 speed 60 kph 
+link 30 101 category 3 speed 40 kph 
+link 58 57 category 3 speed 40 kph lane 1 closed 
+link 152 79 category 3 speed 40 kph 
+link 134 91 category 3 speed 40 kph 
+link 135 91 category 3 speed 40 kph 
+link 153 40 category 3 speed 40 kph lanes 2 
+link 154 47 category 3 speed 40 kph 
+link 155 48 category 3 speed 40 kph 
+link 156 13 category 3 speed 40 kph 
+link 157 50 category 3 speed 40 kph 
+link 158 159 category 3 speed 60 kph lanes 5 
+link 158 108 category 3 speed 60 kph 
+link 159 28 category 3 speed 60 kph lanes 5 
+link 159 158 category 3 speed 60 kph 
+link 160 1 category 3 speed 60 kph 
+link 160 161 category 3 speed 60 kph 
+link 161 165 category 2 speed 20 kph width 12.6 m 
+link 161 160 category 3 speed 60 kph 
+link 161 71 category 3 speed 60 kph 
+link 162 165 category 2 speed 20 kph width 12.6 m 
+link 163 166 category 1 speed 20 kph width 4.5 m 
+link 164 64 category 2 speed 60 kph 
+link 164 166 category 1 speed 20 kph width 4.5 m 
+link 164 67 category 2 speed 60 kph 
+link 165 162 category 2 speed 20 kph width 12.6 m stop time 2 stay in lane 
+link 165 161 category 2 speed 20 kph width 12.6 m force merge force across cost factor 20.000 
+link 166 163 category 1 speed 20 kph width 4.5 m stop time 2 stay in lane 
+link 166 164 category 1 speed 20 kph width 4.5 m 
+link 173 8 category 5 speed 60 kph 
+link 11 145 barred 
+link 11 8 barred arc centre #902 
+link 11 150 barred 
+link 8 13 barred 
+link 8 173 barred 
+link 13 146 barred 
+link 13 156 barred 
+link 12 11 barred 
+link 5 17 barred arc centre #676 
+link 16 141 barred 
+link 16 17 barred arc centre #689 left 
+link 6 5 barred 
+link 14 142 barred 
+link 14 6 barred 
+link 26 16 barred 
+link 26 132 barred 
+link 82 26 barred 
+link 37 82 barred 
+link 37 81 barred 
+link 38 37 barred 
+link 20 21 barred 
+link 20 1 barred arc centre #649 
+link 21 23 barred arc centre #25 left 
+link 23 24 barred 
+link 23 27 barred 
+link 24 26 barred arc centre #4 left 
+link 27 24 barred arc centre #653 
+link 52 53 barred 
+link 1 21 barred arc centre #648 
+link 90 110 barred 
+link 81 80 barred 
+link 81 90 barred 
+link 89 81 barred 
+link 83 89 barred 
+link 83 82 barred 
+link 2 133 barred 
+link 2 83 barred 
+link 39 2 barred 
+link 39 136 barred 
+link 41 39 barred 
+link 41 147 barred 
+link 44 45 barred 
+link 44 41 barred 
+link 47 44 barred 
+link 47 154 barred 
+link 93 111 barred 
+link 80 79 barred 
+link 80 93 barred 
+link 85 88 barred 
+link 84 83 barred 
+link 91 134 barred 
+link 91 135 barred 
+link 40 91 barred 
+link 40 153 barred 
+link 42 40 barred 
+link 42 138 barred 
+link 45 46 barred 
+link 45 42 barred 
+link 48 45 barred 
+link 48 155 barred 
+link 94 79 barred 
+link 79 152 barred 
+link 79 78 barred 
+link 86 92 barred 
+link 86 85 barred 
+link 92 151 barred 
+link 92 3 barred 
+link 73 43 barred 
+link 73 137 barred 
+link 43 46 barred 
+link 43 148 barred 
+link 49 120 barred 
+link 49 48 barred 
+link 64 65 barred 
+link 72 69 barred 
+link 51 130 barred 
+link 51 149 barred 
+link 98 51 barred 
+link 96 124 barred 
+link 50 96 barred 
+link 50 157 barred 
+link 95 131 barred 
+link 31 29 barred 
+link 31 53 barred 
+link 32 31 barred 
+link 33 32 barred 
+link 34 33 barred 
+link 34 56 barred 
+link 35 34 barred 
+link 35 57 barred 
+link 101 30 barred 
+link 57 59 barred 
+link 57 58 barred 
+link 56 60 barred 
+link 56 57 barred 
+link 55 33 barred 
+link 55 56 barred 
+link 54 32 barred 
+link 54 55 barred 
+link 53 63 barred 
+link 53 54 barred 
+link 63 107 barred 
+link 62 54 barred 
+link 61 55 barred 
+link 60 61 barred 
+link 60 104 barred 
+link 59 103 barred 
+link 105 61 barred 
+link 106 62 barred 
+link 141 14 barred 
+link 132 2 barred 
+link 136 16 barred 
+link 137 40 barred 
+link 17 19 barred arc centre #55 left 
+link 19 20 barred arc centre #684 
+link 146 11 barred 
+link 145 12 barred 
+link 109 38 barred 
+link 112 94 barred 
+link 114 87 barred 
+link 116 74 barred 
+link 117 75 barred 
+link 142 13 barred 
+link 143 6 barred 
+link 99 72 barred 
+link 88 80 barred 
+link 88 89 barred 
+link 119 77 barred 
+link 121 48 barred 
+link 122 47 barred 
+link 65 69 barred 
+link 65 127 barred 
+link 125 98 barred 
+link 69 67 barred 
+link 131 50 barred 
+link 149 64 barred 
+link 150 50 barred 
+link 147 14 barred 
+link 138 41 barred 
+link 133 91 barred 
+link 77 49 barred 
+link 76 118 barred 
+link 46 49 barred 
+link 46 76 barred 
+link 139 43 barred 
+link 75 139 barred 
+link 148 42 barred 
+link 74 73 barred 
+link 3 115 barred 
+link 87 86 barred 
+link 78 113 barred 
+link 151 73 barred 
+link 30 35 barred 
+link 58 102 barred 
+link 152 86 barred 
+link 134 92 barred 
+link 135 84 barred 
+link 153 39 barred 
+link 154 11 barred 
+link 155 47 barred 
+link 156 44 barred 
+link 157 51 barred 
+link 173 143 barred 

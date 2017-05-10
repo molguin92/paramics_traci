@@ -1,0 +1,27 @@
+## Author mwhyte
+## Created Date Thu 27. Mar 14:43:45 2008
+## Modified Date Thu 27. Mar 14:43:53 2008
+## Modified By mwhyte
+## Network P:/Installers/InstallerMasterFolder/!DemoNetworks/Demo3
+## Notes 
+
+preset "Las Heras", 2 arms
+phase offset 51.00 sec
+phase 1
+	54.00
+	max 108.00
+red phase 5.00
+all barred except
+from 1 to 1 barred 
+from 1 to 2 major 
+from 2 to 1 major 
+from 2 to 2 barred 
+phase 2
+	36.00
+	max 72.00
+red phase 5.00
+all barred except
+from 1 to 1 barred 
+from 1 to 2 barred 
+from 2 to 1 barred 
+from 2 to 2 barred 
