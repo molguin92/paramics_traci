@@ -12,6 +12,8 @@
 #define POSITION_EPS 0.1f
 #define NUMERICAL_EPS 0.001f
 
+#define RECALCULATE_DELAY_MINS 5
+
 
 namespace traci_api
 {

@@ -18,7 +18,6 @@
 std::thread* runner;
 traci_api::TraCIServer* server;
 
-
 /* checks a string for a matching prefix */
 bool starts_with(std::string const& in_string,
                  std::string const& prefix)
@@ -76,6 +75,7 @@ void runner_fn()
 void qpx_NET_postOpen(void)
 {
     qps_GUI_singleStep(PTRUE);
+    //qps_CLK_singleStep(PTRUE);
     qps_DRW_forceTimeStepRedraw(PFALSE);
     traci_api::infoPrint("TraCI support enabled");
     runner = new std::thread(runner_fn);
@@ -103,4 +103,8 @@ void qpx_VHC_arrive(VEHICLE* vehicle, LINK* link, ZONE* zone)
 void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
 {
     traci_api::VehicleManager::getInstance()->handleLinkChangeTriggers(vehicle, link2);
+}
+
+void qpx_NET_minute()
+{
 }

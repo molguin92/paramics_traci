@@ -8,7 +8,6 @@ namespace traci_api
     class Simulation
     {
     public:
-
         // Command constants:
         // simulation time
         static const uint8_t VAR_SIMTIME = 0x70;
@@ -62,7 +61,6 @@ namespace traci_api
         void getRealNetworkBounds(double& llx, double& lly, double& urx, double& ury);
 
     private:
-
         static Simulation* instance;
         Simulation();
         int stepcnt;

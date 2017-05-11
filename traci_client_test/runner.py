@@ -34,7 +34,7 @@ def run():
 ##    print(str(traci.edge.getIDCount()))
 ##    print(str(traci.junction.getIDList()))
 ##    print(str(traci.junction.getIDCount()))
-    for i in range(0, 7200):
+    for i in range(0, 12100):
         traci.simulationStep()
         traci.simulation.getSubscriptionResults()
         traci.vehicle.getSubscriptionResults()
@@ -68,7 +68,7 @@ def run():
             #print("Vehicle " + vhc + "'s speed: " + str(speed) + "m/s")
             #print("Vehicle " + vhc + "'s position: " + str(position))
         
-        #time.sleep(0.1)
+        #time.sleep(0.2)
     traci.close()
 
 if __name__ == '__main__':

@@ -12,7 +12,7 @@
 
 traci_api::Simulation* traci_api::Simulation::instance = nullptr;
 
-traci_api::Simulation::Simulation(): stepcnt(0)
+traci_api::Simulation::Simulation() : stepcnt(0)
 {
 }
 
@@ -120,7 +120,7 @@ void traci_api::Simulation::getRealNetworkBounds(double& llx, double& lly, doubl
 
 traci_api::Simulation* traci_api::Simulation::getInstance()
 {
-    if (instance == nullptr)
+    if (!instance)
         instance = new Simulation();
 
     return instance;
@@ -145,8 +145,10 @@ int traci_api::Simulation::runSimulation(uint32_t target_timems)
     if (target_timems == 0)
     {
         debugPrint("Running one simulation step...");
-
         qps_GUI_runSimulation();
+        //qps_CLK_makeSingleStep();
+        //qpg_SIM_simulate(0);
+        debugPrint("... Done");
 
         traci_api::VehicleManager::getInstance()->handleDelayedTriggers();
         steps_performed = 1;
