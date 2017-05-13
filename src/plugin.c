@@ -91,18 +91,21 @@ void qpx_NET_reload()
 
 void qpx_VHC_release(VEHICLE* vehicle)
 {
-    traci_api::VehicleManager::getInstance()->vehicleDepart(vehicle);
+    if(qpg_VHC_original(vehicle))
+        traci_api::VehicleManager::getInstance()->vehicleDepart(vehicle);
 }
 
 void qpx_VHC_arrive(VEHICLE* vehicle, LINK* link, ZONE* zone)
 
 {
-    traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
+    if(qpg_VHC_original(vehicle))
+        traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
 }
 
 void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
 {
-    traci_api::VehicleManager::getInstance()->handleLinkChangeTriggers(vehicle, link2);
+    if(qpg_VHC_original(vehicle))
+        traci_api::VehicleManager::getInstance()->handleLinkChangeTriggers(vehicle, link2);
 }
 
 void qpx_NET_minute()
