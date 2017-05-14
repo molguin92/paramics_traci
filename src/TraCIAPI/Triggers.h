@@ -2,7 +2,7 @@
 #include "programmer.h"
 #include <string>
 #include "Simulation.h"
-#include <map>
+#include <unordered_map>
 
 namespace traci_api
 {
@@ -66,38 +66,4 @@ namespace traci_api
         //    int orig_llane;
         //    int orig_hlane;
     };
-
-    class RouteSetTrigger : public BaseTrigger
-    {
-        VEHICLE* vhc;
-        std::map<LINK*, int> exit_map;
-
-    public:
-        RouteSetTrigger(VEHICLE* vhc, std::map<LINK*, int> exit_map) : vhc(vhc), exit_map(exit_map){}
-        void handleTrigger() override;
-        bool repeat() override { return !exit_map.empty(); };
-    };
-
-    /*class VehicleStopTrigger : public BaseTrigger
-    {
-    public:
-        VEHICLE* vhc;
-        LINK* lnk;
-        double position;
-        double sposition;
-        int lane;
-        double duration;
-        bool done;
-
-        VehicleStopTrigger(VEHICLE* vhc, LINK* lnk, double position, int lane, double duration, double sposition) : vhc(vhc), lnk(lnk), position(position), lane(lane), duration(duration), done(false), sposition(sposition)
-        {
-        }
-
-        void handleTrigger() override;
-        bool repeat() override { return !done; }
-
-        ~VehicleStopTrigger() override
-        {
-        };
-    };*/
 }

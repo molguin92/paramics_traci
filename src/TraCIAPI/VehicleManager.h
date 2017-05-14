@@ -168,7 +168,6 @@ namespace traci_api
         void operator=(VehicleManager const&) = delete;
 
         void handleDelayedTriggers();
-        void handleLinkChangeTriggers(VEHICLE* vhc, LINK* lnk);
 
         VEHICLE* findVehicle(int vid) throw(NoSuchObjectError);
         VEHICLE* findVehicle(std::string vid) throw(NoSuchObjectError);
@@ -176,6 +175,8 @@ namespace traci_api
         //types
         void packVhcTypesVariable(tcpip::Storage& input, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError);
         void getVhcTypesVariable(int type_id, uint8_t varID, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError);
+
+        int rerouteVehicle(VEHICLE* vhc, LINK* lnk);
 
     private:
 
@@ -190,8 +191,8 @@ namespace traci_api
         std::unordered_multimap<int, BaseTrigger*> time_triggers;
         std::unordered_map<VEHICLE*, SpeedSetTrigger*> speed_set_triggers;
         std::unordered_map<VEHICLE*, LaneSetTrigger*> lane_set_triggers;
-        std::unordered_map<VEHICLE*, RouteSetTrigger*> route_set_triggers;
 
+        std::unordered_map<VEHICLE*, std::unordered_map<LINK*, int>> vhc_routes;
 
 
         std::mutex trigger_mutex;

@@ -30,15 +30,18 @@ def run():
     traci.simulation.subscribe([112, 115])
     traci.vehicle.subscribe("x",[0])
 
-    for i in range(0, 100):
+    for i in range(0, 10000):
         traci.simulationStep()
         car_list = traci.vehicle.getSubscriptionResults("x")[0]
+        ##print(car_list)
+        ##print(traci.vehicle.getIDList())
         for car in car_list:
             current_road = traci.vehicle.getRoadID(car)
             if (current_road == new_route[0]) and (car not in affected_cars):
+                print("route change for " + str(car))
                 traci.vehicle.setRoute(car, new_route)
                 affected_cars.append(car)
-        time.sleep(0.1)
+        #time.sleep(0.1)
     traci.close()
 
 if __name__ == '__main__':

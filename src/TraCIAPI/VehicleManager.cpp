@@ -3,6 +3,7 @@
 #include <string>
 #include "Simulation.h"
 #include "Exceptions.h"
+#include <map>
 
 /* null singleton */
 traci_api::VehicleManager* traci_api::VehicleManager::instance = nullptr;
@@ -207,8 +208,6 @@ void traci_api::VehicleManager::getVehicleVariable(std::string vid, uint8_t varI
 
 void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
 {
-    //TODO: implement route change message!
-
     uint8_t varID = input.readUnsignedByte();
 
     switch (varID)
@@ -377,6 +376,43 @@ void traci_api::VehicleManager::getVhcTypesVariable(int type_id, uint8_t varID, 
     }
 }
 
+int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
+{
+    // check if the vehicle has a special route
+    std::unordered_map<LINK*, int> exit_map;
+    try
+    {
+        exit_map = vhc_routes.at(vhc);
+    }
+    catch(std::out_of_range&)
+    {
+        // no special route, return default
+        return 0;
+    }
+
+    if (exit_map.size() == 0)
+    {
+        vhc_routes.erase(vhc);
+        return 0;
+    }
+
+    int next_exit = 0;
+    try
+    {
+        next_exit = exit_map.at(lnk);
+        exit_map.erase(lnk);
+    }
+    catch (std::out_of_range&)
+    {
+        // outside route, clear 
+        exit_map.clear();
+    }
+
+    if (exit_map.size() == 0)
+        vhc_routes.erase(vhc);
+    return next_exit;
+}
+
 traci_api::VehicleManager::VehicleManager()
 {
     int type_n = qpg_NET_vehicleTypes();
@@ -459,23 +495,6 @@ void traci_api::VehicleManager::handleDelayedTriggers()
     }
 
     debugPrint("Handling vehicle triggers: done");
-}
-
-/**
- * \brief Here we handle triggers like changing routes, etc.
- */
-void traci_api::VehicleManager::handleLinkChangeTriggers(VEHICLE* vhc, LINK* lnk)
-{
-    std::lock_guard<std::mutex> lock(trigger_mutex);
-    try
-    {
-        RouteSetTrigger* trigger = route_set_triggers.at(vhc);
-        trigger->handleTrigger();
-        if (!trigger->repeat())
-            route_set_triggers.erase(vhc);
-    }
-    catch(std::out_of_range& e)
-    {}
 }
 
 
@@ -1000,7 +1019,7 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
         
 
     /* for each edge, find the next exit corresponding to the next edge */
-    std::map<LINK*, int> exit_map;
+    std::unordered_map<LINK*, int> exit_map;
     for (int i = 0; i < edges.size() - 1; i++)
     {
         std::string edge_a = edges[i];
@@ -1020,13 +1039,10 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
         exit_map[link_a] = findExit(junction, link_b);
     }
 
-    /* program the route, and execute the first change */
-    RouteSetTrigger* trigger = new RouteSetTrigger(vhc, exit_map);
-    trigger->handleTrigger();
+    /* program the route */
+    vhc_routes[vhc] = exit_map;
 
-    if (trigger->repeat())
-    {
-        std::lock_guard<std::mutex> lock(trigger_mutex);
-        route_set_triggers[vhc] = trigger;
-    }
+    /* tell paramics to reevaluate route */
+    qps_VHC_destination(vhc, 0, 0);
+
 }

@@ -51,12 +51,3 @@ bool traci_api::LaneSetTrigger::repeat()
     }
     else return true;
 }
-
-void traci_api::RouteSetTrigger::handleTrigger()
-{
-    LINK* current_link = qpg_VHC_link(vhc);
-    int next_exit = exit_map[current_link];
-    qps_VHC_nextlink(vhc, next_exit);
-
-    exit_map.erase(current_link);
-}

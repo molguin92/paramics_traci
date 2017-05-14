@@ -97,19 +97,22 @@ void qpx_NET_close()
 
 void qpx_VHC_release(VEHICLE* vehicle)
 {
-    if(qpg_VHC_original(vehicle))
-        traci_api::VehicleManager::getInstance()->vehicleDepart(vehicle);
+    traci_api::VehicleManager::getInstance()->vehicleDepart(vehicle);
 }
 
 void qpx_VHC_arrive(VEHICLE* vehicle, LINK* link, ZONE* zone)
 
 {
-    if(qpg_VHC_original(vehicle))
-        traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
+    traci_api::VehicleManager::getInstance()->vehicleArrive(vehicle);
 }
 
-void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
+// routing through TraCI
+Bool qpo_RTM_enable(void)
 {
-    if(qpg_VHC_original(vehicle))
-        traci_api::VehicleManager::getInstance()->handleLinkChangeTriggers(vehicle, link2);
+    return PTRUE;
+}
+
+int qpo_RTM_decision(LINK *linkp, VEHICLE *Vp)
+{
+    return traci_api::VehicleManager::getInstance()->rerouteVehicle(Vp, linkp);
 }
