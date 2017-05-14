@@ -19,7 +19,7 @@
  * \brief Standard constructor.
  * \param port The port on which the server should listen for incoming requests.
  */
-traci_api::TraCIServer::TraCIServer(int port): ssocket(port), running(false), port(port)
+traci_api::TraCIServer::TraCIServer(int port): ssocket(port), incoming_size(0), running(false), port(port), multiple_timestep(false), target_time(0)
 {
     ssocket.set_blocking(true);
 }
@@ -39,12 +39,16 @@ void traci_api::TraCIServer::run()
     running = true;
     std::string version_str = "Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion());
     infoPrint(version_str);
-    infoPrint("Awaiting connections on port " + std::to_string(port));
     infoPrint("Timestep size: " + std::to_string(static_cast<int>(qpg_CFG_timeStep() * 1000.0f)) + "ms");
     infoPrint("Simulation start time: " + std::to_string(Simulation::getInstance()->getCurrentTimeMilliseconds()) + "ms");
-    ssocket.accept();
+    infoPrint("Awaiting connections on port " + std::to_string(port));
+
+    {
+        std::lock_guard<std::mutex> lock(socket_lock);
+        ssocket.accept();
+    }
+
     infoPrint("Accepted connection");
-    this->waitForCommands();
 }
 
 /**
@@ -58,28 +62,35 @@ void traci_api::TraCIServer::close()
 }
 
 
-/**
- * \brief Waits for incomming commands on the TCP socket.
- */
-void traci_api::TraCIServer::waitForCommands()
+void traci_api::TraCIServer::preStep()
 {
-    tcpip::Storage incoming; // the whole incoming message
+    std::lock_guard<std::mutex> lock(socket_lock);
+    if (multiple_timestep && Simulation::getInstance()->getCurrentTimeMilliseconds() < target_time)
+    {
+        VehicleManager::getInstance()->reset();
+        return;
+    }
+
+    multiple_timestep = false;
+    target_time = 0;
+
+    
     tcpip::Storage cmdStore; // individual commands in the message
 
-    debugPrint("Waiting for incoming commands from TraCI client...");
+    debugPrint("Waiting for incoming commands from the TraCI client...");
 
-    /* While the connection is open, receive commands from the client */
+    // receive and parse messages until we get a simulation step command
     while (running && ssocket.receiveExact(incoming))
     {
-        auto msize = incoming.size();
+        incoming_size = incoming.size();
 
-        debugPrint("Got message of length " + std::to_string(msize));
+        debugPrint("Got message of length " + std::to_string(incoming_size));
         //debugPrint("Incoming: " + incoming.hexDump());
 
 
-        /* Multiple commands may arrive at once in one message, 
-         * divide them into multiple storages for easy handling */
-        while (msize > 0 && incoming.valid_pos())
+        /* Multiple commands may arrive at once in one message,
+        * divide them into multiple storages for easy handling */
+        while (incoming_size > 0 && incoming.valid_pos())
         {
             uint8_t cmdlen = incoming.readUnsignedByte();
             cmdStore.writeUnsignedByte(cmdlen);
@@ -90,22 +101,80 @@ void traci_api::TraCIServer::waitForCommands()
             for (uint8_t i = 0; i < cmdlen - 1; i++)
                 cmdStore.writeUnsignedByte(incoming.readUnsignedByte());
 
-            this->parseCommand(cmdStore);
+            bool simstep = this->parseCommand(cmdStore);
             cmdStore.reset();
+
+            // if the received command was a simulation step command, return so that 
+            // Paramics can do its thing.
+            if (simstep)
+                return;
         }
 
         this->sendResponse();
         incoming.reset();
         outgoing.reset();
-        debugPrint("------ waiting for commands ------");
     }
+}
+
+void traci_api::TraCIServer::postStep()
+{
+    // after each step, have VehicleManager update its internal state
+    VehicleManager::getInstance()->handleDelayedTriggers();
+
+    if (multiple_timestep && Simulation::getInstance()->getCurrentTimeMilliseconds() < target_time)
+        return;
+
+    // after a finishing a simulation step command (completely), collect subscription results and 
+    // check if there are commands remaining in the incoming storage
+    this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
+
+    // handle subscriptions after simstep command
+    tcpip::Storage subscriptions;
+    this->processSubscriptions(subscriptions);
+    outgoing.writeStorage(subscriptions);
+
+    // finish parsing the message we got before the simstep command
+    tcpip::Storage cmdStore;
+    /* Multiple commands may arrive at once in one message,
+    * divide them into multiple storages for easy handling */
+    while (incoming_size > 0 && incoming.valid_pos())
+    {
+        uint8_t cmdlen = incoming.readUnsignedByte();
+        cmdStore.writeUnsignedByte(cmdlen);
+
+        debugPrint("Got command of length " + std::to_string(cmdlen));
+
+
+        for (uint8_t i = 0; i < cmdlen - 1; i++)
+            cmdStore.writeUnsignedByte(incoming.readUnsignedByte());
+
+        bool simstep = this->parseCommand(cmdStore);
+        cmdStore.reset();
+
+        // weird, two simstep commands in one message?
+        if (simstep)
+        {
+            if(!multiple_timestep)
+            {
+                multiple_timestep = true;
+                target_time = Simulation::getInstance()->getCurrentTimeMilliseconds() + Simulation::getInstance()->getTimeStepSizeMilliseconds();
+            }
+            return;
+        }
+    }
+
+    // finally, send response and return
+    std::lock_guard<std::mutex> lock(socket_lock);
+    this->sendResponse();
+    incoming.reset();
+    outgoing.reset();
 }
 
 /**
  * \brief Parses an incoming command according to the TraCI protocol specifications.
  * \param storage A tcpip::Storage object which contains a single TraCI command.
  */
-void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
+bool traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
 {
     debugPrint("Parsing command");
 
@@ -162,9 +231,16 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
         case CMD_SIMSTEP:
 
             debugPrint("Got CMD_SIMSTEP");
-
-            this->cmdSimStep(storage.readInt());
-            break;
+            {
+                int ttime = storage.readInt();
+                if (ttime != 0 && ttime > Simulation::getInstance()->getCurrentTimeMilliseconds())
+                {
+                    this->multiple_timestep = true;
+                    this->target_time = ttime;
+                }
+            }
+            VehicleManager::getInstance()->reset();
+            return true;
 
         case CMD_SHUTDOWN:
 
@@ -216,6 +292,8 @@ void traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
             writeStatusResponse(cmdId, STATUS_NIMPL, "Method not implemented.");
         }
     }
+
+    return false;
 }
 
 /**
@@ -428,24 +506,6 @@ void traci_api::TraCIServer::cmdShutDown()
     running = false;
 }
 
-
-/**
- * \brief Runs the simulation.
- * \param target_time The target simulation time. If 0, executes exactly one timestep; if less than the current time, does nothing.
- */
-void traci_api::TraCIServer::cmdSimStep(int target_time)
-{
-    tcpip::Storage subs_store;
-
-    if (Simulation::getInstance()->runSimulation(target_time) >= 0)
-        this->writeStatusResponse(CMD_SIMSTEP, STATUS_OK, "");
-
-    // handle subscriptions after simstep command
-    tcpip::Storage subscriptions;
-    this->processSubscriptions(subscriptions);
-    outgoing.writeStorage(subscriptions);
-}
-
 /**
  * \brief Gets a variable from the simulation.
  * \param simvar ID of the interal simulation variable to fetch.
@@ -461,7 +521,7 @@ void traci_api::TraCIServer::cmdGetSimVar(uint8_t simvar)
     }
     else
     {
-        this->writeStatusResponse(CMD_GETSIMVAR, STATUS_NIMPL, ""); // TODO: Cover errors as well!
+        this->writeStatusResponse(CMD_GETSIMVAR, STATUS_NIMPL, "");
     }
 }
 

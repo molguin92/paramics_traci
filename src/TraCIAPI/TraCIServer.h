@@ -17,17 +17,28 @@ namespace traci_api
         void run();
         void close();
 
+        // lockstep methods
+        void preStep();
+        void postStep();
+
     private:
 
         tcpip::Socket ssocket;
+        // in/out storages
         tcpip::Storage outgoing;
+        tcpip::Storage incoming;
+        size_t incoming_size;
+
+        // timestep params
+        bool multiple_timestep;
+        int target_time;
+
         bool running;
         int port;
         std::vector<VariableSubscription*> subs;
 
+        std::mutex socket_lock;
 
-        void waitForCommands();
-        void cmdSimStep(int target_time);
         void cmdGetSimVar(uint8_t simvar);
         void cmdGetVhcVar(tcpip::Storage& input);
         void cmdGetNetworkVar(tcpip::Storage& input, uint8_t cmdid);
@@ -35,7 +46,7 @@ namespace traci_api
         void cmdGetPolygonVar(tcpip::Storage& input);
         void cmdGetVtpVar(tcpip::Storage& input);
 
-        void parseCommand(tcpip::Storage& storage);
+        bool parseCommand(tcpip::Storage& storage);
         void writeStatusResponse(uint8_t cmdId, uint8_t cmdStatus, std::string description);
         void writeVersion();
         void sendResponse();

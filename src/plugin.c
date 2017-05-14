@@ -59,12 +59,10 @@ void runner_fn()
 
         server = new traci_api::TraCIServer(port);
         server->run();
-        server->close();
-        delete(server);
     }
     catch (std::exception& e)
     {
-        traci_api::debugPrint("Uncaught exception in server thread.");
+        traci_api::debugPrint("Uncaught while initializing server.");
         traci_api::debugPrint(e.what());
         traci_api::debugPrint("Exiting...");
         throw;
@@ -74,13 +72,21 @@ void runner_fn()
 // Called once after the network is loaded.
 void qpx_NET_postOpen(void)
 {
-    qps_GUI_singleStep(PTRUE);
-    //qps_CLK_singleStep(PTRUE);
-    qps_DRW_forceTimeStepRedraw(PFALSE);
+    qps_GUI_singleStep(PFALSE);
     traci_api::infoPrint("TraCI support enabled");
     runner = new std::thread(runner_fn);
-    //runner_fn();
 }
+
+void qpx_CLK_startOfSimLoop(void)
+{
+    server->preStep();
+}
+
+void qpx_CLK_endOfSimLoop(void)
+{
+    server->postStep();
+}
+
 
 void qpx_NET_reload()
 {
@@ -106,8 +112,4 @@ void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
 {
     if(qpg_VHC_original(vehicle))
         traci_api::VehicleManager::getInstance()->handleLinkChangeTriggers(vehicle, link2);
-}
-
-void qpx_NET_minute()
-{
 }

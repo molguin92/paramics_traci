@@ -38,15 +38,14 @@ def run():
         traci.simulationStep()
         traci.simulation.getSubscriptionResults()
         traci.vehicle.getSubscriptionResults()
-##        print(str(traci.simulation.getCurrentTime()))
-##        print("Current SIM time: " + str(traci.simulation.getCurrentTime()))
-##        print("N Departed vehicles: " + str(traci.simulation.getDepartedNumber()))
-##        print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))
+        print("Current SIM time: " + str(traci.simulation.getCurrentTime()))
+        print("N Departed vehicles: " + str(traci.simulation.getDepartedNumber()))
+        print("N Arrived vehicles: " + str(traci.simulation.getArrivedNumber()))
 ##        dep = traci.simulation.getDepartedIDList()
 ##        arr = traci.simulation.getArrivedIDList()
-##        total_c = traci.vehicle.getIDCount()
-##        total_l = traci.vehicle.getIDList()
-##        total_l.sort()
+        total_c = traci.vehicle.getIDCount()
+        total_l = traci.vehicle.getIDList()
+        total_l.sort()
 ##
 ##        for v in dep:
 ##            traci.vehicle.changeLane(v, 5, 10000)
@@ -57,8 +56,8 @@ def run():
         
 ##        print("Departed: " + str(dep))
 ##        print("Arrived: " + str(arr))
-##        print("N Total: " + str(total_c))
-##        print("Total: " + str(total_l))
+        print("N Total: " + str(total_c))
+        print("Total: " + str(total_l))
 
         #if len(total_l) > 0:
             #vhc = random.choice(total_l)
