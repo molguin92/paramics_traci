@@ -27,8 +27,6 @@ traci_api::TraCIServer::TraCIServer(int port): ssocket(port), incoming_size(0), 
 
 traci_api::TraCIServer::~TraCIServer()
 {
-    VehicleManager::deleteInstance();
-    debugPrint("Server succesfully shut down");
 }
 
 /**
@@ -59,6 +57,12 @@ void traci_api::TraCIServer::close()
     debugPrint("Closing connections");
     running = false;
     ssocket.close();
+
+    VehicleManager::deleteInstance();
+    for (auto i : subs)
+        delete i;
+
+    debugPrint("Server succesfully shut down");
 }
 
 
@@ -165,6 +169,13 @@ void traci_api::TraCIServer::postStep()
 
     // finally, send response and return
     std::lock_guard<std::mutex> lock(socket_lock);
+    if (!running)
+    {
+        // got shutdown command, gg bai bai
+        qps_SIM_close();
+        return;
+    }
+
     this->sendResponse();
     incoming.reset();
     outgoing.reset();
@@ -503,7 +514,8 @@ void traci_api::TraCIServer::cmdShutDown()
     debugPrint("Got shutdown command, acknowledging and shutting down");
 
     this->writeStatusResponse(CMD_SHUTDOWN, STATUS_OK, "");
-    running = false;
+    this->sendResponse();
+    this->close();
 }
 
 /**

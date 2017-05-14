@@ -88,11 +88,11 @@ void qpx_CLK_endOfSimLoop(void)
 }
 
 
-void qpx_NET_reload()
+void qpx_NET_close()
 {
-    server->close();
     runner->join();
-    //qpx_NET_postOpen();
+    delete server;
+    delete runner;
 }
 
 void qpx_VHC_release(VEHICLE* vehicle)

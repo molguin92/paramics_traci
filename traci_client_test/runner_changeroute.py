@@ -30,7 +30,7 @@ def run():
     traci.simulation.subscribe([112, 115])
     traci.vehicle.subscribe("x",[0])
 
-    for i in range(0, 1000):
+    for i in range(0, 100):
         traci.simulationStep()
         car_list = traci.vehicle.getSubscriptionResults("x")[0]
         for car in car_list:
