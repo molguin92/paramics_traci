@@ -384,7 +384,7 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     {
         exit_map = vhc_routes.at(vhc);
     }
-    catch(std::out_of_range& e)
+    catch (std::out_of_range& e)
     {
         // no special route, return default
         return 0;
@@ -416,6 +416,20 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     return next_exit;
 }
 
+void traci_api::VehicleManager::routeReEval(VEHICLE* vhc)
+{
+    try
+    {
+        // if car has a custom route, we need to re-eval at each link transfer
+        // otherwise do nothing
+        vhc_routes.at(vhc);
+        qps_VHC_destination(vhc, 0, 0);
+    }
+    catch (std::out_of_range& e)
+    {
+    }
+}
+
 traci_api::VehicleManager::VehicleManager()
 {
     int type_n = qpg_NET_vehicleTypes();
@@ -433,7 +447,7 @@ traci_api::VehicleManager::VehicleManager()
 int traci_api::VehicleManager::findExit(NODE* node, LINK* exit_link) throw(NoSuchObjectError)
 {
     int n_exits = qpg_NDE_exitLinks(node);
-    for(int i = 1; i <= n_exits; i++)
+    for (int i = 1; i <= n_exits; i++)
     {
         LINK* current_exit = qpg_NDE_link(node, i);
         if (current_exit == exit_link) return i;
@@ -641,30 +655,28 @@ int traci_api::VehicleManager::getLaneIndex(std::string vid) throw(NoSuchObjectE
 
 std::vector<std::string> traci_api::VehicleManager::getRouteEdges(std::string vid) throw(NoSuchObjectError)
 {
-    // return next two edges (and current one as well)
+    // get current and next two edges
+
     VEHICLE* vhc = findVehicle(vid);
-    LINK* current_lnk = qpg_VHC_link(vhc);
-    int table = qpg_VHC_routeTable(vhc);
-    int destination = qpg_VHC_destination(vhc);
-    int pert = qpg_VHC_perturbation(vhc);
-
-    int next_exit = qpg_RTR_nextLinkIndex(current_lnk, destination, table, pert);
-    NODE* next_node = qpg_LNK_nodeEnd(current_lnk);
-    LINK* next_lnk = qpg_NDE_link(next_node, next_exit);
-
-    int next_next_exit = qpg_RTR_nextLinkIndex(next_lnk, destination, table, pert);
-    NODE* next_next_node = qpg_LNK_nodeEnd(next_lnk);
-    LINK* next_next_lnk = qpg_NDE_link(next_next_node, next_next_exit);
-
     std::vector<std::string> result;
+    LINK* current_link = qpg_VHC_link(vhc);
 
-    result.push_back(qpg_LNK_name(current_lnk));
+    result.push_back(qpg_LNK_name(current_link));
 
-    if(next_lnk)
-        result.push_back(qpg_LNK_name(next_lnk));
+    int next_exit = qpg_VHC_nextExit(vhc);
+    LINK* next_link = qpg_NDE_link(qpg_LNK_nodeEnd(current_link), next_exit);
 
-    if (next_next_lnk)
-        result.push_back(qpg_LNK_name(next_next_lnk));
+    if(next_link)
+    {
+        result.push_back(qpg_LNK_name(next_link));
+
+        int next_next_exit = qpg_VHC_nextNextExit(vhc);
+        LINK* next_next_link = qpg_NDE_link(qpg_LNK_nodeEnd(next_link), next_next_exit);
+
+        if (next_next_link)
+            result.push_back(qpg_LNK_name(next_next_link));
+
+    }
 
     return result;
 }
@@ -889,7 +901,7 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
     debugPrint("Changing Vehicle route");
 
     std::vector<std::string> edges;
-    if(!readTypeCheckingStringList(input, edges))
+    if (!readTypeCheckingStringList(input, edges))
         throw std::runtime_error("Malformed TraCI message");
 
     /* first, find current edge for the vehicle, and find it in the given list
@@ -913,7 +925,7 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
         debugPrint("Invalid route: could not find current edge");
         throw std::runtime_error("Invalid route: could not find current edge");
     }
-        
+
 
     /* for each edge, find the next exit corresponding to the next edge */
     std::unordered_map<LINK*, int> exit_map;
@@ -941,5 +953,4 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
 
     /* tell paramics to reevaluate route */
     qps_VHC_destination(vhc, 0, 0);
-
 }

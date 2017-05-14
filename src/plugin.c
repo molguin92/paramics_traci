@@ -129,5 +129,5 @@ int qpo_RTM_decision(LINK *linkp, VEHICLE *Vp)
 
 void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
 {
-    qps_VHC_destination(vehicle, 0, 0);
+    traci_api::VehicleManager::getInstance()->routeReEval(vehicle);
 }

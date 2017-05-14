@@ -177,6 +177,7 @@ namespace traci_api
         void getVhcTypesVariable(int type_id, uint8_t varID, tcpip::Storage& output) throw(std::runtime_error, NotImplementedError);
 
         int rerouteVehicle(VEHICLE* vhc, LINK* lnk);
+        void routeReEval(VEHICLE* vhc);
 
     private:
 
