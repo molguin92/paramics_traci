@@ -384,7 +384,7 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     {
         exit_map = vhc_routes.at(vhc);
     }
-    catch(std::out_of_range&)
+    catch(std::out_of_range& e)
     {
         // no special route, return default
         return 0;
@@ -393,6 +393,7 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     if (exit_map.size() == 0)
     {
         vhc_routes.erase(vhc);
+        //qps_DRW_vehicleColour(vhc, 0xffffff);
         return 0;
     }
 
@@ -401,11 +402,13 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     {
         next_exit = exit_map.at(lnk);
         exit_map.erase(lnk);
+        //qps_DRW_vehicleColour(vhc, 0xff00ff);
     }
-    catch (std::out_of_range&)
+    catch (std::out_of_range& e)
     {
         // outside route, clear 
         exit_map.clear();
+        //qps_DRW_vehicleColour(vhc, 0xffffff);
     }
 
     if (exit_map.size() == 0)
@@ -548,19 +551,19 @@ std::vector<std::string> traci_api::VehicleManager::getArrivedVehicles()
     return ids;
 }
 
-int traci_api::VehicleManager::getDepartedVehicleCount()
+int traci_api::VehicleManager::getDepartedVehicleCount() const
 {
     //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     return departed_vehicles.size();
 }
 
-int traci_api::VehicleManager::getArrivedVehicleCount()
+int traci_api::VehicleManager::getArrivedVehicleCount() const
 {
     //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     return arrived_vehicles.size();
 }
 
-int traci_api::VehicleManager::currentVehicleCount()
+int traci_api::VehicleManager::currentVehicleCount() const
 {
     //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     return vehicles_in_sim.size();
@@ -640,22 +643,28 @@ std::vector<std::string> traci_api::VehicleManager::getRouteEdges(std::string vi
 {
     // return next two edges (and current one as well)
     VEHICLE* vhc = findVehicle(vid);
-    int next_exit = qpg_VHC_nextExit(vhc);
-    int next_next_exit = qpg_VHC_nextNextExit(vhc);
+    LINK* current_lnk = qpg_VHC_link(vhc);
+    int table = qpg_VHC_routeTable(vhc);
+    int destination = qpg_VHC_destination(vhc);
+    int pert = qpg_VHC_perturbation(vhc);
 
-    LINK* current_link = qpg_VHC_link(vhc);
+    int next_exit = qpg_RTR_nextLinkIndex(current_lnk, destination, table, pert);
+    NODE* next_node = qpg_LNK_nodeEnd(current_lnk);
+    LINK* next_lnk = qpg_NDE_link(next_node, next_exit);
 
-    NODE* next_node = qpg_LNK_nodeEnd(current_link);
-    LINK* next_link = qpg_NDE_link(next_node, next_exit);
-
-    NODE* next_next_node = qpg_LNK_nodeEnd(next_link);
-    LINK* next_next_link = qpg_NDE_link(next_next_node, next_next_exit);
+    int next_next_exit = qpg_RTR_nextLinkIndex(next_lnk, destination, table, pert);
+    NODE* next_next_node = qpg_LNK_nodeEnd(next_lnk);
+    LINK* next_next_lnk = qpg_NDE_link(next_next_node, next_next_exit);
 
     std::vector<std::string> result;
 
-    result.push_back(qpg_LNK_name(current_link));
-    result.push_back(qpg_LNK_name(next_link));
-    result.push_back(qpg_LNK_name(next_next_link));
+    result.push_back(qpg_LNK_name(current_lnk));
+
+    if(next_lnk)
+        result.push_back(qpg_LNK_name(next_lnk));
+
+    if (next_next_lnk)
+        result.push_back(qpg_LNK_name(next_next_lnk));
 
     return result;
 }
@@ -664,118 +673,6 @@ std::string traci_api::VehicleManager::getVehicleType(std::string vid) throw(NoS
 {
     return std::to_string(qpg_VHC_type(this->findVehicle(vid)));
 }
-
-//void traci_api::VehicleManager::stopVehicle(tcpip::Storage& input) throw(NoSuchObjectError, NoSuchObjectError, std::runtime_error)
-//{
-//    ///* stop message format
-//    // * 
-//    // * | type: compound | byte
-//    // * | items: 4 to 7	| int
-//    // * ------------------
-//    // * | type: string	| byte
-//    // * | edge id		| string
-//    // * ------------------
-//    // * | type: double	| byte
-//    // * | end position	| double
-//    // * ------------------
-//    // * | type: byte		| byte
-//    // * | lane index		| byte
-//    // * ------------------
-//    // * | type: int		| byte
-//    // * | duration(ms)	| int
-//    // * -----optional-----
-//    // * | type:  byte	| byte
-//    // * | stopflags		| byte 
-//    // * /
-//
-//    ///* extract message information and check types */
-//    //std::string vhcid = input.readString();
-//
-//    //if (input.readUnsignedByte() != VTYPE_COMPOUND)
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    //int c_items = input.readInt();
-//    //if (c_items < 4 || c_items > 7)
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    //std::string roadID = "";
-//    //if (!readTypeCheckingString(input, roadID))
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    //double position = 0.0;
-//    //if (!readTypeCheckingDouble(input, position))
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    //int8_t lane = 0;
-//    //if (!readTypeCheckingByte(input, lane))
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    //int duration = -1;
-//    //if (!readTypeCheckingInt(input, duration))
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    ///*
-//    // * optional flags:
-//    // * 
-//    // *	1 : parking
-//    // *	2 : triggered
-//    // *	4 : containerTriggered
-//    // *	8 : busStop (Edge ID is re-purposed as busStop ID)
-//    // *	16 : containerStop (Edge ID is re-purposed as containerStop ID)
-//    // *	32 : chargingStation (Edge ID is re-purposed as chargingStation ID)
-//    // *	64 : parkingArea (Edge ID is re-purposed as parkingArea ID)
-//    // */
-//
-//    //bool parking = false,
-//    //    triggered = false,
-//    //    contTriggered = false,
-//    //    busStop = false,
-//    //    contStop = false,
-//    //    chargStation = false,
-//    //    parkingArea = false;
-//
-//    //if (c_items >= 5) // message includes flags
-//    //{
-//    //    int8_t flags = 0;
-//    //    if (!readTypeCheckingByte(input, flags))
-//    //        throw std::runtime_error("Malformed TraCI message");
-//
-//    //    parking = ((flags & 1) != 0);
-//    //    triggered = ((flags & 2) != 0);
-//    //    contTriggered = ((flags & 4) != 0);
-//    //    busStop = ((flags & 8) != 0);
-//    //    contStop = ((flags & 16) != 0);
-//    //    chargStation = ((flags & 32) != 0);
-//    //    parkingArea = ((flags & 64) != 0);
-//    //}
-//
-//    //double start_position = position - POSITION_EPS;
-//    //if (c_items >= 6 && !readTypeCheckingDouble(input, start_position))
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    //int endtime = -1;
-//    //if (c_items == 7 && !readTypeCheckingInt(input, endtime))
-//    //    throw std::runtime_error("Malformed TraCI message");
-//
-//    //// TODO: special behavior for bus and container stops
-//
-//    //// check validity of parameters
-//    //VEHICLE* vhc = findVehicle(std::stoi(vhcid));
-//
-//    //LINK* lnk = qpg_NET_link(&roadID[0u]);
-//    //if (!lnk)
-//    //    throw NoSuchObjectError(roadID);
-//
-//    //if (start_position < 0)
-//    //    throw std::runtime_error("Position should be greater than 0");
-//
-//    //if (position < start_position)
-//    //    throw std::runtime_error("Final position should be greater than start position");
-//
-//    //int n_lanes = qpg_LNK_lanes(lnk);
-//    //if (lane < 1 || lane > n_lanes)
-//    //    throw std::runtime_error("Lane index outside the range for this road. Number of lanes: " + std::to_string(n_lanes));
-//}
 
 void traci_api::VehicleManager::changeLane(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)
 {

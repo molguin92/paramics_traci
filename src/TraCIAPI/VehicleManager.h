@@ -136,10 +136,10 @@ namespace traci_api
 
         std::vector<std::string> getDepartedVehicles();
         std::vector<std::string> getArrivedVehicles();
-        int getDepartedVehicleCount();
-        int getArrivedVehicleCount();
+        int getDepartedVehicleCount() const;
+        int getArrivedVehicleCount() const;
 
-        int currentVehicleCount();
+        int currentVehicleCount() const;
         std::vector<std::string> getVehiclesInSim();
 
         float getSpeed(std::string vid) throw(NoSuchObjectError);
