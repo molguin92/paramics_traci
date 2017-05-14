@@ -86,7 +86,7 @@ void qpx_NET_reload()
 {
     server->close();
     runner->join();
-    qpx_NET_postOpen();
+    //qpx_NET_postOpen();
 }
 
 void qpx_VHC_release(VEHICLE* vehicle)
