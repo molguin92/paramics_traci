@@ -195,8 +195,8 @@ namespace traci_api
         std::unordered_map<VEHICLE*, std::unordered_map<LINK*, int>> vhc_routes;
 
 
-        std::mutex trigger_mutex;
-        std::mutex vhc_lists_mutex;
+        //std::mutex trigger_mutex;
+        //std::mutex vhc_lists_mutex;
 
         std::unordered_map<int, VEHICLE*> vehicles_in_sim;
         std::vector<VEHICLE*> departed_vehicles;

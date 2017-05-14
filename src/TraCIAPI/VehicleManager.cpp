@@ -30,7 +30,7 @@ void traci_api::VehicleManager::deleteInstance()
 void traci_api::VehicleManager::reset()
 {
     // clear temporary lists for a new timestep
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     departed_vehicles.clear();
     arrived_vehicles.clear();
 }
@@ -274,7 +274,7 @@ void traci_api::VehicleManager::setVehicleState(tcpip::Storage& input)
  */
 VEHICLE* traci_api::VehicleManager::findVehicle(int vid) throw(NoSuchObjectError)
 {
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     auto iterator = vehicles_in_sim.find(vid);
     if (iterator == vehicles_in_sim.end())
         throw NoSuchObjectError(std::to_string(vid));
@@ -445,7 +445,7 @@ int traci_api::VehicleManager::findExit(NODE* node, LINK* exit_link) throw(NoSuc
  */
 void traci_api::VehicleManager::handleDelayedTriggers()
 {
-    std::lock_guard<std::mutex> lock(trigger_mutex);
+    //std::lock_guard<std::mutex> lock(trigger_mutex);
 
     // first handle one-time, time-triggered events
     int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
@@ -504,7 +504,7 @@ void traci_api::VehicleManager::handleDelayedTriggers()
  */
 void traci_api::VehicleManager::vehicleDepart(VEHICLE* vehicle)
 {
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     departed_vehicles.push_back(vehicle);
     vehicles_in_sim[qpg_VHC_uniqueID(vehicle)] = vehicle;
 }
@@ -515,7 +515,7 @@ void traci_api::VehicleManager::vehicleDepart(VEHICLE* vehicle)
  */
 void traci_api::VehicleManager::vehicleArrive(VEHICLE* vehicle)
 {
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     arrived_vehicles.push_back(vehicle);
     vehicles_in_sim.erase(qpg_VHC_uniqueID(vehicle));
 }
@@ -527,7 +527,7 @@ void traci_api::VehicleManager::vehicleArrive(VEHICLE* vehicle)
 std::vector<std::string> traci_api::VehicleManager::getDepartedVehicles()
 {
     std::vector<std::string> ids;
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     for (VEHICLE* v : departed_vehicles)
         ids.push_back(std::to_string(qpg_VHC_uniqueID(v)));
 
@@ -541,7 +541,7 @@ std::vector<std::string> traci_api::VehicleManager::getDepartedVehicles()
 std::vector<std::string> traci_api::VehicleManager::getArrivedVehicles()
 {
     std::vector<std::string> ids;
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     for (VEHICLE* v : arrived_vehicles)
         ids.push_back(std::to_string(qpg_VHC_uniqueID(v)));
 
@@ -550,26 +550,26 @@ std::vector<std::string> traci_api::VehicleManager::getArrivedVehicles()
 
 int traci_api::VehicleManager::getDepartedVehicleCount()
 {
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     return departed_vehicles.size();
 }
 
 int traci_api::VehicleManager::getArrivedVehicleCount()
 {
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     return arrived_vehicles.size();
 }
 
 int traci_api::VehicleManager::currentVehicleCount()
 {
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     return vehicles_in_sim.size();
 }
 
 std::vector<std::string> traci_api::VehicleManager::getVehiclesInSim()
 {
     std::vector<std::string> ids;
-    std::lock_guard<std::mutex> lock(vhc_lists_mutex);
+    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     for (auto iterator : vehicles_in_sim)
         ids.push_back(std::to_string(iterator.first));
 
@@ -891,7 +891,7 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchObje
         new_speed = new_speed - speedstep;
         next_time = next_time + stepsize;
         {
-            std::lock_guard<std::mutex> lock(trigger_mutex);
+            //std::lock_guard<std::mutex> lock(trigger_mutex);
             time_triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed)));
         }
     }
@@ -933,7 +933,7 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchObje
     debugPrint("Setting speed " + std::to_string(speed) + " for vehicle " + vhcid + "--------------------------------------------------------------------");
 
     // check if there already exists a speed set event for this vehicle and modify it, or add a new one if not
-    std::lock_guard<std::mutex> lock(trigger_mutex);
+    //std::lock_guard<std::mutex> lock(trigger_mutex);
     try
     {
         SpeedSetTrigger* trigger = speed_set_triggers.at(vhc);
