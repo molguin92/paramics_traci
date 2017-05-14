@@ -39,6 +39,7 @@ def run():
             current_road = traci.vehicle.getRoadID(car)
             if (current_road == new_route[0]) and (car not in affected_cars):
                 print("route change for " + str(car))
+                traci.vehicle.setColor(car, (255, 0, 0, 0))
                 traci.vehicle.setRoute(car, new_route)
                 affected_cars.append(car)
         #time.sleep(0.1)
