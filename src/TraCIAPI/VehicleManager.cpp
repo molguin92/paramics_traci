@@ -391,7 +391,6 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     catch (std::out_of_range& e)
     {
         // no special route, return default
-        //qps_DRW_vehicleColour(vhc, 0xff0000);
         return 0;
     }
 
@@ -399,7 +398,6 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     try
     {
         next_exit = exit_map->at(lnk);
-        //qps_DRW_vehicleColour(vhc, 0x0000ff);
 
     }
     // ReSharper disable once CppEntityNeverUsed
@@ -409,7 +407,6 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
         exit_map->clear();
         delete exit_map;
         vhc_routes.erase(vhc);
-        //qps_DRW_vehicleColour(vhc, 0x00ff00);
     }
 
     return next_exit;

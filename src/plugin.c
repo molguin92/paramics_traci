@@ -129,7 +129,7 @@ int qpo_RTM_decision(LINK *linkp, VEHICLE *Vp)
 
 void qpx_VHC_timeStep(VEHICLE* vehicle)
 {
-    traci_api::VehicleManager::getInstance()->routeReEval(vehicle);
+    //traci_api::VehicleManager::getInstance()->routeReEval(vehicle);
 }
 
 void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
