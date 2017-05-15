@@ -378,41 +378,40 @@ void traci_api::VehicleManager::getVhcTypesVariable(int type_id, uint8_t varID, 
 
 int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
 {
+    if (0 == qpg_VHC_uniqueID(vhc)) // dummy vhc
+        return 0;
+
     // check if the vehicle has a special route
-    std::unordered_map<LINK*, int> exit_map;
+    std::unordered_map<LINK*, int>* exit_map;
     try
     {
         exit_map = vhc_routes.at(vhc);
     }
+    // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e)
     {
         // no special route, return default
-        return 0;
-    }
-
-    if (exit_map.size() == 0)
-    {
-        vhc_routes.erase(vhc);
-        //qps_DRW_vehicleColour(vhc, 0xffffff);
+        //qps_DRW_vehicleColour(vhc, 0xff0000);
         return 0;
     }
 
     int next_exit = 0;
     try
     {
-        next_exit = exit_map.at(lnk);
-        exit_map.erase(lnk);
-        //qps_DRW_vehicleColour(vhc, 0xff00ff);
+        next_exit = exit_map->at(lnk);
+        //qps_DRW_vehicleColour(vhc, 0x0000ff);
+
     }
+    // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e)
     {
         // outside route, clear 
-        exit_map.clear();
-        //qps_DRW_vehicleColour(vhc, 0xffffff);
+        exit_map->clear();
+        delete exit_map;
+        vhc_routes.erase(vhc);
+        //qps_DRW_vehicleColour(vhc, 0x00ff00);
     }
 
-    if (exit_map.size() == 0)
-        vhc_routes.erase(vhc);
     return next_exit;
 }
 
@@ -420,11 +419,12 @@ void traci_api::VehicleManager::routeReEval(VEHICLE* vhc)
 {
     try
     {
-        // if car has a custom route, we need to re-eval at each link transfer
+        // if car has a custom route, we need to re-eval
         // otherwise do nothing
         vhc_routes.at(vhc);
-        qps_VHC_destination(vhc, 0, 0);
+        qps_VHC_destination(vhc, qpg_VHC_destination(vhc), 0);
     }
+    // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e)
     {
     }
@@ -656,6 +656,7 @@ int traci_api::VehicleManager::getLaneIndex(std::string vid) throw(NoSuchObjectE
 std::vector<std::string> traci_api::VehicleManager::getRouteEdges(std::string vid) throw(NoSuchObjectError)
 {
     // get current and next two edges
+    // also include destination zone in message
 
     VEHICLE* vhc = findVehicle(vid);
     std::vector<std::string> result;
@@ -677,6 +678,9 @@ std::vector<std::string> traci_api::VehicleManager::getRouteEdges(std::string vi
             result.push_back(qpg_LNK_name(next_next_link));
 
     }
+
+    int dest_index = qpg_VHC_destination(vhc);
+    result.push_back(std::to_string(dest_index));
 
     return result;
 }
@@ -928,7 +932,7 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
 
 
     /* for each edge, find the next exit corresponding to the next edge */
-    std::unordered_map<LINK*, int> exit_map;
+    std::unordered_map<LINK*, int>* exit_map = new std::unordered_map<LINK*, int>;
     for (int i = 0; i < edges.size() - 1; i++)
     {
         std::string edge_a = edges[i];
@@ -936,21 +940,25 @@ void traci_api::VehicleManager::setRoute(tcpip::Storage& input) throw(NoSuchObje
         LINK* link_a = qpg_NET_link(&edge_a[0u]);
         LINK* link_b = qpg_NET_link(&edge_b[0u]);
 
-        /* check that the edges share a junction */
-        NODE* junction = qpg_LNK_nodeEnd(link_a);
-        if (junction != qpg_LNK_nodeStart(link_b))
+        int exit_i = -1;
+
+        int n_links = qpg_LNK_links(link_a);
+        for (int j = 1; j <= n_links; j++)
         {
-            debugPrint("Edges " + edge_a + " and " + edge_b + " are not contiguous");
-            throw std::runtime_error("Edges " + edge_a + " and " + edge_b + " are not contiguous");
+            if (link_b == qpg_LNK_link(link_a, j))
+                exit_i = j;
         }
 
+        if (exit_i < 0)
+            throw std::runtime_error("Non-contigous route.");
+
         /* map A to the corresponding exit */
-        exit_map[link_a] = findExit(junction, link_b);
+        (*exit_map)[link_a] = exit_i;
     }
 
     /* program the route */
     vhc_routes[vhc] = exit_map;
 
     /* tell paramics to reevaluate route */
-    qps_VHC_destination(vhc, 0, 0);
+    qps_VHC_destination(vhc, qpg_VHC_destination(vhc), 0);
 }
