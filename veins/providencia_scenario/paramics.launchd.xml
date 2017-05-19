@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<!-- debug config -->
+<launch>
+    <basedir path="C:\Users\manue\workspace\veins-4.4\examples\pveins_providencia" />
+	<network name="Escenario 2 PM 2011 Actualizado" />
+    <seed value="1234" />
+</launch>

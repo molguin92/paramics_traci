@@ -13,37 +13,45 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
 
-#ifndef SRC_VEINS_MODULES_APPLICATION_PVEINS_BASICEXAMPLE_H_
-#define SRC_VEINS_MODULES_APPLICATION_PVEINS_BASICEXAMPLE_H_
+#ifndef SRC_VEINS_MODULES_APPLICATION_PVEINS_ExampleProvidencia_H_
+#define SRC_VEINS_MODULES_APPLICATION_PVEINS_ExampleProvidencia_H_
 
 #include "veins/modules/application/ieee80211p/BaseWaveApplLayer.h"
 #include "veins/modules/mobility/traci/TraCIMobility.h"
 #include "veins/modules/mobility/traci/TraCICommandInterface.h"
+#include <mutex>
 
-class BasicExample : public BaseWaveApplLayer
+class ExampleProvidencia : public BaseWaveApplLayer
 {
 protected:
     Veins::TraCIMobility* mobility;
     Veins::TraCICommandInterface *traci;
     Veins::TraCICommandInterface::Vehicle *traciVehicle;
 
+    WaveShortMessage* warning_msg;
+
     cMessage *selfbeacon;
     SimTime ping_interval;
 
     std::string accident_road;
+    std::string alternative_road;
     double accident_distance;
     bool accident_car;
     bool stopped;
-    bool change_lane;
-    bool slow;
-
-    std::string msg_payload;
+    bool rerouted;
+    std::vector<int> destinations;
+    std::vector<std::string> roads;
 
     void initialize(int stage);
     void finish();
     void handleSelfMsg(cMessage *msg);
     void onData(WaveShortMessage *wsm);
     void onBeacon(WaveShortMessage *wsm);
+
+    void changeRoute();
+
+public:
+    static bool accident_car_set;
 };
 
-#endif /* SRC_VEINS_MODULES_APPLICATION_PVEINS_BASICEXAMPLE_H_ */
+#endif /* SRC_VEINS_MODULES_APPLICATION_PVEINS_ExampleProvidencia_H_ */
