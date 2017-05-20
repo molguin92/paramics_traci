@@ -136,3 +136,22 @@ void qpx_VHC_transfer(VEHICLE* vehicle, LINK* link1, LINK* link2)
 {
     traci_api::VehicleManager::getInstance()->routeReEval(vehicle);
 }
+
+// speed control override
+float qpo_CFM_followSpeed(LINK* link, VEHICLE* v, VEHICLE* ahead[])
+{
+    float speed = 0;
+    if (traci_api::VehicleManager::getInstance()->speedControlOverride(v, speed))
+        return speed;
+    else
+        return qpg_CFM_followSpeed(link, v, ahead);
+}
+
+float qpo_CFM_leadSpeed(LINK* link, VEHICLE* v, VEHICLE* ahead[])
+{
+    float speed = 0;
+    if (traci_api::VehicleManager::getInstance()->speedControlOverride(v, speed))
+        return speed;
+    else
+        return qpg_CFM_leadSpeed(link, v, ahead);
+}

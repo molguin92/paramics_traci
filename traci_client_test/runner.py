@@ -26,6 +26,8 @@ import traci
 import random
 PORT = 8245
 
+affected = []
+
 def run():
     """execute the TraCI control loop"""
     traci.init(PORT)
@@ -35,9 +37,6 @@ def run():
     traci.simulation.subscribe([SIMTIME, DEPARTEDVHCLST, ARRIVEDVHCLST])
     traci.vehicle.subscribe("x",[0, 1])
     for i in range(0, 12100):
-        red = random.randint(0, 255)
-        green = random.randint(0, 255)
-        blue = random.randint(0, 255)
         
         traci.simulationStep()
         simsubs = traci.simulation.getSubscriptionResults()
@@ -50,10 +49,18 @@ def run():
         carsinsim = vehsubs[0]
 
         for car in carsinsim:
-            traci.vehicle.setColor(car, (red, green, blue, 0))
+            #traci.vehicle.setSpeed(car, 5.0)
+            road = traci.vehicle.getRoadID(car)
+            if road == "26:2" and car not in affected:
+                #traci.vehicle.slowDown(car, 3.0, 10000)
+                traci.vehicle.setSpeed(car, 5.0)
+                affected.append(car)
+            elif road != "26:2" and car in affected:
+                traci.vehicle.setSpeed(car, -1.0)
+                affected.remove(car)
         
         
-
+        #time.sleep(0.1)
     traci.close()
 
 if __name__ == '__main__':

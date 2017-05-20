@@ -179,6 +179,8 @@ namespace traci_api
         int rerouteVehicle(VEHICLE* vhc, LINK* lnk);
         void routeReEval(VEHICLE* vhc);
 
+        bool speedControlOverride(VEHICLE* vhc, float& speed);
+
     private:
 
         static VehicleManager* instance;
@@ -189,15 +191,10 @@ namespace traci_api
         {
         }
 
-        std::unordered_multimap<int, BaseTrigger*> time_triggers;
-        std::unordered_map<VEHICLE*, SpeedSetTrigger*> speed_set_triggers;
         std::unordered_map<VEHICLE*, LaneSetTrigger*> lane_set_triggers;
+        std::unordered_map<VEHICLE*, BaseSpeedController*> speed_controllers;
 
         std::unordered_map<VEHICLE*, std::unordered_map<LINK*, int>*> vhc_routes;
-
-
-        //std::mutex trigger_mutex;
-        //std::mutex vhc_lists_mutex;
 
         std::unordered_map<int, VEHICLE*> vehicles_in_sim;
         std::vector<VEHICLE*> departed_vehicles;

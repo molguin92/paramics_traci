@@ -17,40 +17,6 @@ namespace traci_api
         virtual bool repeat() = 0;
     };
 
-    class SpeedChangeTrigger : public BaseTrigger
-    {
-    public:
-        VEHICLE* vehicle;
-        double speed;
-
-        explicit SpeedChangeTrigger(VEHICLE* vehicle, double speed)
-            : vehicle(vehicle), speed(speed)
-        {
-        }
-
-        ~SpeedChangeTrigger() override
-        {
-        };
-
-        void handleTrigger() override;
-        bool repeat() override { return false; }
-    };
-
-    class SpeedSetTrigger : public SpeedChangeTrigger
-    {
-    public:
-        SpeedSetTrigger(VEHICLE* vehicle, double speed)
-            : SpeedChangeTrigger(vehicle, speed)
-        {
-        }
-
-        ~SpeedSetTrigger() override
-        {
-        };
-
-        bool repeat() override { return true; }
-    };
-
     class LaneSetTrigger : public BaseTrigger
     {
     public:
@@ -65,5 +31,47 @@ namespace traci_api
         //private: 
         //    int orig_llane;
         //    int orig_hlane;
+    };
+
+
+    class BaseSpeedController
+    {
+    public:
+        virtual ~BaseSpeedController()
+        {
+        }
+        virtual float nextTimeStep() = 0;
+        virtual bool repeat() = 0;
+    };
+
+    class HoldSpeedController : public BaseSpeedController
+    {
+    private:
+        VEHICLE* vhc;
+        float target_speed;
+
+    public:
+        HoldSpeedController(VEHICLE* vhc, float target_speed) : vhc(vhc), target_speed(target_speed){}
+        ~HoldSpeedController() override {}
+
+        float nextTimeStep() override;
+        bool repeat() override { return true; }
+    };
+
+    class LinearSpeedChangeController : public BaseSpeedController
+    {
+    private:
+        VEHICLE* vhc;
+        int duration;
+        bool done;
+
+        float acceleration;
+
+    public:
+        LinearSpeedChangeController(VEHICLE* vhc, float target_speed, int duration);
+        ~LinearSpeedChangeController() override {};
+
+        float nextTimeStep() override;
+        bool repeat() override { return !done; }
     };
 }

@@ -30,7 +30,6 @@ void traci_api::VehicleManager::deleteInstance()
 void traci_api::VehicleManager::reset()
 {
     // clear temporary lists for a new timestep
-    //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     departed_vehicles.clear();
     arrived_vehicles.clear();
 }
@@ -398,7 +397,6 @@ int traci_api::VehicleManager::rerouteVehicle(VEHICLE* vhc, LINK* lnk)
     try
     {
         next_exit = exit_map->at(lnk);
-
     }
     // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e)
@@ -424,6 +422,38 @@ void traci_api::VehicleManager::routeReEval(VEHICLE* vhc)
     // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e)
     {
+    }
+}
+
+/**
+ * \brief Checks if a vehicle has a custom speed controller set (for instance, in the
+ * case of SetSpeed commands). If the vehicle does have a custom controller, this method
+ * returns true, and sets the new speed value on the speed parameter. Otherwise, the method
+ * returns false and writes nothing on the speed parameter.
+ * This method also removes finished controllers after triggering them.
+ * \param vhc The vehicle to check for custom speed controllers.
+ * \param speed Return variable for next timesteps speed value.
+ * \return True if the vehicle has a controller, false if it doesn't.
+ */
+bool traci_api::VehicleManager::speedControlOverride(VEHICLE* vhc, float& speed)
+{
+    BaseSpeedController* controller;
+    try
+    {
+        controller = speed_controllers.at(vhc);
+        speed = controller->nextTimeStep();
+
+        if (!controller->repeat())
+        {
+            speed_controllers.erase(vhc);
+            delete controller;
+        }
+
+        return true;
+    }
+    catch (std::out_of_range& e)
+    {
+        return false;
     }
 }
 
@@ -459,39 +489,6 @@ int traci_api::VehicleManager::findExit(NODE* node, LINK* exit_link) throw(NoSuc
  */
 void traci_api::VehicleManager::handleDelayedTriggers()
 {
-    //std::lock_guard<std::mutex> lock(trigger_mutex);
-
-    // first handle one-time, time-triggered events
-    int current_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
-    auto itup = time_triggers.upper_bound(current_time); // first element with trigger time > current time
-
-    debugPrint("Handling vehicle triggers");
-    debugPrint("Handling vehicle triggers: time triggers");
-    for (auto it = time_triggers.begin(); it != itup;)
-    {
-        it->second->handleTrigger();
-
-        /* delete all triggers handled, we don't want to see them again */
-        delete(it->second);
-        it = time_triggers.erase(it); // all increments are handled here
-    }
-
-    // handle speed set triggers
-    debugPrint("Handling vehicle triggers: speed set triggers");
-    for (auto kv = speed_set_triggers.begin(); kv != speed_set_triggers.end();)
-    {
-        kv->second->handleTrigger();
-
-        /* check if need repeating */
-        if (!kv->second->repeat())
-        {
-            delete kv->second;
-            kv = speed_set_triggers.erase(kv);
-        }
-        else
-            ++kv;
-    }
-
     // handle lane set triggers
     debugPrint("Handling vehicle triggers: lane set triggers");
     for (auto kv = lane_set_triggers.begin(); kv != lane_set_triggers.end();)
@@ -532,6 +529,7 @@ void traci_api::VehicleManager::vehicleArrive(VEHICLE* vehicle)
     //std::lock_guard<std::mutex> lock(vhc_lists_mutex);
     arrived_vehicles.push_back(vehicle);
     vehicles_in_sim.erase(qpg_VHC_uniqueID(vehicle));
+    speed_controllers.erase(vehicle);
 }
 
 /**
@@ -664,7 +662,7 @@ std::vector<std::string> traci_api::VehicleManager::getRouteEdges(std::string vi
     int next_exit = qpg_VHC_nextExit(vhc);
     LINK* next_link = qpg_NDE_link(qpg_LNK_nodeEnd(current_link), next_exit);
 
-    if(next_link)
+    if (next_link)
     {
         result.push_back(qpg_LNK_name(next_link));
 
@@ -673,7 +671,6 @@ std::vector<std::string> traci_api::VehicleManager::getRouteEdges(std::string vi
 
         if (next_next_link)
             result.push_back(qpg_LNK_name(next_next_link));
-
     }
 
     int dest_index = qpg_VHC_destination(vhc);
@@ -772,39 +769,21 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchObje
     if (!readTypeCheckingInt(input, duration))
         throw std::runtime_error("Malformed TraCI message");
 
-    if (duration == 0)
+    if (duration <= 0 && target_speed >= 0)
         throw std::runtime_error("Malformed TraCI message");
 
-    /* calculate the number of timesteps required */
-    /* note that speed from traci comes in m/s */
-    int stepsize = qpg_CFG_timeStep() * 1000;
-    int steps = abs(duration / stepsize);
-
-    /* calculate the speed difference in each step */
-    /* do calculations in m/s */
-
-    double current_speed = qpg_VHC_speed(vhc); // m/s
-    double speedstep = (current_speed - target_speed) / steps; // m/s
-
-    if (fabs(speedstep - 0) < NUMERICAL_EPS)
-        return; // do nothing, already at target speed
-
-    /* do the first step, and schedule the rest with time_triggers */
-
-    double new_speed = (current_speed - speedstep);
-    qps_VHC_speed(vhc, new_speed);
-    //qps_VHC_maxSpeed(vhc, new_speed * int_spd_factor);
-    steps--;
-    int next_time = Simulation::getInstance()->getCurrentTimeMilliseconds();
-    for (; steps > 0; steps--)
+    try
     {
-        new_speed = new_speed - speedstep;
-        next_time = next_time + stepsize;
-        {
-            //std::lock_guard<std::mutex> lock(trigger_mutex);
-            time_triggers.insert(std::make_pair(next_time, new SpeedChangeTrigger(vhc, new_speed)));
-        }
+        delete speed_controllers.at(vhc);
     }
+    catch (std::out_of_range& e)
+    {
+    }
+
+    if (target_speed >= 0)
+        speed_controllers[vhc] = new LinearSpeedChangeController(vhc, target_speed, duration);
+    else
+        speed_controllers.erase(vhc);
 }
 
 void traci_api::VehicleManager::changeColour(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)
@@ -840,35 +819,20 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchObje
     if (!readTypeCheckingDouble(input, speed))
         throw std::runtime_error("Malformed TraCI message");
 
-    debugPrint("Setting speed " + std::to_string(speed) + " for vehicle " + vhcid + "--------------------------------------------------------------------");
+    debugPrint("Setting speed " + std::to_string(speed) + " for vehicle " + vhcid);
 
-    // check if there already exists a speed set event for this vehicle and modify it, or add a new one if not
-    //std::lock_guard<std::mutex> lock(trigger_mutex);
     try
     {
-        SpeedSetTrigger* trigger = speed_set_triggers.at(vhc);
-        if (abs(speed - (-1.0)) < NUMERICAL_EPS)
-        {
-            // remove trigger
-            speed_set_triggers.erase(vhc);
-            delete trigger;
-        }
-        else
-        {
-            trigger->speed = speed;
-            trigger->handleTrigger();
-        }
+        delete speed_controllers.at(vhc);
     }
-    // ReSharper disable once CppEntityNeverUsed
     catch (std::out_of_range& e)
     {
-        if (abs(speed - (-1.0)) < NUMERICAL_EPS)
-            return;
-
-        SpeedSetTrigger* trigger = new SpeedSetTrigger(vhc, speed);
-        trigger->handleTrigger();
-        speed_set_triggers[vhc] = trigger;
     }
+
+    if (speed >= 0)
+        speed_controllers[vhc] = new HoldSpeedController(vhc, speed);
+    else
+        speed_controllers.erase(vhc);
 }
 
 void traci_api::VehicleManager::setMaxSpeed(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)
