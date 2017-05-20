@@ -52,8 +52,8 @@ def run():
             #traci.vehicle.setSpeed(car, 5.0)
             road = traci.vehicle.getRoadID(car)
             if road == "26:2" and car not in affected:
-                #traci.vehicle.slowDown(car, 3.0, 10000)
-                traci.vehicle.setSpeed(car, 5.0)
+                traci.vehicle.slowDown(car, 0.0, 10000)
+                #traci.vehicle.setSpeed(car, 5.0)
                 affected.append(car)
             elif road != "26:2" and car in affected:
                 traci.vehicle.setSpeed(car, -1.0)
