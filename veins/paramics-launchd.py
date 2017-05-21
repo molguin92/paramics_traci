@@ -1,5 +1,9 @@
 #!/usr/bin/env python
+# coding=utf-8
 
+# paramics-launchd.py -- Modified version of sumo-launchd.py for PVeins,
+# the Paramics-VEINS plugin.
+# Copyright (C) 2017- Manuel Olguín <molguin@dcc,uchile.cl>
 #
 # sumo-launchd.py -- SUMO launcher daemon for use with TraCI clients
 # Copyright (C) 2006-2012 Christoph Sommer <christoph.sommer@uibk.ac.at>
@@ -27,17 +31,17 @@ It starts SUMO accordingly, then proxies all TraCI Messages.
 
 The launch configuration must be sent in the very first TraCI message.
 This message must contain a single command, CMD_FILE_SEND and be used to
-send a file named "sumo-launchd.launch.xml", which has the following
+send a file named "paramics-launchd.launch.xml", which has the following
 structure:
 
 <?xml version="1.0"?>
+<!-- debug config -->
 <launch>
-  <basedir path="/home/sommer/src/inet/examples/erlangen6" />
-  <seed value="1234" />
-  <copy file="net.net.xml" />
-  <copy file="routes.rou.xml" />
-  <copy file="sumo.sumo.cfg" type="config" />
+    <basedir path="C:\Users\Public\paramics\programmer\plugins\pveins" />
+	<network name="example_network" />
+    <seed value="1234" />
 </launch>
+
 """
 
 import os
