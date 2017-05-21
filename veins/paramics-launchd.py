@@ -353,7 +353,7 @@ def copy_and_modify_files(basedir, network_name, runpath, seed, plugin):
     new_network_dir = os.path.join(runpath, network_name)
 
     # create a zip with the network
-    zip_name = shutil.make_archive(orig_network_dir, 'zip', basedir, network_name, 1, logger=logging.getLogger("make_archive"))
+    zip_name = shutil.make_archive(orig_network_dir, 'zip', basedir, network_name, 1)
     zip_path = os.path.join(basedir, zip_name)
     new_zip_path = os.path.join(runpath, zip_name)
 
@@ -364,6 +364,10 @@ def copy_and_modify_files(basedir, network_name, runpath, seed, plugin):
     zip_ref = zipfile.ZipFile(new_zip_path, 'r')
     zip_ref.extractall(runpath)
     zip_ref.close()
+
+    # delete zip files
+    os.remove(zip_path)
+    os.remove(new_zip_path)
 
     logging.debug("Copied all files. Modifying copies for VEINS use.")
     # modify config to include seed
