@@ -366,7 +366,7 @@ def copy_and_modify_files(basedir, network_name, runpath, seed, plugin):
     zip_ref.close()
 
     # delete zip files
-    os.remove(zip_path)
+    #os.remove(zip_path)
     os.remove(new_zip_path)
 
     logging.debug("Copied all files. Modifying copies for VEINS use.")
