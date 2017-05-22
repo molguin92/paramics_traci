@@ -1,0 +1,748 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 10000.16.0917.1429                               -->
+<workbook source-build='10.0.1 (10000.16.0917.1429)' source-platform='win' version='10.0' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='per_0' inline='true' name='federated.1wssj9s1bvvubx1fcr52s0g093lv' version='10.0'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='per_0' name='textscan.0tqkt2z0a02nk116b99ui0qnbygi'>
+            <connection class='textscan' directory='C:/Users/Public/paramics/programmer/plugins/pveins/experiment_results/PER0.0' filename='per_0.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0tqkt2z0a02nk116b99ui0qnbygi' name='per_0.csv' table='[per_0#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='es_CL' separator=',' text-qualifier='&quot;'>
+            <column datatype='string' name='Module' ordinal='0' />
+            <column datatype='string' name='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed' ordinal='1' />
+            <column datatype='string' name='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed' ordinal='2' />
+            <column datatype='string' name='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime' ordinal='3' />
+            <column datatype='string' name='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime' ordinal='4' />
+            <column datatype='string' name='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission' ordinal='5' />
+            <column datatype='string' name='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance' ordinal='6' />
+            <column datatype='string' name='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime' ordinal='7' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='column'>
+            <remote-name>Module</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[Module]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>Module</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime]</local-name>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+              <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>8</attribute>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[per_0.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='debit-close-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='debit-open-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_CL&quot;</attribute>
+              <attribute datatype='string' name='quote-char'>&quot;\&quot;&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='maxSpeed' datatype='real' datatype-customized='true' default-format='n0.00;-0.00' name='[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed]' role='measure' type='quantitative' />
+      <column caption='minSpeed' datatype='real' datatype-customized='true' default-format='n0.00;-0.00' name='[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed]' role='measure' type='quantitative' />
+      <column caption='startTime' datatype='real' datatype-customized='true' default-format='n0.00;-0.00' name='[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime]' role='measure' type='quantitative' />
+      <column caption='stopTime' datatype='real' datatype-customized='true' default-format='n0.00;-0.00' name='[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime]' role='measure' type='quantitative' />
+      <column caption='totalCO2Emission' datatype='real' datatype-customized='true' default-format='n0.00;-0.00' name='[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission]' role='measure' type='quantitative' />
+      <column caption='totalDistance' datatype='real' datatype-customized='true' default-format='n0.00;-0.00' name='[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance]' role='measure' type='quantitative' />
+      <column caption='totalTime' datatype='real' datatype-customized='true' default-format='n0.00;-0.00' name='[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime]' role='measure' type='quantitative' />
+      <column datatype='string' name='[Module]' role='dimension' type='nominal' />
+      <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
+        <calculation class='tableau' formula='1' />
+      </column>
+      <column-instance column='[Crash Car]' derivation='InOut' name='[io:Crash Car:nk]' pivot='key' type='nominal' />
+      <group name='[Crash Car]' name-style='unqualified' user:ui-builder='lasso-group'>
+        <groupfilter function='member' level='[Module]' member='&quot;RSUExampleScenario.node[57].veinsmobility&quot;' />
+      </group>
+      <extract count='-1' enabled='true' units='records'>
+        <connection class='dataengine' dbname='C:\Users\Public\paramics\programmer\plugins\pveins\experiment_results\per_0.tde' schema='Extract' tablename='Extract' update-time='05/22/2017 03:41:05 AM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <calculations>
+            <calculation column='[Number of Records]' formula='1' />
+          </calculations>
+          <refresh>
+            <refresh-event add-from-file-path='' increment-value='%null%' refresh-type='create' rows-inserted='3141' timestamp-start='2017-05-22 03:41:05.966' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed</remote-alias>
+              <ordinal>0</ordinal>
+              <family>per_0.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1704</approx-count>
+              <contains-null>true</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>54152.888340000136</statistic>
+                <statistic aggregation='Avg' datatype='real'>17.323380786948221</statistic>
+                <statistic aggregation='Min' datatype='real'>4.0</statistic>
+                <statistic aggregation='Max' datatype='real'>23.8551</statistic>
+                <statistic aggregation='Stdev' datatype='real'>2.3423225065246411</statistic>
+                <statistic aggregation='StdevP' datatype='real'>2.3419478248448029</statistic>
+                <statistic aggregation='Var' datatype='real'>5.4864747245718775</statistic>
+                <statistic aggregation='VarP' datatype='real'>5.4847196142953027</statistic>
+                <statistic aggregation='Count' datatype='integer'>3126</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>955256.33894119773</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>4</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed</remote-alias>
+              <ordinal>1</ordinal>
+              <family>per_0.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>463</approx-count>
+              <contains-null>true</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>2205.7487016290056</statistic>
+                <statistic aggregation='Avg' datatype='real'>0.70561378810908693</statistic>
+                <statistic aggregation='Min' datatype='real'>-12.875</statistic>
+                <statistic aggregation='Max' datatype='real'>7.0999999999999996</statistic>
+                <statistic aggregation='Stdev' datatype='real'>2.2477944365281473</statistic>
+                <statistic aggregation='StdevP' datatype='real'>2.247434875710598</statistic>
+                <statistic aggregation='Var' datatype='real'>5.0525798288868913</statistic>
+                <statistic aggregation='VarP' datatype='real'>5.0509635205603116</statistic>
+                <statistic aggregation='Count' datatype='integer'>3126</statistic>
+                <statistic aggregation='Median' datatype='real'>0.0</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>17345.718662244679</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>0</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime</remote-name>
+              <remote-type>4</remote-type>
+              <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime</remote-alias>
+              <ordinal>2</ordinal>
+              <family>per_0.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1487</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>86205076.5</statistic>
+                <statistic aggregation='Avg' datatype='real'>27445.105539637058</statistic>
+                <statistic aggregation='Min' datatype='real'>27000.5</statistic>
+                <statistic aggregation='Max' datatype='real'>27900.0</statistic>
+                <statistic aggregation='Stdev' datatype='real'>260.75622035414432</statistic>
+                <statistic aggregation='StdevP' datatype='real'>260.71470857797522</statistic>
+                <statistic aggregation='Var' datatype='real'>67993.806453379075</statistic>
+                <statistic aggregation='VarP' datatype='real'>67972.15926889854</statistic>
+                <statistic aggregation='Count' datatype='integer'>3141</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>2366120923147.25</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>3</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;float&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime</remote-name>
+              <remote-type>4</remote-type>
+              <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime</remote-alias>
+              <ordinal>3</ordinal>
+              <family>per_0.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1282</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>86672149.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>27593.807386182743</statistic>
+                <statistic aggregation='Min' datatype='real'>27011.5</statistic>
+                <statistic aggregation='Max' datatype='real'>27900.0</statistic>
+                <statistic aggregation='Stdev' datatype='real'>252.19286925300671</statistic>
+                <statistic aggregation='StdevP' datatype='real'>252.15272074216517</statistic>
+                <statistic aggregation='Var' datatype='real'>63601.243302064133</statistic>
+                <statistic aggregation='VarP' datatype='real'>63580.994577676334</statistic>
+                <statistic aggregation='Count' datatype='integer'>3141</statistic>
+                <statistic aggregation='Median' datatype='real'>27618.0</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>2391814293156.5</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;float&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission</remote-alias>
+              <ordinal>4</ordinal>
+              <family>per_0.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3116</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>1028092.9936970011</statistic>
+                <statistic aggregation='Avg' datatype='real'>327.31391075994941</statistic>
+                <statistic aggregation='Min' datatype='real'>0.0</statistic>
+                <statistic aggregation='Max' datatype='real'>1418.9400000000001</statistic>
+                <statistic aggregation='Stdev' datatype='real'>178.95865732357925</statistic>
+                <statistic aggregation='StdevP' datatype='real'>178.9301675268018</statistic>
+                <statistic aggregation='Var' datatype='real'>32026.201031058263</statistic>
+                <statistic aggregation='VarP' datatype='real'>32016.004851169357</statistic>
+                <statistic aggregation='Count' datatype='integer'>3141</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>437071409.62939245</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>6</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance</remote-alias>
+              <ordinal>5</ordinal>
+              <family>per_0.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3100</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>3034840.5923500056</statistic>
+                <statistic aggregation='Avg' datatype='real'>966.20203513212527</statistic>
+                <statistic aggregation='Min' datatype='real'>0.0</statistic>
+                <statistic aggregation='Max' datatype='real'>3779.5599999999999</statistic>
+                <statistic aggregation='Stdev' datatype='real'>463.20703591274571</statistic>
+                <statistic aggregation='StdevP' datatype='real'>463.13329444353485</statistic>
+                <statistic aggregation='Var' datatype='real'>214560.75811907169</statistic>
+                <statistic aggregation='VarP' datatype='real'>214492.44842212196</statistic>
+                <statistic aggregation='Count' datatype='integer'>3141</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>3605989937.1240454</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>8</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>5</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;double&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime</remote-name>
+              <remote-type>4</remote-type>
+              <local-name>[/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime</remote-alias>
+              <ordinal>6</ordinal>
+              <family>per_0.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>757</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>465789.5</statistic>
+                <statistic aggregation='Avg' datatype='real'>148.29337790512577</statistic>
+                <statistic aggregation='Min' datatype='real'>0.0</statistic>
+                <statistic aggregation='Max' datatype='real'>883.0</statistic>
+                <statistic aggregation='Stdev' datatype='real'>98.869866221107799</statistic>
+                <statistic aggregation='StdevP' datatype='real'>98.854126371255447</statistic>
+                <statistic aggregation='Var' datatype='real'>9775.2504465797538</statistic>
+                <statistic aggregation='VarP' datatype='real'>9772.1383006241413</statistic>
+                <statistic aggregation='Count' datatype='integer'>3141</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>99767784.75</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;array&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>2</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;float&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Module</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[Module]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Module</remote-alias>
+              <ordinal>7</ordinal>
+              <family>per_0.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3141</approx-count>
+              <scale>1</scale>
+              <width>1073741823</width>
+              <contains-null>false</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <statistics>
+                <statistic aggregation='Min' datatype='string'>&quot;RSUExampleScenario.node[0].veinsmobility&quot;</statistic>
+                <statistic aggregation='Max' datatype='string'>&quot;RSUExampleScenario.node[999].veinsmobility&quot;</statistic>
+                <statistic aggregation='Count' datatype='integer'>3141</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteCollation'>&quot;es&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (comparable)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (compression)'>&quot;heap&quot;</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (distinct)'>true</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>4294967292</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (sort-position)'>7</attribute>
+                <attribute datatype='string' name='DebugRemoteMetadata (sort-sense)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (storagewidth)'>4</attribute>
+                <attribute datatype='boolean' name='DebugRemoteMetadata (unique)'>true</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;str&quot;</attribute>
+              </attributes>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>Number of Records</remote-name>
+              <remote-type>16</remote-type>
+              <local-name>[Number of Records]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>Number of Records</remote-alias>
+              <ordinal>8</ordinal>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>false</contains-null>
+              <statistics>
+                <statistic aggregation='Sum' datatype='real'>3141.0</statistic>
+                <statistic aggregation='Avg' datatype='real'>1.0</statistic>
+                <statistic aggregation='Min' datatype='integer'>1</statistic>
+                <statistic aggregation='Max' datatype='integer'>1</statistic>
+                <statistic aggregation='Stdev' datatype='real'>0.0</statistic>
+                <statistic aggregation='StdevP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Var' datatype='real'>0.0</statistic>
+                <statistic aggregation='VarP' datatype='real'>0.0</statistic>
+                <statistic aggregation='Count' datatype='integer'>3141</statistic>
+                <statistic aggregation='Median' datatype='integer'>1</statistic>
+                <statistic aggregation='SumXSqr' datatype='real'>3141.0</statistic>
+              </statistics>
+              <attributes>
+                <attribute datatype='string' name='DebugRemoteMetadata (ordered)'>&quot;asc&quot;</attribute>
+                <attribute datatype='integer' name='DebugRemoteMetadata (size)'>1</attribute>
+                <attribute datatype='string' name='DebugRemoteType'>&quot;sint8&quot;</attribute>
+              </attributes>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' dim-percentage='0.280566' group-percentage='0.253539' measure-ordering='alphabetic' measure-percentage='0.465894' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[io:Crash Car:nk]' palette='tableau10_10_0' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>true</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>false</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Chile&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='Module' />
+        <field-sort-custom-order field='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_maxSpeed' />
+        <field-sort-custom-order field='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_minSpeed' />
+        <field-sort-custom-order field='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_startTime' />
+        <field-sort-custom-order field='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_stopTime' />
+        <field-sort-custom-order field='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalCO2Emission' />
+        <field-sort-custom-order field='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance' />
+        <field-sort-custom-order field='/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime' />
+      </field-sort-info>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='per_0' name='federated.1wssj9s1bvvubx1fcr52s0g093lv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1wssj9s1bvvubx1fcr52s0g093lv'>
+            <column datatype='string' name='[Module]' role='dimension' type='nominal' />
+            <column-instance column='[Crash Car]' derivation='InOut' name='[io:Crash Car:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Module]' derivation='None' name='[none:Module:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <lod column='[federated.1wssj9s1bvvubx1fcr52s0g093lv].[none:Module:nk]' />
+              <color column='[federated.1wssj9s1bvvubx1fcr52s0g093lv].[io:Crash Car:nk]' />
+            </encodings>
+            <trendline enable-confidence-bands='true' enable-instant-analytics='true' enabled='true' exclude-color='false' exclude-intercept='false' exclude-panes='false' fit='linear' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-color' value='#e15759' />
+                <format attr='shape' value=':filled/circle' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.1wssj9s1bvvubx1fcr52s0g093lv].[io:Crash Car:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1wssj9s1bvvubx1fcr52s0g093lv].[io:Crash Car:nk]</field>
+            <field>[federated.1wssj9s1bvvubx1fcr52s0g093lv].[none:/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalDistance:ok]</field>
+            <field>[federated.1wssj9s1bvvubx1fcr52s0g093lv].[none:/veins-4.4/examples/pveins_providencia/results/nodebug-0.sca_nodebug-0-20170521-20:11:47-14316_totalTime:ok]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='Sheet 1' width='192'>
+      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
+      31Wbz56d2mXB51oap5y5FcD478+wAc895cz1+2cuGnLmzPPhDh9Tz1Yc8JzwAMiCKvUdOCHV
+      207NEvXz+ZXw3LTvzPe6zKh6ltZ7XSRfPRsR9ZbkO5FfAWlF1bMZU29J4y4xDVKa6tnKe6/z
+      3y5hJ9QalHXlkG4GRs0S9Z1ZaQWvJVEO+K9TRAshjByXVwYU1SkXKwYMO8eVwiuaqVy8JORE
+      XinkuMsrA4xI2BXXK5eYBpjRwMWLA5dfGXaxYsiSWcolqyDM2CmuAcZIL0SyBsKK57gi5Ub7
+      IQumQ9g5LloIo7QBSJ2ELKyDsPNOcY1AehiyaCYQcgXKZUYhi2cBdiLkZFkj4KYgS2ZDjH+d
+      AbXalM0BPAeydM4pLh+yrAmAB1nWlOPUAGQ/78kqeP7XUv3tg9xzVXXKmZPvc+YCp85cLDhz
+      wjjdHaADEPDvAON7VbW/c3X6+1gLnPYtZ+Bq/H2sS72QqkU5u3ytv+cfBaT07wCnc4Z/B/B3
+      +cLp/h2g278DzMvZ5af7d4BuCMP07wDjboZ/B+jx7wfNcDq2By417N8BLP8OML7n1/l3gGMQ
+      pu3fAcb3/Jn+HeD4H3ER/w4wvsvX+3v+CQgr6u/5O8/AzfLvAL3+/aAeTtcu3zX4d4A+CDsG
+      WVSf3fNlaYN/B+iDsOP+HWB8z5/t3wH6/TvAdDhH9wRusFvt+XaefwcY3+Ub/TvAAEQk4e/5
+      bTmuE97oydO4Of4d4KQahmQVnJ692cN/+jMH/w7wfz1zNYDjO//MhQaAGZQZlBmUEI1gBh13
+      zKDMoMygzKDMoMygzKDMoMygzKDMoMygYAZlBgUzKDMoMyghf5Ywg447ZlBmUGZQZlBmUGZQ
+      ZlBmUGZQZlBmUGZQMIMyg4IZlBmUGZSQP0uYQccdMygzKDMoMygzKDMoMygzKDMoMygzKDMo
+      PrgMKuMlIB8+zKD4cDKo1bTmA/mCkj8NZlCiNcyg426KMyhXoP8f8P8PQLSGKxDRGg4A0RoO
+      ANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDR
+      Gg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoO
+      ANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDR
+      Gg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoOANEaDgDRGg4A0RoO
+      ANEaDgDRGg4A0RoOANEaDgDRGg4A0Zr/BWBMZCbNk3U+AAAAAElFTkSuQmCC
+    </thumbnail>
+  </thumbnails>
+</workbook>

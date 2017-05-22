@@ -48,7 +48,11 @@ float traci_api::HoldSpeedController::nextTimeStep()
     float current_speed = qpg_VHC_speed(vhc);
     float diff = target_speed - current_speed;
     if (abs(diff) < NUMERICAL_EPS)
+    {
+        if (target_speed < NUMERICAL_EPS && !qpg_VHC_stopped(vhc))
+            qps_VHC_stopped(vhc, PTRUE);
         return current_speed;
+    }
 
     /* find acceleration/deceleration needed to reach speed asap */
     float accel = 0;

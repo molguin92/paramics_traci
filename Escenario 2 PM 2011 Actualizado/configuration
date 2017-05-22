@@ -28,7 +28,8 @@ weight heavy  3.000 tonne
 feedback 00:02:00
 feedback smoothing factor 0.500
 feedback decay factor 0.995
-perturbation disabled
+perturbation enabled
+algorithm percentage
 base agent speed 1.300 mps
 base speed deviation 0.250 mps
 obstacle angle step 15

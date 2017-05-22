@@ -783,7 +783,11 @@ void traci_api::VehicleManager::slowDown(tcpip::Storage& input) throw(NoSuchObje
     if (target_speed >= 0)
         speed_controllers[vhc] = new LinearSpeedChangeController(vhc, target_speed, duration);
     else
+    {
         speed_controllers.erase(vhc);
+        if (qpg_VHC_stopped(vhc))
+            qps_VHC_stopped(vhc, PFALSE);
+    }
 }
 
 void traci_api::VehicleManager::changeColour(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)
@@ -832,7 +836,11 @@ void traci_api::VehicleManager::setSpeed(tcpip::Storage& input) throw(NoSuchObje
     if (speed >= 0)
         speed_controllers[vhc] = new HoldSpeedController(vhc, speed);
     else
+    {
         speed_controllers.erase(vhc);
+        if (qpg_VHC_stopped(vhc))
+            qps_VHC_stopped(vhc, PFALSE);
+    }
 }
 
 void traci_api::VehicleManager::setMaxSpeed(tcpip::Storage& input) throw(NoSuchObjectError, std::runtime_error)
