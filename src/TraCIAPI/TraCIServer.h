@@ -12,7 +12,7 @@ namespace traci_api
 
         TraCIServer(int port);
         ~TraCIServer();
-        void run();
+        void waitForConnection();
         void close();
 
         // lockstep methods

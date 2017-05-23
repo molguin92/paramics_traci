@@ -30,9 +30,9 @@ traci_api::TraCIServer::~TraCIServer()
 }
 
 /**
- * \brief Starts this instance, binding it to a port and awaiting connections. This method is blocking, and as such should be run in a separate thread.
+ * \brief Starts this instance, binding it to a port and awaiting connections.
  */
-void traci_api::TraCIServer::run()
+void traci_api::TraCIServer::waitForConnection()
 {
     running = true;
     std::string version_str = "Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion());

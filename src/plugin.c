@@ -58,7 +58,7 @@ void runner_fn()
         }
 
         server = new traci_api::TraCIServer(port);
-        server->run();
+        server->waitForConnection();
     }
     catch (std::exception& e)
     {
@@ -79,6 +79,9 @@ void qpx_NET_postOpen(void)
 
 void qpx_CLK_startOfSimLoop(void)
 {
+    if (runner->joinable())
+        runner->join();
+
     server->preStep();
 }
 
@@ -89,7 +92,6 @@ void qpx_CLK_endOfSimLoop(void)
 
 void close()
 {
-    runner->join();
     server->close();
     delete server;
     delete runner;
