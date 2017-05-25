@@ -32,6 +32,11 @@ protected:
 
     cMessage *selfbeacon;
     SimTime ping_interval;
+    int warning_interval;
+
+    // stats
+    int sent_warnings;
+    int rcvd_warnings;
 
     std::string accident_road;
     std::string alternative_road;

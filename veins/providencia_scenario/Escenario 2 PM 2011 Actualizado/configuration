@@ -1,6 +1,6 @@
 start time  07:30:00
 simulation time  01:00:00
-demand weight  50.0
+demand weight  100.0
 seed  6
 split seed
 demand matrix tuning level  0

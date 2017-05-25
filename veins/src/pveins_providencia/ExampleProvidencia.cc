@@ -14,8 +14,10 @@
 //
 
 #include <veins/modules/application/pveins_providencia/ExampleProvidencia.h>
+#include "ExtTraCIScenarioManagerLaunchd.h"
 #include <veins/modules/mobility/traci/TraCIColor.h>
 #include <veins/modules/application/pveins/json.hpp>
+#include <veins/modules/mobility/traci/TraCIScenarioManager.h>
 #include <cstdlib>
 #include <algorithm>
 
@@ -54,10 +56,15 @@ void ExampleProvidencia::initialize(int stage)
         accident_distance = par("AccidentDistance").doubleValue();
         alternative_road = par("AlternativeRoad").stringValue();
         const char* dests = par("AffectedDestinations").stringValue();
+        warning_interval = par("WarningInterval").longValue();
+
         destinations = cStringTokenizer(dests).asIntVector();
 
         const char* roads_s = par("AffectedRoads").stringValue();
         roads = cStringTokenizer(roads_s).asVector();
+
+        sent_warnings = 0;
+        rcvd_warnings = 0;
     }
         break;
     default:
@@ -67,6 +74,17 @@ void ExampleProvidencia::initialize(int stage)
 void ExampleProvidencia::finish()
 {
     BaseWaveApplLayer::finish();
+
+    ExtTraCIScenarioManagerLaunchd* sceman = dynamic_cast<ExtTraCIScenarioManagerLaunchd*>(mobility->getManager());
+
+    bool arrived;
+    if (sceman->shuttingDown())
+        arrived = false;
+    else arrived = true;
+
+    recordScalar("ArrivedAtDest", arrived);
+    recordScalar("SentWarnings", sent_warnings);
+    recordScalar("RcvdWarnings", rcvd_warnings);
 }
 void ExampleProvidencia::handleSelfMsg(cMessage *msg){
 
@@ -101,13 +119,14 @@ void ExampleProvidencia::handleSelfMsg(cMessage *msg){
             traciVehicle->setSpeed(0.0);
             stopped = true;
 
-            ping_interval = SimTime(1, SIMTIME_S);
+            ping_interval = SimTime(warning_interval, SIMTIME_S);
             scheduleAt(simTime() + ping_interval, selfbeacon);
         }
         else if (stopped)
         {
             // send warning message
             sendWSM((WaveShortMessage*)warning_msg->dup());
+            sent_warnings++;
             scheduleAt(simTime() + ping_interval, selfbeacon);
         }
         else
@@ -141,11 +160,13 @@ void ExampleProvidencia::changeRoute()
 
 void ExampleProvidencia::onData(WaveShortMessage *wsm)
 {
-//    if (!accident_car && !rerouted)
-//    {
-//        changeRoute();
-//    }
+    if (!accident_car)
+    {
+        if(!rerouted)
+            changeRoute();
 
+        rcvd_warnings++;
+    }
     delete wsm;
 }
 void ExampleProvidencia::onBeacon(WaveShortMessage *wsm){
