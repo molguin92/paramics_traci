@@ -112,54 +112,56 @@ def analysis_arrived_vhc():
     pyplot.show()
 
 def analysis_speed():
-    per00_df = pandas.read_csv('speed_stats_per00.csv')
-    per10_df = pandas.read_csv('speed_stats_per10.csv')
+    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
 
-    per00_df.set_index(['node'], inplace=True)
-    per10_df.set_index(['node'], inplace=True)
+    # filter
+    per00_filtered = per00_df.loc[per00_df['arrived']]
+    per10_filtered = per10_df.loc[per10_df['arrived']]
 
     bins = numpy.linspace(0, per00_df['mean_speed'].max(), 50)
 
-    pyplot.hist(per00_df['mean_speed'], bins, alpha=0.75, label='PER 0.0', normed=True)
-    pyplot.hist(per10_df['mean_speed'], bins, alpha=0.75, label='PER 1.0', normed=True)
+    pyplot.hist(per00_filtered['mean_speed'], bins, alpha=0.75, label='PER 0.0', normed=True)
+    pyplot.hist(per10_filtered['mean_speed'], bins, alpha=0.75, label='PER 1.0', normed=True)
     pyplot.legend(loc='upper right')
     pyplot.title('Histograma normalizado de velocidades promedio')
     pyplot.show()
 
 
 def analysis_distance():
-    per00_df = pandas.read_csv('./PER0.0_100Demand_5secs_clean.csv', sep=';')
-    per10_df = pandas.read_csv('./PER1.0_100Demand_clean.csv', sep=';')
+    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
 
-    per00_df.set_index(['Module'], inplace=True)
-    per10_df.set_index(['Module'], inplace=True)
+    # filter
+    per00_filtered = per00_df.loc[per00_df['arrived']]
+    per10_filtered = per10_df.loc[per10_df['arrived']]
 
-    bins = numpy.linspace(0, per00_df['totalDistance'].max(), 50)
+    bins = numpy.linspace(0, per00_df['total_dist'].max(), 50)
 
-    pyplot.hist(per00_df['totalDistance'], bins, alpha=0.75, label='PER 0.0', normed=True)
-    pyplot.hist(per10_df['totalDistance'], bins, alpha=0.75, label='PER 1.0', normed=True)
+    pyplot.hist(per00_filtered['total_dist'], bins, alpha=0.75, label='PER 0.0', normed=True)
+    pyplot.hist(per10_filtered['total_dist'], bins, alpha=0.75, label='PER 1.0', normed=True)
     pyplot.legend(loc='upper right')
     pyplot.title('Histograma normalizado de distancias totales')
     pyplot.show()
 
 
 def analysis_time():
-    per00_df = pandas.read_csv('./PER0.0_100Demand_5secs_clean.csv', sep=';')
-    per10_df = pandas.read_csv('./PER1.0_100Demand_clean.csv', sep=';')
+    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
 
-    per00_df.set_index(['Module'], inplace=True)
-    per10_df.set_index(['Module'], inplace=True)
+    # filter
+    per00_filtered = per00_df.loc[per00_df['arrived']]
+    per10_filtered = per10_df.loc[per10_df['arrived']]
 
     bins = numpy.linspace(0, 1000, 50)
 
-    pyplot.hist(per00_df['totalTime'], bins, alpha=0.75, label='PER 0.0', normed=True)
-    pyplot.hist(per10_df['totalTime'], bins, alpha=0.75, label='PER 1.0', normed=True)
+    pyplot.hist(per00_filtered['total_time'], bins, alpha=0.75, label='PER 0.0', normed=True)
+    pyplot.hist(per10_filtered['total_time'], bins, alpha=0.75, label='PER 1.0', normed=True)
     pyplot.legend(loc='upper right')
     pyplot.title('Histograma normalizado de tiempos totales')
     pyplot.show()
 
 
 if __name__ == '__main__':
-    build_csv()
-
-    print(pandas.read_csv('per0.0_total_stats.csv').set_index(['module']))
+    #analysis_time()
+    analysis_speed()
