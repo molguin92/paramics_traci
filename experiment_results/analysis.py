@@ -61,22 +61,26 @@ def build_csv():
     per_10_df_appl.set_index(['module'], inplace=True)
 
     # build speed data
-    per10_speedpath = os.path.abspath('.\PER1.0_speed_data')
-    per00_speedpath = os.path.abspath('.\PER0.0_speed_data')
+    # per10_speedpath = os.path.abspath('.\PER1.0_speed_data')
+    # per00_speedpath = os.path.abspath('.\PER0.0_speed_data')
+    #
+    # per10_df_speed = pandas.DataFrame(columns=['module', 'mean_speed', 'std_speed'])
+    # per00_df_speed = pandas.DataFrame(columns=['module', 'mean_speed', 'std_speed'])
+    #
+    # for file in os.listdir(per10_speedpath):
+    #     stats = get_speed_stats(os.path.join(per10_speedpath, file))
+    #     per10_df_speed.loc[len(per10_df_speed)] = stats
+    #
+    # for file in os.listdir(per00_speedpath):
+    #     stats = get_speed_stats(os.path.join(per00_speedpath, file))
+    #     per00_df_speed.loc[len(per00_df_speed)] = stats
+    #
+    # per00_df_speed.set_index(['module'], inplace=True)
+    # per10_df_speed.set_index(['module'], inplace=True)
 
-    per10_df_speed = pandas.DataFrame(columns=['module', 'mean_speed', 'std_speed'])
-    per00_df_speed = pandas.DataFrame(columns=['module', 'mean_speed', 'std_speed'])
-
-    for file in os.listdir(per10_speedpath):
-        stats = get_speed_stats(os.path.join(per10_speedpath, file))
-        per10_df_speed.loc[len(per10_df_speed)] = stats
-
-    for file in os.listdir(per00_speedpath):
-        stats = get_speed_stats(os.path.join(per00_speedpath, file))
-        per00_df_speed.loc[len(per00_df_speed)] = stats
-
-    per00_df_speed.set_index(['module'], inplace=True)
-    per10_df_speed.set_index(['module'], inplace=True)
+    per00_df_speed, per10_df_speed = pandas.DataFrame(), pandas.DataFrame()
+    per00_df_speed['mean_speed'] = per_00_df_mobility['total_dist'] / per_00_df_mobility['total_time']
+    per10_df_speed['mean_speed'] = per_10_df_mobility['total_dist'] / per_10_df_mobility['total_time']
 
     # join all tables
     per00_df = pandas.merge(per_00_df_mobility, per_00_df_appl, left_index=True, right_index=True, how='outer')
@@ -89,6 +93,23 @@ def build_csv():
     per10_df.to_csv('per1.0_total_stats.csv')
 
 
+def analysis_arrived_vhc():
+    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+
+    per00_arrived_cnt = per00_df['arrived'].sum()
+    per10_arrived_cnt = per10_df['arrived'].sum()
+
+    objects = ('PER 0.0', 'PER 1.0')
+    x_ax = numpy.arange(len(objects))
+
+    pyplot.bar(x_ax, [per00_arrived_cnt, per10_arrived_cnt])
+    pyplot.yscale('linear')
+    pyplot.yticks([per00_arrived_cnt, per10_arrived_cnt])
+    pyplot.xticks(x_ax, objects)
+    pyplot.ylabel('N° de vehículos que alcanzaron su destino')
+    pyplot.title('PER 0.0 vs PER 1.0: N° de vehículos que alcanzaron su destino en el tiempo de simulación.')
+    pyplot.show()
 
 def analysis_speed():
     per00_df = pandas.read_csv('speed_stats_per00.csv')
@@ -139,7 +160,6 @@ def analysis_time():
 
 
 if __name__ == '__main__':
-    # analysis_speed()
-    # analysis_distance()
-    # analysis_time()
-    # build_csv()
+    build_csv()
+
+    print(pandas.read_csv('per0.0_total_stats.csv').set_index(['module']))
