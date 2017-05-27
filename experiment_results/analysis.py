@@ -59,7 +59,7 @@ def build_dataframe_case(case):
     return case_df
 
 def buid_csv():
-    for case in ['per0.0', 'per1.0']:
+    for case in ['per0.0', 'per1.0', 'base_case']:
         df = build_dataframe_case(case)
         df.to_csv(case + '_total_stats.csv')
 
