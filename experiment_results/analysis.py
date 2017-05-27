@@ -24,73 +24,44 @@ def get_speed_stats(speed_data_path):
 
     return (node_nr, mean, std)
 
+def build_dataframe_case(case):
 
-def build_csv():
     # mobility data
     mobility_columns = ['module', 'max_speed', 'min_speed', 'start_time', 'stop_time',
                         'total_co2', 'total_dist', 'total_time']
-    per_00_df_mobility = pandas.read_csv('per0.0_stats_veinsmobility.csv')
-    per_00_df_mobility.columns = mobility_columns
 
-    per_10_df_mobility = pandas.read_csv('per1.0_stats_veinsmobility.csv')
-    per_10_df_mobility.columns = mobility_columns
+    case_df_mobility = pandas.read_csv(case + '_stats_veinsmobility.csv')
+    case_df_mobility.columns = mobility_columns
 
     mobility_search_re = 'ProvidenciaExampleScenario.(.+?).veinsmobility'
-    per_00_df_mobility['module'] = per_00_df_mobility['module'].map(lambda x: re.search(mobility_search_re, x).group(1))
-    per_10_df_mobility['module'] = per_10_df_mobility['module'].map(lambda x: re.search(mobility_search_re, x).group(1))
+    case_df_mobility['module'] = case_df_mobility['module'].map(lambda x: re.search(mobility_search_re, x).group(1))
 
-    per_00_df_mobility.set_index(['module'], inplace=True)
-    per_10_df_mobility.set_index(['module'], inplace=True)
+    case_df_mobility.set_index(['module'], inplace=True)
 
     # appl data (sent warnings, arrived at dest)
     appl_columns = ['module', 'arrived', 'rcvd_warnings', 'sent_warnings']
-    per_00_df_appl = pandas.read_csv('per0.0_stats_appl.csv')
-    per_00_df_appl.columns = appl_columns
-
-    per_10_df_appl = pandas.read_csv('per1.0_stats_appl.csv')
-    per_10_df_appl.columns = appl_columns
+    case_df_appl = pandas.read_csv(case + '_stats_appl.csv')
+    case_df_appl.columns = appl_columns
 
     appl_search_re = 'ProvidenciaExampleScenario.(.+?).appl'
-    per_00_df_appl['module'] = per_00_df_appl['module'].map(lambda x: re.search(appl_search_re, x).group(1))
-    per_10_df_appl['module'] = per_10_df_appl['module'].map(lambda x: re.search(appl_search_re, x).group(1))
+    case_df_appl['module'] = case_df_appl['module'].map(lambda x: re.search(appl_search_re, x).group(1))
+    case_df_appl['arrived'] = case_df_appl['arrived'].map({1: True, 0: False})
 
-    per_00_df_appl['arrived'] = per_00_df_appl['arrived'].map({1: True, 0: False})
-    per_10_df_appl['arrived'] = per_10_df_appl['arrived'].map({1: True, 0: False})
+    case_df_appl.set_index(['module'], inplace=True)
 
-    per_00_df_appl.set_index(['module'], inplace=True)
-    per_10_df_appl.set_index(['module'], inplace=True)
-
-    # build speed data
-    # per10_speedpath = os.path.abspath('.\PER1.0_speed_data')
-    # per00_speedpath = os.path.abspath('.\PER0.0_speed_data')
-    #
-    # per10_df_speed = pandas.DataFrame(columns=['module', 'mean_speed', 'std_speed'])
-    # per00_df_speed = pandas.DataFrame(columns=['module', 'mean_speed', 'std_speed'])
-    #
-    # for file in os.listdir(per10_speedpath):
-    #     stats = get_speed_stats(os.path.join(per10_speedpath, file))
-    #     per10_df_speed.loc[len(per10_df_speed)] = stats
-    #
-    # for file in os.listdir(per00_speedpath):
-    #     stats = get_speed_stats(os.path.join(per00_speedpath, file))
-    #     per00_df_speed.loc[len(per00_df_speed)] = stats
-    #
-    # per00_df_speed.set_index(['module'], inplace=True)
-    # per10_df_speed.set_index(['module'], inplace=True)
-
-    per00_df_speed, per10_df_speed = pandas.DataFrame(), pandas.DataFrame()
-    per00_df_speed['mean_speed'] = per_00_df_mobility['total_dist'] / per_00_df_mobility['total_time']
-    per10_df_speed['mean_speed'] = per_10_df_mobility['total_dist'] / per_10_df_mobility['total_time']
+    case_df_speed = pandas.DataFrame()
+    case_df_speed['mean_speed'] = case_df_mobility['total_dist'] / case_df_mobility['total_time']
 
     # join all tables
-    per00_df = pandas.merge(per_00_df_mobility, per_00_df_appl, left_index=True, right_index=True, how='outer')
-    per10_df = pandas.merge(per_10_df_mobility, per_10_df_appl, left_index=True, right_index=True, how='outer')
+    case_df = pandas.merge(case_df_mobility, case_df_appl, left_index=True, right_index=True, how='outer')
+    case_df = pandas.merge(case_df, case_df_speed, left_index=True, right_index=True, how='outer')
 
-    per00_df = pandas.merge(per00_df, per00_df_speed, left_index=True, right_index=True, how='outer')
-    per10_df = pandas.merge(per10_df, per10_df_speed, left_index=True, right_index=True, how='outer')
+    return case_df
 
-    per00_df.to_csv('per0.0_total_stats.csv')
-    per10_df.to_csv('per1.0_total_stats.csv')
+def buid_csv():
+    for case in ['per0.0', 'per1.0']:
+        df = build_dataframe_case(case)
+        df.to_csv(case + '_total_stats.csv')
 
 
 def analysis_arrived_vhc():
@@ -163,5 +134,6 @@ def analysis_time():
 
 
 if __name__ == '__main__':
+    buid_csv()
     #analysis_time()
-    analysis_speed()
+    #analysis_speed()
