@@ -111,7 +111,10 @@ void traci_api::TraCIServer::preStep()
             // if the received command was a simulation step command, return so that 
             // Paramics can do its thing.
             if (simstep)
+            {
+                VehicleManager::getInstance()->reset();
                 return;
+            }
         }
 
         this->sendResponse();
@@ -163,6 +166,7 @@ void traci_api::TraCIServer::postStep()
                 multiple_timestep = true;
                 target_time = Simulation::getInstance()->getCurrentTimeMilliseconds() + Simulation::getInstance()->getTimeStepSizeMilliseconds();
             }
+            VehicleManager::getInstance()->reset();
             return;
         }
     }
@@ -250,7 +254,6 @@ bool traci_api::TraCIServer::parseCommand(tcpip::Storage& storage)
                     this->target_time = ttime;
                 }
             }
-            VehicleManager::getInstance()->reset();
             return true;
 
         case CMD_SHUTDOWN:

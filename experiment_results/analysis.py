@@ -24,8 +24,8 @@ def get_speed_stats(speed_data_path):
 
     return (node_nr, mean, std)
 
-def build_dataframe_case(case):
 
+def build_dataframe_case(case):
     # mobility data
     mobility_columns = ['module', 'max_speed', 'min_speed', 'start_time', 'stop_time',
                         'total_co2', 'total_dist', 'total_time']
@@ -58,6 +58,7 @@ def build_dataframe_case(case):
 
     return case_df
 
+
 def buid_csv():
     for case in ['per0.0', 'per1.0', 'base_case', 'per0.5', 'per0.75', 'per0.25']:
         df = build_dataframe_case(case)
@@ -65,75 +66,114 @@ def buid_csv():
 
 
 def analysis_arrived_vhc():
-    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
-    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])
+    per05 = pandas.read_csv('per0.5_total_stats.csv').set_index(['module'])
+    per075 = pandas.read_csv('per0.75_total_stats.csv').set_index(['module'])
+    per025 = pandas.read_csv('per0.25_total_stats.csv').set_index(['module'])
 
-    per00_arrived_cnt = per00_df['arrived'].sum()
-    per10_arrived_cnt = per10_df['arrived'].sum()
+    base_arrived_cnt = base['arrived'].sum()
+    per00_arrived_cnt = per00['arrived'].sum()
+    per10_arrived_cnt = per10['arrived'].sum()
+    per05_arrived_cnt = per05['arrived'].sum()
+    per075_arrived_cnt = per075['arrived'].sum()
+    per025_arrived_cnt = per025['arrived'].sum()
 
-    objects = ('PER 0.0', 'PER 1.0')
+    objects = ('Caso Base', 'PER 0.0', 'PER 0.25', 'PER 0.5', 'PER 0.75', 'PER 1.0')
     x_ax = numpy.arange(len(objects))
 
-    pyplot.bar(x_ax, [per00_arrived_cnt, per10_arrived_cnt])
-    pyplot.yscale('linear')
-    pyplot.yticks([per00_arrived_cnt, per10_arrived_cnt])
+    bars = [base_arrived_cnt, per00_arrived_cnt, per025_arrived_cnt,
+            per05_arrived_cnt, per075_arrived_cnt, per10_arrived_cnt]
+
+    pyplot.bar(x_ax, bars)
+    pyplot.yscale('log')
+    pyplot.yticks(bars)
     pyplot.xticks(x_ax, objects)
+
+    for a, b in zip(x_ax, bars):
+        pyplot.text(a, b, str(b))
+
     pyplot.ylabel('N° de vehículos que alcanzaron su destino')
-    pyplot.title('PER 0.0 vs PER 1.0: N° de vehículos que alcanzaron su destino en el tiempo de simulación.')
+    pyplot.title('')
     pyplot.show()
 
+
 def analysis_speed():
-    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
-    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])['mean_speed'].mean()
+    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])['mean_speed'].mean()
+    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])['mean_speed'].mean()
+    per05 = pandas.read_csv('per0.5_total_stats.csv').set_index(['module'])['mean_speed'].mean()
+    per075 = pandas.read_csv('per0.75_total_stats.csv').set_index(['module'])['mean_speed'].mean()
+    per025 = pandas.read_csv('per0.25_total_stats.csv').set_index(['module'])['mean_speed'].mean()
 
-    # filter
-    per00_filtered = per00_df.loc[per00_df['arrived']]
-    per10_filtered = per10_df.loc[per10_df['arrived']]
+    y = [base, per00, per025, per05, per075, per10]
+    objects = ('Caso Base', 'PER 0.0', 'PER 0.25', 'PER 0.5', 'PER 0.75', 'PER 1.0')
+    x = numpy.arange(len(objects))
+    pyplot.bar(x, y)
+    pyplot.xticks(x, objects)
 
-    bins = numpy.linspace(0, per00_df['mean_speed'].max(), 50)
+    for a, b in zip(x, y):
+        pyplot.text(a, b, str(b))
 
-    pyplot.hist(per00_filtered['mean_speed'], bins, alpha=0.75, label='PER 0.0', normed=True)
-    pyplot.hist(per10_filtered['mean_speed'], bins, alpha=0.75, label='PER 1.0', normed=True)
-    pyplot.legend(loc='upper right')
-    pyplot.title('Histograma normalizado de velocidades promedio')
     pyplot.show()
 
 
 def analysis_distance():
-    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
-    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])
+    per05 = pandas.read_csv('per0.5_total_stats.csv').set_index(['module'])
+    per075 = pandas.read_csv('per0.75_total_stats.csv').set_index(['module'])
+    per025 = pandas.read_csv('per0.25_total_stats.csv').set_index(['module'])
 
     # filter
-    per00_filtered = per00_df.loc[per00_df['arrived']]
-    per10_filtered = per10_df.loc[per10_df['arrived']]
+    data = [base['total_dist'], per00['total_dist'], per025['total_dist'],
+            per05['total_dist'], per075['total_dist'], per10['total_dist']]
 
-    bins = numpy.linspace(0, per00_df['total_dist'].max(), 50)
+    labels = ['Caso Base', 'PER 0.0', 'PER 0.25',
+              'PER 0.5', 'PER 0.75', 'PER 1.0']
 
-    pyplot.hist(per00_filtered['total_dist'], bins, alpha=0.75, label='PER 0.0', normed=True)
-    pyplot.hist(per10_filtered['total_dist'], bins, alpha=0.75, label='PER 1.0', normed=True)
-    pyplot.legend(loc='upper right')
-    pyplot.title('Histograma normalizado de distancias totales')
+    bins = numpy.linspace(0, base['total_dist'].max(), 50)
+
+    fig, axes = pyplot.subplots(nrows=2, ncols=3)
+    for idx, ax in enumerate(axes.ravel()):
+        ax.hist(data[idx], bins, label=labels[idx], normed=True)
+        ax.legend(loc='upper right')
+
     pyplot.show()
 
 
 def analysis_time():
-    per00_df = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
-    per10_df = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])
+    per05 = pandas.read_csv('per0.5_total_stats.csv').set_index(['module'])
+    per075 = pandas.read_csv('per0.75_total_stats.csv').set_index(['module'])
+    per025 = pandas.read_csv('per0.25_total_stats.csv').set_index(['module'])
 
     # filter
-    per00_filtered = per00_df.loc[per00_df['arrived']]
-    per10_filtered = per10_df.loc[per10_df['arrived']]
+    data = [base.loc[base['arrived'] == False]['total_time'], per00.loc[per00['arrived'] == False]['total_time'],
+            per025.loc[per025['arrived'] == False]['total_time'],
+            per05.loc[per05['arrived'] == False]['total_time'], per075.loc[per075['arrived'] == False]['total_time'],
+            per10.loc[per10['arrived'] == False]['total_time']]
 
-    bins = numpy.linspace(0, 1000, 50)
+    labels = ['Caso Base', 'PER 0.0', 'PER 0.25',
+              'PER 0.5', 'PER 0.75', 'PER 1.0']
 
-    pyplot.hist(per00_filtered['total_time'], bins, alpha=0.75, label='PER 0.0', normed=True)
-    pyplot.hist(per10_filtered['total_time'], bins, alpha=0.75, label='PER 1.0', normed=True)
-    pyplot.legend(loc='upper right')
-    pyplot.title('Histograma normalizado de tiempos totales')
+    bins = numpy.linspace(0, base['total_dist'].max(), 50)
+
+    fig, axes = pyplot.subplots(nrows=2, ncols=3)
+    for idx, ax in enumerate(axes.ravel()):
+        ax.hist(data[idx], bins, label=labels[idx], normed=True)
+        ax.legend(loc='upper right')
+
     pyplot.show()
 
 
 if __name__ == '__main__':
-    buid_csv()
-    #analysis_time()
-    #analysis_speed()
+    # buid_csv()
+    analysis_arrived_vhc()
+    analysis_distance()
+    analysis_time()
+    analysis_speed()

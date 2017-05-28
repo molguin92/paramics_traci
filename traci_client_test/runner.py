@@ -47,21 +47,23 @@ def run():
         dep = simsubs[DEPARTEDVHCLST]
         arr = simsubs[ARRIVEDVHCLST]
         carsinsim = vehsubs[0]
+        print 'dep', dep
+        print 'arr', arr
 
-        for car in carsinsim:
-            #traci.vehicle.setSpeed(car, 5.0)
-            road = traci.vehicle.getRoadID(car)
-            if road == "26:2" and car not in affected:
-                #traci.vehicle.slowDown(car, 0.0, 10000)
-                #traci.vehicle.setSpeed(car, 4.0)
-                traci.vehicle.changeLane(car, 1, 40000)
-                affected.append(car)
-            elif road != "26:2" and car in affected:
-                traci.vehicle.changeLane(car, 1, -1)
-                affected.remove(car)
+##        for car in carsinsim:
+##            #traci.vehicle.setSpeed(car, 5.0)
+##            road = traci.vehicle.getRoadID(car)
+##            if road == "26:2" and car not in affected:
+##                #traci.vehicle.slowDown(car, 0.0, 10000)
+##                #traci.vehicle.setSpeed(car, 4.0)
+##                traci.vehicle.changeLane(car, 1, 40000)
+##                affected.append(car)
+##            elif road != "26:2" and car in affected:
+##                traci.vehicle.changeLane(car, 1, -1)
+##                affected.remove(car)
         
         
-        #time.sleep(0.1)
+        time.sleep(0.1)
     traci.close()
 
 if __name__ == '__main__':
