@@ -164,7 +164,8 @@ void traci_api::TraCIServer::postStep()
             if(!multiple_timestep)
             {
                 multiple_timestep = true;
-                target_time = Simulation::getInstance()->getCurrentTimeMilliseconds() + Simulation::getInstance()->getTimeStepSizeMilliseconds();
+                Simulation* sim = Simulation::getInstance();
+                target_time = sim->getCurrentTimeMilliseconds() + sim->getTimeStepSizeMilliseconds();
             }
             VehicleManager::getInstance()->reset();
             return;
