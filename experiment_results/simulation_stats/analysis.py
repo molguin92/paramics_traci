@@ -94,24 +94,34 @@ def analysis_arrived_vhc():
     for a, b in zip(x_ax, bars):
         pyplot.text(a, b, str(b))
 
-    pyplot.ylabel('N° de vehículos que alcanzaron su destino')
-    pyplot.title('')
+    #pyplot.ylabel('N° de vehículos que alcanzaron su destino')
+    pyplot.title('N° de vehículos que alcanzaron su destino (escala log)')
     pyplot.show()
 
 
 def analysis_speed():
-    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])['mean_speed'].mean()
-    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])['mean_speed'].mean()
-    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])['mean_speed'].mean()
-    per05 = pandas.read_csv('per0.5_total_stats.csv').set_index(['module'])['mean_speed'].mean()
-    per075 = pandas.read_csv('per0.75_total_stats.csv').set_index(['module'])['mean_speed'].mean()
-    per025 = pandas.read_csv('per0.25_total_stats.csv').set_index(['module'])['mean_speed'].mean()
+    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])
+    per05 = pandas.read_csv('per0.5_total_stats.csv').set_index(['module'])
+    per075 = pandas.read_csv('per0.75_total_stats.csv').set_index(['module'])
+    per025 = pandas.read_csv('per0.25_total_stats.csv').set_index(['module'])
 
-    y = [base, per00, per025, per05, per075, per10]
+    y = [base.loc[base['arrived'] == False]['mean_speed'].mean(),
+         per00.loc[per00['arrived'] == False]['mean_speed'].mean(),
+         per025.loc[per025['arrived'] == False]['mean_speed'].mean(),
+         per05.loc[per05['arrived'] == False]['mean_speed'].mean(),
+         per075.loc[per075['arrived'] == False]['mean_speed'].mean(),
+         per10.loc[per10['arrived'] == False]['mean_speed'].mean()]
+
     objects = ('Caso Base', 'PER 0.0', 'PER 0.25', 'PER 0.5', 'PER 0.75', 'PER 1.0')
     x = numpy.arange(len(objects))
     pyplot.bar(x, y)
+    pyplot.yscale('log')
+    #pyplot.yticks(y)
     pyplot.xticks(x, objects)
+    pyplot.ylabel('Velocidad m/s')
+    pyplot.title('Velocidades promedio de vehículos que NO alcanzaron su destino.')
 
     for a, b in zip(x, y):
         pyplot.text(a, b, str(b))
@@ -128,19 +138,20 @@ def analysis_distance():
     per025 = pandas.read_csv('per0.25_total_stats.csv').set_index(['module'])
 
     # filter
-    data = [base['total_dist'], per00['total_dist'], per025['total_dist'],
-            per05['total_dist'], per075['total_dist'], per10['total_dist']]
+    data = [base.loc[base['arrived'] != True]['total_dist'], per00.loc[per00['arrived'] != True]['total_dist'], per025.loc[per025['arrived'] != True]['total_dist'],
+            per05.loc[per05['arrived'] != True]['total_dist'], per075.loc[per075['arrived'] != True]['total_dist'], per10.loc[per10['arrived'] != True]['total_dist']]
 
     labels = ['Caso Base', 'PER 0.0', 'PER 0.25',
               'PER 0.5', 'PER 0.75', 'PER 1.0']
 
     bins = numpy.linspace(0, base['total_dist'].max(), 50)
 
-    fig, axes = pyplot.subplots(nrows=2, ncols=3)
+    fig, axes = pyplot.subplots(nrows=2, ncols=3, sharey=True)
+    fig.suptitle("Frecuencia relativa de distancias recorridas - autos que NO llegaron a su destino.")
     for idx, ax in enumerate(axes.ravel()):
-        ax.hist(data[idx], bins, label=labels[idx], normed=True)
+        x, y, _ = ax.hist(data[idx], bins, label=labels[idx], normed=True)
+        pyplot.setp(ax.get_yticklabels(), visible=True)
         ax.legend(loc='upper right')
-
     pyplot.show()
 
 
@@ -173,7 +184,7 @@ def analysis_time():
 
 if __name__ == '__main__':
     # buid_csv()
-    analysis_arrived_vhc()
-    analysis_distance()
+    # analysis_arrived_vhc()
+    # analysis_distance()
     analysis_time()
-    analysis_speed()
+    # analysis_speed()
