@@ -66,6 +66,8 @@ def vehicles_vs_time():
     print(df)
 
     fig, ax = pyplot.subplots()
+    ax.set_facecolor('white')
+    ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
 
     pyplot.xlim([df['nvhcs'].min() - 50, df['nvhcs'].max() + 50])
     pyplot.ylim(0, df['t'].max() + 120)
@@ -86,13 +88,13 @@ def vehicles_vs_time():
     z = numpy.polyfit(df['nvhcs'], df['t'], 1)
     p = numpy.poly1d(z)
     nx = range(0, int(df['nvhcs'].max()) + 200)
-    ax.plot(nx, p(nx), 'b--', alpha=0.1, label='Ajuste lineal')
+    ax.plot(nx, p(nx), '-.', alpha=0.3, label='Ajuste lineal', color='#F06449')
 
     # scatter
-    ax.plot(df.loc[df['demand'] == 1.00]['nvhcs'], df.loc[df['demand'] == 1.00]['t'], 'or', label='Carga 100%')
-    ax.plot(df.loc[df['demand'] == 0.75]['nvhcs'], df.loc[df['demand'] == 0.75]['t'], 'oy', label='Carga 75%')
-    ax.plot(df.loc[df['demand'] == 0.50]['nvhcs'], df.loc[df['demand'] == 0.50]['t'], 'ob', label='Carga 50%')
-    ax.plot(df.loc[df['demand'] == 0.25]['nvhcs'], df.loc[df['demand'] == 0.25]['t'], 'og', label='Carga 25%')
+    ax.plot(df.loc[df['demand'] == 1.00]['nvhcs'], df.loc[df['demand'] == 1.00]['t'], 'o', color='#17BEBB', label='Carga 100%')
+    ax.plot(df.loc[df['demand'] == 0.75]['nvhcs'], df.loc[df['demand'] == 0.75]['t'], 'o', color='#EF2D56', label='Carga 75%')
+    ax.plot(df.loc[df['demand'] == 0.50]['nvhcs'], df.loc[df['demand'] == 0.50]['t'], 'o', color='#8CD867', label='Carga 50%')
+    ax.plot(df.loc[df['demand'] == 0.25]['nvhcs'], df.loc[df['demand'] == 0.25]['t'], 'o', color='#2F243A', label='Carga 25%')
     ax.legend(loc='upper left')
     pyplot.ylabel('Tiempo (MM:SS)')
 
