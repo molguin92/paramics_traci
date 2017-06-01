@@ -12,7 +12,7 @@ def to_min_secs(x, pos):
     x = int(x)
     minutes = x // 60
     seconds = x % 60
-    return '{}:{}'.format(minutes, seconds)
+    return '{:02d}:{:02d}'.format(minutes, seconds)
 
 def system_performance():
     total_RAM_mb = virtual_memory().total / (1024 * 1024)
@@ -67,6 +67,21 @@ def vehicles_vs_time():
 
     fig, ax = pyplot.subplots()
 
+    pyplot.xlim([df['nvhcs'].min() - 50, df['nvhcs'].max() + 50])
+    pyplot.ylim(0, df['t'].max() + 120)
+
+    yticks_mins = numpy.arange(0, df['t'].max() + 120, 120)
+    yticks_10secs = numpy.arange(0, df['t'].max() + 120, 60)
+
+    xticks = numpy.arange(200, 1500, 100)
+    xticks_minor = numpy.arange(150, 1500, 10)
+
+    ax.set_yticks(yticks_mins)
+    ax.set_yticks(yticks_10secs, minor=True)
+
+    ax.set_xticks(xticks)
+    ax.set_xticks(xticks_minor, minor=True)
+
     # trendline
     z = numpy.polyfit(df['nvhcs'], df['t'], 1)
     p = numpy.poly1d(z)
@@ -86,9 +101,6 @@ def vehicles_vs_time():
 
     pyplot.xlabel('Cantidad promedio vehículos en simulación')
     pyplot.title('Scatterplot: Cantidad promedio de vehículos vs duración en tiempo real de simulación')
-
-    pyplot.xlim([df['nvhcs'].min()-50, df['nvhcs'].max()+50])
-
 
     pyplot.show()
 
