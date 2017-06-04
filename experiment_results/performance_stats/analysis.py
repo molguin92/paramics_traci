@@ -1,4 +1,16 @@
 import matplotlib
+
+matplotlib.use('pgf')
+pgf_with_pdflatex = {
+    "pgf.texsystem": "pdflatex",
+    "pgf.preamble": [
+         r"\usepackage[utf8x]{inputenc}",
+         r"\usepackage[T1]{fontenc}",
+         r"\usepackage{cmbright}",
+         ]
+}
+matplotlib.rcParams.update(pgf_with_pdflatex)
+
 import pandas
 from matplotlib import pyplot
 from psutil import virtual_memory
@@ -6,7 +18,6 @@ import numpy
 
 matplotlib.style.use('ggplot')
 pyplot.interactive(False)
-
 
 def to_min_secs(x, pos):
     x = int(x)
@@ -102,9 +113,9 @@ def vehicles_vs_time():
     ax.yaxis.set_major_formatter(formatter)
 
     pyplot.xlabel('Cantidad promedio vehículos en simulación')
-    pyplot.title('Scatterplot: Cantidad promedio de vehículos vs duración en tiempo real de simulación')
-
-    pyplot.show()
+    #pyplot.title('Scatterplot: Cantidad promedio de vehículos vs duración en tiempo real de simulación')
+    pyplot.savefig('n_vhcs_vs_time.pgf')
+    #pyplot.show()
 
 
 if __name__ == '__main__':
