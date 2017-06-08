@@ -1,14 +1,4 @@
 ﻿#include "TraCIServer.h"
-#include "programmer.h"
-#include <thread>
-#include "storage.h"
-#include "Constants.h"
-#include "VehicleManager.h"
-#include "Exceptions.h"
-#include "Network.h"
-#include "Subscriptions.h"
-#include <windows.h>
-#include "Simulation.h"
 
 /*
  * This class abstracts a server for the TraCI protocol.

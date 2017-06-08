@@ -3,7 +3,11 @@
 #include "Utils.h"
 #include <unordered_map>
 #include "Triggers.h"
-#include "Subscriptions.h"
+#include "Constants.h"
+#include <string>
+#include "Simulation.h"
+#include "Exceptions.h"
+#include <map>
 
 
 namespace std
@@ -21,6 +25,8 @@ namespace traci_api
     class NotImplementedError;
     class NoSuchObjectError;
     class NoSuchObjectError;
+    class LaneSetTrigger;
+    class BaseSpeedController;
 
     class VehicleManager
     {

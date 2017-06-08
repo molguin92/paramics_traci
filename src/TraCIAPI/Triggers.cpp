@@ -1,7 +1,4 @@
 ﻿#include "Triggers.h"
-#include "Constants.h"
-#include <cmath>
-#include "Simulation.h"
 
 traci_api::LaneSetTrigger::LaneSetTrigger(VEHICLE* vhc, int target_lane, int duration) : target_lane(target_lane), vehicle(vhc)
 {

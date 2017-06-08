@@ -1,9 +1,4 @@
 ﻿#include "VehicleManager.h"
-#include "Constants.h"
-#include <string>
-#include "Simulation.h"
-#include "Exceptions.h"
-#include <map>
 
 /* null singleton */
 traci_api::VehicleManager* traci_api::VehicleManager::instance = nullptr;

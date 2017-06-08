@@ -1,6 +1,10 @@
 ﻿#pragma once
 #include "programmer.h"
 
+#include "Constants.h"
+#include <cmath>
+#include "Simulation.h"
+
 namespace traci_api
 {
     /* Triggered events (multiple causes: time, changing lanes, etc */

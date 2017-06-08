@@ -2,6 +2,12 @@
 #include "storage.h"
 #include <mutex>
 
+#include <programmer.h>
+#include "TraCIServer.h"
+#include "Constants.h"
+#include "VehicleManager.h"
+#include <algorithm>
+
 namespace traci_api
 {
     class Simulation

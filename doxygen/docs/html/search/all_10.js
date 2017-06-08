@@ -3,6 +3,7 @@ var searchData=
   ['target_5flane',['target_lane',['../classtraci__api_1_1_lane_set_trigger.html#ad39b2db18176f0a7d40da0bb3878e519',1,'traci_api::LaneSetTrigger']]],
   ['tcpip',['tcpip',['../namespacetcpip.html',1,'']]],
   ['traci_5fapi',['traci_api',['../namespacetraci__api.html',1,'']]],
+  ['traciapi_5fversion',['TRACIAPI_VERSION',['../_constants_8h.html#a19f92b9ea6d9d06e3d3bcf3042a89315',1,'Constants.h']]],
   ['traciserver',['TraCIServer',['../classtraci__api_1_1_tra_c_i_server.html',1,'traci_api::TraCIServer'],['../classtraci__api_1_1_tra_c_i_server.html#a9960233a10a2c3790c375f91eec00b12',1,'traci_api::TraCIServer::TraCIServer()']]],
   ['traciserver_2ecpp',['TraCIServer.cpp',['../_tra_c_i_server_8cpp.html',1,'']]],
   ['traciserver_2eh',['TraCIServer.h',['../_tra_c_i_server_8h.html',1,'']]],

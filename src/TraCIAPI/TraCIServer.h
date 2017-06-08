@@ -2,10 +2,22 @@
 
 #include "socket.h"
 #include "storage.h"
+#include "programmer.h"
+#include <thread>
+#include "storage.h"
+#include "Constants.h"
+#include "VehicleManager.h"
+#include "Exceptions.h"
+#include "Network.h"
+#include "Subscriptions.h"
+#include <windows.h>
+#include "Simulation.h"
 #include "Subscriptions.h"
 
 namespace traci_api
 {
+    class VariableSubscription;
+
     class TraCIServer
     {
     public:

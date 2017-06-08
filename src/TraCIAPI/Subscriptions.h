@@ -3,6 +3,8 @@
 #include "storage.h"
 #include "Constants.h"
 #include "VehicleManager.h"
+#include "Exceptions.h"
+#include "Simulation.h"
 
 namespace traci_api
 {

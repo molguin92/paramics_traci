@@ -1,10 +1,10 @@
 ﻿#pragma once
 
-#include <cstdint>
 #include "storage.h"
 #include "Exceptions.h"
 #include <unordered_map>
 #include <programmer.h>
+#include "Constants.h"
 
 namespace traci_api
 {
