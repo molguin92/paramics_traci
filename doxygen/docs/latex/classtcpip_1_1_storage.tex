@@ -1,0 +1,406 @@
+\hypertarget{classtcpip_1_1_storage}{}\section{tcpip\+:\+:Storage Class Reference}
+\label{classtcpip_1_1_storage}\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+
+
+{\ttfamily \#include $<$storage.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ unsigned char $>$ \hyperlink{classtcpip_1_1_storage_a087e7b1151a2642cb782b5a6bdc25576}{Storage\+Type}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtcpip_1_1_storage_a9e1914755462164da7d95a72aa7079a6}{Storage} ()
+\begin{DoxyCompactList}\small\item\em Standard Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classtcpip_1_1_storage_a6fe8d57f25a565dddf054714fe72e819}{Storage} (const unsigned char \mbox{[}$\,$\mbox{]}, int length=-\/1)
+\begin{DoxyCompactList}\small\item\em Constructor, that fills the storage with an char array. If length is -\/1, the whole array is handed over. \end{DoxyCompactList}\item 
+virtual \hyperlink{classtcpip_1_1_storage_ae486026b1601908f5b023cf2ae2f79b8}{$\sim$\+Storage} ()
+\item 
+virtual bool \hyperlink{classtcpip_1_1_storage_a90dbd2c479e5f06fca80783660ffc648}{valid\+\_\+pos} ()
+\item 
+virtual unsigned int \hyperlink{classtcpip_1_1_storage_a00c4b7b4c74ca5b5418177544bad8dc7}{position} () const
+\item 
+void \hyperlink{classtcpip_1_1_storage_a5f4f62ada96d7e48465eb27047c4595a}{reset} ()
+\item 
+std\+::string \hyperlink{classtcpip_1_1_storage_a841ce58366edb7bea45305614b98eaa4}{hex\+Dump} () const
+\begin{DoxyCompactList}\small\item\em Dump storage content as series of hex values. \end{DoxyCompactList}\item 
+virtual unsigned char \hyperlink{classtcpip_1_1_storage_a9ce771084ea76f4ee0cdc277bd340729}{read\+Char} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_a563b9a0d45d32ce3f331d29dc949a8e7}{write\+Char} (unsigned char)  throw ()
+\item 
+virtual int \hyperlink{classtcpip_1_1_storage_aaf174f5fbce4103b3b60c6e5da18e9b5}{read\+Byte} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_a5da17974ce811aefed71169685739073}{write\+Byte} (int)  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual int \hyperlink{classtcpip_1_1_storage_a46215cfa07dcabbdea932e4c69504019}{read\+Unsigned\+Byte} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_a5a42840a57331704c2fdc30e3d1d2a54}{write\+Unsigned\+Byte} (int)  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual std\+::string \hyperlink{classtcpip_1_1_storage_afe367b1d224d73ab06d0ab7899bcd097}{read\+String} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_a07b6d4f8db8f1893aa4ed419be5a5d25}{write\+String} (const std\+::string \&s)  throw ()
+\item 
+virtual std\+::vector$<$ std\+::string $>$ \hyperlink{classtcpip_1_1_storage_afc0459cbb0bf405c5d3d1730c5a98b35}{read\+String\+List} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_ac1d5d12f930b3884f3265508f2b43901}{write\+String\+List} (const std\+::vector$<$ std\+::string $>$ \&s)  throw ()
+\item 
+virtual int \hyperlink{classtcpip_1_1_storage_a73b9af4fa50e74cb02390240f30fa0c9}{read\+Short} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_ae7af58d12716f7119877efb7919813f4}{write\+Short} (int)  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual int \hyperlink{classtcpip_1_1_storage_a04d2fd214a905ad99e9cda8ee7b813e4}{read\+Int} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_a1babffd3cee462277796bc5b4ef6bb1a}{write\+Int} (int)  throw ()
+\item 
+virtual float \hyperlink{classtcpip_1_1_storage_aadec452f61b7c9a8996f3b5af6f5b0ce}{read\+Float} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_ab4fc84f48f0c54fa75bedd69d7293c4c}{write\+Float} (float)  throw ()
+\item 
+virtual double \hyperlink{classtcpip_1_1_storage_a95d74d22486febfd54070910957f15e2}{read\+Double} ()  throw (std\+::invalid\+\_\+argument)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_afb0fc2b3b7f32ac7cba3d885965e417e}{write\+Double} (double)  throw ()
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_ae5c91a96be8c103708273d3f79855fa8}{write\+Packet} (unsigned char $\ast$packet, int length)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_abaf8bd3dd89102ea18f5cd85bc67b91c}{write\+Packet} (const std\+::vector$<$ unsigned char $>$ \&packet)
+\item 
+virtual void \hyperlink{classtcpip_1_1_storage_af574cbcecfb20c5525d579cd4a0bac8f}{write\+Storage} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&store)
+\item 
+Storage\+Type\+::size\+\_\+type \hyperlink{classtcpip_1_1_storage_a69f9705be09f7e5be1a29f4d145f451a}{size} () const
+\item 
+Storage\+Type\+::const\+\_\+iterator \hyperlink{classtcpip_1_1_storage_a0e6208feb041731abbdb595085f29394}{begin} () const
+\item 
+Storage\+Type\+::const\+\_\+iterator \hyperlink{classtcpip_1_1_storage_a42a2fec87e26a5a90f56e3d8201559e1}{end} () const
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a087e7b1151a2642cb782b5a6bdc25576}\label{classtcpip_1_1_storage_a087e7b1151a2642cb782b5a6bdc25576}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!Storage\+Type@{Storage\+Type}}
+\index{Storage\+Type@{Storage\+Type}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{Storage\+Type}{StorageType}}
+{\footnotesize\ttfamily typedef std\+::vector$<$unsigned char$>$ \hyperlink{classtcpip_1_1_storage_a087e7b1151a2642cb782b5a6bdc25576}{tcpip\+::\+Storage\+::\+Storage\+Type}}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a9e1914755462164da7d95a72aa7079a6}\label{classtcpip_1_1_storage_a9e1914755462164da7d95a72aa7079a6}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!Storage@{Storage}}
+\index{Storage@{Storage}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{Storage()}{Storage()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily tcpip\+::\+Storage\+::\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Standard Constructor. 
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a6fe8d57f25a565dddf054714fe72e819}\label{classtcpip_1_1_storage_a6fe8d57f25a565dddf054714fe72e819}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!Storage@{Storage}}
+\index{Storage@{Storage}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{Storage()}{Storage()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily tcpip\+::\+Storage\+::\+Storage (\begin{DoxyParamCaption}\item[{const unsigned}]{char\mbox{[}$\,$\mbox{]},  }\item[{int}]{length = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Constructor, that fills the storage with an char array. If length is -\/1, the whole array is handed over. 
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_ae486026b1601908f5b023cf2ae2f79b8}\label{classtcpip_1_1_storage_ae486026b1601908f5b023cf2ae2f79b8}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!````~Storage@{$\sim$\+Storage}}
+\index{````~Storage@{$\sim$\+Storage}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{$\sim$\+Storage()}{~Storage()}}
+{\footnotesize\ttfamily virtual tcpip\+::\+Storage\+::$\sim$\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a0e6208feb041731abbdb595085f29394}\label{classtcpip_1_1_storage_a0e6208feb041731abbdb595085f29394}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!begin@{begin}}
+\index{begin@{begin}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily Storage\+Type\+::const\+\_\+iterator tcpip\+::\+Storage\+::begin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a0e6208feb041731abbdb595085f29394_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a42a2fec87e26a5a90f56e3d8201559e1}\label{classtcpip_1_1_storage_a42a2fec87e26a5a90f56e3d8201559e1}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!end@{end}}
+\index{end@{end}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily Storage\+Type\+::const\+\_\+iterator tcpip\+::\+Storage\+::end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a42a2fec87e26a5a90f56e3d8201559e1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a841ce58366edb7bea45305614b98eaa4}\label{classtcpip_1_1_storage_a841ce58366edb7bea45305614b98eaa4}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!hex\+Dump@{hex\+Dump}}
+\index{hex\+Dump@{hex\+Dump}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{hex\+Dump()}{hexDump()}}
+{\footnotesize\ttfamily std\+::string tcpip\+::\+Storage\+::hex\+Dump (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Dump storage content as series of hex values. 
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a00c4b7b4c74ca5b5418177544bad8dc7}\label{classtcpip_1_1_storage_a00c4b7b4c74ca5b5418177544bad8dc7}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!position@{position}}
+\index{position@{position}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{position()}{position()}}
+{\footnotesize\ttfamily virtual unsigned int tcpip\+::\+Storage\+::position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_aaf174f5fbce4103b3b60c6e5da18e9b5}\label{classtcpip_1_1_storage_aaf174f5fbce4103b3b60c6e5da18e9b5}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+Byte@{read\+Byte}}
+\index{read\+Byte@{read\+Byte}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+Byte()}{readByte()}}
+{\footnotesize\ttfamily virtual int tcpip\+::\+Storage\+::read\+Byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a9ce771084ea76f4ee0cdc277bd340729}\label{classtcpip_1_1_storage_a9ce771084ea76f4ee0cdc277bd340729}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+Char@{read\+Char}}
+\index{read\+Char@{read\+Char}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+Char()}{readChar()}}
+{\footnotesize\ttfamily virtual unsigned char tcpip\+::\+Storage\+::read\+Char (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a95d74d22486febfd54070910957f15e2}\label{classtcpip_1_1_storage_a95d74d22486febfd54070910957f15e2}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+Double@{read\+Double}}
+\index{read\+Double@{read\+Double}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+Double()}{readDouble()}}
+{\footnotesize\ttfamily virtual double tcpip\+::\+Storage\+::read\+Double (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_aadec452f61b7c9a8996f3b5af6f5b0ce}\label{classtcpip_1_1_storage_aadec452f61b7c9a8996f3b5af6f5b0ce}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+Float@{read\+Float}}
+\index{read\+Float@{read\+Float}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+Float()}{readFloat()}}
+{\footnotesize\ttfamily virtual float tcpip\+::\+Storage\+::read\+Float (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a04d2fd214a905ad99e9cda8ee7b813e4}\label{classtcpip_1_1_storage_a04d2fd214a905ad99e9cda8ee7b813e4}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+Int@{read\+Int}}
+\index{read\+Int@{read\+Int}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+Int()}{readInt()}}
+{\footnotesize\ttfamily virtual int tcpip\+::\+Storage\+::read\+Int (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a04d2fd214a905ad99e9cda8ee7b813e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a73b9af4fa50e74cb02390240f30fa0c9}\label{classtcpip_1_1_storage_a73b9af4fa50e74cb02390240f30fa0c9}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+Short@{read\+Short}}
+\index{read\+Short@{read\+Short}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+Short()}{readShort()}}
+{\footnotesize\ttfamily virtual int tcpip\+::\+Storage\+::read\+Short (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_afe367b1d224d73ab06d0ab7899bcd097}\label{classtcpip_1_1_storage_afe367b1d224d73ab06d0ab7899bcd097}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+String@{read\+String}}
+\index{read\+String@{read\+String}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+String()}{readString()}}
+{\footnotesize\ttfamily virtual std\+::string tcpip\+::\+Storage\+::read\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_afe367b1d224d73ab06d0ab7899bcd097_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_afc0459cbb0bf405c5d3d1730c5a98b35}\label{classtcpip_1_1_storage_afc0459cbb0bf405c5d3d1730c5a98b35}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+String\+List@{read\+String\+List}}
+\index{read\+String\+List@{read\+String\+List}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+String\+List()}{readStringList()}}
+{\footnotesize\ttfamily virtual std\+::vector$<$std\+::string$>$ tcpip\+::\+Storage\+::read\+String\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a46215cfa07dcabbdea932e4c69504019}\label{classtcpip_1_1_storage_a46215cfa07dcabbdea932e4c69504019}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!read\+Unsigned\+Byte@{read\+Unsigned\+Byte}}
+\index{read\+Unsigned\+Byte@{read\+Unsigned\+Byte}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{read\+Unsigned\+Byte()}{readUnsignedByte()}}
+{\footnotesize\ttfamily virtual int tcpip\+::\+Storage\+::read\+Unsigned\+Byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a46215cfa07dcabbdea932e4c69504019_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a5f4f62ada96d7e48465eb27047c4595a}\label{classtcpip_1_1_storage_a5f4f62ada96d7e48465eb27047c4595a}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!reset@{reset}}
+\index{reset@{reset}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void tcpip\+::\+Storage\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a5f4f62ada96d7e48465eb27047c4595a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a69f9705be09f7e5be1a29f4d145f451a}\label{classtcpip_1_1_storage_a69f9705be09f7e5be1a29f4d145f451a}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!size@{size}}
+\index{size@{size}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{size()}{size()}}
+{\footnotesize\ttfamily Storage\+Type\+::size\+\_\+type tcpip\+::\+Storage\+::size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a69f9705be09f7e5be1a29f4d145f451a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a90dbd2c479e5f06fca80783660ffc648}\label{classtcpip_1_1_storage_a90dbd2c479e5f06fca80783660ffc648}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!valid\+\_\+pos@{valid\+\_\+pos}}
+\index{valid\+\_\+pos@{valid\+\_\+pos}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{valid\+\_\+pos()}{valid\_pos()}}
+{\footnotesize\ttfamily virtual bool tcpip\+::\+Storage\+::valid\+\_\+pos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a90dbd2c479e5f06fca80783660ffc648_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a5da17974ce811aefed71169685739073}\label{classtcpip_1_1_storage_a5da17974ce811aefed71169685739073}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Byte@{write\+Byte}}
+\index{write\+Byte@{write\+Byte}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Byte()}{writeByte()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Byte (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a563b9a0d45d32ce3f331d29dc949a8e7}\label{classtcpip_1_1_storage_a563b9a0d45d32ce3f331d29dc949a8e7}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Char@{write\+Char}}
+\index{write\+Char@{write\+Char}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Char()}{writeChar()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Char (\begin{DoxyParamCaption}\item[{unsigned}]{char }\end{DoxyParamCaption}) throw  ) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_afb0fc2b3b7f32ac7cba3d885965e417e}\label{classtcpip_1_1_storage_afb0fc2b3b7f32ac7cba3d885965e417e}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Double@{write\+Double}}
+\index{write\+Double@{write\+Double}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Double()}{writeDouble()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Double (\begin{DoxyParamCaption}\item[{double}]{ }\end{DoxyParamCaption}) throw  ) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_afb0fc2b3b7f32ac7cba3d885965e417e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_ab4fc84f48f0c54fa75bedd69d7293c4c}\label{classtcpip_1_1_storage_ab4fc84f48f0c54fa75bedd69d7293c4c}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Float@{write\+Float}}
+\index{write\+Float@{write\+Float}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Float()}{writeFloat()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Float (\begin{DoxyParamCaption}\item[{float}]{ }\end{DoxyParamCaption}) throw  ) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_a1babffd3cee462277796bc5b4ef6bb1a}\label{classtcpip_1_1_storage_a1babffd3cee462277796bc5b4ef6bb1a}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Int@{write\+Int}}
+\index{write\+Int@{write\+Int}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Int()}{writeInt()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Int (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption}) throw  ) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a1babffd3cee462277796bc5b4ef6bb1a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_ae5c91a96be8c103708273d3f79855fa8}\label{classtcpip_1_1_storage_ae5c91a96be8c103708273d3f79855fa8}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Packet@{write\+Packet}}
+\index{write\+Packet@{write\+Packet}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Packet()}{writePacket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Packet (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{packet,  }\item[{int}]{length }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_abaf8bd3dd89102ea18f5cd85bc67b91c}\label{classtcpip_1_1_storage_abaf8bd3dd89102ea18f5cd85bc67b91c}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Packet@{write\+Packet}}
+\index{write\+Packet@{write\+Packet}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Packet()}{writePacket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Packet (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ unsigned char $>$ \&}]{packet }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_ae7af58d12716f7119877efb7919813f4}\label{classtcpip_1_1_storage_ae7af58d12716f7119877efb7919813f4}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Short@{write\+Short}}
+\index{write\+Short@{write\+Short}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Short()}{writeShort()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Short (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_storage_af574cbcecfb20c5525d579cd4a0bac8f}\label{classtcpip_1_1_storage_af574cbcecfb20c5525d579cd4a0bac8f}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Storage@{write\+Storage}}
+\index{write\+Storage@{write\+Storage}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Storage()}{writeStorage()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Storage (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{store }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_af574cbcecfb20c5525d579cd4a0bac8f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a07b6d4f8db8f1893aa4ed419be5a5d25}\label{classtcpip_1_1_storage_a07b6d4f8db8f1893aa4ed419be5a5d25}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+String@{write\+String}}
+\index{write\+String@{write\+String}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+String()}{writeString()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s }\end{DoxyParamCaption}) throw  ) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a07b6d4f8db8f1893aa4ed419be5a5d25_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_ac1d5d12f930b3884f3265508f2b43901}\label{classtcpip_1_1_storage_ac1d5d12f930b3884f3265508f2b43901}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+String\+List@{write\+String\+List}}
+\index{write\+String\+List@{write\+String\+List}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+String\+List()}{writeStringList()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+String\+List (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{s }\end{DoxyParamCaption}) throw  ) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_ac1d5d12f930b3884f3265508f2b43901_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_storage_a5a42840a57331704c2fdc30e3d1d2a54}\label{classtcpip_1_1_storage_a5a42840a57331704c2fdc30e3d1d2a54}} 
+\index{tcpip\+::\+Storage@{tcpip\+::\+Storage}!write\+Unsigned\+Byte@{write\+Unsigned\+Byte}}
+\index{write\+Unsigned\+Byte@{write\+Unsigned\+Byte}!tcpip\+::\+Storage@{tcpip\+::\+Storage}}
+\subsubsection{\texorpdfstring{write\+Unsigned\+Byte()}{writeUnsignedByte()}}
+{\footnotesize\ttfamily virtual void tcpip\+::\+Storage\+::write\+Unsigned\+Byte (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption}) throw  std\+::invalid\+\_\+argument) \hspace{0.3cm}{\ttfamily [virtual]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_storage_a5a42840a57331704c2fdc30e3d1d2a54_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/shawn/\hyperlink{storage_8h}{storage.\+h}\end{DoxyCompactItemize}

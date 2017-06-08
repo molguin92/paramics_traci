@@ -1,0 +1,1576 @@
+\hypertarget{classtraci__api_1_1_vehicle_manager}{}\section{traci\+\_\+api\+:\+:Vehicle\+Manager Class Reference}
+\label{classtraci__api_1_1_vehicle_manager}\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+
+
+{\ttfamily \#include $<$Vehicle\+Manager.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_abbf990fe432a286e4d3889ff3b3491df}{reset} ()
+\begin{DoxyCompactList}\small\item\em Resets the internal temporary vectors for a new simulation timestep. \end{DoxyCompactList}\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a4b246d7f01b5f37679830f677328fc16}{pack\+Vehicle\+Variable} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&output)  throw (\+Not\+Implemented\+Error, std\+::runtime\+\_\+error, No\+Such\+Object\+Error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a6926963a4f6914be50a1b75833574249}{get\+Vehicle\+Variable} (std\+::string vid, uint8\+\_\+t var\+ID, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&output)  throw (\+Not\+Implemented\+Error, std\+::runtime\+\_\+error, No\+Such\+Object\+Error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a7b3c7300d7b091527ed296652701c471}{set\+Vehicle\+State} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a6451b873f33f8a6713df294a81b78d3f}{vehicle\+Depart} (V\+E\+H\+I\+C\+LE $\ast$vehicle)
+\begin{DoxyCompactList}\small\item\em Signals the departure of a vehicle into the network. \end{DoxyCompactList}\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a336d2616be8e4e0c9da5d29d7f122ad6}{vehicle\+Arrive} (V\+E\+H\+I\+C\+LE $\ast$vehicle)
+\begin{DoxyCompactList}\small\item\em Signals the arrival of a vehicle from the network. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classtraci__api_1_1_vehicle_manager_ae88de975fe459842df9a412c552641ea}{get\+Departed\+Vehicles} ()
+\begin{DoxyCompactList}\small\item\em Requests the list of recently departed vehicles. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classtraci__api_1_1_vehicle_manager_a5ae11ca161f1e9635142a1cdd40417ca}{get\+Arrived\+Vehicles} ()
+\begin{DoxyCompactList}\small\item\em Requests the list of recently arrived vehicles. \end{DoxyCompactList}\item 
+int \hyperlink{classtraci__api_1_1_vehicle_manager_a707b94f1d1f82a35263ae130a0573f77}{get\+Departed\+Vehicle\+Count} () const
+\item 
+int \hyperlink{classtraci__api_1_1_vehicle_manager_a193c8fa0b8778c496b23fc114653ebfa}{get\+Arrived\+Vehicle\+Count} () const
+\item 
+int \hyperlink{classtraci__api_1_1_vehicle_manager_a97816bd56b6f2e6949d175de86c712d6}{current\+Vehicle\+Count} () const
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classtraci__api_1_1_vehicle_manager_ae70d2421d4a96ab7601dabb6fcc512b2}{get\+Vehicles\+In\+Sim} ()
+\item 
+float \hyperlink{classtraci__api_1_1_vehicle_manager_aa5f5a8c13bdd6b1407da5b5ffb6a8559}{get\+Speed} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\begin{DoxyCompactList}\small\item\em Requests the speed of a specific vehicle. \end{DoxyCompactList}\item 
+\hyperlink{class_positional_data}{Positional\+Data} \hyperlink{classtraci__api_1_1_vehicle_manager_ad00a8d49736c7806f0d363d641b7f467}{get\+Position} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\begin{DoxyCompactList}\small\item\em Requests the 3-\/dimensional position of the vehicle in the simulation. \end{DoxyCompactList}\item 
+\hyperlink{class_dimensional_data}{Dimensional\+Data} \hyperlink{classtraci__api_1_1_vehicle_manager_a626f8aea7366479ec9bdd49f58f5b530}{get\+Dimensions} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\item 
+std\+::string \hyperlink{classtraci__api_1_1_vehicle_manager_a3cbdffab3f5fd337a6de08a14b87803e}{get\+Road\+ID} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\item 
+std\+::string \hyperlink{classtraci__api_1_1_vehicle_manager_a5cf2db6460fa94ccb2b3d489369b7d0e}{get\+Lane\+ID} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\item 
+int \hyperlink{classtraci__api_1_1_vehicle_manager_a8daaf314dfb440dfb48575b072cd0d41}{get\+Lane\+Index} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classtraci__api_1_1_vehicle_manager_a399053f44944093adf9a00536bf86bba}{get\+Route\+Edges} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\item 
+std\+::string \hyperlink{classtraci__api_1_1_vehicle_manager_a946553555fa7a2a9f95b4baced6f0dbe}{get\+Vehicle\+Type} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a5441f5ea01a06473f831ac85b9a6c70f}{change\+Lane} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input)  throw (\+No\+Such\+Object\+Error, std\+::runtime\+\_\+error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_afaa8625978e32aab7ca85cd52ce450a8}{slow\+Down} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input)  throw (\+No\+Such\+Object\+Error, std\+::runtime\+\_\+error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a6829e259033dcd95611755953f164ef0}{change\+Colour} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input)  throw (\+No\+Such\+Object\+Error, std\+::runtime\+\_\+error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a40adaaa7aaaae5708855c6c4715204fe}{set\+Speed} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input)  throw (\+No\+Such\+Object\+Error, std\+::runtime\+\_\+error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a5bd46032db2b057eb7e5a5c61d043827}{set\+Max\+Speed} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input)  throw (\+No\+Such\+Object\+Error, std\+::runtime\+\_\+error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a30063f71f02a6272244d7d1e1e9ec99d}{set\+Route} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input)  throw (\+No\+Such\+Object\+Error, std\+::runtime\+\_\+error)
+\item 
+\hyperlink{classtraci__api_1_1_vehicle_manager_a7e9e05b65776f0709f0b84a51c44377f}{Vehicle\+Manager} (\hyperlink{classtraci__api_1_1_vehicle_manager}{Vehicle\+Manager} const \&)=delete
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a3e5ca16c51d63faee6a3a9eb3a4ffafa}{operator=} (\hyperlink{classtraci__api_1_1_vehicle_manager}{Vehicle\+Manager} const \&)=delete
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a4e656c9c9b434113e01331cf0b84babc}{handle\+Delayed\+Triggers} ()
+\begin{DoxyCompactList}\small\item\em Handles delayed time\+\_\+triggers and repetitive timestep triggers. For example, changing back to the original lane after a set time after a lane change command. \end{DoxyCompactList}\item 
+V\+E\+H\+I\+C\+LE $\ast$ \hyperlink{classtraci__api_1_1_vehicle_manager_a46fe50f2be4e9eb6df8f62b9a6e7aa53}{find\+Vehicle} (int vid)  throw (\+No\+Such\+Object\+Error)
+\begin{DoxyCompactList}\small\item\em Searchs the internal list of vehicles for a specific ID. \end{DoxyCompactList}\item 
+V\+E\+H\+I\+C\+LE $\ast$ \hyperlink{classtraci__api_1_1_vehicle_manager_a4fc72da33abd7a0323fd27c7721ba3ef}{find\+Vehicle} (std\+::string vid)  throw (\+No\+Such\+Object\+Error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_abf96c7635d046d03bc02aa0cbc384d17}{pack\+Vhc\+Types\+Variable} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&output)  throw (std\+::runtime\+\_\+error, Not\+Implemented\+Error)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_af404c1fa8e1459cbf415d1f4931c3ad6}{get\+Vhc\+Types\+Variable} (int type\+\_\+id, uint8\+\_\+t var\+ID, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&output)  throw (std\+::runtime\+\_\+error, Not\+Implemented\+Error)
+\item 
+int \hyperlink{classtraci__api_1_1_vehicle_manager_a47a471305d82ae97f65ac2c90f384baa}{reroute\+Vehicle} (V\+E\+H\+I\+C\+LE $\ast$vhc, L\+I\+NK $\ast$lnk)
+\item 
+void \hyperlink{classtraci__api_1_1_vehicle_manager_a02bcdc3429c0b027345148d9f5824554}{route\+Re\+Eval} (V\+E\+H\+I\+C\+LE $\ast$vhc)
+\item 
+bool \hyperlink{classtraci__api_1_1_vehicle_manager_acebd30eec75b857573c9237d9a15244f}{speed\+Control\+Override} (V\+E\+H\+I\+C\+LE $\ast$vhc, float \&speed)
+\begin{DoxyCompactList}\small\item\em Checks if a vehicle has a custom speed controller set (for instance, in the case of Set\+Speed commands). If the vehicle does have a custom controller, this method returns true, and sets the new speed value on the speed parameter. Otherwise, the method returns false and writes nothing on the speed parameter. This method also removes finished controllers after triggering them. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classtraci__api_1_1_vehicle_manager}{Vehicle\+Manager} $\ast$ \hyperlink{classtraci__api_1_1_vehicle_manager_a2f2e2b5647eda9af94094da62788cd2e}{get\+Instance} ()
+\item 
+static void \hyperlink{classtraci__api_1_1_vehicle_manager_ac1ff1be2d47078aae68f6ed9ef5ff187}{delete\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a3a3e88819303878e178eaf8b8bdbcef4}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+ST} = 0x00
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a2b2f33767a7e8ed8d9d64f6ee3ad4ae2}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+U\+NT} = 0x01
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a77976695ff8714a9122a3e940cc54e04}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED} = 0x40
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a1788cd990fdaa86ccb0fe19fc7cce48d}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+OS} = 0x42
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a545dfa38d9a38ece41697cfd4bf9d061}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+O\+S3D} = 0x39
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a04d9e30519527b2dc7cd46b8ef1a3cb0}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+N\+G\+LE} = 0x43
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a3dfae245f71178616fa4cbd355de8950}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+AD} = 0x50
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a77a3774d3a7434fc480201f70973e9e4}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+NE} = 0x51
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_aabbd35962ffe19b69a014feb37bde0c4}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+I\+DX} = 0x52
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a9b212d9d477bebf7f2fe54f9c3555acb}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE} = 0x4f
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a60eabc78c2a9d2f68e46fcbaf0dbb8b6}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH} = 0x44
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_af4d5d1a208087f6d8fcf587d48d2bc3e}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT} = 0xbc
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a8cb7a25163b002f45f977097a48b3173}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH} = 0x4d
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a3a811ad4c585a47e9af5fb779a7f97af}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+PE} = 0x36
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ae6e60c94547d3c6c179c881412a6255f}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+TE} = 0x53
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a4140fe8382dab1e6dff7d3f6e9116118}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+T\+E\+I\+DX} = 0x69
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a8ab2241fc88ed80e3f3d4d98930aba13}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+D\+G\+ES} = 0x54
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a0b76367bca4bf07cb0536cde315201cb}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+OR} = 0x45
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a430064914b1070d671a96da2bfe76a05}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+P\+OS} = 0x56
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a86c531540a0204452880c419c16c0076}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+I\+ST} = 0x84
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a518145e656c215e818588470a5b05ed3}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ST} = 0x5b
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a6970833b58d743a2cb22a3db09e5f11b}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O2} = 0x60
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a6636934f7ce50a95e51d044d118fb904}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+CO} = 0x61
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a96ad8b90c3272d7bb7efe3b64501929d}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+HC} = 0x62
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a76e6186f36d9b755f2dc579a4d57c622}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+MX} = 0x63
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a52073a98f8b4cd039209a84f8fece983}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+OX} = 0x64
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a2feb4c2aeaf374f8c1fbe85a6454ebb4}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+F\+U\+E\+L\+C\+O\+NS} = 0x65
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a8a0d3fdb9304ddf489d123d7ca8f22ea}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+I\+SE} = 0x66
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ad024b88f1fc94552b00883340f376440}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+L\+E\+C\+C\+O\+NS} = 0x71
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a4318c2219a5f58300d7b263c50ec38b5}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+B\+E\+S\+T\+L\+A\+N\+ES} = 0xb2
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_aeb39f34fdafd857f65b4837489b78d2c}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+T\+O\+P\+S\+T\+A\+TE} = 0xb5
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a89242125de907c71bf7b357a7f63acdd}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+M\+AX} = 0x41
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ac9d949b248fbdb168796e0213357e003}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+C\+C\+EL} = 0x46
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a4c88c070e03fd1b4bbc7684935d5d36d}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+E\+C\+EL} = 0x47
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ae44405763fa9729d5f6b93fb54e1c75a}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+AU} = 0x48
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a11f1a4ab7243f294be9ce37c889bf018}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+MA} = 0x5d
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a5645ab4fd7d6938f57beda01a79f5b86}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+D\+F\+A\+C\+T\+OR} = 0x5e
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a536289815e37b9023217ade7d1cd9e84}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+D\+EV} = 0x5f
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ac2ce3790565e9dcaf60c2f10727e6fb5}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+C\+L\+A\+SS} = 0x49
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a26f3f016ee48aa4f004058253c0699ff}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS} = 0x4a
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a1f99a485df0336dc0be888fe59b1431a}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+PE} = 0x4b
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ad4456bf8a1da769c826274acb2af6fe9}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP} = 0x4c
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a12d27b67a1efc5a300aa7baed5cdc473}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+A\+I\+T\+T\+I\+ME} = 0x7a
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a2c78dc01c5fdad2afb13f7f449e36813}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+E\+X\+T\+T\+LS} = 0x70
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a240c2aecbbf2dd8e024952eae3b79365}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE} = 0xb3
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a726376cb977fae009eca00f5550980ae}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+L\+L\+O\+W\+E\+D\+S\+PD} = 0xb7
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a226d8c4d5cffe0ce33f5041380589c09}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+NE} = 0xbd
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a866d82a9f063497d31a0f8e2f6bc9a39}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+N\+U\+M\+B\+ER} = 0x67
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a56136da0ffaf68882bd8dc513d37ffb2}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+I\+A\+E\+D\+G\+ES} = 0xbe
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a2d9c7e68c0b180ff0195b6c2a2ca4fd5}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+N\+T\+R\+A\+C\+I\+S\+PD} = 0xb1
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a4c7692db776fe910195ca4da458e8965}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+A\+L\+I\+D\+R\+O\+U\+TE} = 0x92
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a927209bd0f94d9e2a7542356d74b89e7}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+L\+A\+T\+S\+PD} = 0xba
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ae668bae1944b885b0d6c946d3df3b5ec}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+G\+AP} = 0\+Xbb
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a3866fb6c1b6d1a0011455300f40a18cb}{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+A\+L\+I\+GN} = 0\+Xb9
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a9fcda576e35eb8c34ad6fd4808221acc}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+T\+OP} = 0x12
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a650f7cfb39b3f3dab9c06612bb401b34}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+NE} = 0x13
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_acb211c131fc74c5e73bbeea542c3eb1a}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+W\+D\+WN} = 0x14
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ad6cf6390198a926c352e9573274f17bc}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+S\+U\+ME} = 0x19
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a20db78dac81e4bfe3883327d6ac4dffc}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+T\+A\+R\+G\+ET} = 0x31
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ab660207279fb64c012d1bf7eaeece414}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED} = 0x40
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a60ca45b4d097f18bc8370ed98b712944}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+O\+UR} = 0x45
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a3373c7c01e939ddc8b83e9a6d650ef8e}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+T\+E\+ID} = 0x53
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ab2864115d4a4d0b3418f7c0c336f7b50}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+TE} = 0x57
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a90e63ce9894d2784451505ef43a02d7c}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+E\+D\+G\+E\+T\+T\+I\+ME} = 0x58
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a56909b0447f4c2edad044a4579334938}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+S\+T\+A\+T\+ES} = 0x5b
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a1bd791cd7190fa808b2b45dc2eaa8929}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+TO} = 0x5c
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_afcb459d52da83576184bd006880ca157}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+T\+O\+XY} = 0xb4
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a066983f2b530670d111eb84e69beacd1}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+R\+O\+U\+TE} = 0x90
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a342b4b6d80950b22f1b74fd8e020395d}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE} = 0xb3
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ab75abfc45f99aa7a031d5f4c8701c76c}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+F\+A\+C\+T\+OR} = 0x5e
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a60e5548ae4ee814e33d6e7ec9581b6e3}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+S\+P\+E\+ED} = 0x41
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a3c4d5d091512c5689442bed9dab017b0}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+N\+E\+M\+O\+DE} = 0xb6
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ae8241e67583df78a7937b1741a6533d1}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+DD} = 0x80
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a650514c7298bd7ceb011aba2cd3318c8}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+D\+D\+F\+U\+LL} = 0x85
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a8a3a1bbcd9217c289bb9e47a2aee838c}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+M\+O\+VE} = 0x81
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a9c1ca67d52057f033c38014b8e5adc8e}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH} = 0x44
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a4b6b8a21fb21e6d37165c96faad2bf42}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+H\+C\+C\+L\+A\+SS} = 0x49
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a26d3c7c5eaa33aeadacffe05d61a062c}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS} = 0x4a
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a60dbed8e67261ea813a06af7eff66fe2}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH} = 0x4d
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a2f0dc714583c0f7577f8464935e7bf7a}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT} = 0xbc
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ae26c5e4015d940da17ebcb55990db55a}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP} = 0x4c
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_aa5ba3595345996574b51e72d5f6bd034}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+P\+E\+C\+L\+A\+SS} = 0x4b
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ab9130691efa04efde88822a7876c330d}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+CC} = 0x46
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ad2c2a68fe86ebb06c85e989fed90c97f}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+D\+EC} = 0x47
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_aa36ca1986b29b2df2ec054785d18afd5}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+I\+M\+P\+E\+R\+F\+E\+C\+T\+I\+ON} = 0x5d
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a93d27a387090ce7b8e6b7afc1a9d80b1}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+AU} = 0x48
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_a7b034d47f44d94bea5497357093fc1ce}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE} = 0x4f
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_vehicle_manager_ae66ccdcffdd1e46ed0edac4e7a33598f}{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+IA} = 0xbe
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a7e9e05b65776f0709f0b84a51c44377f}\label{classtraci__api_1_1_vehicle_manager_a7e9e05b65776f0709f0b84a51c44377f}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!Vehicle\+Manager@{Vehicle\+Manager}}
+\index{Vehicle\+Manager@{Vehicle\+Manager}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{Vehicle\+Manager()}{VehicleManager()}}
+{\footnotesize\ttfamily traci\+\_\+api\+::\+Vehicle\+Manager\+::\+Vehicle\+Manager (\begin{DoxyParamCaption}\item[{\hyperlink{classtraci__api_1_1_vehicle_manager}{Vehicle\+Manager} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a7e9e05b65776f0709f0b84a51c44377f_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a6829e259033dcd95611755953f164ef0}\label{classtraci__api_1_1_vehicle_manager_a6829e259033dcd95611755953f164ef0}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!change\+Colour@{change\+Colour}}
+\index{change\+Colour@{change\+Colour}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{change\+Colour()}{changeColour()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::change\+Colour (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}, std\+::runtime\+\_\+error) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a6829e259033dcd95611755953f164ef0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a6829e259033dcd95611755953f164ef0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a5441f5ea01a06473f831ac85b9a6c70f}\label{classtraci__api_1_1_vehicle_manager_a5441f5ea01a06473f831ac85b9a6c70f}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!change\+Lane@{change\+Lane}}
+\index{change\+Lane@{change\+Lane}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{change\+Lane()}{changeLane()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::change\+Lane (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}, std\+::runtime\+\_\+error) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a5441f5ea01a06473f831ac85b9a6c70f_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a5441f5ea01a06473f831ac85b9a6c70f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a97816bd56b6f2e6949d175de86c712d6}\label{classtraci__api_1_1_vehicle_manager_a97816bd56b6f2e6949d175de86c712d6}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!current\+Vehicle\+Count@{current\+Vehicle\+Count}}
+\index{current\+Vehicle\+Count@{current\+Vehicle\+Count}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{current\+Vehicle\+Count()}{currentVehicleCount()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Vehicle\+Manager\+::current\+Vehicle\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a97816bd56b6f2e6949d175de86c712d6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ac1ff1be2d47078aae68f6ed9ef5ff187}\label{classtraci__api_1_1_vehicle_manager_ac1ff1be2d47078aae68f6ed9ef5ff187}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!delete\+Instance@{delete\+Instance}}
+\index{delete\+Instance@{delete\+Instance}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{delete\+Instance()}{deleteInstance()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::delete\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_ac1ff1be2d47078aae68f6ed9ef5ff187_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a46fe50f2be4e9eb6df8f62b9a6e7aa53}\label{classtraci__api_1_1_vehicle_manager_a46fe50f2be4e9eb6df8f62b9a6e7aa53}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!find\+Vehicle@{find\+Vehicle}}
+\index{find\+Vehicle@{find\+Vehicle}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{find\+Vehicle()}{findVehicle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily V\+E\+H\+I\+C\+LE $\ast$ traci\+\_\+api\+::\+Vehicle\+Manager\+::find\+Vehicle (\begin{DoxyParamCaption}\item[{int}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+
+
+Searchs the internal list of vehicles for a specific ID. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vid} & The vehicle ID to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the corresponding Paramics Vehicle. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a46fe50f2be4e9eb6df8f62b9a6e7aa53_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4fc72da33abd7a0323fd27c7721ba3ef}\label{classtraci__api_1_1_vehicle_manager_a4fc72da33abd7a0323fd27c7721ba3ef}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!find\+Vehicle@{find\+Vehicle}}
+\index{find\+Vehicle@{find\+Vehicle}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{find\+Vehicle()}{findVehicle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily V\+E\+H\+I\+C\+LE $\ast$ traci\+\_\+api\+::\+Vehicle\+Manager\+::find\+Vehicle (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a4fc72da33abd7a0323fd27c7721ba3ef_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a193c8fa0b8778c496b23fc114653ebfa}\label{classtraci__api_1_1_vehicle_manager_a193c8fa0b8778c496b23fc114653ebfa}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Arrived\+Vehicle\+Count@{get\+Arrived\+Vehicle\+Count}}
+\index{get\+Arrived\+Vehicle\+Count@{get\+Arrived\+Vehicle\+Count}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Arrived\+Vehicle\+Count()}{getArrivedVehicleCount()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Arrived\+Vehicle\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a193c8fa0b8778c496b23fc114653ebfa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a5ae11ca161f1e9635142a1cdd40417ca}\label{classtraci__api_1_1_vehicle_manager_a5ae11ca161f1e9635142a1cdd40417ca}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Arrived\+Vehicles@{get\+Arrived\+Vehicles}}
+\index{get\+Arrived\+Vehicles@{get\+Arrived\+Vehicles}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Arrived\+Vehicles()}{getArrivedVehicles()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Arrived\+Vehicles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Requests the list of recently arrived vehicles. 
+
+\begin{DoxyReturn}{Returns}
+A vector of strings containing every vehicle that has arrived in the last timestep. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a5ae11ca161f1e9635142a1cdd40417ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a707b94f1d1f82a35263ae130a0573f77}\label{classtraci__api_1_1_vehicle_manager_a707b94f1d1f82a35263ae130a0573f77}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Departed\+Vehicle\+Count@{get\+Departed\+Vehicle\+Count}}
+\index{get\+Departed\+Vehicle\+Count@{get\+Departed\+Vehicle\+Count}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Departed\+Vehicle\+Count()}{getDepartedVehicleCount()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Departed\+Vehicle\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a707b94f1d1f82a35263ae130a0573f77_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae88de975fe459842df9a412c552641ea}\label{classtraci__api_1_1_vehicle_manager_ae88de975fe459842df9a412c552641ea}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Departed\+Vehicles@{get\+Departed\+Vehicles}}
+\index{get\+Departed\+Vehicles@{get\+Departed\+Vehicles}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Departed\+Vehicles()}{getDepartedVehicles()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Departed\+Vehicles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Requests the list of recently departed vehicles. 
+
+\begin{DoxyReturn}{Returns}
+A vector of strings containing every vehicle that has departed in the last timestep. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_ae88de975fe459842df9a412c552641ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a626f8aea7366479ec9bdd49f58f5b530}\label{classtraci__api_1_1_vehicle_manager_a626f8aea7366479ec9bdd49f58f5b530}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Dimensions@{get\+Dimensions}}
+\index{get\+Dimensions@{get\+Dimensions}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Dimensions()}{getDimensions()}}
+{\footnotesize\ttfamily \hyperlink{class_dimensional_data}{Dimensional\+Data} traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Dimensions (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a626f8aea7366479ec9bdd49f58f5b530_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a626f8aea7366479ec9bdd49f58f5b530_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a2f2e2b5647eda9af94094da62788cd2e}\label{classtraci__api_1_1_vehicle_manager_a2f2e2b5647eda9af94094da62788cd2e}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily \hyperlink{classtraci__api_1_1_vehicle_manager}{traci\+\_\+api\+::\+Vehicle\+Manager} $\ast$ traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a2f2e2b5647eda9af94094da62788cd2e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a5cf2db6460fa94ccb2b3d489369b7d0e}\label{classtraci__api_1_1_vehicle_manager_a5cf2db6460fa94ccb2b3d489369b7d0e}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Lane\+ID@{get\+Lane\+ID}}
+\index{get\+Lane\+ID@{get\+Lane\+ID}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Lane\+I\+D()}{getLaneID()}}
+{\footnotesize\ttfamily std\+::string traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Lane\+ID (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a5cf2db6460fa94ccb2b3d489369b7d0e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a5cf2db6460fa94ccb2b3d489369b7d0e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a8daaf314dfb440dfb48575b072cd0d41}\label{classtraci__api_1_1_vehicle_manager_a8daaf314dfb440dfb48575b072cd0d41}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Lane\+Index@{get\+Lane\+Index}}
+\index{get\+Lane\+Index@{get\+Lane\+Index}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Lane\+Index()}{getLaneIndex()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Lane\+Index (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a8daaf314dfb440dfb48575b072cd0d41_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a8daaf314dfb440dfb48575b072cd0d41_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ad00a8d49736c7806f0d363d641b7f467}\label{classtraci__api_1_1_vehicle_manager_ad00a8d49736c7806f0d363d641b7f467}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Position@{get\+Position}}
+\index{get\+Position@{get\+Position}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Position()}{getPosition()}}
+{\footnotesize\ttfamily \hyperlink{class_positional_data}{Positional\+Data} traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Position (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+
+
+Requests the 3-\/dimensional position of the vehicle in the simulation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vid} & The ID of the vehicle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \hyperlink{class_vector3_d}{Vector3D} object representing the position of the vehicle. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_ad00a8d49736c7806f0d363d641b7f467_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_ad00a8d49736c7806f0d363d641b7f467_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3cbdffab3f5fd337a6de08a14b87803e}\label{classtraci__api_1_1_vehicle_manager_a3cbdffab3f5fd337a6de08a14b87803e}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Road\+ID@{get\+Road\+ID}}
+\index{get\+Road\+ID@{get\+Road\+ID}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Road\+I\+D()}{getRoadID()}}
+{\footnotesize\ttfamily std\+::string traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Road\+ID (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a3cbdffab3f5fd337a6de08a14b87803e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a3cbdffab3f5fd337a6de08a14b87803e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a399053f44944093adf9a00536bf86bba}\label{classtraci__api_1_1_vehicle_manager_a399053f44944093adf9a00536bf86bba}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Route\+Edges@{get\+Route\+Edges}}
+\index{get\+Route\+Edges@{get\+Route\+Edges}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Route\+Edges()}{getRouteEdges()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Route\+Edges (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a399053f44944093adf9a00536bf86bba_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a399053f44944093adf9a00536bf86bba_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_aa5f5a8c13bdd6b1407da5b5ffb6a8559}\label{classtraci__api_1_1_vehicle_manager_aa5f5a8c13bdd6b1407da5b5ffb6a8559}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Speed@{get\+Speed}}
+\index{get\+Speed@{get\+Speed}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Speed()}{getSpeed()}}
+{\footnotesize\ttfamily float traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Speed (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+
+
+Requests the speed of a specific vehicle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vid} & The ID of the vehicle. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The current speed in m/s. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_aa5f5a8c13bdd6b1407da5b5ffb6a8559_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_aa5f5a8c13bdd6b1407da5b5ffb6a8559_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae70d2421d4a96ab7601dabb6fcc512b2}\label{classtraci__api_1_1_vehicle_manager_ae70d2421d4a96ab7601dabb6fcc512b2}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Vehicles\+In\+Sim@{get\+Vehicles\+In\+Sim}}
+\index{get\+Vehicles\+In\+Sim@{get\+Vehicles\+In\+Sim}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Vehicles\+In\+Sim()}{getVehiclesInSim()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Vehicles\+In\+Sim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_ae70d2421d4a96ab7601dabb6fcc512b2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a946553555fa7a2a9f95b4baced6f0dbe}\label{classtraci__api_1_1_vehicle_manager_a946553555fa7a2a9f95b4baced6f0dbe}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Vehicle\+Type@{get\+Vehicle\+Type}}
+\index{get\+Vehicle\+Type@{get\+Vehicle\+Type}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Vehicle\+Type()}{getVehicleType()}}
+{\footnotesize\ttfamily std\+::string traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Vehicle\+Type (\begin{DoxyParamCaption}\item[{std\+::string}]{vid }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a946553555fa7a2a9f95b4baced6f0dbe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a946553555fa7a2a9f95b4baced6f0dbe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a6926963a4f6914be50a1b75833574249}\label{classtraci__api_1_1_vehicle_manager_a6926963a4f6914be50a1b75833574249}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Vehicle\+Variable@{get\+Vehicle\+Variable}}
+\index{get\+Vehicle\+Variable@{get\+Vehicle\+Variable}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Vehicle\+Variable()}{getVehicleVariable()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Vehicle\+Variable (\begin{DoxyParamCaption}\item[{std\+::string}]{vid,  }\item[{uint8\+\_\+t}]{var\+ID,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{output }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_not_implemented_error}{Not\+Implemented\+Error},  std\+::runtime\+\_\+error, \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a6926963a4f6914be50a1b75833574249_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a6926963a4f6914be50a1b75833574249_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_af404c1fa8e1459cbf415d1f4931c3ad6}\label{classtraci__api_1_1_vehicle_manager_af404c1fa8e1459cbf415d1f4931c3ad6}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!get\+Vhc\+Types\+Variable@{get\+Vhc\+Types\+Variable}}
+\index{get\+Vhc\+Types\+Variable@{get\+Vhc\+Types\+Variable}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{get\+Vhc\+Types\+Variable()}{getVhcTypesVariable()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::get\+Vhc\+Types\+Variable (\begin{DoxyParamCaption}\item[{int}]{type\+\_\+id,  }\item[{uint8\+\_\+t}]{var\+ID,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{output }\end{DoxyParamCaption}) throw  std\+::runtime\+\_\+error, \hyperlink{classtraci__api_1_1_not_implemented_error}{Not\+Implemented\+Error}) }
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_af404c1fa8e1459cbf415d1f4931c3ad6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4e656c9c9b434113e01331cf0b84babc}\label{classtraci__api_1_1_vehicle_manager_a4e656c9c9b434113e01331cf0b84babc}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!handle\+Delayed\+Triggers@{handle\+Delayed\+Triggers}}
+\index{handle\+Delayed\+Triggers@{handle\+Delayed\+Triggers}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{handle\+Delayed\+Triggers()}{handleDelayedTriggers()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::handle\+Delayed\+Triggers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles delayed time\+\_\+triggers and repetitive timestep triggers. For example, changing back to the original lane after a set time after a lane change command. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a4e656c9c9b434113e01331cf0b84babc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a4e656c9c9b434113e01331cf0b84babc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3e5ca16c51d63faee6a3a9eb3a4ffafa}\label{classtraci__api_1_1_vehicle_manager_a3e5ca16c51d63faee6a3a9eb3a4ffafa}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!operator=@{operator=}}
+\index{operator=@{operator=}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classtraci__api_1_1_vehicle_manager}{Vehicle\+Manager} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4b246d7f01b5f37679830f677328fc16}\label{classtraci__api_1_1_vehicle_manager_a4b246d7f01b5f37679830f677328fc16}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!pack\+Vehicle\+Variable@{pack\+Vehicle\+Variable}}
+\index{pack\+Vehicle\+Variable@{pack\+Vehicle\+Variable}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{pack\+Vehicle\+Variable()}{packVehicleVariable()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::pack\+Vehicle\+Variable (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{output }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_not_implemented_error}{Not\+Implemented\+Error},  std\+::runtime\+\_\+error, \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a4b246d7f01b5f37679830f677328fc16_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a4b246d7f01b5f37679830f677328fc16_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_abf96c7635d046d03bc02aa0cbc384d17}\label{classtraci__api_1_1_vehicle_manager_abf96c7635d046d03bc02aa0cbc384d17}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!pack\+Vhc\+Types\+Variable@{pack\+Vhc\+Types\+Variable}}
+\index{pack\+Vhc\+Types\+Variable@{pack\+Vhc\+Types\+Variable}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{pack\+Vhc\+Types\+Variable()}{packVhcTypesVariable()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::pack\+Vhc\+Types\+Variable (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{output }\end{DoxyParamCaption}) throw  std\+::runtime\+\_\+error, \hyperlink{classtraci__api_1_1_not_implemented_error}{Not\+Implemented\+Error}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_abf96c7635d046d03bc02aa0cbc384d17_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_abf96c7635d046d03bc02aa0cbc384d17_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a47a471305d82ae97f65ac2c90f384baa}\label{classtraci__api_1_1_vehicle_manager_a47a471305d82ae97f65ac2c90f384baa}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!reroute\+Vehicle@{reroute\+Vehicle}}
+\index{reroute\+Vehicle@{reroute\+Vehicle}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{reroute\+Vehicle()}{rerouteVehicle()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Vehicle\+Manager\+::reroute\+Vehicle (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vhc,  }\item[{L\+I\+NK $\ast$}]{lnk }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classtraci__api_1_1_vehicle_manager_a47a471305d82ae97f65ac2c90f384baa_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_abbf990fe432a286e4d3889ff3b3491df}\label{classtraci__api_1_1_vehicle_manager_abbf990fe432a286e4d3889ff3b3491df}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!reset@{reset}}
+\index{reset@{reset}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the internal temporary vectors for a new simulation timestep. 
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_abbf990fe432a286e4d3889ff3b3491df_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a02bcdc3429c0b027345148d9f5824554}\label{classtraci__api_1_1_vehicle_manager_a02bcdc3429c0b027345148d9f5824554}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!route\+Re\+Eval@{route\+Re\+Eval}}
+\index{route\+Re\+Eval@{route\+Re\+Eval}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{route\+Re\+Eval()}{routeReEval()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::route\+Re\+Eval (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vhc }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{classtraci__api_1_1_vehicle_manager_a02bcdc3429c0b027345148d9f5824554_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a5bd46032db2b057eb7e5a5c61d043827}\label{classtraci__api_1_1_vehicle_manager_a5bd46032db2b057eb7e5a5c61d043827}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!set\+Max\+Speed@{set\+Max\+Speed}}
+\index{set\+Max\+Speed@{set\+Max\+Speed}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{set\+Max\+Speed()}{setMaxSpeed()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::set\+Max\+Speed (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}, std\+::runtime\+\_\+error) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a5bd46032db2b057eb7e5a5c61d043827_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a5bd46032db2b057eb7e5a5c61d043827_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a30063f71f02a6272244d7d1e1e9ec99d}\label{classtraci__api_1_1_vehicle_manager_a30063f71f02a6272244d7d1e1e9ec99d}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!set\+Route@{set\+Route}}
+\index{set\+Route@{set\+Route}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{set\+Route()}{setRoute()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::set\+Route (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}, std\+::runtime\+\_\+error) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a30063f71f02a6272244d7d1e1e9ec99d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a30063f71f02a6272244d7d1e1e9ec99d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a40adaaa7aaaae5708855c6c4715204fe}\label{classtraci__api_1_1_vehicle_manager_a40adaaa7aaaae5708855c6c4715204fe}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!set\+Speed@{set\+Speed}}
+\index{set\+Speed@{set\+Speed}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{set\+Speed()}{setSpeed()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::set\+Speed (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}, std\+::runtime\+\_\+error) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a40adaaa7aaaae5708855c6c4715204fe_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a40adaaa7aaaae5708855c6c4715204fe_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a7b3c7300d7b091527ed296652701c471}\label{classtraci__api_1_1_vehicle_manager_a7b3c7300d7b091527ed296652701c471}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!set\+Vehicle\+State@{set\+Vehicle\+State}}
+\index{set\+Vehicle\+State@{set\+Vehicle\+State}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{set\+Vehicle\+State()}{setVehicleState()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::set\+Vehicle\+State (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a7b3c7300d7b091527ed296652701c471_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_a7b3c7300d7b091527ed296652701c471_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_afaa8625978e32aab7ca85cd52ce450a8}\label{classtraci__api_1_1_vehicle_manager_afaa8625978e32aab7ca85cd52ce450a8}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!slow\+Down@{slow\+Down}}
+\index{slow\+Down@{slow\+Down}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{slow\+Down()}{slowDown()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::slow\+Down (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input }\end{DoxyParamCaption}) throw  \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}, std\+::runtime\+\_\+error) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_afaa8625978e32aab7ca85cd52ce450a8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_afaa8625978e32aab7ca85cd52ce450a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_acebd30eec75b857573c9237d9a15244f}\label{classtraci__api_1_1_vehicle_manager_acebd30eec75b857573c9237d9a15244f}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!speed\+Control\+Override@{speed\+Control\+Override}}
+\index{speed\+Control\+Override@{speed\+Control\+Override}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{speed\+Control\+Override()}{speedControlOverride()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::\+Vehicle\+Manager\+::speed\+Control\+Override (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vhc,  }\item[{float \&}]{speed }\end{DoxyParamCaption})}
+
+
+
+Checks if a vehicle has a custom speed controller set (for instance, in the case of Set\+Speed commands). If the vehicle does have a custom controller, this method returns true, and sets the new speed value on the speed parameter. Otherwise, the method returns false and writes nothing on the speed parameter. This method also removes finished controllers after triggering them. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vhc} & The vehicle to check for custom speed controllers. \\
+\hline
+{\em speed} & Return variable for next timesteps speed value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the vehicle has a controller, false if it doesn\textquotesingle{}t. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_vehicle_manager_acebd30eec75b857573c9237d9a15244f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a336d2616be8e4e0c9da5d29d7f122ad6}\label{classtraci__api_1_1_vehicle_manager_a336d2616be8e4e0c9da5d29d7f122ad6}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!vehicle\+Arrive@{vehicle\+Arrive}}
+\index{vehicle\+Arrive@{vehicle\+Arrive}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{vehicle\+Arrive()}{vehicleArrive()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::vehicle\+Arrive (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vehicle }\end{DoxyParamCaption})}
+
+
+
+Signals the arrival of a vehicle from the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle} & A pointer to the Paramics Vehicle. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{classtraci__api_1_1_vehicle_manager_a336d2616be8e4e0c9da5d29d7f122ad6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a6451b873f33f8a6713df294a81b78d3f}\label{classtraci__api_1_1_vehicle_manager_a6451b873f33f8a6713df294a81b78d3f}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!vehicle\+Depart@{vehicle\+Depart}}
+\index{vehicle\+Depart@{vehicle\+Depart}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{vehicle\+Depart()}{vehicleDepart()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Vehicle\+Manager\+::vehicle\+Depart (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vehicle }\end{DoxyParamCaption})}
+
+
+
+Signals the departure of a vehicle into the network. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vehicle} & A pointer to the Paramics Vehicle. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{classtraci__api_1_1_vehicle_manager_a6451b873f33f8a6713df294a81b78d3f_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ab9130691efa04efde88822a7876c330d}\label{classtraci__api_1_1_vehicle_manager_ab9130691efa04efde88822a7876c330d}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+CC@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+CC}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+CC@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+CC}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+CC}{STA\_VHC\_ACC}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+CC = 0x46\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae8241e67583df78a7937b1741a6533d1}\label{classtraci__api_1_1_vehicle_manager_ae8241e67583df78a7937b1741a6533d1}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+DD@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+DD}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+DD@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+DD}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+DD}{STA\_VHC\_ADD}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+DD = 0x80\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a650514c7298bd7ceb011aba2cd3318c8}\label{classtraci__api_1_1_vehicle_manager_a650514c7298bd7ceb011aba2cd3318c8}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+D\+D\+F\+U\+LL@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+D\+D\+F\+U\+LL}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+D\+D\+F\+U\+LL@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+D\+D\+F\+U\+LL}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+D\+D\+F\+U\+LL}{STA\_VHC\_ADDFULL}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+A\+D\+D\+F\+U\+LL = 0x85\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a90e63ce9894d2784451505ef43a02d7c}\label{classtraci__api_1_1_vehicle_manager_a90e63ce9894d2784451505ef43a02d7c}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+E\+D\+G\+E\+T\+T\+I\+ME@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+E\+D\+G\+E\+T\+T\+I\+ME}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+E\+D\+G\+E\+T\+T\+I\+ME@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+E\+D\+G\+E\+T\+T\+I\+ME}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+E\+D\+G\+E\+T\+T\+I\+ME}{STA\_VHC\_CHANGEEDGETTIME}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+E\+D\+G\+E\+T\+T\+I\+ME = 0x58\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a650f7cfb39b3f3dab9c06612bb401b34}\label{classtraci__api_1_1_vehicle_manager_a650f7cfb39b3f3dab9c06612bb401b34}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+NE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+NE}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+NE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+NE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+NE}{STA\_VHC\_CHANGELANE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+NE = 0x13\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3c4d5d091512c5689442bed9dab017b0}\label{classtraci__api_1_1_vehicle_manager_a3c4d5d091512c5689442bed9dab017b0}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+N\+E\+M\+O\+DE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+N\+E\+M\+O\+DE}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+N\+E\+M\+O\+DE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+N\+E\+M\+O\+DE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+N\+E\+M\+O\+DE}{STA\_VHC\_CHANGELANEMODE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+L\+A\+N\+E\+M\+O\+DE = 0xb6\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ab2864115d4a4d0b3418f7c0c336f7b50}\label{classtraci__api_1_1_vehicle_manager_ab2864115d4a4d0b3418f7c0c336f7b50}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+TE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+TE}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+TE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+TE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+TE}{STA\_VHC\_CHANGEROUTE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+TE = 0x57\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3373c7c01e939ddc8b83e9a6d650ef8e}\label{classtraci__api_1_1_vehicle_manager_a3373c7c01e939ddc8b83e9a6d650ef8e}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+T\+E\+ID@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+T\+E\+ID}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+T\+E\+ID@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+T\+E\+ID}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+T\+E\+ID}{STA\_VHC\_CHANGEROUTEID}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+R\+O\+U\+T\+E\+ID = 0x53\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a20db78dac81e4bfe3883327d6ac4dffc}\label{classtraci__api_1_1_vehicle_manager_a20db78dac81e4bfe3883327d6ac4dffc}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+T\+A\+R\+G\+ET@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+T\+A\+R\+G\+ET}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+T\+A\+R\+G\+ET@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+T\+A\+R\+G\+ET}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+T\+A\+R\+G\+ET}{STA\_VHC\_CHANGETARGET}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+H\+A\+N\+G\+E\+T\+A\+R\+G\+ET = 0x31\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a60ca45b4d097f18bc8370ed98b712944}\label{classtraci__api_1_1_vehicle_manager_a60ca45b4d097f18bc8370ed98b712944}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+O\+UR@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+O\+UR}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+O\+UR@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+O\+UR}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+O\+UR}{STA\_VHC\_COLOUR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+O\+UR = 0x45\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ad2c2a68fe86ebb06c85e989fed90c97f}\label{classtraci__api_1_1_vehicle_manager_ad2c2a68fe86ebb06c85e989fed90c97f}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+D\+EC@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+D\+EC}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+D\+EC@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+D\+EC}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+D\+EC}{STA\_VHC\_DEC}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+D\+EC = 0x47\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a26d3c7c5eaa33aeadacffe05d61a062c}\label{classtraci__api_1_1_vehicle_manager_a26d3c7c5eaa33aeadacffe05d61a062c}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS}{STA\_VHC\_EMSCLASS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS = 0x4a\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a2f0dc714583c0f7577f8464935e7bf7a}\label{classtraci__api_1_1_vehicle_manager_a2f0dc714583c0f7577f8464935e7bf7a}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT}{STA\_VHC\_HEIGHT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT = 0xbc\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_aa36ca1986b29b2df2ec054785d18afd5}\label{classtraci__api_1_1_vehicle_manager_aa36ca1986b29b2df2ec054785d18afd5}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+I\+M\+P\+E\+R\+F\+E\+C\+T\+I\+ON@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+I\+M\+P\+E\+R\+F\+E\+C\+T\+I\+ON}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+I\+M\+P\+E\+R\+F\+E\+C\+T\+I\+ON@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+I\+M\+P\+E\+R\+F\+E\+C\+T\+I\+ON}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+I\+M\+P\+E\+R\+F\+E\+C\+T\+I\+ON}{STA\_VHC\_IMPERFECTION}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+I\+M\+P\+E\+R\+F\+E\+C\+T\+I\+ON = 0x5d\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a9c1ca67d52057f033c38014b8e5adc8e}\label{classtraci__api_1_1_vehicle_manager_a9c1ca67d52057f033c38014b8e5adc8e}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH}{STA\_VHC\_LENGTH}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH = 0x44\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a60e5548ae4ee814e33d6e7ec9581b6e3}\label{classtraci__api_1_1_vehicle_manager_a60e5548ae4ee814e33d6e7ec9581b6e3}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+S\+P\+E\+ED@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+S\+P\+E\+ED}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+S\+P\+E\+ED@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+S\+P\+E\+ED}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+S\+P\+E\+ED}{STA\_VHC\_MAXSPEED}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+S\+P\+E\+ED = 0x41\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae26c5e4015d940da17ebcb55990db55a}\label{classtraci__api_1_1_vehicle_manager_ae26c5e4015d940da17ebcb55990db55a}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP}{STA\_VHC\_MINGAP}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP = 0x4c\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a1bd791cd7190fa808b2b45dc2eaa8929}\label{classtraci__api_1_1_vehicle_manager_a1bd791cd7190fa808b2b45dc2eaa8929}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+TO@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+TO}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+TO@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+TO}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+TO}{STA\_VHC\_MOVETO}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+TO = 0x5c\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_afcb459d52da83576184bd006880ca157}\label{classtraci__api_1_1_vehicle_manager_afcb459d52da83576184bd006880ca157}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+T\+O\+XY@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+T\+O\+XY}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+T\+O\+XY@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+T\+O\+XY}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+T\+O\+XY}{STA\_VHC\_MOVETOXY}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+M\+O\+V\+E\+T\+O\+XY = 0xb4\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a8a3a1bbcd9217c289bb9e47a2aee838c}\label{classtraci__api_1_1_vehicle_manager_a8a3a1bbcd9217c289bb9e47a2aee838c}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+M\+O\+VE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+M\+O\+VE}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+M\+O\+VE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+M\+O\+VE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+M\+O\+VE}{STA\_VHC\_REMOVE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+M\+O\+VE = 0x81\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a066983f2b530670d111eb84e69beacd1}\label{classtraci__api_1_1_vehicle_manager_a066983f2b530670d111eb84e69beacd1}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+R\+O\+U\+TE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+R\+O\+U\+TE}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+R\+O\+U\+TE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+R\+O\+U\+TE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+R\+O\+U\+TE}{STA\_VHC\_REROUTE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+R\+O\+U\+TE = 0x90\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ad6cf6390198a926c352e9573274f17bc}\label{classtraci__api_1_1_vehicle_manager_ad6cf6390198a926c352e9573274f17bc}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+S\+U\+ME@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+S\+U\+ME}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+S\+U\+ME@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+S\+U\+ME}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+S\+U\+ME}{STA\_VHC\_RESUME}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+R\+E\+S\+U\+ME = 0x19\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_aa5ba3595345996574b51e72d5f6bd034}\label{classtraci__api_1_1_vehicle_manager_aa5ba3595345996574b51e72d5f6bd034}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+P\+E\+C\+L\+A\+SS@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+P\+E\+C\+L\+A\+SS}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+P\+E\+C\+L\+A\+SS@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+P\+E\+C\+L\+A\+SS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+P\+E\+C\+L\+A\+SS}{STA\_VHC\_SHAPECLASS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+P\+E\+C\+L\+A\+SS = 0x4b\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a56909b0447f4c2edad044a4579334938}\label{classtraci__api_1_1_vehicle_manager_a56909b0447f4c2edad044a4579334938}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+S\+T\+A\+T\+ES@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+S\+T\+A\+T\+ES}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+S\+T\+A\+T\+ES@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+S\+T\+A\+T\+ES}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+S\+T\+A\+T\+ES}{STA\_VHC\_SIGNALSTATES}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+S\+T\+A\+T\+ES = 0x5b\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_acb211c131fc74c5e73bbeea542c3eb1a}\label{classtraci__api_1_1_vehicle_manager_acb211c131fc74c5e73bbeea542c3eb1a}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+W\+D\+WN@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+W\+D\+WN}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+W\+D\+WN@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+W\+D\+WN}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+W\+D\+WN}{STA\_VHC\_SLOWDWN}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+W\+D\+WN = 0x14\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ab660207279fb64c012d1bf7eaeece414}\label{classtraci__api_1_1_vehicle_manager_ab660207279fb64c012d1bf7eaeece414}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED}{STA\_VHC\_SPEED}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED = 0x40\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ab75abfc45f99aa7a031d5f4c8701c76c}\label{classtraci__api_1_1_vehicle_manager_ab75abfc45f99aa7a031d5f4c8701c76c}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+F\+A\+C\+T\+OR@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+F\+A\+C\+T\+OR}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+F\+A\+C\+T\+OR@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+F\+A\+C\+T\+OR}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+F\+A\+C\+T\+OR}{STA\_VHC\_SPEEDFACTOR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+F\+A\+C\+T\+OR = 0x5e\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a342b4b6d80950b22f1b74fd8e020395d}\label{classtraci__api_1_1_vehicle_manager_a342b4b6d80950b22f1b74fd8e020395d}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE}{STA\_VHC\_SPEEDMODE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE = 0xb3\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a9fcda576e35eb8c34ad6fd4808221acc}\label{classtraci__api_1_1_vehicle_manager_a9fcda576e35eb8c34ad6fd4808221acc}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+T\+OP@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+T\+OP}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+T\+OP@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+T\+OP}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+T\+OP}{STA\_VHC\_STOP}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+S\+T\+OP = 0x12\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a93d27a387090ce7b8e6b7afc1a9d80b1}\label{classtraci__api_1_1_vehicle_manager_a93d27a387090ce7b8e6b7afc1a9d80b1}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+AU@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+AU}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+AU@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+AU}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+AU}{STA\_VHC\_TAU}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+AU = 0x48\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a7b034d47f44d94bea5497357093fc1ce}\label{classtraci__api_1_1_vehicle_manager_a7b034d47f44d94bea5497357093fc1ce}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE}{STA\_VHC\_TYPE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE = 0x4f\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4b6b8a21fb21e6d37165c96faad2bf42}\label{classtraci__api_1_1_vehicle_manager_a4b6b8a21fb21e6d37165c96faad2bf42}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+H\+C\+C\+L\+A\+SS@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+H\+C\+C\+L\+A\+SS}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+H\+C\+C\+L\+A\+SS@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+H\+C\+C\+L\+A\+SS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+H\+C\+C\+L\+A\+SS}{STA\_VHC\_VHCCLASS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+H\+C\+C\+L\+A\+SS = 0x49\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae66ccdcffdd1e46ed0edac4e7a33598f}\label{classtraci__api_1_1_vehicle_manager_ae66ccdcffdd1e46ed0edac4e7a33598f}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+IA@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+IA}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+IA@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+IA}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+IA}{STA\_VHC\_VIA}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+V\+IA = 0xbe\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a60dbed8e67261ea813a06af7eff66fe2}\label{classtraci__api_1_1_vehicle_manager_a60dbed8e67261ea813a06af7eff66fe2}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH}}
+\index{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH@{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH}{STA\_VHC\_WIDTH}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+S\+T\+A\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH = 0x4d\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ac9d949b248fbdb168796e0213357e003}\label{classtraci__api_1_1_vehicle_manager_ac9d949b248fbdb168796e0213357e003}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+C\+C\+EL@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+C\+C\+EL}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+C\+C\+EL@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+C\+C\+EL}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+C\+C\+EL}{VAR\_VHC\_ACCEL}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+C\+C\+EL = 0x46\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a726376cb977fae009eca00f5550980ae}\label{classtraci__api_1_1_vehicle_manager_a726376cb977fae009eca00f5550980ae}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+L\+L\+O\+W\+E\+D\+S\+PD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+L\+L\+O\+W\+E\+D\+S\+PD}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+L\+L\+O\+W\+E\+D\+S\+PD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+L\+L\+O\+W\+E\+D\+S\+PD}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+L\+L\+O\+W\+E\+D\+S\+PD}{VAR\_VHC\_ALLOWEDSPD}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+L\+L\+O\+W\+E\+D\+S\+PD = 0xb7\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a04d9e30519527b2dc7cd46b8ef1a3cb0}\label{classtraci__api_1_1_vehicle_manager_a04d9e30519527b2dc7cd46b8ef1a3cb0}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+N\+G\+LE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+N\+G\+LE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+N\+G\+LE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+N\+G\+LE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+N\+G\+LE}{VAR\_VHC\_ANGLE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+A\+N\+G\+LE = 0x43\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4318c2219a5f58300d7b263c50ec38b5}\label{classtraci__api_1_1_vehicle_manager_a4318c2219a5f58300d7b263c50ec38b5}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+B\+E\+S\+T\+L\+A\+N\+ES@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+B\+E\+S\+T\+L\+A\+N\+ES}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+B\+E\+S\+T\+L\+A\+N\+ES@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+B\+E\+S\+T\+L\+A\+N\+ES}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+B\+E\+S\+T\+L\+A\+N\+ES}{VAR\_VHC\_BESTLANES}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+B\+E\+S\+T\+L\+A\+N\+ES = 0xb2\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a6636934f7ce50a95e51d044d118fb904}\label{classtraci__api_1_1_vehicle_manager_a6636934f7ce50a95e51d044d118fb904}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+CO@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+CO}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+CO@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+CO}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+CO}{VAR\_VHC\_CO}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+CO = 0x61\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a6970833b58d743a2cb22a3db09e5f11b}\label{classtraci__api_1_1_vehicle_manager_a6970833b58d743a2cb22a3db09e5f11b}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O2@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O2}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O2@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O2}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O2}{VAR\_VHC\_CO2}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O2 = 0x60\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a0b76367bca4bf07cb0536cde315201cb}\label{classtraci__api_1_1_vehicle_manager_a0b76367bca4bf07cb0536cde315201cb}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+OR@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+OR}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+OR@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+OR}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+OR}{VAR\_VHC\_COLOR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+L\+OR = 0x45\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a2b2f33767a7e8ed8d9d64f6ee3ad4ae2}\label{classtraci__api_1_1_vehicle_manager_a2b2f33767a7e8ed8d9d64f6ee3ad4ae2}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+U\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+U\+NT}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+U\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+U\+NT}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+U\+NT}{VAR\_VHC\_COUNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+C\+O\+U\+NT = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4c88c070e03fd1b4bbc7684935d5d36d}\label{classtraci__api_1_1_vehicle_manager_a4c88c070e03fd1b4bbc7684935d5d36d}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+E\+C\+EL@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+E\+C\+EL}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+E\+C\+EL@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+E\+C\+EL}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+E\+C\+EL}{VAR\_VHC\_DECEL}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+E\+C\+EL = 0x47\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a86c531540a0204452880c419c16c0076}\label{classtraci__api_1_1_vehicle_manager_a86c531540a0204452880c419c16c0076}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+I\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+I\+ST}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+I\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+I\+ST}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+I\+ST}{VAR\_VHC\_DIST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+D\+I\+ST = 0x84\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a8ab2241fc88ed80e3f3d4d98930aba13}\label{classtraci__api_1_1_vehicle_manager_a8ab2241fc88ed80e3f3d4d98930aba13}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+D\+G\+ES@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+D\+G\+ES}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+D\+G\+ES@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+D\+G\+ES}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+D\+G\+ES}{VAR\_VHC\_EDGES}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+D\+G\+ES = 0x54\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ad024b88f1fc94552b00883340f376440}\label{classtraci__api_1_1_vehicle_manager_ad024b88f1fc94552b00883340f376440}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+L\+E\+C\+C\+O\+NS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+L\+E\+C\+C\+O\+NS}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+L\+E\+C\+C\+O\+NS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+L\+E\+C\+C\+O\+NS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+L\+E\+C\+C\+O\+NS}{VAR\_VHC\_ELECCONS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+L\+E\+C\+C\+O\+NS = 0x71\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a26f3f016ee48aa4f004058253c0699ff}\label{classtraci__api_1_1_vehicle_manager_a26f3f016ee48aa4f004058253c0699ff}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS}{VAR\_VHC\_EMSCLASS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+E\+M\+S\+C\+L\+A\+SS = 0x4a\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a2feb4c2aeaf374f8c1fbe85a6454ebb4}\label{classtraci__api_1_1_vehicle_manager_a2feb4c2aeaf374f8c1fbe85a6454ebb4}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+F\+U\+E\+L\+C\+O\+NS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+F\+U\+E\+L\+C\+O\+NS}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+F\+U\+E\+L\+C\+O\+NS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+F\+U\+E\+L\+C\+O\+NS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+F\+U\+E\+L\+C\+O\+NS}{VAR\_VHC\_FUELCONS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+F\+U\+E\+L\+C\+O\+NS = 0x65\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a96ad8b90c3272d7bb7efe3b64501929d}\label{classtraci__api_1_1_vehicle_manager_a96ad8b90c3272d7bb7efe3b64501929d}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+HC@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+HC}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+HC@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+HC}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+HC}{VAR\_VHC\_HC}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+HC = 0x62\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_af4d5d1a208087f6d8fcf587d48d2bc3e}\label{classtraci__api_1_1_vehicle_manager_af4d5d1a208087f6d8fcf587d48d2bc3e}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT}{VAR\_VHC\_HEIGHT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+H\+E\+I\+G\+HT = 0xbc\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a77a3774d3a7434fc480201f70973e9e4}\label{classtraci__api_1_1_vehicle_manager_a77a3774d3a7434fc480201f70973e9e4}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+NE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+NE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+NE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+NE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+NE}{VAR\_VHC\_LANE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+NE = 0x51\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_aabbd35962ffe19b69a014feb37bde0c4}\label{classtraci__api_1_1_vehicle_manager_aabbd35962ffe19b69a014feb37bde0c4}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+I\+DX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+I\+DX}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+I\+DX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+I\+DX}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+I\+DX}{VAR\_VHC\_LANEIDX}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+I\+DX = 0x52\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a430064914b1070d671a96da2bfe76a05}\label{classtraci__api_1_1_vehicle_manager_a430064914b1070d671a96da2bfe76a05}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+P\+OS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+P\+OS}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+P\+OS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+P\+OS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+P\+OS}{VAR\_VHC\_LANEPOS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+N\+E\+P\+OS = 0x56\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3866fb6c1b6d1a0011455300f40a18cb}\label{classtraci__api_1_1_vehicle_manager_a3866fb6c1b6d1a0011455300f40a18cb}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+A\+L\+I\+GN@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+A\+L\+I\+GN}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+A\+L\+I\+GN@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+A\+L\+I\+GN}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+A\+L\+I\+GN}{VAR\_VHC\_LATALIGN}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+A\+L\+I\+GN = 0\+Xb9\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae668bae1944b885b0d6c946d3df3b5ec}\label{classtraci__api_1_1_vehicle_manager_ae668bae1944b885b0d6c946d3df3b5ec}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+G\+AP@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+G\+AP}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+G\+AP@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+G\+AP}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+G\+AP}{VAR\_VHC\_LATGAP}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+A\+T\+G\+AP = 0\+Xbb\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a60eabc78c2a9d2f68e46fcbaf0dbb8b6}\label{classtraci__api_1_1_vehicle_manager_a60eabc78c2a9d2f68e46fcbaf0dbb8b6}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH}{VAR\_VHC\_LENGTH}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+E\+N\+G\+TH = 0x44\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a226d8c4d5cffe0ce33f5041380589c09}\label{classtraci__api_1_1_vehicle_manager_a226d8c4d5cffe0ce33f5041380589c09}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+NE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+NE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+NE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+NE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+NE}{VAR\_VHC\_LINE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+NE = 0xbd\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3a3e88819303878e178eaf8b8bdbcef4}\label{classtraci__api_1_1_vehicle_manager_a3a3e88819303878e178eaf8b8bdbcef4}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+ST}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+ST}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+ST}{VAR\_VHC\_LIST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+L\+I\+ST = 0x00\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a927209bd0f94d9e2a7542356d74b89e7}\label{classtraci__api_1_1_vehicle_manager_a927209bd0f94d9e2a7542356d74b89e7}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+L\+A\+T\+S\+PD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+L\+A\+T\+S\+PD}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+L\+A\+T\+S\+PD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+L\+A\+T\+S\+PD}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+L\+A\+T\+S\+PD}{VAR\_VHC\_MAXLATSPD}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+A\+X\+L\+A\+T\+S\+PD = 0xba\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ad4456bf8a1da769c826274acb2af6fe9}\label{classtraci__api_1_1_vehicle_manager_ad4456bf8a1da769c826274acb2af6fe9}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP}{VAR\_VHC\_MINGAP}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+M\+I\+N\+G\+AP = 0x4c\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a2c78dc01c5fdad2afb13f7f449e36813}\label{classtraci__api_1_1_vehicle_manager_a2c78dc01c5fdad2afb13f7f449e36813}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+E\+X\+T\+T\+LS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+E\+X\+T\+T\+LS}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+E\+X\+T\+T\+LS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+E\+X\+T\+T\+LS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+E\+X\+T\+T\+LS}{VAR\_VHC\_NEXTTLS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+E\+X\+T\+T\+LS = 0x70\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a8a0d3fdb9304ddf489d123d7ca8f22ea}\label{classtraci__api_1_1_vehicle_manager_a8a0d3fdb9304ddf489d123d7ca8f22ea}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+I\+SE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+I\+SE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+I\+SE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+I\+SE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+I\+SE}{VAR\_VHC\_NOISE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+I\+SE = 0x66\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a2d9c7e68c0b180ff0195b6c2a2ca4fd5}\label{classtraci__api_1_1_vehicle_manager_a2d9c7e68c0b180ff0195b6c2a2ca4fd5}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+N\+T\+R\+A\+C\+I\+S\+PD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+N\+T\+R\+A\+C\+I\+S\+PD}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+N\+T\+R\+A\+C\+I\+S\+PD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+N\+T\+R\+A\+C\+I\+S\+PD}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+N\+T\+R\+A\+C\+I\+S\+PD}{VAR\_VHC\_NONTRACISPD}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+O\+N\+T\+R\+A\+C\+I\+S\+PD = 0xb1\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a52073a98f8b4cd039209a84f8fece983}\label{classtraci__api_1_1_vehicle_manager_a52073a98f8b4cd039209a84f8fece983}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+OX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+OX}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+OX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+OX}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+OX}{VAR\_VHC\_NOX}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+N\+OX = 0x64\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a76e6186f36d9b755f2dc579a4d57c622}\label{classtraci__api_1_1_vehicle_manager_a76e6186f36d9b755f2dc579a4d57c622}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+MX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+MX}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+MX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+MX}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+MX}{VAR\_VHC\_PMX}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+MX = 0x63\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a866d82a9f063497d31a0f8e2f6bc9a39}\label{classtraci__api_1_1_vehicle_manager_a866d82a9f063497d31a0f8e2f6bc9a39}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+N\+U\+M\+B\+ER@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+N\+U\+M\+B\+ER}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+N\+U\+M\+B\+ER@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+N\+U\+M\+B\+ER}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+N\+U\+M\+B\+ER}{VAR\_VHC\_PNUMBER}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+N\+U\+M\+B\+ER = 0x67\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a1788cd990fdaa86ccb0fe19fc7cce48d}\label{classtraci__api_1_1_vehicle_manager_a1788cd990fdaa86ccb0fe19fc7cce48d}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+OS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+OS}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+OS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+OS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+OS}{VAR\_VHC\_POS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+OS = 0x42\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a545dfa38d9a38ece41697cfd4bf9d061}\label{classtraci__api_1_1_vehicle_manager_a545dfa38d9a38ece41697cfd4bf9d061}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+O\+S3D@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+O\+S3D}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+O\+S3D@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+O\+S3D}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+O\+S3D}{VAR\_VHC\_POS3D}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+P\+O\+S3D = 0x39\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3dfae245f71178616fa4cbd355de8950}\label{classtraci__api_1_1_vehicle_manager_a3dfae245f71178616fa4cbd355de8950}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+AD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+AD}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+AD@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+AD}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+AD}{VAR\_VHC\_ROAD}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+AD = 0x50\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae6e60c94547d3c6c179c881412a6255f}\label{classtraci__api_1_1_vehicle_manager_ae6e60c94547d3c6c179c881412a6255f}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+TE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+TE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+TE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+TE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+TE}{VAR\_VHC\_ROUTE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+TE = 0x53\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4140fe8382dab1e6dff7d3f6e9116118}\label{classtraci__api_1_1_vehicle_manager_a4140fe8382dab1e6dff7d3f6e9116118}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+T\+E\+I\+DX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+T\+E\+I\+DX}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+T\+E\+I\+DX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+T\+E\+I\+DX}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+T\+E\+I\+DX}{VAR\_VHC\_ROUTEIDX}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+R\+O\+U\+T\+E\+I\+DX = 0x69\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a1f99a485df0336dc0be888fe59b1431a}\label{classtraci__api_1_1_vehicle_manager_a1f99a485df0336dc0be888fe59b1431a}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+PE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+PE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+PE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+PE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+PE}{VAR\_VHC\_SHAPE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+H\+A\+PE = 0x4b\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a11f1a4ab7243f294be9ce37c889bf018}\label{classtraci__api_1_1_vehicle_manager_a11f1a4ab7243f294be9ce37c889bf018}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+MA@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+MA}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+MA@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+MA}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+MA}{VAR\_VHC\_SIGMA}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+MA = 0x5d\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a518145e656c215e818588470a5b05ed3}\label{classtraci__api_1_1_vehicle_manager_a518145e656c215e818588470a5b05ed3}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ST}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ST}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ST}{VAR\_VHC\_SIGNALST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+I\+G\+N\+A\+L\+ST = 0x5b\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a3a811ad4c585a47e9af5fb779a7f97af}\label{classtraci__api_1_1_vehicle_manager_a3a811ad4c585a47e9af5fb779a7f97af}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+PE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+PE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+PE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+PE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+PE}{VAR\_VHC\_SLOPE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+L\+O\+PE = 0x36\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a5645ab4fd7d6938f57beda01a79f5b86}\label{classtraci__api_1_1_vehicle_manager_a5645ab4fd7d6938f57beda01a79f5b86}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+D\+F\+A\+C\+T\+OR@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+D\+F\+A\+C\+T\+OR}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+D\+F\+A\+C\+T\+OR@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+D\+F\+A\+C\+T\+OR}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+D\+F\+A\+C\+T\+OR}{VAR\_VHC\_SPDFACTOR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+D\+F\+A\+C\+T\+OR = 0x5e\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a77976695ff8714a9122a3e940cc54e04}\label{classtraci__api_1_1_vehicle_manager_a77976695ff8714a9122a3e940cc54e04}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED}{VAR\_VHC\_SPEED}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+ED = 0x40\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a536289815e37b9023217ade7d1cd9e84}\label{classtraci__api_1_1_vehicle_manager_a536289815e37b9023217ade7d1cd9e84}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+D\+EV@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+D\+EV}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+D\+EV@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+D\+EV}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+D\+EV}{VAR\_VHC\_SPEEDDEV}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+D\+EV = 0x5f\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a240c2aecbbf2dd8e024952eae3b79365}\label{classtraci__api_1_1_vehicle_manager_a240c2aecbbf2dd8e024952eae3b79365}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE}{VAR\_VHC\_SPEEDMODE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+P\+E\+E\+D\+M\+O\+DE = 0xb3\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_aeb39f34fdafd857f65b4837489b78d2c}\label{classtraci__api_1_1_vehicle_manager_aeb39f34fdafd857f65b4837489b78d2c}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+T\+O\+P\+S\+T\+A\+TE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+T\+O\+P\+S\+T\+A\+TE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+T\+O\+P\+S\+T\+A\+TE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+T\+O\+P\+S\+T\+A\+TE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+T\+O\+P\+S\+T\+A\+TE}{VAR\_VHC\_STOPSTATE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+S\+T\+O\+P\+S\+T\+A\+TE = 0xb5\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ae44405763fa9729d5f6b93fb54e1c75a}\label{classtraci__api_1_1_vehicle_manager_ae44405763fa9729d5f6b93fb54e1c75a}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+AU@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+AU}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+AU@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+AU}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+AU}{VAR\_VHC\_TAU}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+AU = 0x48\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a9b212d9d477bebf7f2fe54f9c3555acb}\label{classtraci__api_1_1_vehicle_manager_a9b212d9d477bebf7f2fe54f9c3555acb}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE}{VAR\_VHC\_TYPE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+T\+Y\+PE = 0x4f\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a4c7692db776fe910195ca4da458e8965}\label{classtraci__api_1_1_vehicle_manager_a4c7692db776fe910195ca4da458e8965}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+A\+L\+I\+D\+R\+O\+U\+TE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+A\+L\+I\+D\+R\+O\+U\+TE}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+A\+L\+I\+D\+R\+O\+U\+TE@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+A\+L\+I\+D\+R\+O\+U\+TE}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+A\+L\+I\+D\+R\+O\+U\+TE}{VAR\_VHC\_VALIDROUTE}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+A\+L\+I\+D\+R\+O\+U\+TE = 0x92\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_ac2ce3790565e9dcaf60c2f10727e6fb5}\label{classtraci__api_1_1_vehicle_manager_ac2ce3790565e9dcaf60c2f10727e6fb5}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+C\+L\+A\+SS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+C\+L\+A\+SS}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+C\+L\+A\+SS@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+C\+L\+A\+SS}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+C\+L\+A\+SS}{VAR\_VHC\_VCLASS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+C\+L\+A\+SS = 0x49\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a56136da0ffaf68882bd8dc513d37ffb2}\label{classtraci__api_1_1_vehicle_manager_a56136da0ffaf68882bd8dc513d37ffb2}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+I\+A\+E\+D\+G\+ES@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+I\+A\+E\+D\+G\+ES}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+I\+A\+E\+D\+G\+ES@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+I\+A\+E\+D\+G\+ES}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+I\+A\+E\+D\+G\+ES}{VAR\_VHC\_VIAEDGES}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+I\+A\+E\+D\+G\+ES = 0xbe\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a89242125de907c71bf7b357a7f63acdd}\label{classtraci__api_1_1_vehicle_manager_a89242125de907c71bf7b357a7f63acdd}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+M\+AX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+M\+AX}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+M\+AX@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+M\+AX}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+M\+AX}{VAR\_VHC\_VMAX}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+V\+M\+AX = 0x41\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a12d27b67a1efc5a300aa7baed5cdc473}\label{classtraci__api_1_1_vehicle_manager_a12d27b67a1efc5a300aa7baed5cdc473}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+A\+I\+T\+T\+I\+ME@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+A\+I\+T\+T\+I\+ME}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+A\+I\+T\+T\+I\+ME@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+A\+I\+T\+T\+I\+ME}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+A\+I\+T\+T\+I\+ME}{VAR\_VHC\_WAITTIME}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+A\+I\+T\+T\+I\+ME = 0x7a\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_vehicle_manager_a8cb7a25163b002f45f977097a48b3173}\label{classtraci__api_1_1_vehicle_manager_a8cb7a25163b002f45f977097a48b3173}} 
+\index{traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}!V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH@{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH}!traci\+\_\+api\+::\+Vehicle\+Manager@{traci\+\_\+api\+::\+Vehicle\+Manager}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH}{VAR\_VHC\_WIDTH}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Vehicle\+Manager\+::\+V\+A\+R\+\_\+\+V\+H\+C\+\_\+\+W\+I\+D\+TH = 0x4d\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_vehicle_manager_8h}{Vehicle\+Manager.\+h}\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_vehicle_manager_8cpp}{Vehicle\+Manager.\+cpp}\end{DoxyCompactItemize}

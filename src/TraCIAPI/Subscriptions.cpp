@@ -2,6 +2,7 @@
 #include "VehicleManager.h"
 #include "Constants.h"
 #include "Exceptions.h"
+#include "Simulation.h"
 
 int traci_api::VariableSubscription::checkTime() const
 {

@@ -1,0 +1,98 @@
+\hypertarget{_utils_8h}{}\section{C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\+Utils.h File Reference}
+\label{_utils_8h}\index{C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\+Utils.\+h@{C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\+Utils.\+h}}
+{\ttfamily \#include \char`\"{}storage.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+Include dependency graph for Utils.\+h\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{_utils_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_utils_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_vector2_d}{Vector2D}
+\item 
+class \hyperlink{class_vector3_d}{Vector3D}
+\item 
+class \hyperlink{class_positional_data}{Positional\+Data}
+\item 
+class \hyperlink{class_dimensional_data}{Dimensional\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacetraci__api}{traci\+\_\+api}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{_utils_8h_a61bb5ca333b6d62a492a4fe789939577}{R\+G\+B2\+H\+EX} (uint8\+\_\+t r, uint8\+\_\+t g, uint8\+\_\+t b)
+\item 
+void \hyperlink{_utils_8h_a2a7f8de699335a756055f278f551e3b1}{H\+E\+X2\+R\+GB} (uint32\+\_\+t hex, uint8\+\_\+t \&r, uint8\+\_\+t \&g, uint8\+\_\+t \&b)
+\item 
+void \hyperlink{namespacetraci__api_a8179b41c12626fc5444d12ee3a6f19cb}{traci\+\_\+api\+::debug\+Print} (std\+::string text)
+\begin{DoxyCompactList}\small\item\em Convenience function, prints an std\+::string on Paramics\textquotesingle{} output window. \end{DoxyCompactList}\item 
+void \hyperlink{namespacetraci__api_a3d103fa606d4762c375bac42c66f62a8}{traci\+\_\+api\+::info\+Print} (std\+::string text)
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Helpers for reading and checking values}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespacetraci__api_a57c1a8583619eb1e9984249249435f8e}{traci\+\_\+api\+::read\+Type\+Checking\+Int} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, int \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and an int, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_a5229be0b43fc9f5d9f413d5e51924b50}{traci\+\_\+api\+::read\+Type\+Checking\+Double} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, double \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a double, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_ac51a66efdbed4dcdcef596643fe387ec}{traci\+\_\+api\+::read\+Type\+Checking\+String} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, std\+::string \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a string, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_aa16305c07ac5f8221d9099f2e3a7531c}{traci\+\_\+api\+::read\+Type\+Checking\+String\+List} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, std\+::vector$<$ std\+::string $>$ \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a string list, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_af8c7656fbd212acb13f037d4fb20f1f7}{traci\+\_\+api\+::read\+Type\+Checking\+Color} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, uint32\+\_\+t \&hex)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a color, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_a26421201e19b2667e198708c2216ca06}{traci\+\_\+api\+::read\+Type\+Checking\+Position2D} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, \hyperlink{class_vector2_d}{Vector2D} \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a 2D position, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_aee58441392da7b83ecd8c8831271e945}{traci\+\_\+api\+::read\+Type\+Checking\+Byte} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, int8\+\_\+t \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a 2D bounding box, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_ac95893093cb3b220faafd74ce62abba3}{traci\+\_\+api\+::read\+Type\+Checking\+Unsigned\+Byte} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, uint8\+\_\+t \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and an unsigned byte, verifying the type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_utils_8h_a2a7f8de699335a756055f278f551e3b1}\label{_utils_8h_a2a7f8de699335a756055f278f551e3b1}} 
+\index{Utils.\+h@{Utils.\+h}!H\+E\+X2\+R\+GB@{H\+E\+X2\+R\+GB}}
+\index{H\+E\+X2\+R\+GB@{H\+E\+X2\+R\+GB}!Utils.\+h@{Utils.\+h}}
+\subsubsection{\texorpdfstring{H\+E\+X2\+R\+G\+B()}{HEX2RGB()}}
+{\footnotesize\ttfamily void H\+E\+X2\+R\+GB (\begin{DoxyParamCaption}\item[{uint32\+\_\+t}]{hex,  }\item[{uint8\+\_\+t \&}]{r,  }\item[{uint8\+\_\+t \&}]{g,  }\item[{uint8\+\_\+t \&}]{b }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{_utils_8h_a2a7f8de699335a756055f278f551e3b1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{_utils_8h_a61bb5ca333b6d62a492a4fe789939577}\label{_utils_8h_a61bb5ca333b6d62a492a4fe789939577}} 
+\index{Utils.\+h@{Utils.\+h}!R\+G\+B2\+H\+EX@{R\+G\+B2\+H\+EX}}
+\index{R\+G\+B2\+H\+EX@{R\+G\+B2\+H\+EX}!Utils.\+h@{Utils.\+h}}
+\subsubsection{\texorpdfstring{R\+G\+B2\+H\+E\+X()}{RGB2HEX()}}
+{\footnotesize\ttfamily uint32\+\_\+t R\+G\+B2\+H\+EX (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r,  }\item[{uint8\+\_\+t}]{g,  }\item[{uint8\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{_utils_8h_a61bb5ca333b6d62a492a4fe789939577_icgraph}
+\end{center}
+\end{figure}

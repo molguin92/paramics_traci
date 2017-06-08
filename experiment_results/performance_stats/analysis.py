@@ -52,15 +52,19 @@ def system_performance():
     ax.plot(df['delta_t'], df['% de uso procesador'], label='% uso procesador')
     ax.plot(df['delta_t'], df['% uso RAM'], label='% uso RAM')
     ax.legend(loc='lower center')
-    pyplot.xlabel('tiempo (m:s)')
-    pyplot.ylabel('porcentaje %')
+    pyplot.xlabel('Tiempo (MM:SS)')
+    pyplot.ylabel('Porcentaje')
     pyplot.xlim([0, 1600])
     pyplot.ylim([0, 60])
 
     formatter = matplotlib.ticker.FuncFormatter(to_min_secs)
     ax.xaxis.set_major_formatter(formatter)
 
-    pyplot.show()
+    ax.set_facecolor('white')
+    ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
+
+    pyplot.savefig('system_performance.pgf')
+    #pyplot.show()
 
 
 def vehicles_vs_time():
@@ -69,13 +73,26 @@ def vehicles_vs_time():
     df.columns = cols
 
     df['nvhcs'] = pandas.to_numeric(df['nvhcs'])
-    df['t'] = pandas.to_numeric(df['nvhcs'])
+    df['t'] = pandas.to_numeric(df['t'])
     df['runID'] = pandas.to_numeric(df['runID'])
 
     df['demand'] = df['demand'].map(lambda x: float(x.strip('%'))/100)
 
-    print(df)
 
+    df100 = df.loc[df['demand'] == 1.00]
+    df75 = df.loc[df['demand'] == 0.75]
+    df50 = df.loc[df['demand'] == 0.50]
+    df25 = df.loc[df['demand'] == 0.25]
+
+    mean_df = pandas.DataFrame(columns=['demand', 'mean_vhcs', 'mean_time'])
+    mean_df.loc[0] = [1.00, df100['nvhcs'].mean(), df100['t'].mean()]
+    mean_df.loc[1] = [0.75, df75['nvhcs'].mean(), df75['t'].mean()]
+    mean_df.loc[2] = [0.50, df50['nvhcs'].mean(), df50['t'].mean()]
+    mean_df.loc[3] = [0.25, df25['nvhcs'].mean(), df25['t'].mean()]
+
+    print(mean_df)
+
+    # from this point onward, plot
     fig, ax = pyplot.subplots()
     ax.set_facecolor('white')
     ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
@@ -96,16 +113,16 @@ def vehicles_vs_time():
     ax.set_xticks(xticks_minor, minor=True)
 
     # trendline
-    z = numpy.polyfit(df['nvhcs'], df['t'], 1)
+    z = numpy.polyfit(df['nvhcs'], df['t'], 2)
     p = numpy.poly1d(z)
     nx = range(0, int(df['nvhcs'].max()) + 200)
-    ax.plot(nx, p(nx), '-.', alpha=0.3, label='Ajuste lineal', color='#F06449')
+    ax.plot(nx, p(nx), '-.', alpha=0.3, label='Ajuste polinomial', color='#F06449')
 
     # scatter
-    ax.plot(df.loc[df['demand'] == 1.00]['nvhcs'], df.loc[df['demand'] == 1.00]['t'], 'o', color='#17BEBB', label='Carga 100%')
-    ax.plot(df.loc[df['demand'] == 0.75]['nvhcs'], df.loc[df['demand'] == 0.75]['t'], 'o', color='#EF2D56', label='Carga 75%')
-    ax.plot(df.loc[df['demand'] == 0.50]['nvhcs'], df.loc[df['demand'] == 0.50]['t'], 'o', color='#8CD867', label='Carga 50%')
-    ax.plot(df.loc[df['demand'] == 0.25]['nvhcs'], df.loc[df['demand'] == 0.25]['t'], 'o', color='#2F243A', label='Carga 25%')
+    ax.plot(df100['nvhcs'], df100['t'], 'o', color='#17BEBB', label='Carga 100%')
+    ax.plot(df75['nvhcs'], df75['t'], 'o', color='#EF2D56', label='Carga 75%')
+    ax.plot(df50['nvhcs'], df50['t'], 'o', color='#8CD867', label='Carga 50%')
+    ax.plot(df25['nvhcs'], df25['t'], 'o', color='#2F243A', label='Carga 25%')
     ax.legend(loc='upper left')
     pyplot.ylabel('Tiempo (MM:SS)')
 
@@ -113,11 +130,11 @@ def vehicles_vs_time():
     ax.yaxis.set_major_formatter(formatter)
 
     pyplot.xlabel('Cantidad promedio vehículos en simulación')
-    #pyplot.title('Scatterplot: Cantidad promedio de vehículos vs duración en tiempo real de simulación')
+    # pyplot.title('Scatterplot: Cantidad promedio de vehículos vs duración en tiempo real de simulación')
     pyplot.savefig('n_vhcs_vs_time.pgf')
-    #pyplot.show()
+    # pyplot.show()
 
 
 if __name__ == '__main__':
-    #system_performance()
-    vehicles_vs_time()
+    system_performance()
+    #vehicles_vs_time()

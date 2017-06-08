@@ -1,8 +1,5 @@
 ﻿#pragma once
 #include "programmer.h"
-#include <string>
-#include "Simulation.h"
-#include <unordered_map>
 
 namespace traci_api
 {

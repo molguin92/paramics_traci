@@ -5,6 +5,8 @@
 #define DEBUG false
 #endif
 
+#include <stdint.h>
+
 //Server definitions
 #define API_VERSION 10
 #define PLUGIN_VERSION "0.25beta1"

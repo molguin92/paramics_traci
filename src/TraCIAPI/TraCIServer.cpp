@@ -8,6 +8,7 @@
 #include "Network.h"
 #include "Subscriptions.h"
 #include <windows.h>
+#include "Simulation.h"
 
 /*
  * This class abstracts a server for the TraCI protocol.

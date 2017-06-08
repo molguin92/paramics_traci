@@ -1,2 +1,169 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="tcpip::SocketException" Collapsed="true">
+    <Position X="17.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAACAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\shawn\socket.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tcpip::Socket" Collapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoIAgCCAAAAAQAhgiABAAIUgAAFAAQogAIAAFCQQAAA=</HashCode>
+      <FileName>src\shawn\socket.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="tcpip::Storage" Collapsed="true">
+    <Position X="17.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAgGIAACARiAAIAIIsAQgigEAAOhABFAAhIIAgA=</HashCode>
+      <FileName>src\shawn\storage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::Simulation" Collapsed="true">
+    <Position X="17.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAkAhAgCwQEAACEAEBCAAEAAQExAAIQCAEAgBAEAAAE=</HashCode>
+      <FileName>src\TraCIAPI\Simulation.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="instance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="traci_api::TraCIServer" Collapsed="true">
+    <Position X="14.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>gAiAAAJgAAAQCQAACBAAACAIAAgYARwAIMACAwAMAAA=</HashCode>
+      <FileName>src\TraCIAPI\TraCIServer.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="incoming" />
+      <Field Name="outgoing" />
+      <Field Name="ssocket" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="traci_api::NotImplementedError" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Exceptions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::NoSuchObjectError" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Exceptions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::Network" Collapsed="true">
+    <Position X="17.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAABAAAAAAAEAAABAAgABAAAQACCAhAEQAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Network.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::VariableSubscription" Collapsed="true">
+    <Position X="4.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABAAgCAIEAEIAACQIAEEOwA0CAAEgAABkAUAAAAQCA=</HashCode>
+      <FileName>src\TraCIAPI\Subscriptions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::VehicleVariableSubscription" Collapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAMAAAAIAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Subscriptions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::SimulationVariableSubscription" Collapsed="true">
+    <Position X="3.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAIAAAQAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Subscriptions.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::BaseTrigger" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Triggers.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::LaneSetTrigger" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAEAIEAgQAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Triggers.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::BaseSpeedController" Collapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAABAAAQAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Triggers.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::HoldSpeedController" Collapsed="true">
+    <Position X="5.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAAAAAAAAAAAAAAAAAAAACAhAAAABAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Triggers.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::LinearSpeedChangeController" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAIAQAAAAAAAAAAAAAAAAAAAAhQAQABAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Triggers.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="traci_api::VehicleManager">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>dOkAfyMFZwnlDaeS6IYaLQQ8v6BSMU5zEhewnBl2AYA=</HashCode>
+      <FileName>src\TraCIAPI\VehicleManager.h</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="instance" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Vector2D" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Utils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vector3D" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Utils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PositionalData" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAACAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Utils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DimensionalData" Collapsed="true">
+    <Position X="17.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAQEBAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\TraCIAPI\Utils.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="std::runtime_error" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include\stdexcept</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

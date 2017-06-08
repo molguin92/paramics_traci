@@ -1,7 +1,6 @@
 ﻿#pragma once
 #include <vector>
 #include "storage.h"
-#include "Simulation.h"
 #include "Constants.h"
 #include "VehicleManager.h"
 

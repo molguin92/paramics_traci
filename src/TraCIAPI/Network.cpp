@@ -1,4 +1,5 @@
 ﻿#include "Network.h"
+#include "Constants.h"
 
 traci_api::Network* traci_api::Network::instance = nullptr;
 

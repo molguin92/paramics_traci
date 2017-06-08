@@ -1,0 +1,488 @@
+\hypertarget{classtcpip_1_1_socket}{}\section{tcpip\+:\+:Socket Class Reference}
+\label{classtcpip_1_1_socket}\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+
+
+{\ttfamily \#include $<$socket.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtcpip_1_1_socket_adcf673cc4a6e4183f4a6f0929e13c5c1}{Socket} (std\+::string host, int \hyperlink{classtcpip_1_1_socket_ab7e67c84c32557ffb98d940081497d67}{port})
+\begin{DoxyCompactList}\small\item\em Constructor that prepare to connect to host\+:port. \end{DoxyCompactList}\item 
+\hyperlink{classtcpip_1_1_socket_af92b0e4bfc335b36971e94baa19fa017}{Socket} (int \hyperlink{classtcpip_1_1_socket_ab7e67c84c32557ffb98d940081497d67}{port})
+\begin{DoxyCompactList}\small\item\em Constructor that prepare for accepting a connection on given port. \end{DoxyCompactList}\item 
+\hyperlink{classtcpip_1_1_socket_a610c213f4b2fad07cc0bfddc3a5577e4}{$\sim$\+Socket} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+void \hyperlink{classtcpip_1_1_socket_a8f89d187776729d15db3ba5c99c36acd}{connect} ()  throw ( Socket\+Exception)
+\begin{DoxyCompactList}\small\item\em Connects to host\+\_\+\+:port\+\_\+. \end{DoxyCompactList}\item 
+void \hyperlink{classtcpip_1_1_socket_a7847299f806a73798f4ceb95ab0e3d51}{accept} ()  throw ( Socket\+Exception)
+\begin{DoxyCompactList}\small\item\em Wait for a incoming connection to port\+\_\+. \end{DoxyCompactList}\item 
+void \hyperlink{classtcpip_1_1_socket_acb91f20e7a532159a8daa2796fa4abd4}{send} (const std\+::vector$<$ unsigned char $>$ \&buffer)  throw ( Socket\+Exception)
+\item 
+void \hyperlink{classtcpip_1_1_socket_a6d00027b40f48d4ae19e3fff2e89f7ab}{send\+Exact} (const \hyperlink{classtcpip_1_1_storage}{Storage} \&)  throw ( Socket\+Exception)
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{classtcpip_1_1_socket_a1da162e961fee9f1a1450df9700fd468}{receive} (int buf\+Size=2048)  throw ( Socket\+Exception)
+\begin{DoxyCompactList}\small\item\em Receive up to {\ttfamily buf\+Size} available bytes from Socket\+::socket\+\_\+. \end{DoxyCompactList}\item 
+bool \hyperlink{classtcpip_1_1_socket_a0d00337ac1fbad2cf183f0a651539e2e}{receive\+Exact} (\hyperlink{classtcpip_1_1_storage}{Storage} \&)  throw ( Socket\+Exception)
+\begin{DoxyCompactList}\small\item\em Receive a complete Tra\+CI message from Socket\+::socket\+\_\+. \end{DoxyCompactList}\item 
+void \hyperlink{classtcpip_1_1_socket_adda6f45e2b5fabc7f539f4ddcbe4b144}{close} ()
+\item 
+int \hyperlink{classtcpip_1_1_socket_ab7e67c84c32557ffb98d940081497d67}{port} ()
+\item 
+void \hyperlink{classtcpip_1_1_socket_ac382abc174bd18e4a61354cd857470c8}{set\+\_\+blocking} (bool)  throw ( Socket\+Exception)
+\item 
+bool \hyperlink{classtcpip_1_1_socket_a4a599332c62974235bde84f2145066b4}{is\+\_\+blocking} ()  throw ()
+\item 
+bool \hyperlink{classtcpip_1_1_socket_a78436cfed4ad686180491c38e88ebfc3}{has\+\_\+client\+\_\+connection} () const
+\item 
+bool \hyperlink{classtcpip_1_1_socket_a5633dda8e133b4eba9028b4e460b5587}{verbose} ()
+\item 
+void \hyperlink{classtcpip_1_1_socket_a695b2054effe2dfc2eddb12b7032b723}{set\+\_\+verbose} (bool new\+Verbose)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classtcpip_1_1_socket_ac752adee7260dc7e7778f639febc0cf1}{receive\+Complete} (unsigned char $\ast$const buffer, std\+::size\+\_\+t len) const
+\begin{DoxyCompactList}\small\item\em Receive {\ttfamily len} bytes from Socket\+::socket\+\_\+. \end{DoxyCompactList}\item 
+size\+\_\+t \hyperlink{classtcpip_1_1_socket_a30a24c05b20d9c3ec54239e75268cda8}{recv\+And\+Check} (unsigned char $\ast$const buffer, std\+::size\+\_\+t len) const
+\begin{DoxyCompactList}\small\item\em Receive up to {\ttfamily len} available bytes from Socket\+::socket\+\_\+. \end{DoxyCompactList}\item 
+void \hyperlink{classtcpip_1_1_socket_a08e08cdc00fd69a51e2cdd8ecb22d1e0}{print\+Buffer\+On\+Verbose} (const std\+::vector$<$ unsigned char $>$ buffer, const std\+::string \&label) const
+\begin{DoxyCompactList}\small\item\em Print {\ttfamily label} and {\ttfamily buffer} to stderr if Socket\+::verbose\+\_\+ is set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{classtcpip_1_1_socket_a93399f14ffe9894df68fec63a05b4203}{length\+Len} = 4
+\begin{DoxyCompactList}\small\item\em Length of the message length part of a Tra\+CI message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtcpip_1_1_socket_a0bb0e5a2fcd99881ef189293e209db7f}{Response}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtcpip_1_1_socket_adcf673cc4a6e4183f4a6f0929e13c5c1}\label{classtcpip_1_1_socket_adcf673cc4a6e4183f4a6f0929e13c5c1}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!Socket@{Socket}}
+\index{Socket@{Socket}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{Socket()}{Socket()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily tcpip\+::\+Socket\+::\+Socket (\begin{DoxyParamCaption}\item[{std\+::string}]{host,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Constructor that prepare to connect to host\+:port. 
+
+\mbox{\Hypertarget{classtcpip_1_1_socket_af92b0e4bfc335b36971e94baa19fa017}\label{classtcpip_1_1_socket_af92b0e4bfc335b36971e94baa19fa017}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!Socket@{Socket}}
+\index{Socket@{Socket}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{Socket()}{Socket()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily tcpip\+::\+Socket\+::\+Socket (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Constructor that prepare for accepting a connection on given port. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_af92b0e4bfc335b36971e94baa19fa017_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a610c213f4b2fad07cc0bfddc3a5577e4}\label{classtcpip_1_1_socket_a610c213f4b2fad07cc0bfddc3a5577e4}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!````~Socket@{$\sim$\+Socket}}
+\index{````~Socket@{$\sim$\+Socket}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{$\sim$\+Socket()}{~Socket()}}
+{\footnotesize\ttfamily tcpip\+::\+Socket\+::$\sim$\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a610c213f4b2fad07cc0bfddc3a5577e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classtcpip_1_1_socket_a610c213f4b2fad07cc0bfddc3a5577e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a7847299f806a73798f4ceb95ab0e3d51}\label{classtcpip_1_1_socket_a7847299f806a73798f4ceb95ab0e3d51}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!accept@{accept}}
+\index{accept@{accept}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{accept()}{accept()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::accept (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  \hyperlink{classtcpip_1_1_socket_exception}{Socket\+Exception}) }
+
+
+
+Wait for a incoming connection to port\+\_\+. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a7847299f806a73798f4ceb95ab0e3d51_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a7847299f806a73798f4ceb95ab0e3d51_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_adda6f45e2b5fabc7f539f4ddcbe4b144}\label{classtcpip_1_1_socket_adda6f45e2b5fabc7f539f4ddcbe4b144}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!close@{close}}
+\index{close@{close}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_adda6f45e2b5fabc7f539f4ddcbe4b144_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_adda6f45e2b5fabc7f539f4ddcbe4b144_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a8f89d187776729d15db3ba5c99c36acd}\label{classtcpip_1_1_socket_a8f89d187776729d15db3ba5c99c36acd}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!connect@{connect}}
+\index{connect@{connect}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  \hyperlink{classtcpip_1_1_socket_exception}{Socket\+Exception}) }
+
+
+
+Connects to host\+\_\+\+:port\+\_\+. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a8f89d187776729d15db3ba5c99c36acd_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a8f89d187776729d15db3ba5c99c36acd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a78436cfed4ad686180491c38e88ebfc3}\label{classtcpip_1_1_socket_a78436cfed4ad686180491c38e88ebfc3}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!has\+\_\+client\+\_\+connection@{has\+\_\+client\+\_\+connection}}
+\index{has\+\_\+client\+\_\+connection@{has\+\_\+client\+\_\+connection}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{has\+\_\+client\+\_\+connection()}{has\_client\_connection()}}
+{\footnotesize\ttfamily bool tcpip\+::\+Socket\+::has\+\_\+client\+\_\+connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classtcpip_1_1_socket_a78436cfed4ad686180491c38e88ebfc3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a78436cfed4ad686180491c38e88ebfc3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a4a599332c62974235bde84f2145066b4}\label{classtcpip_1_1_socket_a4a599332c62974235bde84f2145066b4}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!is\+\_\+blocking@{is\+\_\+blocking}}
+\index{is\+\_\+blocking@{is\+\_\+blocking}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{is\+\_\+blocking()}{is\_blocking()}}
+{\footnotesize\ttfamily bool tcpip\+::\+Socket\+::is\+\_\+blocking (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) throw  ) }
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a4a599332c62974235bde84f2145066b4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_ab7e67c84c32557ffb98d940081497d67}\label{classtcpip_1_1_socket_ab7e67c84c32557ffb98d940081497d67}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!port@{port}}
+\index{port@{port}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{port()}{port()}}
+{\footnotesize\ttfamily int tcpip\+::\+Socket\+::port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_ab7e67c84c32557ffb98d940081497d67_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_ab7e67c84c32557ffb98d940081497d67_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a08e08cdc00fd69a51e2cdd8ecb22d1e0}\label{classtcpip_1_1_socket_a08e08cdc00fd69a51e2cdd8ecb22d1e0}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!print\+Buffer\+On\+Verbose@{print\+Buffer\+On\+Verbose}}
+\index{print\+Buffer\+On\+Verbose@{print\+Buffer\+On\+Verbose}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{print\+Buffer\+On\+Verbose()}{printBufferOnVerbose()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::print\+Buffer\+On\+Verbose (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ unsigned char $>$}]{buffer,  }\item[{const std\+::string \&}]{label }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Print {\ttfamily label} and {\ttfamily buffer} to stderr if Socket\+::verbose\+\_\+ is set. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a08e08cdc00fd69a51e2cdd8ecb22d1e0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a08e08cdc00fd69a51e2cdd8ecb22d1e0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a1da162e961fee9f1a1450df9700fd468}\label{classtcpip_1_1_socket_a1da162e961fee9f1a1450df9700fd468}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!receive@{receive}}
+\index{receive@{receive}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{receive()}{receive()}}
+{\footnotesize\ttfamily std\+::vector$<$ unsigned char $>$ tcpip\+::\+Socket\+::receive (\begin{DoxyParamCaption}\item[{int}]{buf\+Size = {\ttfamily 2048} }\end{DoxyParamCaption}) throw  \hyperlink{classtcpip_1_1_socket_exception}{Socket\+Exception}) }
+
+
+
+Receive up to {\ttfamily buf\+Size} available bytes from Socket\+::socket\+\_\+. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a1da162e961fee9f1a1450df9700fd468_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a1da162e961fee9f1a1450df9700fd468_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_ac752adee7260dc7e7778f639febc0cf1}\label{classtcpip_1_1_socket_ac752adee7260dc7e7778f639febc0cf1}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!receive\+Complete@{receive\+Complete}}
+\index{receive\+Complete@{receive\+Complete}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{receive\+Complete()}{receiveComplete()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::receive\+Complete (\begin{DoxyParamCaption}\item[{unsigned char $\ast$const}]{buffer,  }\item[{std\+::size\+\_\+t}]{len }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Receive {\ttfamily len} bytes from Socket\+::socket\+\_\+. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_ac752adee7260dc7e7778f639febc0cf1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_ac752adee7260dc7e7778f639febc0cf1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a0d00337ac1fbad2cf183f0a651539e2e}\label{classtcpip_1_1_socket_a0d00337ac1fbad2cf183f0a651539e2e}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!receive\+Exact@{receive\+Exact}}
+\index{receive\+Exact@{receive\+Exact}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{receive\+Exact()}{receiveExact()}}
+{\footnotesize\ttfamily bool tcpip\+::\+Socket\+::receive\+Exact (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{Storage} \&}]{msg }\end{DoxyParamCaption}) throw  \hyperlink{classtcpip_1_1_socket_exception}{Socket\+Exception}) }
+
+
+
+Receive a complete Tra\+CI message from Socket\+::socket\+\_\+. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a0d00337ac1fbad2cf183f0a651539e2e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a0d00337ac1fbad2cf183f0a651539e2e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a30a24c05b20d9c3ec54239e75268cda8}\label{classtcpip_1_1_socket_a30a24c05b20d9c3ec54239e75268cda8}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!recv\+And\+Check@{recv\+And\+Check}}
+\index{recv\+And\+Check@{recv\+And\+Check}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{recv\+And\+Check()}{recvAndCheck()}}
+{\footnotesize\ttfamily size\+\_\+t tcpip\+::\+Socket\+::recv\+And\+Check (\begin{DoxyParamCaption}\item[{unsigned char $\ast$const}]{buffer,  }\item[{std\+::size\+\_\+t}]{len }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Receive up to {\ttfamily len} available bytes from Socket\+::socket\+\_\+. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a30a24c05b20d9c3ec54239e75268cda8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a30a24c05b20d9c3ec54239e75268cda8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_acb91f20e7a532159a8daa2796fa4abd4}\label{classtcpip_1_1_socket_acb91f20e7a532159a8daa2796fa4abd4}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!send@{send}}
+\index{send@{send}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{send()}{send()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::send (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ unsigned char $>$ \&}]{buffer }\end{DoxyParamCaption}) throw  \hyperlink{classtcpip_1_1_socket_exception}{Socket\+Exception}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_acb91f20e7a532159a8daa2796fa4abd4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_acb91f20e7a532159a8daa2796fa4abd4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a6d00027b40f48d4ae19e3fff2e89f7ab}\label{classtcpip_1_1_socket_a6d00027b40f48d4ae19e3fff2e89f7ab}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!send\+Exact@{send\+Exact}}
+\index{send\+Exact@{send\+Exact}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{send\+Exact()}{sendExact()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::send\+Exact (\begin{DoxyParamCaption}\item[{const \hyperlink{classtcpip_1_1_storage}{Storage} \&}]{b }\end{DoxyParamCaption}) throw  \hyperlink{classtcpip_1_1_socket_exception}{Socket\+Exception}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a6d00027b40f48d4ae19e3fff2e89f7ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_a6d00027b40f48d4ae19e3fff2e89f7ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_ac382abc174bd18e4a61354cd857470c8}\label{classtcpip_1_1_socket_ac382abc174bd18e4a61354cd857470c8}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!set\+\_\+blocking@{set\+\_\+blocking}}
+\index{set\+\_\+blocking@{set\+\_\+blocking}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{set\+\_\+blocking()}{set\_blocking()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::set\+\_\+blocking (\begin{DoxyParamCaption}\item[{bool}]{blocking }\end{DoxyParamCaption}) throw  \hyperlink{classtcpip_1_1_socket_exception}{Socket\+Exception}) }
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_ac382abc174bd18e4a61354cd857470c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtcpip_1_1_socket_ac382abc174bd18e4a61354cd857470c8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a695b2054effe2dfc2eddb12b7032b723}\label{classtcpip_1_1_socket_a695b2054effe2dfc2eddb12b7032b723}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!set\+\_\+verbose@{set\+\_\+verbose}}
+\index{set\+\_\+verbose@{set\+\_\+verbose}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{set\+\_\+verbose()}{set\_verbose()}}
+{\footnotesize\ttfamily void tcpip\+::\+Socket\+::set\+\_\+verbose (\begin{DoxyParamCaption}\item[{bool}]{new\+Verbose }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classtcpip_1_1_socket_a5633dda8e133b4eba9028b4e460b5587}\label{classtcpip_1_1_socket_a5633dda8e133b4eba9028b4e460b5587}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!verbose@{verbose}}
+\index{verbose@{verbose}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{verbose()}{verbose()}}
+{\footnotesize\ttfamily bool tcpip\+::\+Socket\+::verbose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\subsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a0bb0e5a2fcd99881ef189293e209db7f}\label{classtcpip_1_1_socket_a0bb0e5a2fcd99881ef189293e209db7f}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!Response@{Response}}
+\index{Response@{Response}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{Response}{Response}}
+{\footnotesize\ttfamily friend class Response\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtcpip_1_1_socket_a93399f14ffe9894df68fec63a05b4203}\label{classtcpip_1_1_socket_a93399f14ffe9894df68fec63a05b4203}} 
+\index{tcpip\+::\+Socket@{tcpip\+::\+Socket}!length\+Len@{length\+Len}}
+\index{length\+Len@{length\+Len}!tcpip\+::\+Socket@{tcpip\+::\+Socket}}
+\subsubsection{\texorpdfstring{length\+Len}{lengthLen}}
+{\footnotesize\ttfamily const int tcpip\+::\+Socket\+::length\+Len = 4\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+
+
+Length of the message length part of a Tra\+CI message. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/shawn/\hyperlink{socket_8h}{socket.\+h}\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/shawn/\hyperlink{socket_8cpp}{socket.\+cpp}\end{DoxyCompactItemize}

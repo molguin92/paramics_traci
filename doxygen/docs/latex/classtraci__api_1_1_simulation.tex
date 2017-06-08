@@ -1,0 +1,302 @@
+\hypertarget{classtraci__api_1_1_simulation}{}\section{traci\+\_\+api\+:\+:Simulation Class Reference}
+\label{classtraci__api_1_1_simulation}\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+
+
+{\ttfamily \#include $<$Simulation.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtraci__api_1_1_simulation_af0680bb9b12ef4c4d47e45f3aeebc108}{$\sim$\+Simulation} ()
+\item 
+\hyperlink{classtraci__api_1_1_simulation_a0e41f9a2911b8f3545002220027a9922}{Simulation} (\hyperlink{classtraci__api_1_1_simulation}{Simulation} const \&)=delete
+\item 
+void \hyperlink{classtraci__api_1_1_simulation_ad51b13fbeca39505efcb2171212ec99d}{operator=} (\hyperlink{classtraci__api_1_1_simulation}{Simulation} const \&)=delete
+\item 
+bool \hyperlink{classtraci__api_1_1_simulation_aa795b446802e3ddb196ebd29a215005e}{pack\+Simulation\+Variable} (uint8\+\_\+t var\+ID, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&result\+\_\+store)
+\item 
+void \hyperlink{classtraci__api_1_1_simulation_aa7ebe041dd0f34ccef7f2f2293775c3b}{get\+Simulation\+Variable} (uint8\+\_\+t var\+ID, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&result)
+\item 
+float \hyperlink{classtraci__api_1_1_simulation_a8e9cc88461dfab200eabf626fcdb8280}{get\+Current\+Time\+Seconds} ()
+\item 
+int \hyperlink{classtraci__api_1_1_simulation_a43ce3d282a312c2e6735cdcd4343b0a7}{get\+Current\+Time\+Milliseconds} ()
+\item 
+int \hyperlink{classtraci__api_1_1_simulation_a413eac30f40f25fabbd94cc6ff16a51c}{get\+Time\+Step\+Size\+Milliseconds} ()
+\item 
+void \hyperlink{classtraci__api_1_1_simulation_a1124e65809e0e3f6109654de9b28daf8}{get\+Real\+Network\+Bounds} (double \&llx, double \&lly, double \&urx, double \&ury)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classtraci__api_1_1_simulation}{Simulation} $\ast$ \hyperlink{classtraci__api_1_1_simulation_a5bd3febd1571525c2dac2b68e37f694e}{get\+Instance} ()
+\item 
+static void \hyperlink{classtraci__api_1_1_simulation_a952c6f62a424d4f8d3ee016dc8c935bd}{delete\+Instance} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_ad85a2daa3b6e62afebf23c63aa54c5a7}{V\+A\+R\+\_\+\+S\+I\+M\+T\+I\+ME} = 0x70
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a0c320b73a88c6bd0d5d15b9b7d8ca079}{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+C\+NT} = 0x71
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_aef180578795a463be2e4b4d47674f07e}{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+L\+ST} = 0x72
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a2211a9befd772188a83012e61d0bf890}{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+C\+NT} = 0x73
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a4e5cf74cd62df38b5e0a4e750983c6e1}{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+L\+ST} = 0x74
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_aa2763aba4aa46ba82dc9b1f258101ca4}{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+C\+NT} = 0x79
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_ae7a55aa19afe46dd3e54ed60ccc736bf}{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+L\+ST} = 0x7a
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a32191847f48857d89c02e27c7134e862}{V\+A\+R\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+SZ} = 0x7b
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_aae0a592bee89106e697c1eb2bb312b74}{V\+A\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\+B\+N\+DS} = 0x7c
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_ad9ea6052e8bbce54c86cccd34d949859}{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT} = 0x75
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a143172fa14c4207f49e634c7b2624627}{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST} = 0x76
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a005529f94d02779594428533d622b5bd}{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT} = 0x77
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a7662449bf431cf2c454d192f7b6c6bf8}{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST} = 0x78
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_afb8883f64f8a38cc0fab2ceb5ca19b12}{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+C\+NT} = 0x6c
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_aa9a559c39436fc08695c37e9939d5ab4}{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+L\+ST} = 0x6d
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_a6a63c336454d76895435d70b0119d2de}{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+C\+NT} = 0x6e
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_simulation_ac9b1a6baea01106e4c283f9d8a3d40dc}{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+L\+ST} = 0x6f
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_af0680bb9b12ef4c4d47e45f3aeebc108}\label{classtraci__api_1_1_simulation_af0680bb9b12ef4c4d47e45f3aeebc108}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!````~Simulation@{$\sim$\+Simulation}}
+\index{````~Simulation@{$\sim$\+Simulation}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{$\sim$\+Simulation()}{~Simulation()}}
+{\footnotesize\ttfamily traci\+\_\+api\+::\+Simulation\+::$\sim$\+Simulation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a0e41f9a2911b8f3545002220027a9922}\label{classtraci__api_1_1_simulation_a0e41f9a2911b8f3545002220027a9922}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!Simulation@{Simulation}}
+\index{Simulation@{Simulation}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{Simulation()}{Simulation()}}
+{\footnotesize\ttfamily traci\+\_\+api\+::\+Simulation\+::\+Simulation (\begin{DoxyParamCaption}\item[{\hyperlink{classtraci__api_1_1_simulation}{Simulation} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a952c6f62a424d4f8d3ee016dc8c935bd}\label{classtraci__api_1_1_simulation_a952c6f62a424d4f8d3ee016dc8c935bd}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!delete\+Instance@{delete\+Instance}}
+\index{delete\+Instance@{delete\+Instance}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{delete\+Instance()}{deleteInstance()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Simulation\+::delete\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a43ce3d282a312c2e6735cdcd4343b0a7}\label{classtraci__api_1_1_simulation_a43ce3d282a312c2e6735cdcd4343b0a7}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!get\+Current\+Time\+Milliseconds@{get\+Current\+Time\+Milliseconds}}
+\index{get\+Current\+Time\+Milliseconds@{get\+Current\+Time\+Milliseconds}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{get\+Current\+Time\+Milliseconds()}{getCurrentTimeMilliseconds()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Simulation\+::get\+Current\+Time\+Milliseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_simulation_a43ce3d282a312c2e6735cdcd4343b0a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a8e9cc88461dfab200eabf626fcdb8280}\label{classtraci__api_1_1_simulation_a8e9cc88461dfab200eabf626fcdb8280}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!get\+Current\+Time\+Seconds@{get\+Current\+Time\+Seconds}}
+\index{get\+Current\+Time\+Seconds@{get\+Current\+Time\+Seconds}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{get\+Current\+Time\+Seconds()}{getCurrentTimeSeconds()}}
+{\footnotesize\ttfamily float traci\+\_\+api\+::\+Simulation\+::get\+Current\+Time\+Seconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a5bd3febd1571525c2dac2b68e37f694e}\label{classtraci__api_1_1_simulation_a5bd3febd1571525c2dac2b68e37f694e}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!get\+Instance@{get\+Instance}}
+\index{get\+Instance@{get\+Instance}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{get\+Instance()}{getInstance()}}
+{\footnotesize\ttfamily \hyperlink{classtraci__api_1_1_simulation}{traci\+\_\+api\+::\+Simulation} $\ast$ traci\+\_\+api\+::\+Simulation\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_simulation_a5bd3febd1571525c2dac2b68e37f694e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a1124e65809e0e3f6109654de9b28daf8}\label{classtraci__api_1_1_simulation_a1124e65809e0e3f6109654de9b28daf8}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!get\+Real\+Network\+Bounds@{get\+Real\+Network\+Bounds}}
+\index{get\+Real\+Network\+Bounds@{get\+Real\+Network\+Bounds}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{get\+Real\+Network\+Bounds()}{getRealNetworkBounds()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Simulation\+::get\+Real\+Network\+Bounds (\begin{DoxyParamCaption}\item[{double \&}]{llx,  }\item[{double \&}]{lly,  }\item[{double \&}]{urx,  }\item[{double \&}]{ury }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_aa7ebe041dd0f34ccef7f2f2293775c3b}\label{classtraci__api_1_1_simulation_aa7ebe041dd0f34ccef7f2f2293775c3b}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!get\+Simulation\+Variable@{get\+Simulation\+Variable}}
+\index{get\+Simulation\+Variable@{get\+Simulation\+Variable}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{get\+Simulation\+Variable()}{getSimulationVariable()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Simulation\+::get\+Simulation\+Variable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{var\+ID,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{result }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_simulation_aa7ebe041dd0f34ccef7f2f2293775c3b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_simulation_aa7ebe041dd0f34ccef7f2f2293775c3b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a413eac30f40f25fabbd94cc6ff16a51c}\label{classtraci__api_1_1_simulation_a413eac30f40f25fabbd94cc6ff16a51c}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!get\+Time\+Step\+Size\+Milliseconds@{get\+Time\+Step\+Size\+Milliseconds}}
+\index{get\+Time\+Step\+Size\+Milliseconds@{get\+Time\+Step\+Size\+Milliseconds}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{get\+Time\+Step\+Size\+Milliseconds()}{getTimeStepSizeMilliseconds()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Simulation\+::get\+Time\+Step\+Size\+Milliseconds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_simulation_a413eac30f40f25fabbd94cc6ff16a51c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_ad51b13fbeca39505efcb2171212ec99d}\label{classtraci__api_1_1_simulation_ad51b13fbeca39505efcb2171212ec99d}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!operator=@{operator=}}
+\index{operator=@{operator=}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Simulation\+::operator= (\begin{DoxyParamCaption}\item[{\hyperlink{classtraci__api_1_1_simulation}{Simulation} const \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_aa795b446802e3ddb196ebd29a215005e}\label{classtraci__api_1_1_simulation_aa795b446802e3ddb196ebd29a215005e}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!pack\+Simulation\+Variable@{pack\+Simulation\+Variable}}
+\index{pack\+Simulation\+Variable@{pack\+Simulation\+Variable}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{pack\+Simulation\+Variable()}{packSimulationVariable()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::\+Simulation\+::pack\+Simulation\+Variable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{var\+ID,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{result\+\_\+store }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_simulation_aa795b446802e3ddb196ebd29a215005e_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_aa2763aba4aa46ba82dc9b1f258101ca4}\label{classtraci__api_1_1_simulation_aa2763aba4aa46ba82dc9b1f258101ca4}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+C\+NT}}
+\index{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+C\+NT}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+C\+NT}{VAR\_ARRIVEDVHC\_CNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+C\+NT = 0x79\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_ae7a55aa19afe46dd3e54ed60ccc736bf}\label{classtraci__api_1_1_simulation_ae7a55aa19afe46dd3e54ed60ccc736bf}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+L\+ST}}
+\index{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+L\+ST}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+L\+ST}{VAR\_ARRIVEDVHC\_LST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+A\+R\+R\+I\+V\+E\+D\+V\+H\+C\+\_\+\+L\+ST = 0x7a\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a2211a9befd772188a83012e61d0bf890}\label{classtraci__api_1_1_simulation_a2211a9befd772188a83012e61d0bf890}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+C\+NT}}
+\index{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+C\+NT}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+C\+NT}{VAR\_DEPARTEDVHC\_CNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+C\+NT = 0x73\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a4e5cf74cd62df38b5e0a4e750983c6e1}\label{classtraci__api_1_1_simulation_a4e5cf74cd62df38b5e0a4e750983c6e1}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+L\+ST}}
+\index{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+L\+ST}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+L\+ST}{VAR\_DEPARTEDVHC\_LST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+D\+E\+P\+A\+R\+T\+E\+D\+V\+H\+C\+\_\+\+L\+ST = 0x74\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a0c320b73a88c6bd0d5d15b9b7d8ca079}\label{classtraci__api_1_1_simulation_a0c320b73a88c6bd0d5d15b9b7d8ca079}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+C\+NT}}
+\index{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+C\+NT}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+C\+NT}{VAR\_LOADEDVHC\_CNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+C\+NT = 0x71\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_aef180578795a463be2e4b4d47674f07e}\label{classtraci__api_1_1_simulation_aef180578795a463be2e4b4d47674f07e}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+L\+ST}}
+\index{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+L\+ST}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+L\+ST}{VAR\_LOADEDVHC\_LST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+L\+O\+A\+D\+E\+D\+V\+H\+C\+\_\+\+L\+ST = 0x72\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_aae0a592bee89106e697c1eb2bb312b74}\label{classtraci__api_1_1_simulation_aae0a592bee89106e697c1eb2bb312b74}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\+B\+N\+DS@{V\+A\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\+B\+N\+DS}}
+\index{V\+A\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\+B\+N\+DS@{V\+A\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\+B\+N\+DS}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\+B\+N\+DS}{VAR\_NETWORKBNDS}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\+B\+N\+DS = 0x7c\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_ad85a2daa3b6e62afebf23c63aa54c5a7}\label{classtraci__api_1_1_simulation_ad85a2daa3b6e62afebf23c63aa54c5a7}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+S\+I\+M\+T\+I\+ME@{V\+A\+R\+\_\+\+S\+I\+M\+T\+I\+ME}}
+\index{V\+A\+R\+\_\+\+S\+I\+M\+T\+I\+ME@{V\+A\+R\+\_\+\+S\+I\+M\+T\+I\+ME}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+S\+I\+M\+T\+I\+ME}{VAR\_SIMTIME}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+S\+I\+M\+T\+I\+ME = 0x70\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a32191847f48857d89c02e27c7134e862}\label{classtraci__api_1_1_simulation_a32191847f48857d89c02e27c7134e862}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+SZ@{V\+A\+R\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+SZ}}
+\index{V\+A\+R\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+SZ@{V\+A\+R\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+SZ}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+SZ}{VAR\_TIMESTEPSZ}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+SZ = 0x7b\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a6a63c336454d76895435d70b0119d2de}\label{classtraci__api_1_1_simulation_a6a63c336454d76895435d70b0119d2de}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+C\+NT}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+C\+NT}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+C\+NT}{VAR\_VHCENDPARK\_CNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+C\+NT = 0x6e\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_ac9b1a6baea01106e4c283f9d8a3d40dc}\label{classtraci__api_1_1_simulation_ac9b1a6baea01106e4c283f9d8a3d40dc}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+L\+ST}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+L\+ST}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+L\+ST}{VAR\_VHCENDPARK\_LST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+P\+A\+R\+K\+\_\+\+L\+ST = 0x6f\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a005529f94d02779594428533d622b5bd}\label{classtraci__api_1_1_simulation_a005529f94d02779594428533d622b5bd}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT}{VAR\_VHCENDTELEPORT\_CNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT = 0x77\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a7662449bf431cf2c454d192f7b6c6bf8}\label{classtraci__api_1_1_simulation_a7662449bf431cf2c454d192f7b6c6bf8}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST}{VAR\_VHCENDTELEPORT\_LST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+E\+N\+D\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST = 0x78\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_afb8883f64f8a38cc0fab2ceb5ca19b12}\label{classtraci__api_1_1_simulation_afb8883f64f8a38cc0fab2ceb5ca19b12}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+C\+NT}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+C\+NT}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+C\+NT}{VAR\_VHCSTARTPARK\_CNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+C\+NT = 0x6c\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_aa9a559c39436fc08695c37e9939d5ab4}\label{classtraci__api_1_1_simulation_aa9a559c39436fc08695c37e9939d5ab4}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+L\+ST}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+L\+ST}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+L\+ST}{VAR\_VHCSTARTPARK\_LST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+P\+A\+R\+K\+\_\+\+L\+ST = 0x6d\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_ad9ea6052e8bbce54c86cccd34d949859}\label{classtraci__api_1_1_simulation_ad9ea6052e8bbce54c86cccd34d949859}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT}{VAR\_VHCSTARTTELEPORT\_CNT}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+C\+NT = 0x75\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_simulation_a143172fa14c4207f49e634c7b2624627}\label{classtraci__api_1_1_simulation_a143172fa14c4207f49e634c7b2624627}} 
+\index{traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}!V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST}}
+\index{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST@{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST}!traci\+\_\+api\+::\+Simulation@{traci\+\_\+api\+::\+Simulation}}
+\subsubsection{\texorpdfstring{V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST}{VAR\_VHCSTARTTELEPORT\_LST}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Simulation\+::\+V\+A\+R\+\_\+\+V\+H\+C\+S\+T\+A\+R\+T\+T\+E\+L\+E\+P\+O\+R\+T\+\_\+\+L\+ST = 0x76\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_simulation_8h}{Simulation.\+h}\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_simulation_8cpp}{Simulation.\+cpp}\end{DoxyCompactItemize}

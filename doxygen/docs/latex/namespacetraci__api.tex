@@ -1,0 +1,348 @@
+\hypertarget{namespacetraci__api}{}\section{traci\+\_\+api Namespace Reference}
+\label{namespacetraci__api}\index{traci\+\_\+api@{traci\+\_\+api}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtraci__api_1_1_base_speed_controller}{Base\+Speed\+Controller}
+\item 
+class \hyperlink{classtraci__api_1_1_base_trigger}{Base\+Trigger}
+\item 
+class \hyperlink{classtraci__api_1_1_hold_speed_controller}{Hold\+Speed\+Controller}
+\item 
+class \hyperlink{classtraci__api_1_1_lane_set_trigger}{Lane\+Set\+Trigger}
+\item 
+class \hyperlink{classtraci__api_1_1_linear_speed_change_controller}{Linear\+Speed\+Change\+Controller}
+\item 
+class \hyperlink{classtraci__api_1_1_network}{Network}
+\item 
+class \hyperlink{classtraci__api_1_1_no_such_object_error}{No\+Such\+Object\+Error}
+\item 
+class \hyperlink{classtraci__api_1_1_not_implemented_error}{Not\+Implemented\+Error}
+\item 
+class \hyperlink{classtraci__api_1_1_simulation}{Simulation}
+\item 
+class \hyperlink{classtraci__api_1_1_simulation_variable_subscription}{Simulation\+Variable\+Subscription}
+\item 
+class \hyperlink{classtraci__api_1_1_tra_c_i_server}{Tra\+C\+I\+Server}
+\item 
+class \hyperlink{classtraci__api_1_1_variable_subscription}{Variable\+Subscription}
+\item 
+class \hyperlink{classtraci__api_1_1_vehicle_manager}{Vehicle\+Manager}
+\item 
+class \hyperlink{classtraci__api_1_1_vehicle_variable_subscription}{Vehicle\+Variable\+Subscription}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{namespacetraci__api_a8179b41c12626fc5444d12ee3a6f19cb}{debug\+Print} (std\+::string text)
+\begin{DoxyCompactList}\small\item\em Convenience function, prints an std\+::string on Paramics\textquotesingle{} output window. \end{DoxyCompactList}\item 
+void \hyperlink{namespacetraci__api_a3d103fa606d4762c375bac42c66f62a8}{info\+Print} (std\+::string text)
+\end{DoxyCompactItemize}
+\begin{Indent}\textbf{ Helpers for reading and checking values}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{namespacetraci__api_a57c1a8583619eb1e9984249249435f8e}{read\+Type\+Checking\+Int} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, int \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and an int, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_a5229be0b43fc9f5d9f413d5e51924b50}{read\+Type\+Checking\+Double} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, double \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a double, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_ac51a66efdbed4dcdcef596643fe387ec}{read\+Type\+Checking\+String} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, std\+::string \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a string, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_aa16305c07ac5f8221d9099f2e3a7531c}{read\+Type\+Checking\+String\+List} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, std\+::vector$<$ std\+::string $>$ \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a string list, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_af8c7656fbd212acb13f037d4fb20f1f7}{read\+Type\+Checking\+Color} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, uint32\+\_\+t \&hex)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a color, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_a26421201e19b2667e198708c2216ca06}{read\+Type\+Checking\+Position2D} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, \hyperlink{class_vector2_d}{Vector2D} \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a 2D position, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_aee58441392da7b83ecd8c8831271e945}{read\+Type\+Checking\+Byte} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, int8\+\_\+t \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and a 2D bounding box, verifying the type. \end{DoxyCompactList}\item 
+bool \hyperlink{namespacetraci__api_ac95893093cb3b220faafd74ce62abba3}{read\+Type\+Checking\+Unsigned\+Byte} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&input\+Storage, uint8\+\_\+t \&into)
+\begin{DoxyCompactList}\small\item\em Reads the value type and an unsigned byte, verifying the type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacetraci__api_a8179b41c12626fc5444d12ee3a6f19cb}\label{namespacetraci__api_a8179b41c12626fc5444d12ee3a6f19cb}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!debug\+Print@{debug\+Print}}
+\index{debug\+Print@{debug\+Print}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{debug\+Print()}{debugPrint()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::debug\+Print (\begin{DoxyParamCaption}\item[{std\+::string}]{text }\end{DoxyParamCaption})}
+
+
+
+Convenience function, prints an std\+::string on Paramics\textquotesingle{} output window. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a8179b41c12626fc5444d12ee3a6f19cb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_a3d103fa606d4762c375bac42c66f62a8}\label{namespacetraci__api_a3d103fa606d4762c375bac42c66f62a8}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!info\+Print@{info\+Print}}
+\index{info\+Print@{info\+Print}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{info\+Print()}{infoPrint()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::info\+Print (\begin{DoxyParamCaption}\item[{std\+::string}]{text }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a3d103fa606d4762c375bac42c66f62a8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_aee58441392da7b83ecd8c8831271e945}\label{namespacetraci__api_aee58441392da7b83ecd8c8831271e945}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+Byte@{read\+Type\+Checking\+Byte}}
+\index{read\+Type\+Checking\+Byte@{read\+Type\+Checking\+Byte}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+Byte()}{readTypeCheckingByte()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+Byte (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{int8\+\_\+t \&}]{into }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and a 2D bounding box, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_aee58441392da7b83ecd8c8831271e945_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_aee58441392da7b83ecd8c8831271e945_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_af8c7656fbd212acb13f037d4fb20f1f7}\label{namespacetraci__api_af8c7656fbd212acb13f037d4fb20f1f7}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+Color@{read\+Type\+Checking\+Color}}
+\index{read\+Type\+Checking\+Color@{read\+Type\+Checking\+Color}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+Color()}{readTypeCheckingColor()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+Color (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{uint32\+\_\+t \&}]{hex }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and a color, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_af8c7656fbd212acb13f037d4fb20f1f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_af8c7656fbd212acb13f037d4fb20f1f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_a5229be0b43fc9f5d9f413d5e51924b50}\label{namespacetraci__api_a5229be0b43fc9f5d9f413d5e51924b50}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+Double@{read\+Type\+Checking\+Double}}
+\index{read\+Type\+Checking\+Double@{read\+Type\+Checking\+Double}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+Double()}{readTypeCheckingDouble()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+Double (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{double \&}]{into }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and a double, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a5229be0b43fc9f5d9f413d5e51924b50_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a5229be0b43fc9f5d9f413d5e51924b50_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_a57c1a8583619eb1e9984249249435f8e}\label{namespacetraci__api_a57c1a8583619eb1e9984249249435f8e}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+Int@{read\+Type\+Checking\+Int}}
+\index{read\+Type\+Checking\+Int@{read\+Type\+Checking\+Int}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+Int()}{readTypeCheckingInt()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+Int (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{int \&}]{into }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and an int, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a57c1a8583619eb1e9984249249435f8e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a57c1a8583619eb1e9984249249435f8e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_a26421201e19b2667e198708c2216ca06}\label{namespacetraci__api_a26421201e19b2667e198708c2216ca06}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+Position2D@{read\+Type\+Checking\+Position2D}}
+\index{read\+Type\+Checking\+Position2D@{read\+Type\+Checking\+Position2D}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+Position2\+D()}{readTypeCheckingPosition2D()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+Position2D (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{\hyperlink{class_vector2_d}{Vector2D} \&}]{into }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and a 2D position, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a26421201e19b2667e198708c2216ca06_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_a26421201e19b2667e198708c2216ca06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_ac51a66efdbed4dcdcef596643fe387ec}\label{namespacetraci__api_ac51a66efdbed4dcdcef596643fe387ec}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+String@{read\+Type\+Checking\+String}}
+\index{read\+Type\+Checking\+String@{read\+Type\+Checking\+String}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+String()}{readTypeCheckingString()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+String (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{std\+::string \&}]{into }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and a string, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_ac51a66efdbed4dcdcef596643fe387ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_ac51a66efdbed4dcdcef596643fe387ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_aa16305c07ac5f8221d9099f2e3a7531c}\label{namespacetraci__api_aa16305c07ac5f8221d9099f2e3a7531c}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+String\+List@{read\+Type\+Checking\+String\+List}}
+\index{read\+Type\+Checking\+String\+List@{read\+Type\+Checking\+String\+List}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+String\+List()}{readTypeCheckingStringList()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+String\+List (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{into }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and a string list, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_aa16305c07ac5f8221d9099f2e3a7531c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_aa16305c07ac5f8221d9099f2e3a7531c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetraci__api_ac95893093cb3b220faafd74ce62abba3}\label{namespacetraci__api_ac95893093cb3b220faafd74ce62abba3}} 
+\index{traci\+\_\+api@{traci\+\_\+api}!read\+Type\+Checking\+Unsigned\+Byte@{read\+Type\+Checking\+Unsigned\+Byte}}
+\index{read\+Type\+Checking\+Unsigned\+Byte@{read\+Type\+Checking\+Unsigned\+Byte}!traci\+\_\+api@{traci\+\_\+api}}
+\subsubsection{\texorpdfstring{read\+Type\+Checking\+Unsigned\+Byte()}{readTypeCheckingUnsignedByte()}}
+{\footnotesize\ttfamily bool traci\+\_\+api\+::read\+Type\+Checking\+Unsigned\+Byte (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{input\+Storage,  }\item[{uint8\+\_\+t \&}]{into }\end{DoxyParamCaption})}
+
+
+
+Reads the value type and an unsigned byte, verifying the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em } & \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_ac95893093cb3b220faafd74ce62abba3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetraci__api_ac95893093cb3b220faafd74ce62abba3_icgraph}
+\end{center}
+\end{figure}

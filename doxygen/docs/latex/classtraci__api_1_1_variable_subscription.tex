@@ -1,0 +1,392 @@
+\hypertarget{classtraci__api_1_1_variable_subscription}{}\section{traci\+\_\+api\+:\+:Variable\+Subscription Class Reference}
+\label{classtraci__api_1_1_variable_subscription}\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+
+
+{\ttfamily \#include $<$Subscriptions.\+h$>$}
+
+
+
+Inheritance diagram for traci\+\_\+api\+:\+:Variable\+Subscription\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtraci__api_1_1_variable_subscription_a9d9f52126f0b883aa0d83cc3dbd32f14}{Variable\+Subscription} (std\+::string obj\+\_\+id, int begin\+\_\+time, int end\+\_\+time, std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classtraci__api_1_1_variable_subscription_a59bec6554debe2d14d75c29017561959}{vars})
+\item 
+int \hyperlink{classtraci__api_1_1_variable_subscription_a6e17a9560c53c7c9543599f93caeeaf8}{check\+Time} () const
+\item 
+virtual \hyperlink{classtraci__api_1_1_variable_subscription_afc66a609515b051a28df4df35cbcbe61}{$\sim$\+Variable\+Subscription} ()
+\item 
+uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_ab75320e8ec7d1406ea47a703fb09de63}{handle\+Subscription} (\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&output, bool validate, std\+::string \&errors)
+\item 
+virtual void \hyperlink{classtraci__api_1_1_variable_subscription_a884dba03a44455e86c417c3641ec6aa4}{get\+Object\+Variable} (uint8\+\_\+t var\+\_\+id, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&result)=0
+\item 
+uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a598f7414334878f7943bfadbbf6a42d4}{get\+Sub\+Type} () const
+\item 
+virtual uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a3e852072c435d02f96ff91f81506cef9}{get\+Response\+Code} () const =0
+\item 
+uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a4a56033c7b432c2e2d029ca5fd5c3468}{update\+Subscription} (uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a93110dcf3a32ff7a6a73ad3f8ff371d6}{sub\+\_\+type}, std\+::string obj\+\_\+id, int begin\+\_\+time, int end\+\_\+time, std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classtraci__api_1_1_variable_subscription_a59bec6554debe2d14d75c29017561959}{vars}, \hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&result, std\+::string \&errors)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a67be7b764a8ec894c712922c1a279439}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+I\+N\+D\+V\+AR} = 0xe0
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a0f5f2ce0123762a95e12e12e4013e43e}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+M\+U\+L\+T\+V\+AR} = 0xe1
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a4770fd303ba47c510f2b898bb61f76bb}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+T\+L\+I\+G\+H\+T\+V\+AR} = 0xe2
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a9edde61a4dd1f4997ba950a86e07650a}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+L\+A\+N\+E\+V\+AR} = 0xe3
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_ae3d75ae633ea0a072ccd01543c22515a}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+V\+AR} = 0xe4
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a5bb447d5b748ae629c058e9f3683fa1f}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+T\+Y\+P\+E\+V\+AR} = 0xe5
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_aa0855c699d81666db867dbf3fb6f08aa}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+R\+T\+E\+V\+AR} = 0xe6
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_aa1733f06f1c969cbbea44c8f7f1eb758}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+I\+V\+AR} = 0xe7
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_ab5629c964ed85fabb49291bfa63a0c84}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+L\+V\+AR} = 0xe8
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a681e35cdde9ef1fb500d533e94113064}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+J\+U\+N\+C\+T\+V\+AR} = 0xe9
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_acca8676c26bb0d649ea017826749eae0}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+E\+D\+G\+E\+V\+AR} = 0xea
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_aa92eced34d95ef3c695d64600e4dbf80}{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+S\+I\+M\+V\+AR} = 0xeb
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_ad14b04a2a4f37e74e0e19c59a0f3fae7}{S\+T\+A\+T\+U\+S\+\_\+\+OK} = 0x00
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_afa345f07263b38b4a6d61722ad22309f}{S\+T\+A\+T\+U\+S\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+N\+O\+T\+R\+E\+A\+C\+H\+ED} = 0x01
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_ae91ce93cc39a680b5088c1b28834c246}{S\+T\+A\+T\+U\+S\+\_\+\+E\+X\+P\+I\+R\+ED} = 0x02
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_add55a331f858d6cfa1a3d5609d4c1a7a}{S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR} = 0xff
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a10eb7cead6a6689d713e65ddb068b4ab}{S\+T\+A\+T\+U\+S\+\_\+\+O\+B\+J\+N\+O\+T\+F\+O\+U\+ND} = 0xee
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a3a7fe58d3e83a4bf6659aea09dc69634}{S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+U\+PD} = 0xa0
+\item 
+static const uint8\+\_\+t \hyperlink{classtraci__api_1_1_variable_subscription_a87512a19d6d41a2ffa432fc08b5773ab}{S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+UB} = 0xa1
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{classtraci__api_1_1_variable_subscription_a4a668b1a6bbb132afeb8800979808042}{obj\+ID}
+\item 
+int \hyperlink{classtraci__api_1_1_variable_subscription_a65f7046b1e5ab13b5f742b0db3b5c03e}{begin\+Time}
+\item 
+int \hyperlink{classtraci__api_1_1_variable_subscription_a7149b62cac3a1c0285de28167c5c4abc}{end\+Time}
+\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classtraci__api_1_1_variable_subscription_a59bec6554debe2d14d75c29017561959}{vars}
+\item 
+int \hyperlink{classtraci__api_1_1_variable_subscription_a93110dcf3a32ff7a6a73ad3f8ff371d6}{sub\+\_\+type}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a9d9f52126f0b883aa0d83cc3dbd32f14}\label{classtraci__api_1_1_variable_subscription_a9d9f52126f0b883aa0d83cc3dbd32f14}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!Variable\+Subscription@{Variable\+Subscription}}
+\index{Variable\+Subscription@{Variable\+Subscription}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{Variable\+Subscription()}{VariableSubscription()}}
+{\footnotesize\ttfamily traci\+\_\+api\+::\+Variable\+Subscription\+::\+Variable\+Subscription (\begin{DoxyParamCaption}\item[{std\+::string}]{obj\+\_\+id,  }\item[{int}]{begin\+\_\+time,  }\item[{int}]{end\+\_\+time,  }\item[{std\+::vector$<$ uint8\+\_\+t $>$}]{vars }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a9d9f52126f0b883aa0d83cc3dbd32f14_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_afc66a609515b051a28df4df35cbcbe61}\label{classtraci__api_1_1_variable_subscription_afc66a609515b051a28df4df35cbcbe61}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!````~Variable\+Subscription@{$\sim$\+Variable\+Subscription}}
+\index{````~Variable\+Subscription@{$\sim$\+Variable\+Subscription}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{$\sim$\+Variable\+Subscription()}{~VariableSubscription()}}
+{\footnotesize\ttfamily virtual traci\+\_\+api\+::\+Variable\+Subscription\+::$\sim$\+Variable\+Subscription (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_afc66a609515b051a28df4df35cbcbe61_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a6e17a9560c53c7c9543599f93caeeaf8}\label{classtraci__api_1_1_variable_subscription_a6e17a9560c53c7c9543599f93caeeaf8}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!check\+Time@{check\+Time}}
+\index{check\+Time@{check\+Time}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{check\+Time()}{checkTime()}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Variable\+Subscription\+::check\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a6e17a9560c53c7c9543599f93caeeaf8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a6e17a9560c53c7c9543599f93caeeaf8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a884dba03a44455e86c417c3641ec6aa4}\label{classtraci__api_1_1_variable_subscription_a884dba03a44455e86c417c3641ec6aa4}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!get\+Object\+Variable@{get\+Object\+Variable}}
+\index{get\+Object\+Variable@{get\+Object\+Variable}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{get\+Object\+Variable()}{getObjectVariable()}}
+{\footnotesize\ttfamily virtual void traci\+\_\+api\+::\+Variable\+Subscription\+::get\+Object\+Variable (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{var\+\_\+id,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classtraci__api_1_1_simulation_variable_subscription_aaa64f6368289ff45730d718e3f38f762}{traci\+\_\+api\+::\+Simulation\+Variable\+Subscription}, and \hyperlink{classtraci__api_1_1_vehicle_variable_subscription_afaefff100368a747aefb8be29e8a7a91}{traci\+\_\+api\+::\+Vehicle\+Variable\+Subscription}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a884dba03a44455e86c417c3641ec6aa4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a3e852072c435d02f96ff91f81506cef9}\label{classtraci__api_1_1_variable_subscription_a3e852072c435d02f96ff91f81506cef9}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!get\+Response\+Code@{get\+Response\+Code}}
+\index{get\+Response\+Code@{get\+Response\+Code}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{get\+Response\+Code()}{getResponseCode()}}
+{\footnotesize\ttfamily virtual uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::get\+Response\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \hyperlink{classtraci__api_1_1_simulation_variable_subscription_a1f5a6a5d62fe7a054f87311b0c5b6f5f}{traci\+\_\+api\+::\+Simulation\+Variable\+Subscription}, and \hyperlink{classtraci__api_1_1_vehicle_variable_subscription_a77ac472ae8dc1f284c2ec3f64b88cd0d}{traci\+\_\+api\+::\+Vehicle\+Variable\+Subscription}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a3e852072c435d02f96ff91f81506cef9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a598f7414334878f7943bfadbbf6a42d4}\label{classtraci__api_1_1_variable_subscription_a598f7414334878f7943bfadbbf6a42d4}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!get\+Sub\+Type@{get\+Sub\+Type}}
+\index{get\+Sub\+Type@{get\+Sub\+Type}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{get\+Sub\+Type()}{getSubType()}}
+{\footnotesize\ttfamily uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::get\+Sub\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a598f7414334878f7943bfadbbf6a42d4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_ab75320e8ec7d1406ea47a703fb09de63}\label{classtraci__api_1_1_variable_subscription_ab75320e8ec7d1406ea47a703fb09de63}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!handle\+Subscription@{handle\+Subscription}}
+\index{handle\+Subscription@{handle\+Subscription}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{handle\+Subscription()}{handleSubscription()}}
+{\footnotesize\ttfamily uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::handle\+Subscription (\begin{DoxyParamCaption}\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{output,  }\item[{bool}]{validate,  }\item[{std\+::string \&}]{errors }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_ab75320e8ec7d1406ea47a703fb09de63_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_ab75320e8ec7d1406ea47a703fb09de63_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a4a56033c7b432c2e2d029ca5fd5c3468}\label{classtraci__api_1_1_variable_subscription_a4a56033c7b432c2e2d029ca5fd5c3468}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!update\+Subscription@{update\+Subscription}}
+\index{update\+Subscription@{update\+Subscription}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{update\+Subscription()}{updateSubscription()}}
+{\footnotesize\ttfamily uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::update\+Subscription (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{sub\+\_\+type,  }\item[{std\+::string}]{obj\+\_\+id,  }\item[{int}]{begin\+\_\+time,  }\item[{int}]{end\+\_\+time,  }\item[{std\+::vector$<$ uint8\+\_\+t $>$}]{vars,  }\item[{\hyperlink{classtcpip_1_1_storage}{tcpip\+::\+Storage} \&}]{result,  }\item[{std\+::string \&}]{errors }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a4a56033c7b432c2e2d029ca5fd5c3468_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_variable_subscription_a4a56033c7b432c2e2d029ca5fd5c3468_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a65f7046b1e5ab13b5f742b0db3b5c03e}\label{classtraci__api_1_1_variable_subscription_a65f7046b1e5ab13b5f742b0db3b5c03e}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!begin\+Time@{begin\+Time}}
+\index{begin\+Time@{begin\+Time}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{begin\+Time}{beginTime}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Variable\+Subscription\+::begin\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a7149b62cac3a1c0285de28167c5c4abc}\label{classtraci__api_1_1_variable_subscription_a7149b62cac3a1c0285de28167c5c4abc}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!end\+Time@{end\+Time}}
+\index{end\+Time@{end\+Time}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{end\+Time}{endTime}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Variable\+Subscription\+::end\+Time\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a4a668b1a6bbb132afeb8800979808042}\label{classtraci__api_1_1_variable_subscription_a4a668b1a6bbb132afeb8800979808042}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!obj\+ID@{obj\+ID}}
+\index{obj\+ID@{obj\+ID}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{obj\+ID}{objID}}
+{\footnotesize\ttfamily std\+::string traci\+\_\+api\+::\+Variable\+Subscription\+::obj\+ID\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_acca8676c26bb0d649ea017826749eae0}\label{classtraci__api_1_1_variable_subscription_acca8676c26bb0d649ea017826749eae0}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+E\+D\+G\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+E\+D\+G\+E\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+E\+D\+G\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+E\+D\+G\+E\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+E\+D\+G\+E\+V\+AR}{RES\_SUB\_EDGEVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+E\+D\+G\+E\+V\+AR = 0xea\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a67be7b764a8ec894c712922c1a279439}\label{classtraci__api_1_1_variable_subscription_a67be7b764a8ec894c712922c1a279439}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+I\+N\+D\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+I\+N\+D\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+I\+N\+D\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+I\+N\+D\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+I\+N\+D\+V\+AR}{RES\_SUB\_INDVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+I\+N\+D\+V\+AR = 0xe0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a681e35cdde9ef1fb500d533e94113064}\label{classtraci__api_1_1_variable_subscription_a681e35cdde9ef1fb500d533e94113064}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+J\+U\+N\+C\+T\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+J\+U\+N\+C\+T\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+J\+U\+N\+C\+T\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+J\+U\+N\+C\+T\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+J\+U\+N\+C\+T\+V\+AR}{RES\_SUB\_JUNCTVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+J\+U\+N\+C\+T\+V\+AR = 0xe9\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a9edde61a4dd1f4997ba950a86e07650a}\label{classtraci__api_1_1_variable_subscription_a9edde61a4dd1f4997ba950a86e07650a}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+L\+A\+N\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+L\+A\+N\+E\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+L\+A\+N\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+L\+A\+N\+E\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+L\+A\+N\+E\+V\+AR}{RES\_SUB\_LANEVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+L\+A\+N\+E\+V\+AR = 0xe3\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a0f5f2ce0123762a95e12e12e4013e43e}\label{classtraci__api_1_1_variable_subscription_a0f5f2ce0123762a95e12e12e4013e43e}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+M\+U\+L\+T\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+M\+U\+L\+T\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+M\+U\+L\+T\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+M\+U\+L\+T\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+M\+U\+L\+T\+V\+AR}{RES\_SUB\_MULTVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+M\+U\+L\+T\+V\+AR = 0xe1\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_aa1733f06f1c969cbbea44c8f7f1eb758}\label{classtraci__api_1_1_variable_subscription_aa1733f06f1c969cbbea44c8f7f1eb758}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+I\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+I\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+I\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+I\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+I\+V\+AR}{RES\_SUB\_POIVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+I\+V\+AR = 0xe7\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_ab5629c964ed85fabb49291bfa63a0c84}\label{classtraci__api_1_1_variable_subscription_ab5629c964ed85fabb49291bfa63a0c84}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+L\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+L\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+L\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+L\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+L\+V\+AR}{RES\_SUB\_POLVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+P\+O\+L\+V\+AR = 0xe8\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_aa0855c699d81666db867dbf3fb6f08aa}\label{classtraci__api_1_1_variable_subscription_aa0855c699d81666db867dbf3fb6f08aa}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+R\+T\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+R\+T\+E\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+R\+T\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+R\+T\+E\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+R\+T\+E\+V\+AR}{RES\_SUB\_RTEVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+R\+T\+E\+V\+AR = 0xe6\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_aa92eced34d95ef3c695d64600e4dbf80}\label{classtraci__api_1_1_variable_subscription_aa92eced34d95ef3c695d64600e4dbf80}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+S\+I\+M\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+S\+I\+M\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+S\+I\+M\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+S\+I\+M\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+S\+I\+M\+V\+AR}{RES\_SUB\_SIMVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+S\+I\+M\+V\+AR = 0xeb\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a4770fd303ba47c510f2b898bb61f76bb}\label{classtraci__api_1_1_variable_subscription_a4770fd303ba47c510f2b898bb61f76bb}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+T\+L\+I\+G\+H\+T\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+T\+L\+I\+G\+H\+T\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+T\+L\+I\+G\+H\+T\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+T\+L\+I\+G\+H\+T\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+T\+L\+I\+G\+H\+T\+V\+AR}{RES\_SUB\_TLIGHTVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+T\+L\+I\+G\+H\+T\+V\+AR = 0xe2\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a5bb447d5b748ae629c058e9f3683fa1f}\label{classtraci__api_1_1_variable_subscription_a5bb447d5b748ae629c058e9f3683fa1f}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+T\+Y\+P\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+T\+Y\+P\+E\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+T\+Y\+P\+E\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+T\+Y\+P\+E\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+T\+Y\+P\+E\+V\+AR}{RES\_SUB\_VHCTYPEVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+T\+Y\+P\+E\+V\+AR = 0xe5\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_ae3d75ae633ea0a072ccd01543c22515a}\label{classtraci__api_1_1_variable_subscription_ae3d75ae633ea0a072ccd01543c22515a}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+V\+AR}}
+\index{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+V\+AR@{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+V\+AR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+V\+AR}{RES\_SUB\_VHCVAR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+R\+E\+S\+\_\+\+S\+U\+B\+\_\+\+V\+H\+C\+V\+AR = 0xe4\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_add55a331f858d6cfa1a3d5609d4c1a7a}\label{classtraci__api_1_1_variable_subscription_add55a331f858d6cfa1a3d5609d4c1a7a}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR@{S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR@{S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR}{STATUS\_ERROR}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+OR = 0xff\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_ae91ce93cc39a680b5088c1b28834c246}\label{classtraci__api_1_1_variable_subscription_ae91ce93cc39a680b5088c1b28834c246}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!S\+T\+A\+T\+U\+S\+\_\+\+E\+X\+P\+I\+R\+ED@{S\+T\+A\+T\+U\+S\+\_\+\+E\+X\+P\+I\+R\+ED}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+E\+X\+P\+I\+R\+ED@{S\+T\+A\+T\+U\+S\+\_\+\+E\+X\+P\+I\+R\+ED}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+E\+X\+P\+I\+R\+ED}{STATUS\_EXPIRED}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+S\+T\+A\+T\+U\+S\+\_\+\+E\+X\+P\+I\+R\+ED = 0x02\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a3a7fe58d3e83a4bf6659aea09dc69634}\label{classtraci__api_1_1_variable_subscription_a3a7fe58d3e83a4bf6659aea09dc69634}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+U\+PD@{S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+U\+PD}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+U\+PD@{S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+U\+PD}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+U\+PD}{STATUS\_NOUPD}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+U\+PD = 0xa0\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a10eb7cead6a6689d713e65ddb068b4ab}\label{classtraci__api_1_1_variable_subscription_a10eb7cead6a6689d713e65ddb068b4ab}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!S\+T\+A\+T\+U\+S\+\_\+\+O\+B\+J\+N\+O\+T\+F\+O\+U\+ND@{S\+T\+A\+T\+U\+S\+\_\+\+O\+B\+J\+N\+O\+T\+F\+O\+U\+ND}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+O\+B\+J\+N\+O\+T\+F\+O\+U\+ND@{S\+T\+A\+T\+U\+S\+\_\+\+O\+B\+J\+N\+O\+T\+F\+O\+U\+ND}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+O\+B\+J\+N\+O\+T\+F\+O\+U\+ND}{STATUS\_OBJNOTFOUND}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+S\+T\+A\+T\+U\+S\+\_\+\+O\+B\+J\+N\+O\+T\+F\+O\+U\+ND = 0xee\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_ad14b04a2a4f37e74e0e19c59a0f3fae7}\label{classtraci__api_1_1_variable_subscription_ad14b04a2a4f37e74e0e19c59a0f3fae7}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!S\+T\+A\+T\+U\+S\+\_\+\+OK@{S\+T\+A\+T\+U\+S\+\_\+\+OK}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+OK@{S\+T\+A\+T\+U\+S\+\_\+\+OK}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+OK}{STATUS\_OK}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+S\+T\+A\+T\+U\+S\+\_\+\+OK = 0x00\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_afa345f07263b38b4a6d61722ad22309f}\label{classtraci__api_1_1_variable_subscription_afa345f07263b38b4a6d61722ad22309f}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!S\+T\+A\+T\+U\+S\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+N\+O\+T\+R\+E\+A\+C\+H\+ED@{S\+T\+A\+T\+U\+S\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+N\+O\+T\+R\+E\+A\+C\+H\+ED}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+N\+O\+T\+R\+E\+A\+C\+H\+ED@{S\+T\+A\+T\+U\+S\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+N\+O\+T\+R\+E\+A\+C\+H\+ED}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+N\+O\+T\+R\+E\+A\+C\+H\+ED}{STATUS\_TIMESTEPNOTREACHED}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+S\+T\+A\+T\+U\+S\+\_\+\+T\+I\+M\+E\+S\+T\+E\+P\+N\+O\+T\+R\+E\+A\+C\+H\+ED = 0x01\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a87512a19d6d41a2ffa432fc08b5773ab}\label{classtraci__api_1_1_variable_subscription_a87512a19d6d41a2ffa432fc08b5773ab}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+UB@{S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+UB}}
+\index{S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+UB@{S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+UB}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+UB}{STATUS\_UNSUB}}
+{\footnotesize\ttfamily const uint8\+\_\+t traci\+\_\+api\+::\+Variable\+Subscription\+::\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+S\+UB = 0xa1\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a93110dcf3a32ff7a6a73ad3f8ff371d6}\label{classtraci__api_1_1_variable_subscription_a93110dcf3a32ff7a6a73ad3f8ff371d6}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!sub\+\_\+type@{sub\+\_\+type}}
+\index{sub\+\_\+type@{sub\+\_\+type}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{sub\+\_\+type}{sub\_type}}
+{\footnotesize\ttfamily int traci\+\_\+api\+::\+Variable\+Subscription\+::sub\+\_\+type\hspace{0.3cm}{\ttfamily [protected]}}
+
+\mbox{\Hypertarget{classtraci__api_1_1_variable_subscription_a59bec6554debe2d14d75c29017561959}\label{classtraci__api_1_1_variable_subscription_a59bec6554debe2d14d75c29017561959}} 
+\index{traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}!vars@{vars}}
+\index{vars@{vars}!traci\+\_\+api\+::\+Variable\+Subscription@{traci\+\_\+api\+::\+Variable\+Subscription}}
+\subsubsection{\texorpdfstring{vars}{vars}}
+{\footnotesize\ttfamily std\+::vector$<$uint8\+\_\+t$>$ traci\+\_\+api\+::\+Variable\+Subscription\+::vars\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_subscriptions_8h}{Subscriptions.\+h}\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_subscriptions_8cpp}{Subscriptions.\+cpp}\end{DoxyCompactItemize}

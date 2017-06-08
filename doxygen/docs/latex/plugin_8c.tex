@@ -1,0 +1,322 @@
+\hypertarget{plugin_8c}{}\section{C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/plugin.c File Reference}
+\label{plugin_8c}\index{C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/plugin.\+c@{C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/plugin.\+c}}
+{\ttfamily \#include \char`\"{}programmer.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include \char`\"{}Tra\+C\+I\+A\+P\+I/\+Tra\+C\+I\+Server.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$shellapi.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Tra\+C\+I\+A\+P\+I/\+Vehicle\+Manager.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Tra\+C\+I\+A\+P\+I/\+Utils.\+h\char`\"{}}\newline
+Include dependency graph for plugin.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{plugin_8c_a16b710f592bf8f7900666392adc444dc}{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT}~5000
+\item 
+\#define \hyperlink{plugin_8c_ad9419f118a8e420c70dccbd0bb4847cb}{C\+M\+D\+A\+R\+G\+\_\+\+P\+O\+RT}~\char`\"{}-\/-\/traci\+\_\+port=\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{plugin_8c_a9d184083a64aa844906a3aed69de188f}{starts\+\_\+with} (std\+::string const \&in\+\_\+string, std\+::string const \&prefix)
+\item 
+void \hyperlink{plugin_8c_a4bfdb7166a3c7d69f052f88bd900ebdc}{runner\+\_\+fn} ()
+\item 
+void \hyperlink{plugin_8c_aee0d8eb0456feddf02c1fbb35be6073c}{qpx\+\_\+\+N\+E\+T\+\_\+post\+Open} (void)
+\item 
+void \hyperlink{plugin_8c_ad31bdc1a4c17134de4a67786ad617bb6}{qpx\+\_\+\+C\+L\+K\+\_\+start\+Of\+Sim\+Loop} (void)
+\item 
+void \hyperlink{plugin_8c_a58f5295269165025b166e3beadd64ceb}{qpx\+\_\+\+C\+L\+K\+\_\+end\+Of\+Sim\+Loop} (void)
+\item 
+void \hyperlink{plugin_8c_a5ae591df94fc66ccb85cbb6565368bca}{close} ()
+\item 
+void \hyperlink{plugin_8c_acecc716e60a9cd7b80f6f17ff2014586}{qpx\+\_\+\+N\+E\+T\+\_\+complete} (void)
+\item 
+void \hyperlink{plugin_8c_a524f3458cea956a7b00f144aed2bfd5e}{qpx\+\_\+\+N\+E\+T\+\_\+close} ()
+\item 
+void \hyperlink{plugin_8c_aecef132d20d24b9ad88eafee596781f5}{qpx\+\_\+\+V\+H\+C\+\_\+release} (V\+E\+H\+I\+C\+LE $\ast$vehicle)
+\item 
+void \hyperlink{plugin_8c_a0fee04257df309666956554c23d5024b}{qpx\+\_\+\+V\+H\+C\+\_\+arrive} (V\+E\+H\+I\+C\+LE $\ast$vehicle, L\+I\+NK $\ast$link, Z\+O\+NE $\ast$zone)
+\item 
+Bool \hyperlink{plugin_8c_a73a66e10a5e3c1a8e449cc15ac3fb2c7}{qpo\+\_\+\+R\+T\+M\+\_\+enable} (void)
+\item 
+int \hyperlink{plugin_8c_aa5fd301426f9590dfc25d8fb4ca5878d}{qpo\+\_\+\+R\+T\+M\+\_\+decision} (L\+I\+NK $\ast$linkp, V\+E\+H\+I\+C\+LE $\ast$Vp)
+\item 
+void \hyperlink{plugin_8c_a71c2faf0a456301e7dcb132785cc2d04}{qpx\+\_\+\+V\+H\+C\+\_\+time\+Step} (V\+E\+H\+I\+C\+LE $\ast$vehicle)
+\item 
+void \hyperlink{plugin_8c_ac011ccbefde177f7c829697e0a09a321}{qpx\+\_\+\+V\+H\+C\+\_\+transfer} (V\+E\+H\+I\+C\+LE $\ast$vehicle, L\+I\+NK $\ast$link1, L\+I\+NK $\ast$link2)
+\item 
+float \hyperlink{plugin_8c_adbb2a8374973056bf5b81471436ef508}{qpo\+\_\+\+C\+F\+M\+\_\+follow\+Speed} (L\+I\+NK $\ast$link, V\+E\+H\+I\+C\+LE $\ast$v, V\+E\+H\+I\+C\+LE $\ast$ahead\mbox{[}$\,$\mbox{]})
+\item 
+float \hyperlink{plugin_8c_a589a131178e77c7f59a8a11b87df62b9}{qpo\+\_\+\+C\+F\+M\+\_\+lead\+Speed} (L\+I\+NK $\ast$link, V\+E\+H\+I\+C\+LE $\ast$v, V\+E\+H\+I\+C\+LE $\ast$ahead\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::thread $\ast$ \hyperlink{plugin_8c_a75f8ba923af74ac501f527e56cb104c7}{runner}
+\item 
+\hyperlink{classtraci__api_1_1_tra_c_i_server}{traci\+\_\+api\+::\+Tra\+C\+I\+Server} $\ast$ \hyperlink{plugin_8c_abf253cb981c7718cced4beb4379156ba}{server}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\mbox{\Hypertarget{plugin_8c_ad9419f118a8e420c70dccbd0bb4847cb}\label{plugin_8c_ad9419f118a8e420c70dccbd0bb4847cb}} 
+\index{plugin.\+c@{plugin.\+c}!C\+M\+D\+A\+R\+G\+\_\+\+P\+O\+RT@{C\+M\+D\+A\+R\+G\+\_\+\+P\+O\+RT}}
+\index{C\+M\+D\+A\+R\+G\+\_\+\+P\+O\+RT@{C\+M\+D\+A\+R\+G\+\_\+\+P\+O\+RT}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{C\+M\+D\+A\+R\+G\+\_\+\+P\+O\+RT}{CMDARG\_PORT}}
+{\footnotesize\ttfamily \#define C\+M\+D\+A\+R\+G\+\_\+\+P\+O\+RT~\char`\"{}-\/-\/traci\+\_\+port=\char`\"{}}
+
+\mbox{\Hypertarget{plugin_8c_a16b710f592bf8f7900666392adc444dc}\label{plugin_8c_a16b710f592bf8f7900666392adc444dc}} 
+\index{plugin.\+c@{plugin.\+c}!D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT}{DEFAULT\_PORT}}
+{\footnotesize\ttfamily \#define D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT~5000}
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{plugin_8c_a5ae591df94fc66ccb85cbb6565368bca}\label{plugin_8c_a5ae591df94fc66ccb85cbb6565368bca}} 
+\index{plugin.\+c@{plugin.\+c}!close@{close}}
+\index{close@{close}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_a5ae591df94fc66ccb85cbb6565368bca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{plugin_8c_a5ae591df94fc66ccb85cbb6565368bca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_adbb2a8374973056bf5b81471436ef508}\label{plugin_8c_adbb2a8374973056bf5b81471436ef508}} 
+\index{plugin.\+c@{plugin.\+c}!qpo\+\_\+\+C\+F\+M\+\_\+follow\+Speed@{qpo\+\_\+\+C\+F\+M\+\_\+follow\+Speed}}
+\index{qpo\+\_\+\+C\+F\+M\+\_\+follow\+Speed@{qpo\+\_\+\+C\+F\+M\+\_\+follow\+Speed}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpo\+\_\+\+C\+F\+M\+\_\+follow\+Speed()}{qpo\_CFM\_followSpeed()}}
+{\footnotesize\ttfamily float qpo\+\_\+\+C\+F\+M\+\_\+follow\+Speed (\begin{DoxyParamCaption}\item[{L\+I\+NK $\ast$}]{link,  }\item[{V\+E\+H\+I\+C\+LE $\ast$}]{v,  }\item[{V\+E\+H\+I\+C\+LE $\ast$}]{ahead\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_adbb2a8374973056bf5b81471436ef508_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_a589a131178e77c7f59a8a11b87df62b9}\label{plugin_8c_a589a131178e77c7f59a8a11b87df62b9}} 
+\index{plugin.\+c@{plugin.\+c}!qpo\+\_\+\+C\+F\+M\+\_\+lead\+Speed@{qpo\+\_\+\+C\+F\+M\+\_\+lead\+Speed}}
+\index{qpo\+\_\+\+C\+F\+M\+\_\+lead\+Speed@{qpo\+\_\+\+C\+F\+M\+\_\+lead\+Speed}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpo\+\_\+\+C\+F\+M\+\_\+lead\+Speed()}{qpo\_CFM\_leadSpeed()}}
+{\footnotesize\ttfamily float qpo\+\_\+\+C\+F\+M\+\_\+lead\+Speed (\begin{DoxyParamCaption}\item[{L\+I\+NK $\ast$}]{link,  }\item[{V\+E\+H\+I\+C\+LE $\ast$}]{v,  }\item[{V\+E\+H\+I\+C\+LE $\ast$}]{ahead\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_a589a131178e77c7f59a8a11b87df62b9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_aa5fd301426f9590dfc25d8fb4ca5878d}\label{plugin_8c_aa5fd301426f9590dfc25d8fb4ca5878d}} 
+\index{plugin.\+c@{plugin.\+c}!qpo\+\_\+\+R\+T\+M\+\_\+decision@{qpo\+\_\+\+R\+T\+M\+\_\+decision}}
+\index{qpo\+\_\+\+R\+T\+M\+\_\+decision@{qpo\+\_\+\+R\+T\+M\+\_\+decision}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpo\+\_\+\+R\+T\+M\+\_\+decision()}{qpo\_RTM\_decision()}}
+{\footnotesize\ttfamily int qpo\+\_\+\+R\+T\+M\+\_\+decision (\begin{DoxyParamCaption}\item[{L\+I\+NK $\ast$}]{linkp,  }\item[{V\+E\+H\+I\+C\+LE $\ast$}]{Vp }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{plugin_8c_aa5fd301426f9590dfc25d8fb4ca5878d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_a73a66e10a5e3c1a8e449cc15ac3fb2c7}\label{plugin_8c_a73a66e10a5e3c1a8e449cc15ac3fb2c7}} 
+\index{plugin.\+c@{plugin.\+c}!qpo\+\_\+\+R\+T\+M\+\_\+enable@{qpo\+\_\+\+R\+T\+M\+\_\+enable}}
+\index{qpo\+\_\+\+R\+T\+M\+\_\+enable@{qpo\+\_\+\+R\+T\+M\+\_\+enable}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpo\+\_\+\+R\+T\+M\+\_\+enable()}{qpo\_RTM\_enable()}}
+{\footnotesize\ttfamily Bool qpo\+\_\+\+R\+T\+M\+\_\+enable (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{plugin_8c_a58f5295269165025b166e3beadd64ceb}\label{plugin_8c_a58f5295269165025b166e3beadd64ceb}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+C\+L\+K\+\_\+end\+Of\+Sim\+Loop@{qpx\+\_\+\+C\+L\+K\+\_\+end\+Of\+Sim\+Loop}}
+\index{qpx\+\_\+\+C\+L\+K\+\_\+end\+Of\+Sim\+Loop@{qpx\+\_\+\+C\+L\+K\+\_\+end\+Of\+Sim\+Loop}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+C\+L\+K\+\_\+end\+Of\+Sim\+Loop()}{qpx\_CLK\_endOfSimLoop()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+C\+L\+K\+\_\+end\+Of\+Sim\+Loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{plugin_8c_a58f5295269165025b166e3beadd64ceb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_ad31bdc1a4c17134de4a67786ad617bb6}\label{plugin_8c_ad31bdc1a4c17134de4a67786ad617bb6}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+C\+L\+K\+\_\+start\+Of\+Sim\+Loop@{qpx\+\_\+\+C\+L\+K\+\_\+start\+Of\+Sim\+Loop}}
+\index{qpx\+\_\+\+C\+L\+K\+\_\+start\+Of\+Sim\+Loop@{qpx\+\_\+\+C\+L\+K\+\_\+start\+Of\+Sim\+Loop}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+C\+L\+K\+\_\+start\+Of\+Sim\+Loop()}{qpx\_CLK\_startOfSimLoop()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+C\+L\+K\+\_\+start\+Of\+Sim\+Loop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_ad31bdc1a4c17134de4a67786ad617bb6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_a524f3458cea956a7b00f144aed2bfd5e}\label{plugin_8c_a524f3458cea956a7b00f144aed2bfd5e}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+N\+E\+T\+\_\+close@{qpx\+\_\+\+N\+E\+T\+\_\+close}}
+\index{qpx\+\_\+\+N\+E\+T\+\_\+close@{qpx\+\_\+\+N\+E\+T\+\_\+close}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+N\+E\+T\+\_\+close()}{qpx\_NET\_close()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+N\+E\+T\+\_\+close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_a524f3458cea956a7b00f144aed2bfd5e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_acecc716e60a9cd7b80f6f17ff2014586}\label{plugin_8c_acecc716e60a9cd7b80f6f17ff2014586}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+N\+E\+T\+\_\+complete@{qpx\+\_\+\+N\+E\+T\+\_\+complete}}
+\index{qpx\+\_\+\+N\+E\+T\+\_\+complete@{qpx\+\_\+\+N\+E\+T\+\_\+complete}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+N\+E\+T\+\_\+complete()}{qpx\_NET\_complete()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+N\+E\+T\+\_\+complete (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_acecc716e60a9cd7b80f6f17ff2014586_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_aee0d8eb0456feddf02c1fbb35be6073c}\label{plugin_8c_aee0d8eb0456feddf02c1fbb35be6073c}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+N\+E\+T\+\_\+post\+Open@{qpx\+\_\+\+N\+E\+T\+\_\+post\+Open}}
+\index{qpx\+\_\+\+N\+E\+T\+\_\+post\+Open@{qpx\+\_\+\+N\+E\+T\+\_\+post\+Open}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+N\+E\+T\+\_\+post\+Open()}{qpx\_NET\_postOpen()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+N\+E\+T\+\_\+post\+Open (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_aee0d8eb0456feddf02c1fbb35be6073c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_a0fee04257df309666956554c23d5024b}\label{plugin_8c_a0fee04257df309666956554c23d5024b}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+V\+H\+C\+\_\+arrive@{qpx\+\_\+\+V\+H\+C\+\_\+arrive}}
+\index{qpx\+\_\+\+V\+H\+C\+\_\+arrive@{qpx\+\_\+\+V\+H\+C\+\_\+arrive}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+V\+H\+C\+\_\+arrive()}{qpx\_VHC\_arrive()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+V\+H\+C\+\_\+arrive (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vehicle,  }\item[{L\+I\+NK $\ast$}]{link,  }\item[{Z\+O\+NE $\ast$}]{zone }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=331pt]{plugin_8c_a0fee04257df309666956554c23d5024b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_aecef132d20d24b9ad88eafee596781f5}\label{plugin_8c_aecef132d20d24b9ad88eafee596781f5}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+V\+H\+C\+\_\+release@{qpx\+\_\+\+V\+H\+C\+\_\+release}}
+\index{qpx\+\_\+\+V\+H\+C\+\_\+release@{qpx\+\_\+\+V\+H\+C\+\_\+release}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+V\+H\+C\+\_\+release()}{qpx\_VHC\_release()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+V\+H\+C\+\_\+release (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vehicle }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{plugin_8c_aecef132d20d24b9ad88eafee596781f5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_a71c2faf0a456301e7dcb132785cc2d04}\label{plugin_8c_a71c2faf0a456301e7dcb132785cc2d04}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+V\+H\+C\+\_\+time\+Step@{qpx\+\_\+\+V\+H\+C\+\_\+time\+Step}}
+\index{qpx\+\_\+\+V\+H\+C\+\_\+time\+Step@{qpx\+\_\+\+V\+H\+C\+\_\+time\+Step}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+V\+H\+C\+\_\+time\+Step()}{qpx\_VHC\_timeStep()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+V\+H\+C\+\_\+time\+Step (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vehicle }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{plugin_8c_ac011ccbefde177f7c829697e0a09a321}\label{plugin_8c_ac011ccbefde177f7c829697e0a09a321}} 
+\index{plugin.\+c@{plugin.\+c}!qpx\+\_\+\+V\+H\+C\+\_\+transfer@{qpx\+\_\+\+V\+H\+C\+\_\+transfer}}
+\index{qpx\+\_\+\+V\+H\+C\+\_\+transfer@{qpx\+\_\+\+V\+H\+C\+\_\+transfer}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{qpx\+\_\+\+V\+H\+C\+\_\+transfer()}{qpx\_VHC\_transfer()}}
+{\footnotesize\ttfamily void qpx\+\_\+\+V\+H\+C\+\_\+transfer (\begin{DoxyParamCaption}\item[{V\+E\+H\+I\+C\+LE $\ast$}]{vehicle,  }\item[{L\+I\+NK $\ast$}]{link1,  }\item[{L\+I\+NK $\ast$}]{link2 }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{plugin_8c_ac011ccbefde177f7c829697e0a09a321_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_a4bfdb7166a3c7d69f052f88bd900ebdc}\label{plugin_8c_a4bfdb7166a3c7d69f052f88bd900ebdc}} 
+\index{plugin.\+c@{plugin.\+c}!runner\+\_\+fn@{runner\+\_\+fn}}
+\index{runner\+\_\+fn@{runner\+\_\+fn}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{runner\+\_\+fn()}{runner\_fn()}}
+{\footnotesize\ttfamily void runner\+\_\+fn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_a4bfdb7166a3c7d69f052f88bd900ebdc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{plugin_8c_a4bfdb7166a3c7d69f052f88bd900ebdc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{plugin_8c_a9d184083a64aa844906a3aed69de188f}\label{plugin_8c_a9d184083a64aa844906a3aed69de188f}} 
+\index{plugin.\+c@{plugin.\+c}!starts\+\_\+with@{starts\+\_\+with}}
+\index{starts\+\_\+with@{starts\+\_\+with}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{starts\+\_\+with()}{starts\_with()}}
+{\footnotesize\ttfamily bool starts\+\_\+with (\begin{DoxyParamCaption}\item[{std\+::string const \&}]{in\+\_\+string,  }\item[{std\+::string const \&}]{prefix }\end{DoxyParamCaption})}
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{plugin_8c_a9d184083a64aa844906a3aed69de188f_icgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{plugin_8c_a75f8ba923af74ac501f527e56cb104c7}\label{plugin_8c_a75f8ba923af74ac501f527e56cb104c7}} 
+\index{plugin.\+c@{plugin.\+c}!runner@{runner}}
+\index{runner@{runner}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{runner}{runner}}
+{\footnotesize\ttfamily std\+::thread$\ast$ runner}
+
+\mbox{\Hypertarget{plugin_8c_abf253cb981c7718cced4beb4379156ba}\label{plugin_8c_abf253cb981c7718cced4beb4379156ba}} 
+\index{plugin.\+c@{plugin.\+c}!server@{server}}
+\index{server@{server}!plugin.\+c@{plugin.\+c}}
+\subsubsection{\texorpdfstring{server}{server}}
+{\footnotesize\ttfamily \hyperlink{classtraci__api_1_1_tra_c_i_server}{traci\+\_\+api\+::\+Tra\+C\+I\+Server}$\ast$ server}
+

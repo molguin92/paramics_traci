@@ -1,0 +1,158 @@
+\hypertarget{classtraci__api_1_1_tra_c_i_server}{}\section{traci\+\_\+api\+:\+:Tra\+C\+I\+Server Class Reference}
+\label{classtraci__api_1_1_tra_c_i_server}\index{traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}}
+
+
+{\ttfamily \#include $<$Tra\+C\+I\+Server.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtraci__api_1_1_tra_c_i_server_a9960233a10a2c3790c375f91eec00b12}{Tra\+C\+I\+Server} (int port)
+\begin{DoxyCompactList}\small\item\em Standard constructor. \end{DoxyCompactList}\item 
+\hyperlink{classtraci__api_1_1_tra_c_i_server_a8ddc7d9ea6812c937cdaa06a00026eba}{$\sim$\+Tra\+C\+I\+Server} ()
+\item 
+void \hyperlink{classtraci__api_1_1_tra_c_i_server_ac9cc474ec4ae6277c82cbf80f212852e}{wait\+For\+Connection} ()
+\begin{DoxyCompactList}\small\item\em Starts this instance, binding it to a port and awaiting connections. \end{DoxyCompactList}\item 
+void \hyperlink{classtraci__api_1_1_tra_c_i_server_a1fd920907cde7ef5a10d078aec34080a}{close} ()
+\begin{DoxyCompactList}\small\item\em Closes the socket, severing all connections. \end{DoxyCompactList}\item 
+void \hyperlink{classtraci__api_1_1_tra_c_i_server_a8cd79e7da542e4abccc75d4933331d20}{pre\+Step} ()
+\item 
+void \hyperlink{classtraci__api_1_1_tra_c_i_server_af4814a9a99d79f4e00fc102169d10cc2}{post\+Step} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_tra_c_i_server_a9960233a10a2c3790c375f91eec00b12}\label{classtraci__api_1_1_tra_c_i_server_a9960233a10a2c3790c375f91eec00b12}} 
+\index{traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}!Tra\+C\+I\+Server@{Tra\+C\+I\+Server}}
+\index{Tra\+C\+I\+Server@{Tra\+C\+I\+Server}!traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}}
+\subsubsection{\texorpdfstring{Tra\+C\+I\+Server()}{TraCIServer()}}
+{\footnotesize\ttfamily traci\+\_\+api\+::\+Tra\+C\+I\+Server\+::\+Tra\+C\+I\+Server (\begin{DoxyParamCaption}\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Standard constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em port} & The port on which the server should listen for incoming requests. \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_a9960233a10a2c3790c375f91eec00b12_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_tra_c_i_server_a8ddc7d9ea6812c937cdaa06a00026eba}\label{classtraci__api_1_1_tra_c_i_server_a8ddc7d9ea6812c937cdaa06a00026eba}} 
+\index{traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}!````~Tra\+C\+I\+Server@{$\sim$\+Tra\+C\+I\+Server}}
+\index{````~Tra\+C\+I\+Server@{$\sim$\+Tra\+C\+I\+Server}!traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}}
+\subsubsection{\texorpdfstring{$\sim$\+Tra\+C\+I\+Server()}{~TraCIServer()}}
+{\footnotesize\ttfamily traci\+\_\+api\+::\+Tra\+C\+I\+Server\+::$\sim$\+Tra\+C\+I\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtraci__api_1_1_tra_c_i_server_a1fd920907cde7ef5a10d078aec34080a}\label{classtraci__api_1_1_tra_c_i_server_a1fd920907cde7ef5a10d078aec34080a}} 
+\index{traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}!close@{close}}
+\index{close@{close}!traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}}
+\subsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Tra\+C\+I\+Server\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the socket, severing all connections. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_a1fd920907cde7ef5a10d078aec34080a_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_a1fd920907cde7ef5a10d078aec34080a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_tra_c_i_server_af4814a9a99d79f4e00fc102169d10cc2}\label{classtraci__api_1_1_tra_c_i_server_af4814a9a99d79f4e00fc102169d10cc2}} 
+\index{traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}!post\+Step@{post\+Step}}
+\index{post\+Step@{post\+Step}!traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}}
+\subsubsection{\texorpdfstring{post\+Step()}{postStep()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Tra\+C\+I\+Server\+::post\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classtraci__api_1_1_tra_c_i_server_af4814a9a99d79f4e00fc102169d10cc2_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_af4814a9a99d79f4e00fc102169d10cc2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_tra_c_i_server_a8cd79e7da542e4abccc75d4933331d20}\label{classtraci__api_1_1_tra_c_i_server_a8cd79e7da542e4abccc75d4933331d20}} 
+\index{traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}!pre\+Step@{pre\+Step}}
+\index{pre\+Step@{pre\+Step}!traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}}
+\subsubsection{\texorpdfstring{pre\+Step()}{preStep()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Tra\+C\+I\+Server\+::pre\+Step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_a8cd79e7da542e4abccc75d4933331d20_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_a8cd79e7da542e4abccc75d4933331d20_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classtraci__api_1_1_tra_c_i_server_ac9cc474ec4ae6277c82cbf80f212852e}\label{classtraci__api_1_1_tra_c_i_server_ac9cc474ec4ae6277c82cbf80f212852e}} 
+\index{traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}!wait\+For\+Connection@{wait\+For\+Connection}}
+\index{wait\+For\+Connection@{wait\+For\+Connection}!traci\+\_\+api\+::\+Tra\+C\+I\+Server@{traci\+\_\+api\+::\+Tra\+C\+I\+Server}}
+\subsubsection{\texorpdfstring{wait\+For\+Connection()}{waitForConnection()}}
+{\footnotesize\ttfamily void traci\+\_\+api\+::\+Tra\+C\+I\+Server\+::wait\+For\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Starts this instance, binding it to a port and awaiting connections. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_ac9cc474ec4ae6277c82cbf80f212852e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtraci__api_1_1_tra_c_i_server_ac9cc474ec4ae6277c82cbf80f212852e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_tra_c_i_server_8h}{Tra\+C\+I\+Server.\+h}\item 
+C\+:/\+Users/\+Public/paramics/programmer/plugins/pveins/src/\+Tra\+C\+I\+A\+P\+I/\hyperlink{_tra_c_i_server_8cpp}{Tra\+C\+I\+Server.\+cpp}\end{DoxyCompactItemize}
