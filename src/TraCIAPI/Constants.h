@@ -8,8 +8,10 @@
 #include <stdint.h>
 
 //Server definitions
-#define API_VERSION 10
-#define PLUGIN_VERSION "0.25beta1"
+#define TRACIAPI_VERSION 10
+#define PVEINS_VERSION "0.5rc1"
+#define PVEINS_COPYRIGHT "Copyright 2017 Manuel Olguín <molguin@dcc.uchile.cl>"
+#define PVEINS_LICENSE "This plugin is distributed under the BSD 3-Clause license."
 
 #define POSITION_EPS 0.1f
 #define NUMERICAL_EPS 0.001f

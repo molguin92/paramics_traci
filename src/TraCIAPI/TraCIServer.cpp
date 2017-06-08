@@ -36,10 +36,6 @@ traci_api::TraCIServer::~TraCIServer()
 void traci_api::TraCIServer::waitForConnection()
 {
     running = true;
-    std::string version_str = "Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion());
-    infoPrint(version_str);
-    infoPrint("Timestep size: " + std::to_string(static_cast<int>(qpg_CFG_timeStep() * 1000.0f)) + "ms");
-    infoPrint("Simulation start time: " + std::to_string(Simulation::getInstance()->getCurrentTimeMilliseconds()) + "ms");
     infoPrint("Awaiting connections on port " + std::to_string(port));
 
     {
@@ -337,8 +333,8 @@ void traci_api::TraCIServer::writeVersion()
     this->writeStatusResponse(CMD_GETVERSION, STATUS_OK, "");
 
     tcpip::Storage answerTmp;
-    answerTmp.writeInt(API_VERSION);
-    answerTmp.writeString("Paramics TraCI plugin v" + std::string(PLUGIN_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion()));
+    answerTmp.writeInt(TRACIAPI_VERSION);
+    answerTmp.writeString("Paramics TraCI plugin v" + std::string(PVEINS_VERSION) + " on Paramics v" + std::to_string(qpg_UTL_parentProductVersion()));
 
     outgoing.writeUnsignedByte(1 + 1 + static_cast<int>(answerTmp.size()));
     outgoing.writeUnsignedByte(CMD_GETVERSION);
