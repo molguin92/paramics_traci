@@ -70,11 +70,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;programmer.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_constants_8h_source.html">Constants.h</a>&quot;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &quot;<a class="el" href="_simulation_8h_source.html">Simulation.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Triggers.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="_triggers_8h__incl.png" border="0" usemap="#_c_1_2_users_2_public_2paramics_2programmer_2plugins_2pveins_2src_2_tra_c_i_a_p_i_2_triggers_8h" alt=""/></div>
 <map name="_c_1_2_users_2_public_2paramics_2programmer_2plugins_2pveins_2src_2_tra_c_i_a_p_i_2_triggers_8h" id="_c_1_2_users_2_public_2paramics_2programmer_2plugins_2pveins_2src_2_tra_c_i_a_p_i_2_triggers_8h">
+<area shape="rect" id="node3" href="_constants_8h.html" title="Constants.h" alt="" coords="78,483,170,509"/>
+<area shape="rect" id="node6" href="_simulation_8h.html" title="Simulation.h" alt="" coords="789,109,883,136"/>
+<area shape="rect" id="node7" href="storage_8h.html" title="storage.h" alt="" coords="901,483,977,509"/>
+<area shape="rect" id="node13" href="_tra_c_i_server_8h.html" title="TraCIServer.h" alt="" coords="787,184,885,211"/>
+<area shape="rect" id="node20" href="_vehicle_manager_8h.html" title="VehicleManager.h" alt="" coords="386,333,513,360"/>
+<area shape="rect" id="node14" href="socket_8h.html" title="socket.h" alt="" coords="499,408,571,435"/>
+<area shape="rect" id="node23" href="_exceptions_8h.html" title="Exceptions.h" alt="" coords="965,408,1064,435"/>
+<area shape="rect" id="node24" href="_network_8h.html" title="Network.h" alt="" coords="864,333,944,360"/>
+<area shape="rect" id="node25" href="_subscriptions_8h.html" title="Subscriptions.h" alt="" coords="487,259,599,285"/>
+<area shape="rect" id="node21" href="_utils_8h.html" title="Utils.h" alt="" coords="595,408,653,435"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -82,15 +95,16 @@ This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="_triggers_8h__dep__incl.png" border="0" usemap="#_c_1_2_users_2_public_2paramics_2programmer_2plugins_2pveins_2src_2_tra_c_i_a_p_i_2_triggers_8hdep" alt=""/></div>
 <map name="_c_1_2_users_2_public_2paramics_2programmer_2plugins_2pveins_2src_2_tra_c_i_a_p_i_2_triggers_8hdep" id="_c_1_2_users_2_public_2paramics_2programmer_2plugins_2pveins_2src_2_tra_c_i_a_p_i_2_triggers_8hdep">
-<area shape="rect" id="node2" href="_vehicle_manager_8h.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/VehicleManager.h" alt="" coords="390,109,597,165"/>
-<area shape="rect" id="node10" href="_triggers_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Triggers.cpp" alt="" coords="621,109,801,165"/>
-<area shape="rect" id="node3" href="_subscriptions_8h.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Subscriptions.h" alt="" coords="262,213,455,269"/>
-<area shape="rect" id="node5" href="plugin_8c.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/plugin.c" alt="" coords="282,421,462,477"/>
-<area shape="rect" id="node6" href="_simulation_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Simulation.cpp" alt="" coords="516,421,705,477"/>
-<area shape="rect" id="node7" href="_tra_c_i_server_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/TraCIServer.cpp" alt="" coords="5,421,200,477"/>
-<area shape="rect" id="node8" href="_subscriptions_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Subscriptions.cpp" alt="" coords="345,317,551,373"/>
-<area shape="rect" id="node9" href="_vehicle_manager_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/VehicleManager.cpp" alt="" coords="677,213,899,269"/>
-<area shape="rect" id="node4" href="_tra_c_i_server_8h.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/TraCIServer.h" alt="" coords="141,317,321,373"/>
+<area shape="rect" id="node2" href="_vehicle_manager_8h.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/VehicleManager.h" alt="" coords="269,109,476,165"/>
+<area shape="rect" id="node11" href="_triggers_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Triggers.cpp" alt="" coords="500,109,680,165"/>
+<area shape="rect" id="node3" href="_tra_c_i_server_8h.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/TraCIServer.h" alt="" coords="283,213,463,269"/>
+<area shape="rect" id="node4" href="plugin_8c.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/plugin.c" alt="" coords="493,421,673,477"/>
+<area shape="rect" id="node5" href="_simulation_8h.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Simulation.h" alt="" coords="416,317,596,373"/>
+<area shape="rect" id="node6" href="_subscriptions_8h.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Subscriptions.h" alt="" coords="12,421,205,477"/>
+<area shape="rect" id="node10" href="_vehicle_manager_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/VehicleManager.cpp" alt="" coords="37,213,258,269"/>
+<area shape="rect" id="node9" href="_tra_c_i_server_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/TraCIServer.cpp" alt="" coords="146,317,341,373"/>
+<area shape="rect" id="node8" href="_simulation_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Simulation.cpp" alt="" coords="279,421,469,477"/>
+<area shape="rect" id="node7" href="_subscriptions_8cpp.html" title="C:/Users/Public/paramics\l/programmer/plugins/pveins\l/src/TraCIAPI/Subscriptions.cpp" alt="" coords="5,525,212,581"/>
 </map>
 </div>
 </div>
