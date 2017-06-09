@@ -13,6 +13,7 @@ matplotlib.rcParams.update(pgf_with_pdflatex)
 
 import pandas
 from matplotlib import pyplot
+from matplotlib2tikz import save as tikz_save
 from psutil import virtual_memory
 import numpy
 
@@ -44,8 +45,6 @@ def system_performance():
     df['MB disponibles RAM'] = pandas.to_numeric(df['MB disponibles RAM'])
     df['% uso RAM'] = df['MB disponibles RAM'].map(lambda free: ((total_RAM_mb - free) / total_RAM_mb) * 100)
 
-    print(df)
-
     df['% de uso procesador']= pandas.to_numeric(df['% de uso procesador'], errors='coerce')
 
     fig, ax = pyplot.subplots()
@@ -63,7 +62,53 @@ def system_performance():
     ax.set_facecolor('white')
     ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
 
+    #tikz_save('system_performance.tikz',
+     #         figureheight='\\figureheight',
+     #         figurewidth='\\figurewidth')
     pyplot.savefig('system_performance.pgf')
+    #pyplot.show()
+
+def system_io():
+    total_RAM_mb = virtual_memory().total / (1024 * 1024)
+
+    c = ['timestamp', 'escrituras hdd', 'lecturas hdd',
+         'total I/O', '% freq procesador', '% rendimiento procesador',
+         '% de uso procesador', '% tiempo procesador', 'MB disponibles RAM']
+    df = pandas.read_csv('SystemStats.csv', encoding='ISO-8859-1')
+    df.columns = c
+
+
+    df['timestamp'] = pandas.to_datetime(df['timestamp'])
+    starttime = df['timestamp'].min()
+    df['delta_t'] = starttime
+    temp = (df['timestamp'] - df['delta_t']).map(lambda x: int(round(x.total_seconds())))
+    df['delta_t'] = temp
+
+    df['MB disponibles RAM'] = pandas.to_numeric(df['MB disponibles RAM'])
+    df['% uso RAM'] = df['MB disponibles RAM'].map(lambda free: ((total_RAM_mb - free) / total_RAM_mb) * 100)
+
+    df['% de uso procesador']= pandas.to_numeric(df['% de uso procesador'], errors='coerce')
+    df['total I/O'] = pandas.to_numeric(df['total I/O'], errors='coerce')
+
+    print(df)
+
+    fig, ax = pyplot.subplots()
+    ax.plot(df['delta_t'], df['total I/O'], label='Operaciones I/O en disco por segundo')
+    ax.legend(loc='upper left')
+    pyplot.xlabel('Tiempo (MM:SS)')
+    pyplot.ylabel('Operaciones I/O por segundo')
+    pyplot.xlim([0, 1600])
+
+    formatter = matplotlib.ticker.FuncFormatter(to_min_secs)
+    ax.xaxis.set_major_formatter(formatter)
+
+    ax.set_facecolor('white')
+    ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
+
+    #tikz_save('system_io.tikz',
+    #          figureheight='\\figureheight',
+    #          figurewidth='\\figurewidth')
+    pyplot.savefig('system_io.pgf')
     #pyplot.show()
 
 
@@ -119,10 +164,10 @@ def vehicles_vs_time():
     ax.plot(nx, p(nx), '-.', alpha=0.3, label='Ajuste polinomial', color='#F06449')
 
     # scatter
-    ax.plot(df100['nvhcs'], df100['t'], 'o', color='#17BEBB', label='Carga 100%')
-    ax.plot(df75['nvhcs'], df75['t'], 'o', color='#EF2D56', label='Carga 75%')
-    ax.plot(df50['nvhcs'], df50['t'], 'o', color='#8CD867', label='Carga 50%')
-    ax.plot(df25['nvhcs'], df25['t'], 'o', color='#2F243A', label='Carga 25%')
+    ax.plot(df100['nvhcs'], df100['t'], 'o', color='#17BEBB', label='Factor de demanda 100%')
+    ax.plot(df75['nvhcs'], df75['t'], 'o', color='#EF2D56', label='Factor de demanda 75%')
+    ax.plot(df50['nvhcs'], df50['t'], 'o', color='#8CD867', label='Factor de demanda 50%')
+    ax.plot(df25['nvhcs'], df25['t'], 'o', color='#2F243A', label='Factor de demanda 25%')
     ax.legend(loc='upper left')
     pyplot.ylabel('Tiempo (MM:SS)')
 
@@ -134,7 +179,12 @@ def vehicles_vs_time():
     pyplot.savefig('n_vhcs_vs_time.pgf')
     # pyplot.show()
 
+    #tikz_save('n_vhcs_vs_time.tikz',
+     #         figureheight='\\figureheight',
+      #        figurewidth='\\figurewidth')
+
 
 if __name__ == '__main__':
     system_performance()
-    #vehicles_vs_time()
+    vehicles_vs_time()
+    system_io()

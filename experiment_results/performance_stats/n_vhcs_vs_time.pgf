@@ -4550,15 +4550,15 @@
 \pgfsetstrokecolor{currentstroke}%
 \pgfsetstrokeopacity{0.800000}%
 \pgfsetdash{}{0pt}%
-\pgfpathmoveto{\pgfqpoint{0.897222in}{3.136038in}}%
-\pgfpathlineto{\pgfqpoint{2.356936in}{3.136038in}}%
-\pgfpathquadraticcurveto{\pgfqpoint{2.384713in}{3.136038in}}{\pgfqpoint{2.384713in}{3.163815in}}%
-\pgfpathlineto{\pgfqpoint{2.384713in}{4.126778in}}%
-\pgfpathquadraticcurveto{\pgfqpoint{2.384713in}{4.154556in}}{\pgfqpoint{2.356936in}{4.154556in}}%
+\pgfpathmoveto{\pgfqpoint{0.897222in}{3.163815in}}%
+\pgfpathlineto{\pgfqpoint{2.867347in}{3.163815in}}%
+\pgfpathquadraticcurveto{\pgfqpoint{2.895125in}{3.163815in}}{\pgfqpoint{2.895125in}{3.191593in}}%
+\pgfpathlineto{\pgfqpoint{2.895125in}{4.126778in}}%
+\pgfpathquadraticcurveto{\pgfqpoint{2.895125in}{4.154556in}}{\pgfqpoint{2.867347in}{4.154556in}}%
 \pgfpathlineto{\pgfqpoint{0.897222in}{4.154556in}}%
 \pgfpathquadraticcurveto{\pgfqpoint{0.869444in}{4.154556in}}{\pgfqpoint{0.869444in}{4.126778in}}%
-\pgfpathlineto{\pgfqpoint{0.869444in}{3.163815in}}%
-\pgfpathquadraticcurveto{\pgfqpoint{0.869444in}{3.136038in}}{\pgfqpoint{0.897222in}{3.136038in}}%
+\pgfpathlineto{\pgfqpoint{0.869444in}{3.191593in}}%
+\pgfpathquadraticcurveto{\pgfqpoint{0.869444in}{3.163815in}}{\pgfqpoint{0.897222in}{3.163815in}}%
 \pgfpathclose%
 \pgfusepath{stroke,fill}%
 \end{pgfscope}%
@@ -4600,12 +4600,12 @@
 \pgfusepath{stroke,fill}%
 }%
 \begin{pgfscope}%
-\pgfsys@transformshift{1.063889in}{3.853630in}%
+\pgfsys@transformshift{1.063889in}{3.860574in}%
 \pgfsys@useobject{currentmarker}{}%
 \end{pgfscope}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=1.313889in,y=3.805019in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Carga 100\%}%
+\pgftext[x=1.313889in,y=3.811963in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Factor de demanda 100\%}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -4630,12 +4630,12 @@
 \pgfusepath{stroke,fill}%
 }%
 \begin{pgfscope}%
-\pgfsys@transformshift{1.063889in}{3.656871in}%
+\pgfsys@transformshift{1.063889in}{3.670759in}%
 \pgfsys@useobject{currentmarker}{}%
 \end{pgfscope}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=1.313889in,y=3.608259in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Carga 75\%}%
+\pgftext[x=1.313889in,y=3.622148in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Factor de demanda 75\%}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -4660,12 +4660,12 @@
 \pgfusepath{stroke,fill}%
 }%
 \begin{pgfscope}%
-\pgfsys@transformshift{1.063889in}{3.460111in}%
+\pgfsys@transformshift{1.063889in}{3.480945in}%
 \pgfsys@useobject{currentmarker}{}%
 \end{pgfscope}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=1.313889in,y=3.411500in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Carga 50\%}%
+\pgftext[x=1.313889in,y=3.432334in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Factor de demanda 50\%}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%
@@ -4690,12 +4690,12 @@
 \pgfusepath{stroke,fill}%
 }%
 \begin{pgfscope}%
-\pgfsys@transformshift{1.063889in}{3.263352in}%
+\pgfsys@transformshift{1.063889in}{3.291130in}%
 \pgfsys@useobject{currentmarker}{}%
 \end{pgfscope}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=1.313889in,y=3.214741in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Carga 25\%}%
+\pgftext[x=1.313889in,y=3.242519in,left,base]{\sffamily\fontsize{10.000000}{12.000000}\selectfont Factor de demanda 25\%}%
 \end{pgfscope}%
 \end{pgfpicture}%
 \makeatother%
