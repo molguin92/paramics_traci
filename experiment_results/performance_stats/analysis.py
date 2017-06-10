@@ -65,8 +65,8 @@ def system_performance():
     #tikz_save('system_performance.tikz',
      #         figureheight='\\figureheight',
      #         figurewidth='\\figurewidth')
-    pyplot.savefig('system_performance.pgf')
-    #pyplot.show()
+    # pyplot.savefig('system_performance.pgf')
+    pyplot.show()
 
 def system_io():
     total_RAM_mb = virtual_memory().total / (1024 * 1024)
@@ -108,7 +108,36 @@ def system_io():
     #tikz_save('system_io.tikz',
     #          figureheight='\\figureheight',
     #          figurewidth='\\figurewidth')
-    pyplot.savefig('system_io.pgf')
+    #pyplot.savefig('system_io.pgf')
+    pyplot.show()
+
+def vehicles_vs_time_evolution():
+    cols = ['time', 'nvehicles']
+    df = pandas.read_csv('vehicles_vs_time/nvehicles.csv')
+    df.columns = cols
+
+    cols2 = ['time', 'realtime']
+    df2 = pandas.read_csv('vehicles_vs_time/realtime.csv')
+    df2.columns = cols2
+
+    df['realtime'] = df2['realtime']
+    df['time'] = df['time'].map(lambda x: x - 27000)
+    print(df)
+
+    fig, ax = pyplot.subplots()
+    ax.set_facecolor('white')
+    ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
+
+    ax.plot(df['realtime'], df['nvehicles'], '.-', label='Tiempo Real')
+    ax.plot(df['time'], df['nvehicles'], '.-', label='Tiempo Simulado')
+
+    formatter = matplotlib.ticker.FuncFormatter(to_min_secs)
+    ax.xaxis.set_major_formatter(formatter)
+
+    pyplot.ylabel('Número de Vehículos en Simulación')
+    pyplot.xlabel('Tiempo [MM:SS]')
+    pyplot.legend(loc='lower right')
+    pyplot.savefig('timevsvehicles_evolution.pgf')
     #pyplot.show()
 
 
@@ -135,8 +164,6 @@ def vehicles_vs_time():
     mean_df.loc[2] = [0.50, df50['nvhcs'].mean(), df50['t'].mean()]
     mean_df.loc[3] = [0.25, df25['nvhcs'].mean(), df25['t'].mean()]
 
-    print(mean_df)
-
     # from this point onward, plot
     fig, ax = pyplot.subplots()
     ax.set_facecolor('white')
@@ -161,6 +188,9 @@ def vehicles_vs_time():
     z = numpy.polyfit(df['nvhcs'], df['t'], 2)
     p = numpy.poly1d(z)
     nx = range(0, int(df['nvhcs'].max()) + 200)
+
+    print(p)
+
     ax.plot(nx, p(nx), '-.', alpha=0.3, label='Ajuste polinomial', color='#F06449')
 
     # scatter
@@ -176,8 +206,8 @@ def vehicles_vs_time():
 
     pyplot.xlabel('Cantidad promedio vehículos en simulación')
     # pyplot.title('Scatterplot: Cantidad promedio de vehículos vs duración en tiempo real de simulación')
-    pyplot.savefig('n_vhcs_vs_time.pgf')
-    # pyplot.show()
+    #pyplot.savefig('n_vhcs_vs_time.pgf')
+    pyplot.show()
 
     #tikz_save('n_vhcs_vs_time.tikz',
      #         figureheight='\\figureheight',
@@ -185,6 +215,6 @@ def vehicles_vs_time():
 
 
 if __name__ == '__main__':
-    system_performance()
-    vehicles_vs_time()
-    system_io()
+    #system_performance()
+    vehicles_vs_time_evolution()
+    #system_io()

@@ -1,16 +1,16 @@
 # python 3
 import matplotlib
 
-matplotlib.use('pgf')
-pgf_with_pdflatex = {
-    "pgf.texsystem": "pdflatex",
-    "pgf.preamble": [
-         r"\usepackage[utf8x]{inputenc}",
-         r"\usepackage[T1]{fontenc}",
-         r"\usepackage{cmbright}",
-         ]
-}
-matplotlib.rcParams.update(pgf_with_pdflatex)
+# matplotlib.use('pgf')
+# pgf_with_pdflatex = {
+#     "pgf.texsystem": "pdflatex",
+#     "pgf.preamble": [
+#          r"\usepackage[utf8x]{inputenc}",
+#          r"\usepackage[T1]{fontenc}",
+#          r"\usepackage{cmbright}",
+#          ]
+# }
+# matplotlib.rcParams.update(pgf_with_pdflatex)
 
 import pandas
 import re
@@ -96,14 +96,14 @@ def analysis_arrived_vhc():
     per075_arrived_cnt = per075['arrived'].sum()
     per025_arrived_cnt = per025['arrived'].sum()
 
-    #objects = ('Caso Base', 'PER 0.0', 'PER 0.25', 'PER 0.5', 'PER 0.75', 'PER 1.0')
-    objects = ('Caso Base', 'PER 0.0', 'PER 1.0')
+    objects = ('Caso Base', 'PER 0.0', 'PER 0.25', 'PER 0.75', 'PER 1.0')
+    #objects = ('Caso Base', 'PER 0.0', 'PER 1.0')
     x_ax = numpy.arange(len(objects))
 
     #bars = [base_arrived_cnt, per00_arrived_cnt, per025_arrived_cnt,
     #        per05_arrived_cnt, per075_arrived_cnt, per10_arrived_cnt]
 
-    bars = [base_arrived_cnt, per00_arrived_cnt, per10_arrived_cnt]
+    bars = [base_arrived_cnt, per00_arrived_cnt, per025_arrived_cnt, per075_arrived_cnt, per10_arrived_cnt]
 
     pyplot.bar(x_ax, bars)
     #pyplot.yscale('log')
@@ -204,7 +204,6 @@ def analysis_time():
 def per00_vs_per10_distancetime():
     per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
     per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
-    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])
 
     per00 = per00.loc[per00['arrived']]
 
@@ -219,9 +218,9 @@ def per00_vs_per10_distancetime():
     ax.set_facecolor('white')
     ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
 
-    ax.scatter(per00['total_dist'], per00['total_time'], marker='o', s=12, alpha=0.75, label='PER 0.0', color='#ff0000')
-    ax.scatter(per10['total_dist'], per10['total_time'], marker='o', s=12, alpha=0.75, label='PER 1.0', color='#33cc22')
-    ax.legend(loc='upper left')
+    ax.scatter(per00['total_dist'], per00['total_time'], marker='o', s=4, alpha=0.75, label='PER 0.0', color='#ff0000')
+    ax.scatter(per10['total_dist'], per10['total_time'], marker='o', s=4, alpha=0.75, label='PER 1.0', color='#33cc22')
+    ax.legend(loc='upper right')
 
     formatter = matplotlib.ticker.FuncFormatter(to_min_secs)
     ax.yaxis.set_major_formatter(formatter)
@@ -232,11 +231,71 @@ def per00_vs_per10_distancetime():
     pyplot.savefig('per00per10_timedistance.pgf')
     #pyplot.show()
 
+def per00_vs_per10_co2distance():
+    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+
+    per00 = per00.loc[per00['arrived']]
+
+    index1 = per00.index
+    index2 = per10.index
+
+    per10 = per10[index2.isin(index1)]
+    index2 = per10.index
+    per00 = per00[index1.isin(index2)]
+
+    fig, ax = pyplot.subplots()
+    ax.set_facecolor('white')
+    ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
+
+    ax.scatter(per00['mean_speed'], per00['total_co2'], marker='o', s=4, alpha=0.75, label='PER 0.0', color='#ff0000')
+    ax.scatter(per10['mean_speed'], per10['total_co2'], marker='o', s=4, alpha=0.75, label='PER 1.0', color='#33cc22')
+    ax.legend(loc='upper right')
+
+    #formatter = matplotlib.ticker.FuncFormatter(to_min_secs)
+    #ax.yaxis.set_major_formatter(formatter)
+
+    pyplot.ylabel('CO2 Total')
+    pyplot.xlabel('Mean Speed')
+
+    #pyplot.savefig('per00per10_co2.pgf')
+    pyplot.show()
+
+
+def per00_vs_per10_speedhist():
+    per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
+    per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
+
+    per00 = per00.loc[per00['arrived']]
+
+    index1 = per00.index
+    index2 = per10.index
+
+    per10 = per10[index2.isin(index1)]
+    index2 = per10.index
+    per00 = per00[index1.isin(index2)]
+
+    bins = numpy.linspace(0, per00['mean_speed'].max(), 100)
+
+    fig, ax = pyplot.subplots()
+    ax.set_facecolor('white')
+    ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
+
+    ax.hist(per00['mean_speed'], bins, alpha=1.0, label='PER 0.0', color='#ff0000')
+    ax.hist(per10['mean_speed'], bins, alpha=0.75, label='PER 1.0', color='#33cc22')
+    ax.legend(loc='upper right')
+
+    pyplot.xlabel('Velocidad Promedio [m/s]')
+    pyplot.ylabel('Frecuencia')
+    pyplot.show()
+
 
 if __name__ == '__main__':
     # buid_csv()
-    #analysis_arrived_vhc()
+    analysis_arrived_vhc()
     #analysis_distance()
     #analysis_time()
     # analysis_speed()
-    per00_vs_per10_distancetime()
+    # per00_vs_per10_distancetime()
+    # per00_vs_per10_co2distance()
+    per00_vs_per10_speedhist()
