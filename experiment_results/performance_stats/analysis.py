@@ -1,15 +1,15 @@
 import matplotlib
 
-matplotlib.use('pgf')
-pgf_with_pdflatex = {
-    "pgf.texsystem": "pdflatex",
-    "pgf.preamble": [
-         r"\usepackage[utf8x]{inputenc}",
-         r"\usepackage[T1]{fontenc}",
-         r"\usepackage{cmbright}",
-         ]
-}
-matplotlib.rcParams.update(pgf_with_pdflatex)
+# matplotlib.use('pgf')
+# pgf_with_pdflatex = {
+#     "pgf.texsystem": "pdflatex",
+#     "pgf.preamble": [
+#          r"\usepackage[utf8x]{inputenc}",
+#          r"\usepackage[T1]{fontenc}",
+#          r"\usepackage{cmbright}",
+#          ]
+# }
+# matplotlib.rcParams.update(pgf_with_pdflatex)
 
 import pandas
 from matplotlib import pyplot
@@ -137,8 +137,8 @@ def vehicles_vs_time_evolution():
     pyplot.ylabel('Número de Vehículos en Simulación')
     pyplot.xlabel('Tiempo [MM:SS]')
     pyplot.legend(loc='lower right')
-    pyplot.savefig('timevsvehicles_evolution.pgf')
-    #pyplot.show()
+    #pyplot.savefig('timevsvehicles_evolution.pgf')
+    pyplot.show()
 
 
 def vehicles_vs_time():
