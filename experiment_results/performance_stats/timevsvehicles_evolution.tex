@@ -1,0 +1,65 @@
+% This file was created by matplotlib2tikz v0.6.10.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.886274509803922,0.290196078431373,0.2}
+\definecolor{color1}{rgb}{0.203921568627451,0.541176470588235,0.741176470588235}
+
+\begin{axis}[
+xlabel={Tiempo [MM:SS]},
+ylabel={Número de Vehículos en Simulación},
+xmin=-71.05, xmax=1492.05,
+ymin=-96.35, ymax=2023.35,
+width=\figurewidth,
+height=\figureheight,
+tick align=outside,
+tick pos=left,
+xmajorgrids,
+x grid style={lightgray!84.183006535947712!black},
+ymajorgrids,
+y grid style={lightgray!84.183006535947712!black},
+axis line style={white},
+legend style={at={(0.97,0.03)}, anchor=south east, draw=white!80.0!black, fill=white!89.803921568627459!black},
+legend entries={{Tiempo Real},{Tiempo Simulado}},
+legend cell align={left}
+]
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}]
+table {%
+0 0
+35 373
+56 645
+87 845
+135 1055
+199 1131
+275 1262
+365 1357
+466 1444
+576 1482
+693 1578
+818 1596
+955 1738
+1099 1739
+1250 1884
+1421 1927
+};
+\addplot [semithick, color1, mark=*, mark size=3, mark options={solid}]
+table {%
+0 0
+60 373
+120 645
+180 845
+240 1055
+300 1131
+360 1262
+420 1357
+480 1444
+540 1482
+600 1578
+660 1596
+720 1738
+780 1739
+840 1884
+900 1927
+};
+\end{axis}
+
+\end{tikzpicture}

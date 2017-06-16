@@ -14,7 +14,7 @@ import matplotlib
 
 import pandas
 import re
-
+from matplotlib2tikz import save as tikz_save
 import numpy
 from matplotlib import pyplot
 
@@ -204,46 +204,33 @@ def analysis_time():
 def per00_vs_per10_distancetime():
     per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
     per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
-    base = pandas.read_csv('base_case_total_stats.csv').set_index(['module'])
-
-    # index1 = per00.index
-    # index2 = per10.index
-    #
-    # per10 = per10[index2.isin(index1)]
-    # index2 = per10.index
-    # per00 = per00[index1.isin(index2)]
 
     fig, ax = pyplot.subplots()
     ax.set_facecolor('white')
     ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
 
-    ax.scatter(base['total_dist'], base['total_time'], marker='o', s=4, alpha=0.75, label='Base', color='#0000ff')
     ax.scatter(per00['total_dist'], per00['total_time'], marker='o', s=4, alpha=0.75, label='PER 0.0', color='#ff0000')
     ax.scatter(per10['total_dist'], per10['total_time'], marker='o', s=4, alpha=0.75, label='PER 1.0', color='#33cc22')
-    ax.legend(loc='upper right')
+    ax.legend(loc='lower right')
 
     formatter = matplotlib.ticker.FuncFormatter(to_min_secs)
     ax.yaxis.set_major_formatter(formatter)
+    ax.yaxis.set_major_formatter(formatter)
 
     pyplot.xlabel('Distancia Total [m]')
-    pyplot.ylabel('Tiempo Total [MM:SS]')
+    #pyplot.ylabel('Tiempo Total [MM:SS]')
+    ax.set_ylabel('Tiempo Total [MM:SS]')
+    ax.set_ylabel('Tiempo Total [MM:SS]')
 
     #pyplot.savefig('per00per10_timedistance.pgf')
+    tikz_save('per00per10_timedistance.tex',
+              figureheight='\\figureheight',
+              figurewidth='\\figurewidth')
     pyplot.show()
 
 def per00_vs_per10_co2distance():
     per00 = pandas.read_csv('per0.0_total_stats.csv').set_index(['module'])
     per10 = pandas.read_csv('per1.0_total_stats.csv').set_index(['module'])
-
-    per00 = per00.loc[per00['arrived']]
-
-
-    # index1 = per00.index
-    # index2 = per10.index
-    #
-    # per10 = per10[index2.isin(index1)]
-    # index2 = per10.index
-    # per00 = per00[index1.isin(index2)]
 
     fig, ax = pyplot.subplots()
     ax.set_facecolor('white')
@@ -251,15 +238,18 @@ def per00_vs_per10_co2distance():
 
     ax.scatter(per00['total_dist'], per00['total_co2'], marker='o', s=4, alpha=0.75, label='PER 0.0', color='#ff0000')
     ax.scatter(per10['total_dist'], per10['total_co2'], marker='o', s=4, alpha=0.75, label='PER 1.0', color='#33cc22')
-    ax.legend(loc='upper right')
+    ax.legend(loc='lower right')
 
     #formatter = matplotlib.ticker.FuncFormatter(to_min_secs)
     #ax.yaxis.set_major_formatter(formatter)
 
-    pyplot.ylabel('CO2 Total')
+    ax.set_ylabel('CO2 Total [g]')
     pyplot.xlabel('Distancia Total')
 
     #pyplot.savefig('per00per10_co2.pgf')
+    tikz_save('per00per10_co2.tex',
+              figureheight='\\figureheight',
+              figurewidth='\\figurewidth')
     pyplot.show()
 
 
@@ -287,7 +277,7 @@ def per00_vs_per10_speedhist():
 
     ax.hist(per00['mean_speed'], bins, alpha=1.0, label='PER 0.0', color='#ff0000')
     ax.hist(per10['mean_speed'], bins, alpha=0.75, label='PER 1.0', color='#33cc22')
-    ax.legend(loc='upper right')
+    ax.legend(loc='lower right')
 
     pyplot.xlabel('Velocidad Promedio [m/s]')
     pyplot.ylabel('Frecuencia')
@@ -302,4 +292,4 @@ if __name__ == '__main__':
     # analysis_speed()
     per00_vs_per10_distancetime()
     per00_vs_per10_co2distance()
-    per00_vs_per10_speedhist()
+    #per00_vs_per10_speedhist()

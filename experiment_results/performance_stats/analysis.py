@@ -1,16 +1,4 @@
 import matplotlib
-
-# matplotlib.use('pgf')
-# pgf_with_pdflatex = {
-#     "pgf.texsystem": "pdflatex",
-#     "pgf.preamble": [
-#          r"\usepackage[utf8x]{inputenc}",
-#          r"\usepackage[T1]{fontenc}",
-#          r"\usepackage{cmbright}",
-#          ]
-# }
-# matplotlib.rcParams.update(pgf_with_pdflatex)
-
 import pandas
 from matplotlib import pyplot
 from matplotlib2tikz import save as tikz_save
@@ -20,11 +8,13 @@ import numpy
 matplotlib.style.use('ggplot')
 pyplot.interactive(False)
 
+
 def to_min_secs(x, pos):
     x = int(x)
     minutes = x // 60
     seconds = x % 60
     return '{:02d}:{:02d}'.format(minutes, seconds)
+
 
 def system_performance():
     total_RAM_mb = virtual_memory().total / (1024 * 1024)
@@ -35,7 +25,6 @@ def system_performance():
     df = pandas.read_csv('SystemStats.csv', encoding='ISO-8859-1')
     df.columns = c
 
-
     df['timestamp'] = pandas.to_datetime(df['timestamp'])
     starttime = df['timestamp'].min()
     df['delta_t'] = starttime
@@ -45,7 +34,7 @@ def system_performance():
     df['MB disponibles RAM'] = pandas.to_numeric(df['MB disponibles RAM'])
     df['% uso RAM'] = df['MB disponibles RAM'].map(lambda free: ((total_RAM_mb - free) / total_RAM_mb) * 100)
 
-    df['% de uso procesador']= pandas.to_numeric(df['% de uso procesador'], errors='coerce')
+    df['% de uso procesador'] = pandas.to_numeric(df['% de uso procesador'], errors='coerce')
 
     fig, ax = pyplot.subplots()
     ax.plot(df['delta_t'], df['% de uso procesador'], label='% uso procesador')
@@ -62,11 +51,12 @@ def system_performance():
     ax.set_facecolor('white')
     ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
 
-    #tikz_save('system_performance.tikz',
-     #         figureheight='\\figureheight',
-     #         figurewidth='\\figurewidth')
+    tikz_save('system_performance.tex',
+              figureheight='\\figureheight',
+              figurewidth='\\figurewidth')
     # pyplot.savefig('system_performance.pgf')
-    pyplot.show()
+    #pyplot.show()
+
 
 def system_io():
     total_RAM_mb = virtual_memory().total / (1024 * 1024)
@@ -77,7 +67,6 @@ def system_io():
     df = pandas.read_csv('SystemStats.csv', encoding='ISO-8859-1')
     df.columns = c
 
-
     df['timestamp'] = pandas.to_datetime(df['timestamp'])
     starttime = df['timestamp'].min()
     df['delta_t'] = starttime
@@ -87,10 +76,8 @@ def system_io():
     df['MB disponibles RAM'] = pandas.to_numeric(df['MB disponibles RAM'])
     df['% uso RAM'] = df['MB disponibles RAM'].map(lambda free: ((total_RAM_mb - free) / total_RAM_mb) * 100)
 
-    df['% de uso procesador']= pandas.to_numeric(df['% de uso procesador'], errors='coerce')
+    df['% de uso procesador'] = pandas.to_numeric(df['% de uso procesador'], errors='coerce')
     df['total I/O'] = pandas.to_numeric(df['total I/O'], errors='coerce')
-
-    print(df)
 
     fig, ax = pyplot.subplots()
     ax.plot(df['delta_t'], df['total I/O'], label='Operaciones I/O en disco por segundo')
@@ -105,11 +92,12 @@ def system_io():
     ax.set_facecolor('white')
     ax.grid(color='#a1a1a1', linestyle='-', alpha=0.1)
 
-    #tikz_save('system_io.tikz',
-    #          figureheight='\\figureheight',
-    #          figurewidth='\\figurewidth')
-    #pyplot.savefig('system_io.pgf')
-    pyplot.show()
+    tikz_save('system_io.tex',
+              figureheight='\\figureheight',
+              figurewidth='\\figurewidth')
+    # pyplot.savefig('system_io.pgf')
+    # pyplot.show()
+
 
 def vehicles_vs_time_evolution():
     cols = ['time', 'nvehicles']
@@ -122,7 +110,6 @@ def vehicles_vs_time_evolution():
 
     df['realtime'] = df2['realtime']
     df['time'] = df['time'].map(lambda x: x - 27000)
-    print(df)
 
     fig, ax = pyplot.subplots()
     ax.set_facecolor('white')
@@ -137,8 +124,11 @@ def vehicles_vs_time_evolution():
     pyplot.ylabel('Número de Vehículos en Simulación')
     pyplot.xlabel('Tiempo [MM:SS]')
     pyplot.legend(loc='lower right')
-    #pyplot.savefig('timevsvehicles_evolution.pgf')
-    pyplot.show()
+    tikz_save('timevsvehicles_evolution.tex',
+              figureheight='\\figureheight',
+              figurewidth='\\figurewidth')
+    # pyplot.savefig('timevsvehicles_evolution.pgf')
+    # pyplot.show()
 
 
 def vehicles_vs_time():
@@ -150,8 +140,7 @@ def vehicles_vs_time():
     df['t'] = pandas.to_numeric(df['t'])
     df['runID'] = pandas.to_numeric(df['runID'])
 
-    df['demand'] = df['demand'].map(lambda x: float(x.strip('%'))/100)
-
+    df['demand'] = df['demand'].map(lambda x: float(x.strip('%')) / 100)
 
     df100 = df.loc[df['demand'] == 1.00]
     df75 = df.loc[df['demand'] == 0.75]
@@ -189,8 +178,6 @@ def vehicles_vs_time():
     p = numpy.poly1d(z)
     nx = range(0, int(df['nvhcs'].max()) + 200)
 
-    print(p)
-
     ax.plot(nx, p(nx), '-.', alpha=0.3, label='Ajuste polinomial', color='#F06449')
 
     # scatter
@@ -206,15 +193,16 @@ def vehicles_vs_time():
 
     pyplot.xlabel('Cantidad promedio vehículos en simulación')
     # pyplot.title('Scatterplot: Cantidad promedio de vehículos vs duración en tiempo real de simulación')
-    #pyplot.savefig('n_vhcs_vs_time.pgf')
-    pyplot.show()
+    # pyplot.savefig('n_vhcs_vs_time.pgf')
+    # pyplot.show()
 
-    #tikz_save('n_vhcs_vs_time.tikz',
-     #         figureheight='\\figureheight',
-      #        figurewidth='\\figurewidth')
+    tikz_save('n_vhcs_vs_time.tex',
+              figureheight='\\figureheight',
+              figurewidth='\\figurewidth')
 
 
 if __name__ == '__main__':
-    #system_performance()
+    system_performance()
+    vehicles_vs_time()
     vehicles_vs_time_evolution()
-    #system_io()
+    system_io()
